@@ -1,0 +1,33 @@
+{
+  "name": "e-commerse-online-shop",
+  "version": "1.0.0",
+  "description": "JS1 final project - creating an e-commerse web shop",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saribeg/E-Commerse-Online-Shop.git"
+  },
+  "author": "DAN.IT JS1 group",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saribeg/E-Commerse-Online-Shop/issues"
+  },
+  "homepage": "https://github.com/Saribeg/E-Commerse-Online-Shop#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.8",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
