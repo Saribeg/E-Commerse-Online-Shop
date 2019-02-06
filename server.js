@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 const users = require("./routes/users");
-const categories = require("./routes/categories");
+const navigationMenuItems = require("./routes/navigationMenuItems");
+const products = require("./routes/products");
+const carouseltems = require("./routes/carouseltems");
 
 const app = express();
 
@@ -18,7 +20,9 @@ mongoose
   .catch(err => console.log(err));
 
 app.use("/users", users);
-app.use("/", categories);
+app.use("/", navigationMenuItems);
+app.use("/", products);
+app.use("/", carouseltems);
 
 const port = process.env.PORT || 5000;
 
