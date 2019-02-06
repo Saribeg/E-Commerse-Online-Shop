@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const CarouselSchema = new Schema({
   product: {
     type: Schema.Types.ObjectId,
-    ref: "products"
+    ref: "products",
+    required: true
   },
   imageUrl: {
     type: String,
