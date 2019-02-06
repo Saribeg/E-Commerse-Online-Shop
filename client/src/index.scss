@@ -93,7 +93,7 @@ a {
 }
 
 .main-menu-item::after{
-  content: url("./img/arrow.png");
+  content: url("/img/arrow.png");
   position: absolute;
   right: -20px;
 }
