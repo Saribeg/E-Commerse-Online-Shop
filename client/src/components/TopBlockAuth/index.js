@@ -6,6 +6,7 @@ import RegistrationForm from './RegistrationForm';
 import {OPEN_LOGIN_FORM, OPEN_LOGIN_DETAILS, CLOSE_LOGIN_DETAILS, LOGOUT} from '../../actions/login'
 
 import './TopBlockAuth.scss'
+import Search from "../Search";
 
 
 class TopBlockAuth extends Component {
@@ -27,8 +28,9 @@ class TopBlockAuth extends Component {
         return (
 
             <div className="main-right">
+                <Search/>
 
-                <input type="text" className="main-search" placeholder="Search"/>
+                {/*<input type="text" className="main-search" placeholder="Search"/>*/}
                 <div className="main-date">
 
                     <div className={notLogged}>
