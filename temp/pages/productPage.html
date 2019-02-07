@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <!--<link rel="stylesheet" href="../../build/static/css/main.8d657f33.chunk.css">-->
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+/>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -58,7 +62,7 @@
 <img class="all-photos-item" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/79/Janna_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203244" alt="pants">
 <img class="all-photos-item" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/79/Janna_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203244" alt="pants">
 <img class="all-photos-item" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/79/Janna_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203244" alt="pants">
-
+<img class="all-photos-item" src="https://vignette.wikia.nocookie.net/leagueoflegends/images/7/79/Janna_OriginalCentered.jpg/revision/latest/scale-to-width-down/1215?cb=20180414203244" alt="pants">
 </div>
 
 <div class="photo-main">
@@ -84,11 +88,11 @@
 		<li class="size-item">4</li>
 	</ul>
 	<p class="product-filter">Quantity</p>
-	<ul class="product-counter">
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
+	<div class="product-counter">
+        <button class="product-counter-btn">-</button>
+        <span class="product-counter-value">0</span>
+		<button class="product-counter-btn">+</button>
+    </div>
 
 <button type="submit" class="btn-add-to-cart">Add to cart</button>
 </form>
@@ -96,44 +100,58 @@
 
 </section>
 
-<section class="container">
-		<h2 class="featured-title">You may also like</h2>
-	<div class="featured-list">
-		<a href="" class="featured-item"><img src="../img/featured.png" alt="" class="featured-img">
-				<p class="featured-name">No-Iron Easy Care Sleeveless Shirt</p>
-				<p class="featured-price">$599.00</p>
-		</a>
-		<a href="" class="featured-item"><img src="../img/featured.png" alt="" class="featured-img">
-				<p class="featured-name">No-Iron Easy Care Sleeveless Shirt</p>
-				<p class="featured-price">$599.00</p>
-		</a>
-		<a href="" class="featured-item"><img src="../img/featured.png" alt="" class="featured-img">
-				<p class="featured-name">No-Iron Easy Care Sleeveless Shirt</p>
-				<p class="featured-price">$599.00</p>
-		</a>
-		<a href="" class="featured-item"><img src="../img/featured.png" alt="" class="featured-img">
-				<p class="featured-name">No-Iron Easy Care Sleeveless Shirt</p>
-				<p class="featured-price">$599.00</p>
-		</a>
-		<a href="" class="featured-item"><img src="../img/featured.png" alt="" class="featured-img">
-				<p class="featured-name">No-Iron Easy Care Sleeveless Shirt</p>
-				<p class="featured-price">$599.00</p>
-		</a>
-		<a href="" class="featured-item"><img src="../img/featured.png" alt="" class="featured-img">
-				<p class="featured-name">No-Iron Easy Care Sleeveless Shirt</p>
-				<p class="featured-price">$599.00</p>
-		</a>
-		<a href="" class="featured-item"><img src="../img/featured.png" alt="" class="featured-img">
-				<p class="featured-name">No-Iron Easy Care Sleeveless Shirt</p>
-				<p class="featured-price">$599.00</p>
-		</a>
-		<a href="" class="featured-item"><img src="../img/featured.png" alt="" class="featured-img">
-				<p class="featured-name">No-Iron Easy Care Sleeveless Shirt</p>
-				<p class="featured-price">$599.00</p>
-		</a>
-</div>
-</section>
-
+<section class="section-listing-products">
+    <!--<section class="section-featured">-->
+        <div class="container">
+            <div class="listing">
+            <!--<div class="featured">-->
+                <h2 class="listing-title">Featured</h2>
+                <!--<h2 class="featured-title">Featured</h2>-->
+                <div class="listing-products">
+                <!--<div class="featured-list">-->
+                    <a href="" class="product-item"><img src="../img/featured.png" alt="" class="product-img">
+                        <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
+                        <p class="product-price">$599.00</p>
+                    </a>
+                    <a href="" class="product-item"><img src="../img/featured.png" alt="" class="product-img">
+                        <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
+                        <p class="product-price">$599.00</p>
+                    </a>
+                    <a href="" class="product-item"><img src="../img/featured.png" alt="" class="product-img">
+                        <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
+                        <p class="product-price">$599.00</p>
+                    </a>
+                    <a href="" class="product-item"><img src="../img/featured.png" alt="" class="product-img">
+                        <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
+                        <p class="product-price">$599.00</p>
+                    </a>
+                    <a href="" class="product-item"><img src="../img/featured.png" alt="" class="product-img">
+                        <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
+                        <p class="product-price">$599.00</p>
+                    </a>
+                    <a href="" class="product-item"><img src="../img/featured.png" alt="" class="product-img">
+                        <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
+                        <p class="product-price">$599.00</p>
+                    </a>
+                    <a href="" class="product-item"><img src="../img/featured.png" alt="" class="product-img">
+                        <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
+                        <p class="product-price">$599.00</p>
+                    </a>
+                    <a href="" class="product-item"><img src="../img/featured.png" alt="" class="product-img">
+                        <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
+                        <p class="product-price">$599.00</p>
+                    </a>
+    
+    
+                    <!--<a href="" class="featured-item"><img src="../img/featured.png" alt="" class="featured-img">-->
+                        <!--<p class="featured-name">No-Iron Easy Care Sleeveless Shirt</p>-->
+                        <!--<p class="featured-price">$599.00</p>-->
+                    <!--</a>-->
+                </div>
+            </div>
+        </div>
+    </section>
+    
 
 <footer class="main-footer">
     <div class="container">
