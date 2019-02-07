@@ -4,9 +4,14 @@
   justify-content: space-between;
 }
 
-@mixin flex-wrap-between {
+@mixin flex-wrap-between{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@mixin flex-between {
+  display: flex;
   justify-content: space-between;
 }
 
@@ -60,4 +65,9 @@
   }
 }
 
+@mixin max-width($width) { // for cases when elements dont change design after some resolution
+  @media (max-width: $width) {
+    @content;
+  }
+}
 

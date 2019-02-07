@@ -1,0 +1,268 @@
+
+.registration-wrapper {
+  display: block;
+  position: absolute;
+  top: 50px;
+  right: 316px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  //display: none; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  .registration {
+    width: 445px;
+    height: 585px;
+    margin: auto;
+
+    border-radius: 15px;
+    background: #fff;
+
+    &_header {
+      display: flex;
+
+      width: 320px;
+      height: 47px;
+
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-left: 60px;
+      p {
+        font-size: 15px;
+      }
+
+      a {
+        font-size: 10px;
+        margin-left: 230px;
+        color: #33333a;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &_social {
+      display: flex;
+
+      width: 320px;
+      height: 45px;
+      margin: auto;
+      margin-top: 20px;
+
+      text-decoration: none;
+    }
+
+    .btn {
+      display: flex;
+
+      width: 155px;
+      height: 40px;
+      margin-right: 10px;
+
+      color: #fff;
+      border-radius: 20px;
+
+      align-items: center;
+
+      p {
+        font-size: 14px;
+
+        margin-left: 20px;
+      }
+    }
+
+    .facebook {
+      background-color: #305db8;
+
+      &:hover {
+        background-color: #264b96;
+      }
+    }
+
+    .facebook-logo {
+      width: 47px;
+      height: 20px;
+
+      border-right: 1px solid #2b54a5;
+      background: url(/img/facebook1.png) no-repeat 20px 0;
+    }
+
+    .google {
+      background-color: #df4a32;
+
+      &:hover {
+        background-color: #c3412c;
+      }
+    }
+
+    .google-logo {
+      width: 47px;
+      height: 20px;
+
+      border-right: 1px solid #c8422d;
+      background: url(/img/G+.png) no-repeat 15px 2px;
+    }
+
+    .sidelines {
+      display: flex;
+
+      width: 320px;
+      margin: auto;
+
+      div {
+        width: 140px;
+        border-bottom: 1px solid #eaeaea;
+        position: relative;
+        bottom: 5px;
+      }
+
+      p {
+        padding: 20px 25px 0 25px;
+        color: #33333a;
+      }
+    }
+
+    form {
+      width: 320px;
+      height: 385px;
+      margin: auto;
+      padding-top: 10px;
+      position: relative;
+      .registration-input {
+        width: 298px;
+        height: 45px;
+        margin-top: 10px;
+        padding-left: 20px;
+        position: relative;
+
+        border: 1px solid;
+        border-radius: 15px;
+        outline: none;
+      }
+      &::placeholder {
+        font-size: 12px;
+
+        color: #d9d9d9;
+      }
+      &:focus {
+        border: 1px solid #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+      }
+    }
+    #check {
+      width: 2px;
+      height: 2px;
+    }
+
+    .checkbox-container {
+      font-size: 10px;
+      color: #33333a;
+
+      position: relative;
+
+      display: block;
+
+      margin-top: 20px;
+      padding-left: 35px;
+
+      cursor: pointer;
+
+      a {
+        color: #3cb878;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      input {
+        position: absolute;
+
+        cursor: pointer;
+
+        opacity: 0;
+      }
+    }
+
+    .checkmark {
+      position: absolute;
+      top: -5px;
+      left: 0;
+
+      width: 20px;
+      height: 20px;
+
+      border: 1px solid #eaeaea;
+      border-radius: 3px;
+      background-color: #fff;
+
+      &:after {
+        position: absolute;
+
+        display: none;
+
+        content: '';
+      }
+    }
+
+    .checkbox-container input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    .checkbox-container .checkmark:after {
+      top: 2px;
+      left: 6px;
+
+      width: 5px;
+      height: 10px;
+
+      transform: rotate(45deg);
+
+      border: solid #3cb878;
+      border-width: 0 3px 3px 0;
+    }
+
+    .registration-form_buttons {
+      display: flex;
+      width: 320px;
+      justify-content: space-between;
+
+      #cancel {
+        background-color: #c3412c;
+        text-align: center;
+        height: 27px;
+        padding-top: 13px;
+
+        &:hover {
+          background-color: #df4a32;
+        }
+      }
+
+      .registration-form_button {
+        font-size: 16px;
+
+        width: 48%;
+        height: 40px;
+        margin-top: 28px;
+        padding: 0;
+
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        background-color: #3cb878;
+        box-shadow: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #329a65;
+        }
+      }
+    }
+  }
+}
+
+.registration-form-input-grey {
+  border-color: #eaeaea;
+}
+
+.registration-form-input-red {
+  border-color: red;
+}
