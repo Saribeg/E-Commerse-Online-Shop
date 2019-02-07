@@ -1,19 +1,26 @@
 import React, {Component, Fragment} from 'react';
 import {Switch, Route} from 'react-router-dom';
 import './App.css';
-import ProductsCarousel from './components/ProductsCarousel'
-import TopBlockAuth from './components/TopBlockAuth'
+// import ProductsCarousel from './components/ProductsCarousel'
+// import TopBlockAuth from './components/TopBlockAuth'
+
+import Header from './components/Header'
+import Footer from './components/Footer'
+import MainPage from './components/MainPage'
+import Profile from './components/Profile'
 
 
 class App extends Component {
     render() {
         return (
-            <div className="App">
-
-                <TopBlockAuth/>
-                <ProductsCarousel/>
-
-            </div>
+            <Fragment>
+                <Header />
+                <Switch>
+                    <Route exact path="/" component={MainPage} />
+                    <Route exact path="/profile" component={Profile} />
+                </Switch>
+                <Footer />
+            </Fragment>
         );
     }
 }

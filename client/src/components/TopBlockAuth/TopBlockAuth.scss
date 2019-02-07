@@ -32,3 +32,21 @@
   flex-direction: row;
   align-items: center;
 }
+
+.header-top-login-btn {
+  font-size: 18px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.header-dropdown-login-details {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  top: 50px;
+  right: 316px;
+  z-index: 1;
+}

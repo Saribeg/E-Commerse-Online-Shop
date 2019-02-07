@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const SET_LOGGED = 'SET_LOGGED';
+export const LOGOUT = 'LOGOUT';
 export const SEND_NEW_USER = 'SEND_NEW_USER';
 
 export const OPEN_LOGIN_FORM = 'OPEN_LOGIN_FORM';
@@ -8,6 +9,9 @@ export const CLOSE_LOGIN_FORM = 'CLOSE_LOGIN_FORM';
 
 export const OPEN_REG_FORM = 'OPEN_REG_FORM';
 export const CLOSE_REG_FORM = 'CLOSE_REG_FORM';
+
+export const OPEN_LOGIN_DETAILS = 'OPEN_LOGIN_DETAILS';
+export const CLOSE_LOGIN_DETAILS = 'CLOSE_LOGIN_DETAILS';
 
 export const EXIST_USER = 'EXIST_USER';
 
