@@ -1,5 +1,6 @@
 import {SET_LOGGED, SEND_NEW_USER, OPEN_LOGIN_FORM, CLOSE_LOGIN_FORM,
-    OPEN_REG_FORM, CLOSE_REG_FORM, EXIST_USER, RESET_WINDOW_STATUS, INCORRECT_LOGIN, CORRECT_LOGIN} from '../../actions/login'
+    OPEN_REG_FORM, CLOSE_REG_FORM, EXIST_USER, RESET_WINDOW_STATUS, INCORRECT_LOGIN,
+    CORRECT_LOGIN, OPEN_LOGIN_DETAILS, CLOSE_LOGIN_DETAILS, LOGOUT} from '../../actions/login'
 
 const initialState = {
     isLogged: false,
@@ -11,6 +12,7 @@ const initialState = {
     windowsStatus: {
         formLoginOpen: false,
         formRegisterOpen: false,
+        loginDetails: false,
         successRegister: false,
         invalidLogin: false,
         existEmail: false,
@@ -39,6 +41,22 @@ function login(state = initialState, action) {
                 windowsStatus: {
                     ...state.windowsStatus,
                     formLoginOpen: false,
+                }
+            }
+        case OPEN_LOGIN_DETAILS:
+            return {
+                ...state,
+                windowsStatus: {
+                    ...state.windowsStatus,
+                    loginDetails: true,
+                }
+            }
+        case CLOSE_LOGIN_DETAILS:
+            return {
+                ...state,
+                windowsStatus: {
+                    ...state.windowsStatus,
+                    loginDetails: false,
                 }
             }
         case OPEN_REG_FORM:
@@ -89,6 +107,24 @@ function login(state = initialState, action) {
                     id: action.payload.id,
                     name: action.payload.name,
                     email: action.payload.email,
+                }
+
+            }
+
+        case LOGOUT:
+            return {
+                windowsStatus: {
+                    formLoginOpen: false,
+                    formRegisterOpen: false,
+                    successRegister: false,
+                    invalidLogin: false,
+                    existEmail: false,
+                },
+                isLogged: false,
+                loggedData: {
+                    id: '',
+                    name: '',
+                    email: '',
                 }
 
             }

@@ -1,0 +1,34 @@
+.breadcrumbs {
+  &-section {
+		display: none;
+    background-color: $grey-bg;
+		padding: 17px 0 15px;
+		
+		@include min-width($landscape-desktop){
+			display: block;
+		}
+  }
+
+  &-list {
+    display: flex;
+
+    li {
+      &::after {
+        content: '•';
+        font-size: 13px;
+        margin: 0 10px;
+      }
+
+      &:last-child::after {
+        content: none;
+      }
+    }
+  }
+
+  &-link {
+    font-size: 12px;
+    line-height: 40px;
+    color: $black;
+    text-transform: uppercase;
+  }
+}

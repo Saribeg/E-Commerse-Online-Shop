@@ -4,6 +4,10 @@
 
 .main-header {
   border-bottom: 1px solid #cccccc;
+
+  @include max-width($landscape-tablet){
+    display: none;
+  }
 }
 
 .header-content {
