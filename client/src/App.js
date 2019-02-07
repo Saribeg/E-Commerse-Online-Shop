@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {Switch, Route} from 'react-router-dom';
-import './App.css';
+import './scss/style.scss';
 // import ProductsCarousel from './components/ProductsCarousel'
 // import TopBlockAuth from './components/TopBlockAuth'
 
