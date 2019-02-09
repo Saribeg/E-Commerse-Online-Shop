@@ -8,7 +8,8 @@ import {
 const initialState = {
   isMenuFetching: false,
   navMenuItems: [],
-  navMenuWindowStatus: false
+  navMenuWindowStatus: false,
+  currentOnMouseOverCategory: null
 };
 
 function navMenu(state = initialState, action) {
@@ -27,11 +28,13 @@ function navMenu(state = initialState, action) {
     case OPEN_SUB_MENU:
       return {
         ...state,
+        currentOnMouseOverCategory: action.payload,
         navMenuWindowStatus: true
       };
     case CLOSE_SUB_MENU:
       return {
         ...state,
+        currentOnMouseOverCategory: null,
         navMenuWindowStatus: false
       };
     default:

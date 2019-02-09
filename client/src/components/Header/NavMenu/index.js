@@ -23,7 +23,7 @@ class NavMenu extends Component {
         <li
           className="main-menu-item"
           key={e._id}
-          onMouseOver={this.props.openSubMenu}
+          onMouseOver={() => this.props.openSubMenu(e.categoryName)}
         >
           <Link to={e.categoryUrl} className="main-menu-link">
             {e.categoryName}
@@ -34,41 +34,43 @@ class NavMenu extends Component {
 
     // Creating list of subcategories (e.g. clothing) and further subcategories (e.g. shirts, pants)
     let subMenuList = this.props.navMenuItems.map(category => {
-      return category.subCategoryList.map(subCategory => {
-        // further subcategories (e.g. shirts, pants)
-        let subfurtherSubCategory = subCategory.furtherSubCategoryList.map(
-          furtherSubCategory => {
-            return (
-              <ul
-                className="sub-menu-category-list"
-                key={furtherSubCategory._id}
-              >
-                <li className="sub-menu-category-item">
-                  <Link
-                    to={furtherSubCategory.furtherSubCategoryUrl}
-                    className="sub-menu-category-link"
-                  >
-                    {furtherSubCategory.furtherSubCategoryName}
-                  </Link>
-                </li>
-              </ul>
-            );
-          }
-        );
+      if (category.categoryName === this.props.currentOnMouseOverCategory) {
+        return category.subCategoryList.map(subCategory => {
+          // further subcategories (e.g. shirts, pants)
+          let subfurtherSubCategory = subCategory.furtherSubCategoryList.map(
+            furtherSubCategory => {
+              return (
+                <ul
+                  className="sub-menu-category-list"
+                  key={furtherSubCategory._id}
+                >
+                  <li className="sub-menu-category-item">
+                    <Link
+                      to={furtherSubCategory.furtherSubCategoryUrl}
+                      className="sub-menu-category-link"
+                    >
+                      {furtherSubCategory.furtherSubCategoryName}
+                    </Link>
+                  </li>
+                </ul>
+              );
+            }
+          );
 
-        // subcategories (e.g. clothing)
-        return (
-          <div className="sub-menu-left-list" key={subCategory._id}>
-            <Link
-              to={subCategory.subCategoryUrl}
-              className="sub-menu-left-title"
-            >
-              {subCategory.subCategoryName}
-            </Link>
-            {subfurtherSubCategory}
-          </div>
-        );
-      });
+          // subcategories (e.g. clothing)
+          return (
+            <div className="sub-menu-left-list" key={subCategory._id}>
+              <Link
+                to={subCategory.subCategoryUrl}
+                className="sub-menu-left-title"
+              >
+                {subCategory.subCategoryName}
+              </Link>
+              {subfurtherSubCategory}
+            </div>
+          );
+        });
+      }
     });
 
     // Rendering the whole component
@@ -113,7 +115,8 @@ const mapStateToProps = state => {
   return {
     navMenuItems: state.navMenu.navMenuItems,
     isMenuFetching: state.navMenu.isMenuFetching,
-    navMenuWindowStatus: state.navMenu.navMenuWindowStatus
+    navMenuWindowStatus: state.navMenu.navMenuWindowStatus,
+    currentOnMouseOverCategory: state.navMenu.currentOnMouseOverCategory
   };
 };
 

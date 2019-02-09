@@ -19,9 +19,10 @@ export const getNavMenuItems = () => dispatch => {
   });
 };
 
-export const openSubMenu = () => dispatch => {
+export const openSubMenu = category => dispatch => {
   dispatch({
-    type: OPEN_SUB_MENU
+    type: OPEN_SUB_MENU,
+    payload: category
   });
 };
 
