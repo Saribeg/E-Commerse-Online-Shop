@@ -1,268 +1,106 @@
-
-.registration-wrapper {
-  display: block;
+.registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
-  top: 50px;
-  right: 316px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.7);
-  //display: none; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  .registration {
-    width: 445px;
-    height: 585px;
-    margin: auto;
 
-    border-radius: 15px;
-    background: #fff;
+  width: 615px;
+  height: 720px;
+  border: 1px solid black;
+  background: #fff;
 
-    &_header {
-      display: flex;
+  .cancel-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: url("https://img.icons8.com/ios/50/000000/delete-sign.png") no-repeat;
+    background-position: 7.5px 7px;
+    background-size: 15px;
+    background-color: rgba(0, 0, 0, 0.08);
+    align-self: flex-end;
+    margin: 15px 15px 0;
+    cursor: pointer;
+  }
 
-      width: 320px;
-      height: 47px;
+  .registration-header {
+    width: 555px;
+    height: 43px;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #030303;
+    margin-bottom: 10px;
+  }
 
-      align-items: flex-end;
-      justify-content: space-between;
-      padding-left: 60px;
-      p {
-        font-size: 15px;
-      }
+  form {
+    padding-top: 10px;
+    position: relative;
+    color: #33333a;
+    display: flex;
+    flex-direction: column;
 
-      a {
-        font-size: 10px;
-        margin-left: 230px;
-        color: #33333a;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-    }
-
-    &_social {
-      display: flex;
-
-      width: 320px;
-      height: 45px;
-      margin: auto;
-      margin-top: 20px;
-
-      text-decoration: none;
-    }
-
-    .btn {
-      display: flex;
-
-      width: 155px;
+    .registration-input {
+      width: 396px;
       height: 40px;
-      margin-right: 10px;
-
-      color: #fff;
-      border-radius: 20px;
-
-      align-items: center;
-
-      p {
-        font-size: 14px;
-
-        margin-left: 20px;
-      }
-    }
-
-    .facebook {
-      background-color: #305db8;
-
-      &:hover {
-        background-color: #264b96;
-      }
-    }
-
-    .facebook-logo {
-      width: 47px;
-      height: 20px;
-
-      border-right: 1px solid #2b54a5;
-      background: url(/img/facebook1.png) no-repeat 20px 0;
-    }
-
-    .google {
-      background-color: #df4a32;
-
-      &:hover {
-        background-color: #c3412c;
-      }
-    }
-
-    .google-logo {
-      width: 47px;
-      height: 20px;
-
-      border-right: 1px solid #c8422d;
-      background: url(/img/G+.png) no-repeat 15px 2px;
-    }
-
-    .sidelines {
-      display: flex;
-
-      width: 320px;
-      margin: auto;
-
-      div {
-        width: 140px;
-        border-bottom: 1px solid #eaeaea;
-        position: relative;
-        bottom: 5px;
-      }
-
-      p {
-        padding: 20px 25px 0 25px;
-        color: #33333a;
-      }
-    }
-
-    form {
-      width: 320px;
-      height: 385px;
-      margin: auto;
-      padding-top: 10px;
+      padding-left: 20px;
       position: relative;
-      .registration-input {
-        width: 298px;
-        height: 45px;
-        margin-top: 10px;
-        padding-left: 20px;
-        position: relative;
-
-        border: 1px solid;
-        border-radius: 15px;
-        outline: none;
-      }
-      &::placeholder {
-        font-size: 12px;
-
-        color: #d9d9d9;
-      }
-      &:focus {
-        border: 1px solid #fff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
-      }
-    }
-    #check {
-      width: 2px;
-      height: 2px;
+      border: 1px solid #33333a;
+      outline: none;
     }
 
-    .checkbox-container {
-      font-size: 10px;
-      color: #33333a;
-
-      position: relative;
-
-      display: block;
-
+    p {
+      margin: 12px 0 7px;
+    }
+    .registration-form_button {
+      width: 270px;
+      height: 50px;
+      border-radius: 25px;
+      background-color: #33333a;
+      border: 1px solid #33333a;
       margin-top: 20px;
-      padding-left: 35px;
-
+      text-align: center;
       cursor: pointer;
-
-      a {
-        color: #3cb878;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
-      input {
-        position: absolute;
-
-        cursor: pointer;
-
-        opacity: 0;
-      }
-    }
-
-    .checkmark {
-      position: absolute;
-      top: -5px;
-      left: 0;
-
-      width: 20px;
-      height: 20px;
-
-      border: 1px solid #eaeaea;
-      border-radius: 3px;
-      background-color: #fff;
-
-      &:after {
-        position: absolute;
-
-        display: none;
-
-        content: '';
-      }
-    }
-
-    .checkbox-container input:checked ~ .checkmark:after {
-      display: block;
-    }
-
-    .checkbox-container .checkmark:after {
-      top: 2px;
-      left: 6px;
-
-      width: 5px;
-      height: 10px;
-
-      transform: rotate(45deg);
-
-      border: solid #3cb878;
-      border-width: 0 3px 3px 0;
-    }
-
-    .registration-form_buttons {
-      display: flex;
-      width: 320px;
-      justify-content: space-between;
-
-      #cancel {
-        background-color: #c3412c;
-        text-align: center;
-        height: 27px;
-        padding-top: 13px;
-
-        &:hover {
-          background-color: #df4a32;
-        }
-      }
-
-      .registration-form_button {
-        font-size: 16px;
-
-        width: 48%;
-        height: 40px;
-        margin-top: 28px;
-        padding: 0;
-
-        color: #fff;
-        border: none;
-        border-radius: 20px;
-        background-color: #3cb878;
-        box-shadow: none;
-        cursor: pointer;
-
-        &:hover {
-          background-color: #329a65;
-        }
-      }
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 12px;
+      align-self: center;
     }
   }
-}
+  .login-area{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.08);
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+    .login_btn{
+      width: 270px;
+      height: 50px;
+      border-radius: 25px;
+      border: 1px solid #33333a;
+      text-align: center;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-top: 0;
+      padding-top: 16px;
+      background-color: rgba(0, 0, 0, 0.08);
+      color: #33333a;
+    }
+  }
 
-.registration-form-input-grey {
-  border-color: #eaeaea;
-}
+  .registration-form-input-grey {
+    border-color: #eaeaea;
+  }
 
-.registration-form-input-red {
-  border-color: red;
+  .registration-form-input-red {
+    border-color: red;
+  }
 }
