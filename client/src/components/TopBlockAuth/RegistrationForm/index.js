@@ -2,20 +2,16 @@ import React, {Component} from 'react';
 import './RegistrationForm.scss';
 
 import {connect} from 'react-redux'
-import {addNewUser, CLOSE_REG_FORM} from '../../../actions/login'
+import {addNewUser, CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_LOGIN_FORM, OPEN_REG_FORM} from '../../../actions/login'
 
 class RegistrationForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+        state = {
             firstName: '',
             secondName: '',
             email: '',
             password: '',
             password2: '',
-        }
-
-    };
+        };
 
     checkValidation = (e) => {
         this.checkPassValidation(e);
@@ -43,7 +39,7 @@ class RegistrationForm extends Component {
         }
     };
 
-    checkEmailValidation = (e) =>  {
+    checkEmailValidation = (e) => {
         const email = document.getElementById('email');
         const chkEmail = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
         if (!chkEmail.test(email.value)) {
@@ -82,97 +78,71 @@ class RegistrationForm extends Component {
     render() {
 
         let classSecondPass = (this.checkPassValidation()) ? 'registration-input registration-form-input-grey' : 'registration-input registration-form-input-red';
-
         let classExistEmail = (this.props.windowsStatus.existEmail) ? null : 'd-none';
 
         return (
-            <div className='registration-wrapper'>
-                <div className="registration">
-                    <div className="registration_header">
-                        <p>Sign Up</p>
-                        <p>Log In</p>
+            <div className="registration">
+                <div className="cancel-btn" onClick={() => this.props.closeRegForm()}></div>
+                <h2 className='registration-header'>Registration</h2>
+                <form>
+                    <div>
+                        <p>First Name</p>
+                        <input className='registration-input'
+                               required
+                               name='firstName'
+                               onChange={this.onStateChange}
+                               onBlur={this.checkNameValidation}
+                               type="text"/>
                     </div>
-                    <div className="registration_social">
-                        <a href="#">
-                            <div className="facebook btn">
-                                <div className="facebook-logo"/>
-                                <p>Facebook</p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div className="google btn">
-                                <div className="google-logo"/>
-                                <p>Google</p>
-                            </div>
-                        </a>
+                    <div>
+                        <p>Last Name</p>
+                        <input className='registration-input'
+                               required
+                               name='secondName'
+                               onChange={this.onStateChange}
+                               onBlur={this.checkNameValidation}
+                               type="text"/>
                     </div>
-                    <div className="sidelines">
-                        <div/>
-                        <p>or</p>
-                        <div/>
+                    <div className={classExistEmail}>
+                        This email is already used
                     </div>
-                    <form>
-                        <div><input className='registration-input'
-                                    required
-                                    name='firstName'
-                                    onChange={this.onStateChange}
-                                    onBlur={this.checkNameValidation}
-                                    type="text"
-                                    placeholder="First Name"/>
-                        </div>
-                        <div><input className='registration-input'
-                                    required
-                                    name='secondName'
-                                    onChange={this.onStateChange}
-                                    onBlur={this.checkNameValidation}
-                                    type="text"
-                                    placeholder="Second Name"/>
-                        </div>
-                        <div className={classExistEmail}>
-                            This email is already used
-                        </div>
-
-
-                        <div><input className='registration-input'
-                                    required
-                                    name='email'
-                                    onChange={this.onStateChange}
-                                    onBlur={this.checkEmailValidation}
-                                    type="email"
-                                    id='email'
-                                    placeholder="Email"/></div>
-                        <div><input className='registration-input'
-                                    name='password'
-                                    onChange={this.onStateChange}
-                                    required
-                                    type="password"
-                                    id='firstPassword'
-                                    placeholder="Choose Password"/></div>
-                        <div><input className={classSecondPass}
-                                    required
-                                    name='password2'
-                                    onChange={this.onStateChange}
-                                    type="password"
-                                    id='secondPassword'
-                                    placeholder="Confirm Password"/></div>
-                        <label className="checkbox-container">
-                            Agree our
-                            <a href="#"> Terms &amp; Conditions</a>
-                            <input required type="checkbox" id="check"/>
-                            <span className="checkmark"/>
-                        </label>
-                        <div className='registration-form_buttons'>
-                            <div className='registration-form_button' id="cancel"
-                                 onClick={() => this.props.closeRegForm()}>Cancel
-                            </div>
-                            <button type="submit"
-                                    onClick={() => this.sentRegistration()}
-                                    className='registration-form_button'
-                                    id="submit">
-                                Create Account
-                            </button>
-                        </div>
-                    </form>
+                    <div>
+                        <p>Email Address</p>
+                        <input className='registration-input'
+                               required
+                               name='email'
+                               onChange={this.onStateChange}
+                               onBlur={this.checkEmailValidation}
+                               type="email"
+                               id='email'/>
+                    </div>
+                    <div>
+                        <p>Password</p>
+                        <input className='registration-input'
+                               name='password'
+                               onChange={this.onStateChange}
+                               required
+                               type="password"
+                               id='firstPassword'/>
+                    </div>
+                    <div>
+                        <p>Confirm Password</p>
+                        <input className={classSecondPass}
+                               required
+                               name='password2'
+                               onChange={this.onStateChange}
+                               type="password"
+                               id='secondPassword'/>
+                    </div>
+                    <button type="submit"
+                            onClick={() => this.sentRegistration()}
+                            className='registration-form_button'
+                            id="submit">
+                        Register
+                    </button>
+                </form>
+                <div className='login-area'>
+                    <div className='login_btn' onClick={() => this.props.openLoginForm()}>Login Here</div>
                 </div>
             </div>
         );
@@ -182,13 +152,17 @@ class RegistrationForm extends Component {
 const mapStateToProps = (state) => {
     return {
         windowsStatus: state.login.windowsStatus,
-}
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         closeRegForm: () => {
             dispatch({type: CLOSE_REG_FORM})
+        },
+        openLoginForm: () => {
+            dispatch({type: CLOSE_REG_FORM});
+            dispatch({type: OPEN_LOGIN_FORM});
         },
         addNewUser: (regForm) => dispatch(addNewUser(regForm))
     }

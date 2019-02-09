@@ -6,6 +6,7 @@ import RegistrationForm from './RegistrationForm';
 import {OPEN_LOGIN_FORM, OPEN_LOGIN_DETAILS, CLOSE_LOGIN_DETAILS, LOGOUT} from '../../actions/login'
 
 import './TopBlockAuth.scss'
+import Search from "../Search";
 
 
 class TopBlockAuth extends Component {
@@ -27,8 +28,7 @@ class TopBlockAuth extends Component {
         return (
 
             <div className="main-right">
-
-                <input type="text" className="main-search" placeholder="Search"/>
+                <Search/>
                 <div className="main-date">
 
                     <div className={notLogged}>
@@ -39,7 +39,7 @@ class TopBlockAuth extends Component {
                     </div>
 
                     <div className={isLogged}>
-                        {this.props.login.loggedData.name}
+                        {this.props.login.loggedData.firstName + " " + this.props.login.loggedData.secondName}
                         <div>
                             <img src="/img/account.png" alt="" onClick={() => this.props.openLoginDetails()}/>
                         </div>
@@ -61,7 +61,7 @@ class TopBlockAuth extends Component {
 
                 <div className={classDetailLogin}>
                     <div className='header-dropdown-login-details'>
-                        <NavLink to="/profile" onClick={() => this.props.closeLoginDetails()}>PROFILE</NavLink>
+                        <NavLink to="/profile/personalContent" onClick={() => this.props.closeLoginDetails()}>PROFILE</NavLink>
                         <input type="button" value='logout' onClick={() => this.props.logout()}/>
                         <input type="button" value='close' onClick={() => this.props.closeLoginDetails()}/>
                     </div>

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-
-import ProductsCarousel from '../ProductsCarousel'
+import React, { Component } from 'react';
+import ProductsCarousel from '../ProductsCarousel';
+import ProductListing from "../ProductListing";
 
 class MainPage extends Component {
     render () {
@@ -8,6 +8,16 @@ class MainPage extends Component {
         return (
             <div>
                 <ProductsCarousel />
+
+                <section className="section-listing-products">
+                    <div className="container">
+                        <div className="listing">
+                            <h2 className="listing-title">Featured</h2>
+                            <ProductListing items={8}/>
+                        </div>
+                    </div>
+                </section>
+
             </div>
         )
 
