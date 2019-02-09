@@ -25,6 +25,47 @@ const UserSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    deliveryData: {
+        country: {
+            tyoe: String,
+            default: ''
+        },
+        zipcode: {
+            type: String,
+            default: ''
+        },
+        city: {
+            type: String,
+            default: ''
+        },
+        street: {
+            type: String,
+            default: ''
+        },
+        phone: {
+            type: String,
+            default: ''
+        }
+
+    },
+    paymentInfo: {
+        cardNumber: {
+            type: String,
+            default: ''
+        },
+        nameOnCard: {
+            type: String,
+            default: ''
+        },
+        expiryMonth: {
+            type: String,
+            default: ''
+        },
+        expiryYear: {
+            type: String,
+            default: ''
+        }
     }
 });
 

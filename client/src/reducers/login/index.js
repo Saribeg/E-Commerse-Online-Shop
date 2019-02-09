@@ -6,8 +6,23 @@ const initialState = {
     isLogged: false,
     loggedData: {
         id: '',
-        name: '',
+        firstName: '',
+        secondName: '',
         email: '',
+        deliveryData: {
+            country: '',
+            zipcode: '',
+            city: '',
+            street: '',
+            phone: ''
+
+        },
+        paymentInfo: {
+            cardNumber: '',
+            nameOnCard: '',
+            expiryMonth: '',
+            expiryYear: ''
+        }
     },
     windowsStatus: {
         formLoginOpen: false,
@@ -104,9 +119,12 @@ function login(state = initialState, action) {
                 },
                 isLogged: true,
                 loggedData: {
-                    id: action.payload.id,
-                    name: action.payload.name,
-                    email: action.payload.email,
+                    id: action.payload.userinfo.id,
+                    firstName: action.payload.userinfo.firstName,
+                    secondName: action.payload.userinfo.secondName,
+                    email: action.payload.userinfo.email,
+                    deliveryData: {...action.payload.userinfo.deliveryData},
+                    paymentInfo: {...action.payload.userinfo.paymentInfo},
                 }
 
             }

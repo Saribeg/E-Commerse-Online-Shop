@@ -17,7 +17,7 @@ class App extends Component {
                 <Header />
                 <Switch>
                     <Route exact path="/" component={MainPage} />
-                    <Route exact path="/profile" component={Profile} />
+                    <Route path="/profile" component={Profile} />
                 </Switch>
                 <Footer />
             </Fragment>
