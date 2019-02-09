@@ -29,8 +29,6 @@ class TopBlockAuth extends Component {
 
             <div className="main-right">
                 <Search/>
-
-                {/*<input type="text" className="main-search" placeholder="Search"/>*/}
                 <div className="main-date">
 
                     <div className={notLogged}>
