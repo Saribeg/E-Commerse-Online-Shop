@@ -4,7 +4,7 @@
   justify-content: space-between;
 }
 
-@mixin flex-wrap-between {
+@mixin flex-wrap-between{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -41,37 +41,34 @@
   }
 }
 
-@mixin mobile-normal {
-  // 401 - 480
+@mixin mobile-normal { // 401 - 480
   @media (min-width: #{$landscape-mobile-normal + 1}) and (max-width: #{$landscape-mobile-big}) {
     @content;
   }
 }
 
-@mixin tablet {
-  // 481 - 992
+@mixin tablet { // 481 - 992
   @media (min-width: #{$landscape-mobile-big + 1}) and (max-width: #{$landscape-tablet}) {
     @content;
   }
 }
 
-@mixin desktop {
-  // 993 - ...
+@mixin desktop { // 993 - ...
   @media (min-width: #{$landscape-tablet + 1}) {
     @content;
   }
 }
 
-@mixin min-width($width) {
-  // for cases when elements dont change design after some resolution
+@mixin min-width($width) { // for cases when elements dont change design after some resolution
   @media (min-width: $width) {
     @content;
   }
 }
 
-@mixin max-width($width) {
-  // for cases when elements dont change design after some resolution
+@mixin max-width($width) { // for cases when elements dont change design after some resolution
   @media (max-width: $width) {
     @content;
   }
 }
+
+
