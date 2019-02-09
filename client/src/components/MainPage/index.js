@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProductsCarousel from '../ProductsCarousel';
 import ProductListing from "../ProductListing";
+import EmptyState from "../EmptyState";
 
 class MainPage extends Component {
     render () {
@@ -17,6 +18,7 @@ class MainPage extends Component {
                         </div>
                     </div>
                 </section>
+                <EmptyState title="Oops"/>
 
             </div>
         )

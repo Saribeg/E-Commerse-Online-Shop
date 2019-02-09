@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from "react";
-import { Switch, Route } from "react-router-dom";
-import "./scss/style.scss";
+import React, {Component, Fragment} from 'react';
+import {Switch, Route} from 'react-router-dom';
+import './scss/style.scss';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 // import ProductsCarousel from './components/ProductsCarousel'
 // import TopBlockAuth from './components/TopBlockAuth'
 
@@ -9,6 +11,8 @@ import Footer from "./components/Footer";
 import MainPage from "./components/MainPage";
 import Profile from "./components/Profile";
 // import ProductPage from "./components/ProductPage";
+
+library.add(faQuestion)
 
 class App extends Component {
   render() {
