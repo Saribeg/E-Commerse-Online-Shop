@@ -220,7 +220,7 @@ router.post("/navigation-menu/add-list", (req, res) => {
   //     .catch(err => console.log(err));
 });
 
-router.get("/", (req, res) => {
+router.get("/nav-menu", (req, res) => {
   NavigationMenu.find({ collectionName: "navMenuList" })
     .then(navMenuList => res.json(navMenuList))
     .catch(err => console.log(err));
