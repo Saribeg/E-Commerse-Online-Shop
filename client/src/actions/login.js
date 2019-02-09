@@ -38,7 +38,7 @@ export function checkLogin(loginForm) {
                         dispatch({type: RESET_WINDOW_STATUS})
                         dispatch({
                             type: CORRECT_LOGIN,
-                            payload: {id: data._id, email: data.email, name: data.firstName + " " + data.secondName}
+                            payload: {userinfo: data}
                         })
 
                     }
