@@ -1,4 +1,4 @@
-@import "resources/resources";
+@import '../../../scss/resources/resources';
 
 .product-counter{
 	display: flex;
@@ -16,6 +16,7 @@
 
 	}
 	&-value{
+		min-width: 45px;
 		padding: 5px 18px;
 		background-color: #fff;
 		font-size: 14px;
