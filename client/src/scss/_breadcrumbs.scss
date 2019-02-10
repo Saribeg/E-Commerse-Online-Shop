@@ -2,13 +2,13 @@
 
 .breadcrumbs {
   &-section {
-		display: none;
+    display: none;
     background-color: $grey-bg;
-		padding: 17px 0 15px;
-		
-		@include min-width($landscape-desktop){
-			display: block;
-		}
+    padding: 17px 0 15px;
+
+    @include min-width($landscape-desktop) {
+      display: block;
+    }
   }
 
   &-list {
