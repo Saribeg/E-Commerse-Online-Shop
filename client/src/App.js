@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react';
 import {Switch, Route} from 'react-router-dom';
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faQuestion} from '@fortawesome/free-solid-svg-icons'
-// import ProductsCarousel from './components/ProductsCarousel'
 // import TopBlockAuth from './components/TopBlockAuth'
 
 import Header from "./components/Header";
@@ -21,7 +20,6 @@ class App extends Component {
             <Fragment>
                 <Header/>
                 <Switch>
-
                     <Route exact path="/" component={MainPage}/>
                     <Route path="/profile" component={Profile}/>
                     {/*<Route exact path="/product/1" component={ProductPage}/>*/}
