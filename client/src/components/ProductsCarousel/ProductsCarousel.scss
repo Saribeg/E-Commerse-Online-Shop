@@ -2,14 +2,34 @@
   margin: 0 auto;
 }
 
+.slider-wrapper.axis-horizontal {
+  width: 30%;
+}
+
 .slider {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  width: 50%;
 }
 
 .carousel .slide {
   background: #fff;
+}
+
+.slide.selected {
+  position: relative;
+}
+
+.price {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  color:  #33333a;
+  font-family: OpenSans, sans-serif;
+  font-size: 24px;
+  border: 1px solid #33333a;
+  border-radius: 500px;
+  padding: 40px 10px;
 }
 
 .carousel-item img {
@@ -19,36 +39,10 @@
 .carousel .slide .legend {
   background: #33333a;
   border-radius: 100px;
+  font-family: OpenSans, sans-serif;
+  letter-spacing: 1.4px;
 }
 
 .carousel .control-dots .dot {
   background: #33333a;
-}
-
-.carousel.carousel-slider .control-arrow {
-  background: #33333a;
-  opacity: 0.5;
-  height: 20%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.carousel.carousel-slider .control-arrow:hover {
-  background: #33333a;
-  opacity: 1;
-}
-
-.control-prev {
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-}
-
-.control-next {
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
-}
-
-.carousel.carousel-slider .control-arrow :before {
-  margin-left: 10px;
-  margin-right: 2px;
 }

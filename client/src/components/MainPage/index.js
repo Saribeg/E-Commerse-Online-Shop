@@ -3,6 +3,7 @@ import ProductsCarousel from '../ProductsCarousel';
 import ProductListing from "../ProductListing";
 import EmptyState from "../EmptyState";
 
+import './MainPage.scss'
 class MainPage extends Component {
     render () {
 
@@ -26,4 +27,4 @@ class MainPage extends Component {
     }
 }
 
-export default MainPage
+export default MainPage;

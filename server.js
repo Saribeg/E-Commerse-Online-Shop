@@ -6,7 +6,7 @@ const users = require("./routes/users");
 const navigationMenuItems = require("./routes/navigationMenuItems");
 const products = require("./routes/products");
 const carouseltems = require("./routes/carouseltems");
-
+const mailSubscribe = require('./routes/subscribe');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +23,7 @@ app.use("/users", users);
 app.use("/", navigationMenuItems);
 app.use("/", products);
 app.use("/", carouseltems);
+app.use("/", mailSubscribe);
 
 const port = process.env.PORT || 5000;
 
