@@ -1,22 +1,22 @@
-.login-menu{
+.login-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
-
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   z-index: 1;
-
   width: 615px;
   height: 606px;
-
   font-size: 14px;
   border: 1px solid black;
   background-color: #fff;
   color: #030303;
 
-  .cancel-btn{
+  .cancel-btn {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -28,14 +28,16 @@
     margin: 15px 15px 0;
     cursor: pointer;
   }
-  .login-menu_header{
+
+  .login-menu_header {
     width: 555px;
     font-size: 32px;
     font-weight: bold;
     line-height: 1.34;
     text-align: center;
   }
-  .login-menu_par{
+
+  .login-menu_par {
     width: 323px;
     height: 44px;
     font-size: 14px;
@@ -48,49 +50,52 @@
     color: #33333a;
     margin-top: 20px;
   }
-  &_form{
+
+  &_form {
     display: flex;
     margin-top: 40px;
-    .form-email_par{
+
+    .form-email_par {
       width: 323px;
       height: 22px;
       font-size: 14px;
     }
-    &-fields{
+
+    &-fields {
       width: 396px;
-      input{
+
+      input {
         width: 396px;
         height: 40px;
-
-        margin: 5px 0px 15px 0;
+        margin: 5px 0 15px 0;
         padding-left: 10px;
-
         border: 1px solid #eaeaea;
         outline: none;
       }
     }
-    .form-pass_par{
+
+    .form-pass_par {
       width: 323px;
       height: 22px;
       font-size: 14px;
     }
   }
-    .enter_btn{
-      width: 270px;
-      height: 50px;
-      border-radius: 25px;
-      background-color: #33333a;
 
-      border: 1px solid #33333a;
+  .enter_btn {
+    width: 270px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #33333a;
+    border: 1px solid #33333a;
+    text-align: center;
+    cursor: pointer;
+    padding-top: 17px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 40px;
+  }
 
-      text-align: center;
-      cursor: pointer;
-      padding-top: 17px;
-      color: #fff;
-      text-transform: uppercase;
-      margin-top: 40px;
-    }
-  .registration-area{
+  .registration-area {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.08);
     height: 110px;
@@ -98,13 +103,15 @@
     justify-content: center;
     align-items: center;
     margin-top: 35px;
-    .register_btn{
+
+    .register_btn {
       margin-top: 0;
       background-color: rgba(0, 0, 0, 0.08);
       color: #33333a;
     }
   }
 }
+
 .d-none {
   display: none;
 }

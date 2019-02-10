@@ -1,24 +1,24 @@
 @import '../../../scss/resources/resources';
 
-.product-counter{
-	display: flex;
-	align-items: center;
-	border: 1px solid #dedede;
-	min-width: 120px;
+.product-counter {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dedede;
+  min-width: 120px;
 
-	&-btn{
-		@include clear-default-inputs-style;
-		background-color: $grey-bg;
-		cursor: pointer;
-		font-size: 36px;
-		padding: 5px 18px;
+  &-btn {
+    @include clear-default-inputs-style;
 
+    background-color: $grey-bg;
+    cursor: pointer;
+    font-size: 36px;
+    padding: 5px 18px;
+  }
 
-	}
-	&-value{
-		min-width: 45px;
-		padding: 5px 18px;
-		background-color: #fff;
-		font-size: 14px;
-	}
+  &-value {
+    min-width: 45px;
+    padding: 5px 18px;
+    background-color: #fff;
+    font-size: 14px;
+  }
 }

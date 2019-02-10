@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {NavLink} from "react-router-dom";
 import './CardProduct.scss'
 
-class CardProduct extends Component{
+class ProductCard extends Component{
     render() {
         return(
             <>
@@ -16,4 +16,4 @@ class CardProduct extends Component{
     }
 }
 
-export default CardProduct;
+export default ProductCard;
