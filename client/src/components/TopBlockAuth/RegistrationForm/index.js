@@ -134,12 +134,12 @@ class RegistrationForm extends Component {
                                type="password"
                                id='secondPassword'/>
                     </div>
-                    <button type="submit"
+                    <input type="button"
                             onClick={() => this.sentRegistration()}
                             className='registration-form_button'
-                            id="submit">
-                        Register
-                    </button>
+                            id="submit"
+                    value="Register"/>
+
                 </form>
                 <div className='login-area'>
                     <div className='login_btn' onClick={() => this.props.openLoginForm()}>Login Here</div>
