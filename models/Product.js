@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
-  id: {
+  itemNo: {
     type: String,
     required: true
   },
@@ -34,22 +34,43 @@ const ProductSchema = new Schema({
   },
   imageUrls: [
     {
-      type: String,
-      required: true
+      urls: [
+        {
+          type: String,
+          required: true
+        }
+      ],
+      color: {
+        type: String,
+        required: true
+      }
     }
   ],
-  colors: [
+  productFeatures: [
     {
-      type: String,
-      required: true
+      size: {
+        type: String,
+        required: true
+      },
+      color: {
+        type: String,
+        required: true
+      },
+      quantity: {
+        type: Number,
+        required: true
+      }
     }
   ],
-  sizes: [
-    {
-      type: String,
-      required: true
-    }
-  ],
+  totalQuantity: {
+    type: Number,
+    required: true
+  },
+  withdrawnFromSale: {
+    type: String,
+    required: true,
+    default: false
+  },
   date: {
     type: Date,
     default: Date.now

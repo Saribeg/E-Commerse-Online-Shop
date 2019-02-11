@@ -6,7 +6,7 @@ const users = require("./routes/users");
 const navigationMenuItems = require("./routes/navigationMenuItems");
 const products = require("./routes/products");
 const carouseltems = require("./routes/carouseltems");
-const mailSubscribe = require('./routes/subscribe');
+const mailSubscribe = require("./routes/subscribe");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const db = require("./config/keys").mongoURI;
 
 mongoose
-  .connect(db)
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 

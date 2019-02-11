@@ -1,0 +1,17 @@
+@import '../../scss/resources/resources';
+
+.section-listing-products{
+  padding-top: 50px;
+  background-color: #fcfcfc;
+}
+
+.listing {
+  &-title {
+    font-family: $font-openSans;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: $black;
+    margin-bottom: 40px;
+  }
+}

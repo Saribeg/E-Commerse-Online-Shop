@@ -1,6 +1,5 @@
 
 .section-profile {
-
   &-title {
     height: 72px;
     background-color: #f3f3f3;
@@ -14,7 +13,6 @@
       font-size: 12px;
       text-transform: uppercase;
     }
-
   }
 
   &-main {
@@ -31,12 +29,12 @@
       position: relative;
       height: 60px;
       width: 100%;
-      color: #333333;
+      color: #333;
       text-transform: uppercase;
       font-size: 14px;
       font-weight: bold;
 
-      &:after {
+      &::after {
         display: block;
         content: '';
         position: absolute;
@@ -48,7 +46,6 @@
         height: 16px;
         width: 16px;
       }
-
     }
 
     &-item-active {
@@ -62,7 +59,7 @@
       font-size: 14px;
       font-weight: bold;
 
-      &:after {
+      &::after {
         display: block;
         content: '';
         position: absolute;
@@ -74,7 +71,6 @@
         height: 16px;
         width: 16px;
       }
-
     }
 
     &-logout {
@@ -83,14 +79,14 @@
       position: relative;
       height: 60px;
       width: 100%;
-      color: #333333;
+      color: #333;
       text-transform: uppercase;
       font-size: 14px;
       font-weight: bold;
       padding-left: 35px;
       box-sizing: border-box;
 
-      &:before {
+      &::before {
         display: block;
         content: '';
         position: absolute;
@@ -133,7 +129,6 @@
       margin-bottom: 20px;
 
       &-date {
-
         &-mm {
           display: inline-block;
           width: 50px;
@@ -162,7 +157,6 @@
           margin-bottom: 20px;
         }
       }
-
     }
 
     &-pass {
@@ -179,7 +173,5 @@
       text-align: center;
       outline: none;
     }
-
   }
-
 }

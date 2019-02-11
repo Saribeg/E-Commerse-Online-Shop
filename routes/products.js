@@ -7,7 +7,7 @@ const rand = uniqueRandom(0, 999999);
 // Router for adding products into mongodb
 router.post("/products/add-products", (req, res) => {
   const newProduct = {};
-  newProduct.id = rand();
+  newProduct.itemNo = rand();
   newProduct.category = req.body.category;
   newProduct.subCategory = req.body.subCategory;
   if (req.body.furtherSubCategory)
@@ -18,10 +18,14 @@ router.post("/products/add-products", (req, res) => {
     newProduct.previousPrice = Number(req.body.previousPrice);
   newProduct.productUrl = `/${newProduct.category}/${newProduct.subCategory}/${
     newProduct.furtherSubCategory
-  }/${newProduct.id}`;
-  newProduct.imageUrls = [`${newProduct.productUrl}/img001`];
-  newProduct.colors = req.body.colors.split(",");
-  newProduct.sizes = req.body.sizes.split(",");
+  }/${newProduct.itemNo}`;
+
+  newProduct.productFeatures = JSON.parse(req.body.productFeatures);
+  newProduct.imageUrls = JSON.parse(req.body.imageUrls);
+  newProduct.totalQuantity = newProduct.productFeatures.reduce(
+    (sum, obj) => sum + obj.quantity,
+    0
+  );
 
   const dbProduct = new Product(newProduct);
 
