@@ -9,7 +9,6 @@
   right: 0;
   margin: auto;
   z-index: 1;
-
   width: 615px;
   height: 720px;
   border: 1px solid black;
@@ -57,6 +56,7 @@
     p {
       margin: 12px 0 7px;
     }
+
     .registration-form_button {
       width: 270px;
       height: 50px;
@@ -72,7 +72,8 @@
       align-self: center;
     }
   }
-  .login-area{
+
+  .login-area {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.08);
     height: 110px;
@@ -80,7 +81,8 @@
     justify-content: center;
     align-items: center;
     margin-top: 35px;
-    .login_btn{
+
+    .login_btn {
       width: 270px;
       height: 50px;
       border-radius: 25px;
