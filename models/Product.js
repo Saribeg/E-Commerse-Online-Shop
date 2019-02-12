@@ -48,24 +48,24 @@ const ProductSchema = new Schema({
   ],
   productFeatures: [
     {
-      size: {
-        type: String,
-        required: true
-      },
       color: {
         type: String,
         required: true
       },
-      quantity: {
-        type: Number,
-        required: true
-      }
+      sizes: [
+        {
+          size: {
+            type: String,
+            required: true
+          },
+          quantity: {
+            type: Number,
+            required: true
+          }
+        }
+      ]
     }
   ],
-  totalQuantity: {
-    type: Number,
-    required: true
-  },
   withdrawnFromSale: {
     type: String,
     required: true,

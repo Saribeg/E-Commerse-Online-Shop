@@ -22,10 +22,6 @@ router.post("/products/add-products", (req, res) => {
 
   newProduct.productFeatures = JSON.parse(req.body.productFeatures);
   newProduct.imageUrls = JSON.parse(req.body.imageUrls);
-  newProduct.totalQuantity = newProduct.productFeatures.reduce(
-    (sum, obj) => sum + obj.quantity,
-    0
-  );
 
   const dbProduct = new Product(newProduct);
 
