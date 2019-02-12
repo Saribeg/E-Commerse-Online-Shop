@@ -32,26 +32,24 @@ const ProductSchema = new Schema({
     type: String,
     required: true
   },
-  imageUrls: [
+  productFeatures: [
     {
-      urls: [
+      color: {
+        type: String,
+        required: true,
+        default: "unset"
+      },
+      colorName: {
+        type: String,
+        required: true,
+        default: "unset"
+      },
+      imageUrls: [
         {
           type: String,
           required: true
         }
       ],
-      color: {
-        type: String,
-        required: true
-      }
-    }
-  ],
-  productFeatures: [
-    {
-      color: {
-        type: String,
-        required: true
-      },
       sizes: [
         {
           size: {

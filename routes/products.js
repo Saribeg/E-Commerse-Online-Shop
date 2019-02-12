@@ -6,23 +6,38 @@ const rand = uniqueRandom(0, 999999);
 
 // Router for adding products into mongodb
 router.post("/products/add-products", (req, res) => {
+  // Our object for adding product to mongo
   const newProduct = {};
+  // Generate our product's itemNo with module uniqueRandom
   newProduct.itemNo = rand();
+  // Add a category / subCategory / furtherSubCategory (if exists) to which the product belongs, to form a URL
   newProduct.category = req.body.category;
   newProduct.subCategory = req.body.subCategory;
   if (req.body.furtherSubCategory)
     newProduct.furtherSubCategory = req.body.furtherSubCategory;
+  // Product description / model name
   newProduct.model = req.body.model;
+  // The actual price
   newProduct.currentPrice = Number(req.body.currentPrice);
+  // Previous price if there is a promotion.This price should be faded and crossed as not actual
   if (req.body.previousPrice)
     newProduct.previousPrice = Number(req.body.previousPrice);
+  // Generating user friendly url using category / subCategory / furtherSubCategory (if exists)
   newProduct.productUrl = `/${newProduct.category}/${newProduct.subCategory}/${
     newProduct.furtherSubCategory
-  }/${newProduct.itemNo}`;
-
+      ? newProduct.furtherSubCategory + "/" + newProduct.itemNo
+      : newProduct.itemNo
+  }`;
+  /*
+An array of objects with several levels of nesting containing the following information:
+1. Color code for css-style and color name.
+2. Array of image urls for this color.
+3. Available sizes for this color.
+4. Available quantity for this color and this size.
+*/
   newProduct.productFeatures = JSON.parse(req.body.productFeatures);
-  newProduct.imageUrls = JSON.parse(req.body.imageUrls);
 
+  // Add new product to db
   const dbProduct = new Product(newProduct);
 
   dbProduct

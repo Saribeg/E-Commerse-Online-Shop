@@ -1,0 +1,472 @@
+[
+  {
+    "color": "#000000",
+    "colorName": "black",
+    "imageUrls": [
+      "/img/products/women/clothing/dresses/006/000000/040.jpg",
+      "/img/products/women/clothing/dresses/006/000000/041.jpg",
+      "/img/products/women/clothing/dresses/006/000000/042.jpg",
+      "/img/products/women/clothing/dresses/006/000000/043.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "s",
+        "quantity": 3
+      },
+      {
+        "size": "xs",
+        "quantity": 5
+      },
+      {
+        "size": "m",
+        "quantity": 10
+      },
+      {
+        "size": "l",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "color": "#53a5e4",
+    "colorName": "blue",
+    "imageUrls": [
+      "/img/products/women/clothing/dresses/006/53a5e4/010.jpg",
+      "/img/products/women/clothing/dresses/006/53a5e4/011.jpg",
+      "/img/products/women/clothing/dresses/006/53a5e4/012.jpg",
+      "/img/products/women/clothing/dresses/006/53a5e4/013.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "s",
+        "quantity": 3
+      },
+      {
+        "size": "xs",
+        "quantity": 5
+      },
+      {
+        "size": "m",
+        "quantity": 10
+      },
+      {
+        "size": "l",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "color": "#fa84bc",
+    "colorName": "rose",
+    "imageUrls": [
+      "/img/products/women/clothing/dresses/006/fa84bc/020.jpg",
+      "/img/products/women/clothing/dresses/006/fa84bc/021.jpg",
+      "/img/products/women/clothing/dresses/006/fa84bc/022.jpg",
+      "/img/products/women/clothing/dresses/006/fa84bc/023.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "s",
+        "quantity": 1
+      },
+      {
+        "size": "xs",
+        "quantity": 3
+      },
+      {
+        "size": "m",
+        "quantity": 0
+      },
+      {
+        "size": "l",
+        "quantity": 7
+      }
+    ]
+  },
+  {
+    "color": "#faeb48",
+    "colorName": "yellow",
+    "imageUrls": [
+      "/img/products/women/clothing/dresses/006/faeb48/030.jpg",
+      "/img/products/women/clothing/dresses/006/faeb48/031.jpg",
+      "/img/products/women/clothing/dresses/006/faeb48/032.jpg",
+      "/img/products/women/clothing/dresses/006/faeb48/033.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "s",
+        "quantity": 0
+      },
+      {
+        "size": "xs",
+        "quantity": 15
+      },
+      {
+        "size": "m",
+        "quantity": 20
+      },
+      {
+        "size": "l",
+        "quantity": 0
+      }
+    ]
+  },
+
+  {
+    "color": "#000000",
+    "colorName": "black",
+    "imageUrls": [
+      "/img/products/women/clothing/dresses/001/000000/030.png",
+      "/img/products/women/clothing/dresses/001/000000/031.png",
+      "/img/products/women/clothing/dresses/001/000000/032.png"
+    ],
+    "sizes": [
+      {
+        "size": "s",
+        "quantity": 8
+      },
+      {
+        "size": "xs",
+        "quantity": 10
+      },
+      {
+        "size": "m",
+        "quantity": 15
+      },
+      {
+        "size": "l",
+        "quantity": 12
+      }
+    ]
+  },
+
+  {
+    "color": "#53a5e4",
+    "colorName": "blue",
+    "imageUrls": [
+      "/img/products/women/clothing/pants/002/53a5e4/021.png",
+      "/img/products/women/clothing/pants/002/53a5e4/022.png",
+      "/img/products/women/clothing/pants/002/53a5e4/023.png"
+    ],
+    "sizes": [
+      {
+        "size": "s",
+        "quantity": 23
+      },
+      {
+        "size": "xs",
+        "quantity": 1
+      },
+      {
+        "size": "m",
+        "quantity": 0
+      },
+      {
+        "size": "l",
+        "quantity": 1
+      }
+    ]
+  },
+
+  {
+    "color": "#ffffff",
+    "colorName": "white",
+    "imageUrls": [
+      "/img/products/women/accessories/hats/001/ffffff/011.png",
+      "/img/products/women/accessories/hats/001/ffffff/012.png",
+      "/img/products/women/accessories/hats/001/ffffff/013.png"
+    ],
+    "sizes": [
+      {
+        "size": "s",
+        "quantity": 5
+      },
+      {
+        "size": "m",
+        "quantity": 2
+      },
+      {
+        "size": "l",
+        "quantity": 0
+      }
+    ]
+  },
+
+  {
+    "color": "#000000",
+    "colorName": "black",
+    "imageUrls": [
+      "/img/products/women/shoes/001/000000/011.png",
+      "/img/products/women/shoes/001/000000/012.png",
+      "/img/products/women/shoes/001/000000/013.png"
+    ],
+    "sizes": [
+      {
+        "size": "36",
+        "quantity": 10
+      },
+      {
+        "size": "37",
+        "quantity": 5
+      },
+      {
+        "size": "38",
+        "quantity": 2
+      },
+      {
+        "size": "39",
+        "quantity": 0
+      }
+    ]
+  },
+
+  {
+    "color": "#5e5f5c",
+    "colorName": "gray",
+    "imageUrls": [
+      "/img/products/men/accessories/belts/004/5e5f5c/040.jpg",
+      "/img/products/men/accessories/belts/004/5e5f5c/041.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "76 - 81 CM",
+        "quantity": 3
+      },
+      {
+        "size": "81 - 86 CM",
+        "quantity": 5
+      },
+      {
+        "size": "86 - 91 CM",
+        "quantity": 23
+      },
+      {
+        "size": "91 - 96 CM",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "color": "#701c29",
+    "colorName": "burgundy",
+    "imageUrls": [
+      "/img/products/men/accessories/belts/004/701c29/030.jpg",
+      "/img/products/men/accessories/belts/004/701c29/031.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "76 - 81 CM",
+        "quantity": 2
+      },
+      {
+        "size": "81 - 86 CM",
+        "quantity": 7
+      },
+      {
+        "size": "86 - 91 CM",
+        "quantity": 17
+      },
+      {
+        "size": "91 - 96 CM",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "color": "#63453d",
+    "colorName": "brown",
+    "imageUrls": [
+      "/img/products/men/accessories/belts/004/63453d/010.jpg",
+      "/img/products/men/accessories/belts/004/63453d/011.jpg",
+      "/img/products/men/accessories/belts/004/63453d/012.jpg",
+      "/img/products/men/accessories/belts/004/63453d/013.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "76 - 81 CM",
+        "quantity": 0
+      },
+      {
+        "size": "81 - 86 CM",
+        "quantity": 2
+      },
+      {
+        "size": "86 - 91 CM",
+        "quantity": 7
+      },
+      {
+        "size": "91 - 96 CM",
+        "quantity": 17
+      }
+    ]
+  },
+  {
+    "color": "#121454",
+    "colorName": "navy blue",
+    "imageUrls": [
+      "/img/products/men/accessories/belts/004/121454/020.jpg",
+      "/img/products/men/accessories/belts/004/121454/021.jpg",
+      "/img/products/men/accessories/belts/004/121454/022.jpg",
+      "/img/products/men/accessories/belts/004/121454/023.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "76 - 81 CM",
+        "quantity": 0
+      },
+      {
+        "size": "81 - 86 CM",
+        "quantity": 5
+      },
+      {
+        "size": "86 - 91 CM",
+        "quantity": 3
+      },
+      {
+        "size": "91 - 96 CM",
+        "quantity": 0
+      }
+    ]
+  },
+
+  {
+    "color": "#1f2535",
+    "colorName": "blue black",
+    "imageUrls": [
+      "/img/products/men/clothing/suits/004/1f2535/020.jpg",
+      "/img/products/men/clothing/suits/004/1f2535/021.jpg",
+      "/img/products/men/clothing/suits/004/1f2535/022.jpg",
+      "/img/products/men/clothing/suits/004/1f2535/023.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "xs",
+        "quantity": 0
+      },
+      {
+        "size": "s",
+        "quantity": 0
+      },
+      {
+        "size": "m",
+        "quantity": 30
+      },
+      {
+        "size": "l",
+        "quantity": 10
+      },
+      {
+        "size": "xl",
+        "quantity": 7
+      },
+      {
+        "size": "xxl",
+        "quantity": 0
+      }
+    ]
+  },
+  {
+    "color": "#5e5f5c",
+    "colorName": "gray",
+    "imageUrls": [
+      "/img/products/men/clothing/suits/004/5e5f5c/010.jpg",
+      "/img/products/men/clothing/suits/004/5e5f5c/011.jpg",
+      "/img/products/men/clothing/suits/004/5e5f5c/012.jpg",
+      "/img/products/men/clothing/suits/004/5e5f5c/013.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "xs",
+        "quantity": 1
+      },
+      {
+        "size": "s",
+        "quantity": 2
+      },
+      {
+        "size": "m",
+        "quantity": 7
+      },
+      {
+        "size": "l",
+        "quantity": 15
+      },
+      {
+        "size": "xl",
+        "quantity": 1
+      },
+      {
+        "size": "xxl",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "color": "#121454",
+    "colorName": "navy blue",
+    "imageUrls": [
+      "/img/products/men/clothing/suits/004/121454/030.jpg",
+      "/img/products/men/clothing/suits/004/121454/031.jpg",
+      "/img/products/men/clothing/suits/004/121454/032.jpg",
+      "/img/products/men/clothing/suits/004/121454/033.jpg"
+    ],
+    "sizes": [
+      {
+        "size": "xs",
+        "quantity": 3
+      },
+      {
+        "size": "s",
+        "quantity": 7
+      },
+      {
+        "size": "m",
+        "quantity": 0
+      },
+      {
+        "size": "l",
+        "quantity": 13
+      },
+      {
+        "size": "xl",
+        "quantity": 0
+      },
+      {
+        "size": "xxl",
+        "quantity": 7
+      }
+    ]
+  },
+
+  {
+    "color": "#000000",
+    "colorName": "black",
+    "imageUrls": [
+      "/img/products/men/shoes/001/000000/011.png",
+      "/img/products/men/shoes/001/000000/012.png",
+      "/img/products/men/shoes/001/000000/013.png"
+    ],
+    "sizes": [
+      {
+        "size": "39",
+        "quantity": 0
+      },
+      {
+        "size": "40",
+        "quantity": 10
+      },
+      {
+        "size": "41",
+        "quantity": 13
+      },
+      {
+        "size": "42",
+        "quantity": 25
+      },
+      {
+        "size": "43",
+        "quantity": 1
+      }
+    ]
+  }
+]
