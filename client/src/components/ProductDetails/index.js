@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class ProductDetails extends Component {
-	render() {
-		return (
-	
-		)
-	}
+  render() {
+    return <div>ProductDetails</div>;
+  }
 }
