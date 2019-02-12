@@ -73,7 +73,7 @@ body {
   outline: none;
   padding: 15px;
   min-width: 270px;
-  background-color: #33333a;
+  background-color: #333333;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -808,3 +808,122 @@ body {
       font-size: 16px;
       line-height: 20px;
       font-weight: 700; }
+
+.breadcrumbs-block {
+  padding: 67px 0;
+  background-color: #f3f3f3; }
+  .breadcrumbs-block .breadcrumbs .breadcrumbs-row {
+    margin-bottom: 15px; }
+    .breadcrumbs-block .breadcrumbs .breadcrumbs-row ul li {
+      display: inline-block;
+      margin-right: 20px;
+      position: relative; }
+      .breadcrumbs-block .breadcrumbs .breadcrumbs-row ul li::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        background-color: #33333a;
+        right: -12px;
+        top: 6px;
+        width: 3px;
+        height: 3px; }
+      .breadcrumbs-block .breadcrumbs .breadcrumbs-row ul li a {
+        font-family: "OpenSans", sans-serif;
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: #33333a;
+        text-transform: uppercase; }
+  .breadcrumbs-block .breadcrumbs .category-title-active h2 {
+    font-family: "OpenSans", sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #33333a; }
+
+.category-block {
+  padding: 73px 0; }
+
+.category-content {
+  display: flex;
+  justify-content: space-between; }
+  .category-content .category-filter {
+    width: 24%; }
+    .category-content .category-filter-active {
+      margin-bottom: 20px; }
+      .category-content .category-filter-active .filter-active-title {
+        display: flex;
+        justify-content: space-between;
+        font-family: "OpenSans", sans-serif;
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: #33333a;
+        text-transform: uppercase;
+        padding-bottom: 20px; }
+        .category-content .category-filter-active .filter-active-title .filter-reset {
+          color: #ff6008; }
+    .category-content .category-filter .category-list {
+      padding-bottom: 57px; }
+      .category-content .category-filter .category-list .category-list-menu .category-item {
+        padding-left: 20px; }
+        .category-content .category-filter .category-list .category-list-menu .category-item-title {
+          display: inline-block;
+          font-family: "OpenSans", sans-serif;
+          font-size: 14px;
+          letter-spacing: 1px;
+          color: #33333a;
+          text-transform: uppercase;
+          margin-bottom: 15px;
+          position: relative; }
+          .category-content .category-filter .category-list .category-list-menu .category-item-title::before {
+            content: url("../img/arrow.png");
+            position: absolute;
+            left: -20px; }
+        .category-content .category-filter .category-list .category-list-menu .category-item-sub-menu li {
+          margin-bottom: 15px; }
+          .category-content .category-filter .category-list .category-list-menu .category-item-sub-menu li a {
+            font-family: "OpenSans", sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #33333a;
+            text-transform: uppercase; }
+    .category-content .category-filter-color {
+      padding: 32px 0; }
+      .category-content .category-filter-color .filter-color-panel {
+        display: flex;
+        flex-wrap: wrap; }
+        .category-content .category-filter-color .filter-color-panel-item {
+          margin-right: 24px;
+          margin-bottom: 14px; }
+        .category-content .category-filter-color .filter-color-panel-link {
+          display: inline-block;
+          background-color: red;
+          width: 32px;
+          height: 32px;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%; }
+    .category-content .category-filter-price {
+      padding: 32px 0; }
+  .category-content .category-product-listing {
+    width: 74%; }
+    .category-content .category-product-listing .btn-loading-products {
+      text-align: center; }
+      .category-content .category-product-listing .btn-loading-products a {
+        font-family: "OpenSans", sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-align: center;
+        color: #33333a;
+        text-transform: uppercase; }
+
+.filter-title {
+  display: inline-block;
+  font-family: "OpenSans", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  text-transform: uppercase;
+  margin-bottom: 15px; }
+
+.border-category {
+  border-bottom: 1px solid #f3f3f3; }
