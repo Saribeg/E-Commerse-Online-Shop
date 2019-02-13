@@ -128,6 +128,20 @@
       outline: none;
       margin-bottom: 20px;
 
+      &-error {
+        display: block;
+        width: 400px;
+        height: 40px;
+        box-sizing: border-box;
+        padding-left: 13px;
+        font-size: 14px;
+        color: #33333a;
+        font-weight: 600;
+        border: 1px solid red;
+        outline: none;
+        margin-bottom: 20px;
+      }
+
       &-date {
         &-mm {
           display: inline-block;
@@ -174,4 +188,17 @@
       outline: none;
     }
   }
+}
+
+.input-error-message {
+  position: relative;
+  top: -15px;
+
+  color: red;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.incorrect-form-save {
+  color: red;
 }
