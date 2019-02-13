@@ -1,36 +1,36 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
+import {SubmissionError} from 'redux-form';
+import FormPersonalContent from './FormPersonalContent'
 
-// import {CLOSE_LOGIN_DETAILS} from "../../../actions/login";
+import {addNewUser, profileChangePersonal} from "../../../actions/login";
 
 
 class PersonalContent extends Component {
-    state = {
-        firstName: '',
-        secondName: '',
-        email: '',
+
+
+    handleSubmit = (values) => {
+
+        let sendObject = {
+            id: this.props.personalInfo.loggedData.id,
+            firstName: values.firstName,
+            secondName: values.secondName,
+            email: values.email,
+        };
+
+        console.log(sendObject);
+
+        this.props.profileChangePersonal(sendObject);
+
     }
-
-    onStateChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
-    };
-
-    componentWillMount () {
-        if (this.props.personalInfo.isLogged) {
-            this.setState({
-                firstName: this.props.personalInfo.loggedData.firstName,
-                secondName: this.props.personalInfo.loggedData.secondName,
-                email: this.props.personalInfo.loggedData.email,
-            })
-        }
-    }
-
 
     render() {
 
 
         let classIsLogged = (this.props.personalInfo.isLogged) ? null : 'd-none';
         let classNotLogged = (this.props.personalInfo.isLogged) ? 'd-none' : null;
+
+        let isNewEmailUser = (this.props.personalInfo.errorStatus.errorProfileExistEmail) ? 'incorrect-form-save' : 'd-none';
 
         return (
             <Fragment>
@@ -39,26 +39,10 @@ class PersonalContent extends Component {
                 </div>
 
                 <div className={classIsLogged}>
-                    <div>
-                        <div className='section-profile-content-label'>
-                            First name
-                        </div>
-                        <input name='firstName' type="text" className='section-profile-content-input'
-                               value={this.state.firstName} onChange={this.onStateChange}/>
-                        <div className='section-profile-content-label'>
-                            Last name
-                        </div>
-                        <input name='secondName' type="text" className='section-profile-content-input'
-                               value={this.state.secondName} onChange={this.onStateChange}/>
-                        <div className='section-profile-content-label'>
-                            Email address
-                        </div>
-                        <input name='email' type="text" className='section-profile-content-input'
-                               value={this.state.email} onChange={this.onStateChange}/>
 
-                        <input type="button" className='section-profile-content-btn' value='Save changes'/>
+                    <div className={isNewEmailUser}>You new email is already user. Data wasn't save.</div>
+                    <FormPersonalContent onSubmit={this.handleSubmit}/>
 
-                    </div>
                 </div>
 
             </Fragment>
@@ -73,7 +57,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        profileChangePersonal: (newForm) => dispatch(profileChangePersonal(newForm))
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonalContent)

@@ -1,21 +1,32 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
+import FormChangePassword from './FormChangePassword'
+import {profileChangePassword} from "../../../actions/login";
 
 class ChangePassword extends Component {
-    state = {
-        currPass: '',
-        newPass: '',
-        newPass2: ''
-    }
+    handleSubmit = (values) => {
 
-    onStateChange = (e) => {
-        this.setState({[e.target.name]: e.target.value});
-    };
+        let sendObject = {
+            id: this.props.personalInfo.loggedData.id,
+            password: values.currPass,
+            newPassword: values.newPass,
+        };
+
+
+        console.log('========== PASSWORD CHANGES');
+        console.log(sendObject);
+
+        this.props.profileChangePassword(sendObject);
+
+    }
 
     render () {
 
         let classIsLogged = (this.props.personalInfo.isLogged) ? null : 'd-none';
         let classNotLogged = (this.props.personalInfo.isLogged) ? 'd-none' : null;
+        let isCorrectPassword = (this.props.personalInfo.errorStatus.errorProfileWrongPassword) ? 'incorrect-form-save' : 'd-none';
+
+
         return (
             <Fragment>
 
@@ -23,23 +34,10 @@ class ChangePassword extends Component {
                     Please log in to system
                 </div>
                 <div className={classIsLogged}>
-                    <div className='section-profile-content-label'>
-                        Current password
-                    </div>
-                    <input name='currPass' type="password" className='section-profile-content-input'
-                           value={this.state.currPass} onChange={this.onStateChange}/>
-                    <div className='section-profile-content-label'>
-                        New password
-                    </div>
-                    <input name='newPass' type="password" className='section-profile-content-input'
-                           value={this.state.newPass} onChange={this.onStateChange}/>
-                    <div className='section-profile-content-label'>
-                        Confirm new password
-                    </div>
-                    <input name='newPass2' type="password" className='section-profile-content-input'
-                           value={this.state.newPass2} onChange={this.onStateChange}/>
 
-                    <input type="button" className='section-profile-content-btn' value='Save password'/>
+                    <div className={isCorrectPassword}>Please enter a correct old password</div>
+                    <FormChangePassword onSubmit={this.handleSubmit}/>
+
                 </div>
 
 
@@ -57,7 +55,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        profileChangePassword: (newForm) => dispatch(profileChangePassword(newForm))
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword)

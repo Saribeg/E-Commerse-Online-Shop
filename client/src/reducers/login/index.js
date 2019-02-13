@@ -1,6 +1,8 @@
 import {SET_LOGGED, SEND_NEW_USER, OPEN_LOGIN_FORM, CLOSE_LOGIN_FORM,
     OPEN_REG_FORM, CLOSE_REG_FORM, EXIST_USER, RESET_WINDOW_STATUS, INCORRECT_LOGIN,
-    CORRECT_LOGIN, OPEN_LOGIN_DETAILS, CLOSE_LOGIN_DETAILS, LOGOUT} from '../../actions/login'
+    CORRECT_LOGIN, OPEN_LOGIN_DETAILS, CLOSE_LOGIN_DETAILS, LOGOUT, PROFILE_EXIST_EMAIL,
+    PROFILE_CORRECT_PERSONAL_CHANGE, PROFILE_CORRECT_PASSWORD_CHANGE,
+    PROFILE_INCORRECT_PASSWORD_CHANGE} from '../../actions/login'
 
 const initialState = {
     isLogged: false,
@@ -31,6 +33,11 @@ const initialState = {
         successRegister: false,
         invalidLogin: false,
         existEmail: false,
+    },
+    errorStatus: {
+        errorProfileExistEmail: false,
+        errorProfileWrongPassword: false
+
     }
 }
 
@@ -99,6 +106,62 @@ function login(state = initialState, action) {
                     existEmail: true,
                 }
             }
+        case PROFILE_EXIST_EMAIL:
+            return {
+                ...state,
+                errorStatus: {
+                    ...state.errorStatus,
+                    errorProfileExistEmail: true,
+                }
+            }
+
+
+
+        case PROFILE_INCORRECT_PASSWORD_CHANGE:
+            return {
+                ...state,
+                errorStatus: {
+                    ...state.errorStatus,
+                    errorProfileWrongPassword: true,
+                }
+            }
+        case PROFILE_CORRECT_PASSWORD_CHANGE:
+            return {
+                ...state,
+                errorStatus: {
+                    ...state.errorStatus,
+                    errorProfileWrongPassword: false,
+                }
+            }
+
+
+
+        case PROFILE_CORRECT_PERSONAL_CHANGE:
+            return {
+                windowsStatus: {
+                    formLoginOpen: false,
+                    formRegisterOpen: false,
+                    successRegister: false,
+                    invalidLogin: false,
+                    existEmail: false,
+                },
+                isLogged: true,
+                loggedData: {
+                    id: action.payload.userinfo._id,
+                    firstName: action.payload.userinfo.firstName,
+                    secondName: action.payload.userinfo.secondName,
+                    email: action.payload.userinfo.email,
+                    deliveryData: {...action.payload.userinfo.deliveryData},
+                    paymentInfo: {...action.payload.userinfo.paymentInfo},
+                },
+                errorStatus: {
+                    ...state.errorStatus,
+                    errorProfileExistEmail: false,
+
+                }
+            }
+
+
 
         case INCORRECT_LOGIN:
             return {
@@ -119,12 +182,17 @@ function login(state = initialState, action) {
                 },
                 isLogged: true,
                 loggedData: {
-                    id: action.payload.userinfo.id,
+                    id: action.payload.userinfo._id,
                     firstName: action.payload.userinfo.firstName,
                     secondName: action.payload.userinfo.secondName,
                     email: action.payload.userinfo.email,
                     deliveryData: {...action.payload.userinfo.deliveryData},
                     paymentInfo: {...action.payload.userinfo.paymentInfo},
+                },
+                errorStatus: {
+                    ...state.errorStatus,
+                    errorProfileExistEmail: false,
+
                 }
 
             }
@@ -143,6 +211,10 @@ function login(state = initialState, action) {
                     id: '',
                     name: '',
                     email: '',
+                },
+                errorStatus: {
+                    ...state.errorStatus
+
                 }
 
             }
