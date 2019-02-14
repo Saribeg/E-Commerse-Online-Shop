@@ -1,9 +1,13 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
-import {NavLink} from 'react-router-dom'
+import { NavLink } from "react-router-dom";
 
 import TopBlockAuth from "../TopBlockAuth";
 import NavMenu from "./NavMenu";
+
+import "./header.scss";
+
+import logo from "../../img/matter.svg";
 
 class Header extends Component {
   render() {
@@ -13,12 +17,10 @@ class Header extends Component {
           <div className="header-content">
             <div className="header-burger-menu" />
             <NavLink to="/">
-                <img src="../img/matter.png" alt="Matter" />
+              <img src={logo} alt="Matter" />
             </NavLink>
-
+            <NavMenu />
             <TopBlockAuth />
-              <NavMenu />
-
           </div>
         </div>
       </header>

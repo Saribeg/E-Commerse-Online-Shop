@@ -1,232 +1,12 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  box-sizing: border-box;
-}
-
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote::before,
-blockquote::after,
-q::before,
-q::after {
-  content: "";
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-$font-openSans: "OpenSans", sans-serif;
-$black: #33333a;
-$grey-light: #d8d8d8;
-$grey-bg: #f3f3f3;
-$red: #ff6008;
-
-$landscape-mobile-normal: 400px;
-$landscape-mobile-big: 480px;
-$landscape-tablet: 992px;
-$landscape-desktop: 1200px;
-
-@mixin flex-center-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-@mixin flex-wrap-between {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-@mixin flex-between {
-  display: flex;
-  justify-content: space-between;
-}
-
-@mixin clear-default-inputs-style {
-  border: 0;
-  border: none;
-  background: none;
-  background-image: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-
-  &::-moz-focus-inner {
-    border: 0;
-  }
-
-  &::-ms-expand {
-    display: none;
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
-@mixin mobile-normal {
-  // 401 - 480
-  @media (min-width: #{$landscape-mobile-normal + 1}) and (max-width: #{$landscape-mobile-big}) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  // 481 - 992
-  @media (min-width: #{$landscape-mobile-big + 1}) and (max-width: #{$landscape-tablet}) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  // 993 - ...
-  @media (min-width: #{$landscape-tablet + 1}) {
-    @content;
-  }
-}
-
-@mixin min-width($width) {
-  // for cases when elements dont change design after some resolution
-  @media (min-width: $width) {
-    @content;
-  }
-}
-
-@mixin max-width($width) {
-  // for cases when elements dont change design after some resolution
-  @media (max-width: $width) {
-    @content;
-  }
-}
+@import "../../../scss/reset.scss";
+@import "../../../scss/resources/resources.scss";
 
 .main-menu-list {
   display: flex;
+}
 
-  @include max-width($landscape-tablet) {
+@media (max-width: 992px) {
+  .main-menu-list {
     display: flex;
     justify-content: space-between;
     position: absolute;
@@ -235,52 +15,74 @@ $landscape-desktop: 1200px;
     right: 0;
     background: #ccc;
   }
+}
 
-  .main-menu-item {
-    margin-right: 54px;
-    position: relative;
+.main-menu-list .main-menu-item {
+  margin-right: 54px;
+  position: relative;
+}
 
-    &::after {
-      content: url("../../../img/arrow.png");
-      position: absolute;
-      right: -20px;
+.main-menu-list .main-menu-item::after {
+  content: url("../../../img/arrow.png");
+  position: absolute;
+  right: -20px;
+}
 
-      @include max-width($landscape-tablet) {
-        display: none;
-      }
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-
-    @include max-width($landscape-tablet) {
-      margin-right: 0;
-      width: calc(100% / 3);
-      text-align: center;
-
-      &:hover {
-        background-color: #e3ffca;
-      }
-    }
-
-    .main-menu-link {
-      font-family: $font-openSans;
-      font-size: 12px;
-      font-weight: 600;
-      color: $black;
-      text-transform: uppercase;
-
-      @include max-width($landscape-tablet) {
-        display: block;
-        padding: 15px 20px;
-      }
-    }
+@media (max-width: 992px) {
+  .main-menu-list .main-menu-item::after {
+    display: none;
   }
 }
 
+.main-menu-list .main-menu-item:last-child {
+  margin-right: 0px;
+}
+
+@media (max-width: 992px) {
+  .main-menu-list .main-menu-item {
+    margin-right: 0;
+    width: calc(100% / 3);
+    text-align: center;
+  }
+  .main-menu-list .main-menu-item:hover {
+    background-color: #e3ffca;
+  }
+}
+
+.main-menu-list .main-menu-item .main-menu-link {
+  font-family: "OpenSans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #33333a;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #ff6008;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-menu-list .main-menu-item .main-menu-link {
+    display: block;
+    padding: 15px 20px;
+  }
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+}
+
+/*===========================================*/
+
 .sub-menu-wrapper {
   background-color: #fff;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 96px;
+  border-bottom: 1px solid #cccccc;
+  z-index: 10000;
 
   @include max-width($landscape-tablet) {
     background-color: #eee;
@@ -320,11 +122,17 @@ $landscape-desktop: 1200px;
 }
 
 .sub-menu-left-title {
+  display: block;
+  margin-bottom: 20px;
   font-family: $font-openSans;
   font-size: 24px;
   font-weight: 600;
   color: #333;
   margin-bottom: 24px;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #ff6008;
+  }
 }
 
 .sub-menu-category-list {
@@ -349,6 +157,10 @@ $landscape-desktop: 1200px;
   font-weight: 600;
   color: $black;
   text-transform: uppercase;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #ff6008;
+  }
 }
 
 .sub-menu-right-item {
