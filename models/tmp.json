@@ -468,5 +468,41 @@
         "quantity": 1
       }
     ]
+  },
+
+  {
+    "color": "#1d202d",
+    "colorName": "dark gray",
+    "imageUrls": [
+      "/img/products/men/clothing/pants/001/1d202d/021.png",
+      "/img/products/men/clothing/pants/001/1d202d/022.png",
+      "/img/products/men/clothing/pants/001/1d202d/023.png"
+    ],
+    "sizes": [
+      {
+        "size": "xs",
+        "quantity": 3
+      },
+      {
+        "size": "s",
+        "quantity": 7
+      },
+      {
+        "size": "m",
+        "quantity": 20
+      },
+      {
+        "size": "l",
+        "quantity": 4
+      },
+      {
+        "size": "xl",
+        "quantity": 0
+      },
+      {
+        "size": "xxl",
+        "quantity": 0
+      }
+    ]
   }
 ]

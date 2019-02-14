@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
-import {NavLink} from 'react-router-dom'
+import { NavLink } from "react-router-dom";
 
 import TopBlockAuth from "../TopBlockAuth";
 import NavMenu from "./NavMenu";
-import logo from '../../img/matter.svg';
+import logo from "../../img/matter.svg";
 class Header extends Component {
   render() {
     return (
@@ -13,12 +13,11 @@ class Header extends Component {
           <div className="header-content">
             <div className="header-burger-menu" />
             <NavLink to="/">
-                <img src={logo} alt="Matter" />
+              <img src={logo} alt="Matter" />
             </NavLink>
 
             <TopBlockAuth />
-              <NavMenu />
-
+            <NavMenu />
           </div>
         </div>
       </header>
