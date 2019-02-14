@@ -1,0 +1,29 @@
+import {SEND_PRODUCT_REQUEST, GET_PRODUCT_LISTING} from "../../actions/product";
+
+const initialState = {
+    productListing: [],
+    isProductListing: false
+
+};
+
+function product(state = initialState, action) {
+    switch (action.type) {
+        case SEND_PRODUCT_REQUEST:
+            return {
+                ...state,
+                isProductListing: true
+            }
+
+        case GET_PRODUCT_LISTING:
+            return {
+                ...state,
+                productListing: action.payload.productListing,
+                isProductListing: false
+            }
+
+        default:
+            return{...state}
+    }
+}
+
+export default product;
