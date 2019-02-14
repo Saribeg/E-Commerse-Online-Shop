@@ -71,6 +71,7 @@ class NavMenu extends Component {
           );
         });
       }
+      return null; // to return a value at the end of arrow function as it is expected
     });
 
     // Rendering the whole component
@@ -88,20 +89,6 @@ class NavMenu extends Component {
             <div className="sub-menu-wrapper-inner">
               <div className="sub-menu-left">
                 {this.props.navMenuWindowStatus ? subMenuList : null}
-              </div>
-              <div className="sub-menu-right">
-                <Link
-                  to="/women/clotjing/outlets"
-                  className="sub-menu-right-item"
-                >
-                  <div className="sub-menu-right-title">Outlet</div>
-                </Link>
-                <Link
-                  to="/women/clotjing/exclusive"
-                  className="sub-menu-right-item"
-                >
-                  <div className="sub-menu-right-title">Exclusive</div>
-                </Link>
               </div>
             </div>
           </div>
