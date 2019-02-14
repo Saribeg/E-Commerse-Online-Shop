@@ -1,0 +1,51 @@
+@import "../../scss/reset.scss";
+@import "../../scss/resources/resources.scss";
+
+.main-header {
+  border-bottom: 1px solid #cccccc;
+  position: relative;
+}
+
+@media (max-width: 992px) {
+  .main-header {
+    display: none;
+  }
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+
+@media (max-width: 992px) {
+  .header-content {
+    padding: 10px 0;
+  }
+}
+
+.header-burger-menu {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .header-burger-menu {
+    display: block;
+    background: url("../../img/burger-menu.png") no-repeat;
+    width: 26px;
+    height: 21px;
+    margin-right: 10px;
+  }
+}
+
+.logo {
+  width: 120px;
+  height: 22px;
+  margin-right: 41px;
+}
+@media (max-width: 992px) {
+  .logo {
+    margin-right: 0;
+  }
+}

@@ -5,7 +5,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
+  // bottom: 0;
   right: 0;
   margin: auto;
   z-index: 1;
@@ -18,7 +18,8 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: url("https://img.icons8.com/ios/50/000000/delete-sign.png") no-repeat;
+    background: url("https://img.icons8.com/ios/50/000000/delete-sign.png")
+      no-repeat;
     background-position: 7.5px 7px;
     background-size: 15px;
     background-color: rgba(0, 0, 0, 0.08);
