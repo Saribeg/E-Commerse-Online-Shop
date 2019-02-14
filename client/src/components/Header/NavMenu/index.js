@@ -40,19 +40,14 @@ class NavMenu extends Component {
           let subfurtherSubCategory = subCategory.furtherSubCategoryList.map(
             furtherSubCategory => {
               return (
-                <ul
-                  className="sub-menu-category-list"
-                  key={furtherSubCategory._id}
-                >
-                  <li className="sub-menu-category-item">
-                    <Link
-                      to={furtherSubCategory.furtherSubCategoryUrl}
-                      className="sub-menu-category-link"
-                    >
-                      {furtherSubCategory.furtherSubCategoryName}
-                    </Link>
-                  </li>
-                </ul>
+                <li className="sub-menu-category-item">
+                  <Link
+                    to={furtherSubCategory.furtherSubCategoryUrl}
+                    className="sub-menu-category-link"
+                  >
+                    {furtherSubCategory.furtherSubCategoryName}
+                  </Link>
+                </li>
               );
             }
           );
@@ -64,15 +59,31 @@ class NavMenu extends Component {
                 to={subCategory.subCategoryUrl}
                 className="sub-menu-left-title"
               >
-                {subCategory.subCategoryName}
+                {subCategory.subCategoryName.charAt(0).toUpperCase() +
+                  subCategory.subCategoryName.slice(1)}
               </Link>
-              {subfurtherSubCategory}
+              <ul className="sub-menu-category-list">
+                {subfurtherSubCategory}
+              </ul>
             </div>
           );
         });
       }
       return null; // to return a value at the end of arrow function as it is expected
     });
+
+    let subMenuSection = (
+      <section
+        className="sub-menu-wrapper"
+        onMouseLeave={this.props.closeSubMenu}
+      >
+        <div className="container">
+          <div className="sub-menu-wrapper-inner">
+            <div className="sub-menu-left">{subMenuList}</div>
+          </div>
+        </div>
+      </section>
+    );
 
     // Rendering the whole component
     return (
@@ -81,18 +92,7 @@ class NavMenu extends Component {
           {this.props.isMenuFetching ? <li>Загрузка...</li> : menuList}
         </ul>
 
-        <section
-          className="sub-menu-wrapper"
-          onMouseLeave={this.props.closeSubMenu}
-        >
-          <div className="container">
-            <div className="sub-menu-wrapper-inner">
-              <div className="sub-menu-left">
-                {this.props.navMenuWindowStatus ? subMenuList : null}
-              </div>
-            </div>
-          </div>
-        </section>
+        {this.props.navMenuWindowStatus ? subMenuSection : null}
       </Fragment>
     );
   }

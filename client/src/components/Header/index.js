@@ -4,7 +4,11 @@ import { NavLink } from "react-router-dom";
 
 import TopBlockAuth from "../TopBlockAuth";
 import NavMenu from "./NavMenu";
+
+import "./header.scss";
+
 import logo from "../../img/matter.svg";
+
 class Header extends Component {
   render() {
     return (
@@ -15,9 +19,8 @@ class Header extends Component {
             <NavLink to="/">
               <img src={logo} alt="Matter" />
             </NavLink>
-
-            <TopBlockAuth />
             <NavMenu />
+            <TopBlockAuth />
           </div>
         </div>
       </header>

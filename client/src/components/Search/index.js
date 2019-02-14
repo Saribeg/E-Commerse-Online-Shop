@@ -1,31 +1,48 @@
-import React, {Component} from 'react'
-import './Search.scss'
+import React, { Component } from "react";
+import "./Search.scss";
 
-class Search extends Component{
-    state = {
-        search: ''
-    }
+class Search extends Component {
+  state = {
+    search: "",
+    focus: false
+  };
 
-    onChangeSearch = (event) => {
-        this.setState({
-            search: event.target.value
-        })
-    }
+  onChangeSearch = event => {
+    this.setState({
+      search: event.target.value
+    });
+  };
 
-    render() {
-        return(
-            <>
-                <input
-                    type="text"
-                    className="main-search"
-                    name="search"
-                    placeholder="Search"
-                    value={this.state.search}
-                    onChange={this.onChangeSearch}
-                />
-            </>
-        )
-    }
+  onFocus = event => {
+    this.setState({
+      focus: true
+    });
+  };
+
+  onBlur = event => {
+    this.setState({
+      focus: false,
+      search: ""
+    });
+  };
+
+  render() {
+    return (
+      <>
+        <input
+          type="text"
+          style={this.state.focus ? { width: "450px" } : { width: "224px" }}
+          className="main-search"
+          name="search"
+          placeholder="Search"
+          value={this.state.search}
+          onChange={this.onChangeSearch}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+        />
+      </>
+    );
+  }
 }
 
 export default Search;
