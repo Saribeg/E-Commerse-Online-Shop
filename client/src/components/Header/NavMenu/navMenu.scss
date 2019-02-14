@@ -55,6 +55,10 @@
   font-weight: 600;
   color: #33333a;
   text-transform: uppercase;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #ff6008;
+  }
 }
 
 @media (max-width: 992px) {
@@ -125,6 +129,10 @@
   font-weight: 600;
   color: #333;
   margin-bottom: 24px;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #ff6008;
+  }
 }
 
 .sub-menu-category-list {
@@ -149,6 +157,10 @@
   font-weight: 600;
   color: $black;
   text-transform: uppercase;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #ff6008;
+  }
 }
 
 .sub-menu-right-item {
