@@ -7,6 +7,7 @@ const navigationMenuItems = require("./routes/navigationMenuItems");
 const products = require("./routes/products");
 const carouseltems = require("./routes/carouseltems");
 const mailSubscribe = require("./routes/subscribe");
+const footerLinks = require("./routes/footer-links")
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,7 +25,7 @@ app.use("/", navigationMenuItems);
 app.use("/", products);
 app.use("/", carouseltems);
 app.use("/", mailSubscribe);
-
+app.use("/", footerLinks);
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
