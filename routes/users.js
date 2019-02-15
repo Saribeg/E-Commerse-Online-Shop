@@ -26,7 +26,6 @@ router.post("/register", (req, res) => {
 
     // Check if the user already exist
     User.findOne({email: req.body.email}).then(user => {
-        console.log("hi");
         if (user) {
             // if user allready exist then deny request from front
             res.json({result: false});
@@ -62,7 +61,6 @@ router.post("/login", (req, res) => {
 
     // Find user by email in mongoose
     User.findOne({email: email}, function (err, user) {
-        console.log(user);
 
         // if any mistakes of user was not found - send to FRONT object with status FALSE
         // If front get FALSE - then add field "incorrect login or password"
@@ -132,8 +130,6 @@ router.post("/update-profile/personal-info", (req, res) => {
 
 router.post("/update-profile/password", (req, res) => {
 
-    console.log('update BACK')
-
     // const {errors, isValid} = validateRegisterInput(req.body);
 
     // Check validation
@@ -144,33 +140,28 @@ router.post("/update-profile/password", (req, res) => {
     // }
 
 
-
-
-
+    // find our user by ID
     User.findOne({_id: req.body.id}, function (err, user) {
-
-        console.log('user from BACK')
-        console.log(user);
 
         let oldPassword = req.body.password;
         // we get info from database by id and compare passwords ()
         user.comparePassword(oldPassword, function (err, isMatch) {
             if (!isMatch) {
-                console.log('BACK incorrect password')
+                // is password in database and password from the field "Current password aren't matched"
                 res.json({status: 'incorrect-password', data: {}});
             } else {
 
-                console.log('BACK correct password')
+                // is password in database and password from the field "Current password are matched"
                 let newPass = req.body.newPassword;
 
+                //use bcrypt
                 bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
                     if (err) return next(err);
                     // hash the password along with our new salt
                     bcrypt.hash(newPass, salt, function(err, hash) {
                         if (err) return next(err);
-                        // override the cleartext password with the hashed one
                         newPass = hash;
-
+                        //find user by ID ant set new crypted password
                         User.update({_id: req.body.id}, {
                             $set: {
                                 password: newPass,
