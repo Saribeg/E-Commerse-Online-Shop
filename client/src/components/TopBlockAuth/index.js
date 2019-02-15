@@ -13,6 +13,8 @@ import {
 import "./TopBlockAuth.scss";
 import Search from "../Search";
 
+import { faCogs } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class TopBlockAuth extends Component {
   render() {
@@ -47,11 +49,11 @@ class TopBlockAuth extends Component {
             </div>
           </div>
 
-          <div className={isLogged}>
-            {this.props.login.loggedData.firstName +
-              " " +
-              this.props.login.loggedData.secondName}
-            <div>
+          <div className={`user-info-mini ${isLogged}`}>
+            <span className="user-name">
+              {this.props.login.loggedData.firstName}
+            </span>
+            <div className="user-avatar-mini">
               <img
                 src="/img/account.png"
                 alt=""
@@ -60,8 +62,14 @@ class TopBlockAuth extends Component {
             </div>
           </div>
 
-          <div>
+          <div className="pruduct-cart-ico">
             <img src="/img/basket.png" alt="" />
+          </div>
+
+          <div className={`admin-dashboard ${isLogged}`}>
+            <NavLink className="admin-dashboard-link" to="/admin/dashboard">
+              <FontAwesomeIcon icon={faCogs} />
+            </NavLink>
           </div>
         </div>
 
