@@ -16,7 +16,7 @@ class Header extends Component {
         <div className="container">
           <div className="header-content">
             <div className="header-burger-menu" />
-            <NavLink to="/">
+            <NavLink to="/" className="logo">
               <img src={logo} alt="Matter" />
             </NavLink>
             <NavMenu />
