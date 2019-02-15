@@ -1,9 +1,8 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {SubmissionError} from 'redux-form';
 import FormPersonalContent from './FormPersonalContent'
 
-import {addNewUser, profileChangePersonal} from "../../../actions/login";
+import {profileChangePersonal} from "../../../actions/login";
 
 
 class PersonalContent extends Component {
@@ -17,8 +16,6 @@ class PersonalContent extends Component {
             secondName: values.secondName,
             email: values.email,
         };
-
-        console.log(sendObject);
 
         this.props.profileChangePersonal(sendObject);
 
