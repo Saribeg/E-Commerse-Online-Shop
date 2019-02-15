@@ -7,13 +7,11 @@ import product from "./product";
 //For Admin Dashboard
 import admNavMenu from "./adminDashboard/admNavMenuStates";
 
-//For Admin Dashboard
-import admNavMenu from "./adminDashboard/admNavMenuStates";
-
 const rootReducer = combineReducers({
   login,
   navMenu,
   form: formReducer,
+  product,
 
   //For Admin Dashboard
   admNavMenu
