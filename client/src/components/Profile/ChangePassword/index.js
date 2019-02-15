@@ -12,10 +12,6 @@ class ChangePassword extends Component {
             newPassword: values.newPass,
         };
 
-
-        console.log('========== PASSWORD CHANGES');
-        console.log(sendObject);
-
         this.props.profileChangePassword(sendObject);
 
     }

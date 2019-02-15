@@ -33,3 +33,29 @@
   right: 316px;
   z-index: 1;
 }
+
+.user-info-mini {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar-mini {
+  display: inline-block;
+}
+
+.d-none {
+  display: none;
+}
+
+.admin-dashboard-link {
+  text-decoration: none;
+  color: #000000;
+  transition: all 0.3s ease;
+  &:hover {
+    color: #ff6008;
+  }
+}
+
+.fa-cogs {
+  font-size: 25px;
+}
