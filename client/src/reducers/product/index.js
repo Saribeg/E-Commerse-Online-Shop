@@ -17,7 +17,8 @@ function product(state = initialState, action) {
         case GET_PRODUCT_LISTING:
             return {
                 ...state,
-                productListing: action.payload.productListing,
+                // productListing: action.payload.productListing,
+                productListing: action.payload,
                 isProductListing: false
             }
 
