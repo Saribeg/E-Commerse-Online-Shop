@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {Switch, Route} from 'react-router-dom';
-import {CLOSE_LOGIN_DETAILS, LOGOUT, OPEN_LOGIN_DETAILS, OPEN_LOGIN_FORM} from '../../actions/login'
+import {Route} from 'react-router-dom';
+import {LOGOUT} from '../../actions/login'
 
 import './Profile.scss'
 

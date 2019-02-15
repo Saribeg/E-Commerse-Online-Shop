@@ -13,6 +13,7 @@ import {
 import "./TopBlockAuth.scss";
 import Search from "../Search";
 
+
 class TopBlockAuth extends Component {
   render() {
     let classLoginForm = this.props.windowsStatus.formLoginOpen

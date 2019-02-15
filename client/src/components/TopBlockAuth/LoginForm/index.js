@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 
 import './LoginForm.scss';
 import {connect} from "react-redux";
-import {addNewUser, checkLogin, CLOSE_LOGIN_FORM, OPEN_REG_FORM} from "../../../actions/login";
+import {checkLogin, CLOSE_LOGIN_FORM, OPEN_REG_FORM} from "../../../actions/login";
 
 class LoginForm extends Component {
     state = {

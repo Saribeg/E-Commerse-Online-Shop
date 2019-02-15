@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './RegistrationForm.scss';
 
 import {connect} from 'react-redux'
-import {addNewUser, CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_LOGIN_FORM, OPEN_REG_FORM} from '../../../actions/login'
+import {addNewUser, CLOSE_REG_FORM, OPEN_LOGIN_FORM} from '../../../actions/login'
 
 class RegistrationForm extends Component {
         state = {
@@ -13,13 +13,10 @@ class RegistrationForm extends Component {
             password2: '',
         };
 
-    checkValidation = (e) => {
-        this.checkPassValidation(e);
-        this.checkEmailValidation(e);
-    };
+
 
     checkNameValidation = (e) => {
-        if (e.target.value == '' || +e.target.value) {
+        if (e.target.value === '' || +e.target.value) {
             e.target.style.borderColor = 'red';
             e.preventDefault();
         } else {

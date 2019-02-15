@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {requiredInput, matchPasswords} from '../../../validation'
 import customRequiredInput from '../../atomic/customRequiredInput';
-import customCorrectEmail from '../../atomic/customCorrectEmail';
 
 class FormChangePassword extends Component {
     render(){
