@@ -11,6 +11,7 @@ const rootReducer = combineReducers({
   login,
   navMenu,
   form: formReducer,
+  product,
 
   //For Admin Dashboard
   admNavMenu
