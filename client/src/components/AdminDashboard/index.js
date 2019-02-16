@@ -7,6 +7,10 @@ import { getAdmNavMenuItems } from "../../actions/adminDashboard/admNavMenuActio
 
 //Components
 import AdmNavMenu from "./AdmNavMenu";
+import AdmProducts from "./AdmProducts";
+import AdmCarousel from "./AdmCarousel";
+import AdmUsers from "./AdmUsers";
+import AdmFooter from "./AdmFooter";
 
 import "../../scss/resources/resources.scss";
 import "./adminDashboard.scss";
@@ -76,6 +80,18 @@ class AdminDashboard extends Component {
             path="/admin/dashboard/navigation-menu"
             component={AdmNavMenu}
           />
+          <Route
+            exact
+            path="/admin/dashboard/products"
+            component={AdmProducts}
+          />
+          <Route
+            exact
+            path="/admin/dashboard/carousel"
+            component={AdmCarousel}
+          />
+          <Route exact path="/admin/dashboard/users" component={AdmUsers} />
+          <Route exact path="/admin/dashboard/footer" component={AdmFooter} />
         </div>
       </div>
     );
