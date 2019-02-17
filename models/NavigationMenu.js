@@ -15,6 +15,11 @@ const NavigationMenuSchema = new Schema({
         type: String,
         required: true
       },
+      active: {
+        type: Boolean,
+        required: true,
+        default: true
+      },
       subCategoryList: [
         {
           subCategoryName: {
@@ -23,6 +28,11 @@ const NavigationMenuSchema = new Schema({
           subCategoryUrl: {
             type: String
           },
+          active: {
+            type: Boolean,
+            required: true,
+            default: true
+          },
           furtherSubCategoryList: [
             {
               furtherSubCategoryName: {
@@ -30,6 +40,11 @@ const NavigationMenuSchema = new Schema({
               },
               furtherSubCategoryUrl: {
                 type: String
+              },
+              active: {
+                type: Boolean,
+                required: true,
+                default: true
               }
             }
           ]

@@ -1,28 +1,38 @@
 const nodemailer = require("nodemailer");
 const express = require("express");
 const router = express.Router();
+const Subscribe = require('../models/Subscribe');
 
-router.post("/subscribe", (req, res) => {
-  console.log(req, res);
-  let transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "2019.matter.store@gmail.com",
-      pass: "2019Matter"
-    }
-  });
+router.post('/subscribe', (req, res) => {
+    const newSubscribeMail ={};
+    newSubscribeMail.mail = req.body.subMail.mail;
+    new Subscribe(newSubscribeMail)
+        .save()
+        .then(newSubscribeMail => res.json(newSubscribeMail))
+        .catch(err => console.log(err));
 
-  const mailOptions = {
-    from: "2019.matter.store@gmail.com",
-    to: "denis.kanivets@ukr.net",
-    subject: "SUBSCRIBE FOR UPDATES ",
-    html: "<p>Hello world! It works!!!!!</p>"
-  };
+    console.log(req.body.subMail.mail);
 
-  transporter.sendMail(mailOptions, function(err, info) {
-    if (err) console.log(err);
-    else console.log(info);
-  });
+    //send welcome email
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: '2019.matter.store@gmail.com',
+            pass: '2019Matter'
+        }
+    });
+    const mailOptions = {
+        from: '2019.matter.store@gmail.com',
+        to: req.body.subMail.mail,
+        subject: 'SUBSCRIBE',
+        html: {path: 'subscribeMail/subscribeMail.html'}
+    };
+    transporter.sendMail(mailOptions, function (err, info) {
+        if (err)
+            console.log(err);
+        else
+            console.log(info);
+    });
 });
 
 module.exports = router;

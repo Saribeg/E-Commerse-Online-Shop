@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductsCarousel from '../ProductsCarousel';
+import Subscribe from '../Subscribe';
 import ProductListing from "../ProductListing";
 import EmptyState from "../EmptyState";
 
@@ -19,6 +20,7 @@ class MainPage extends Component {
                         </div>
                     </div>
                 </section>
+                <Subscribe/>
                 <EmptyState title="Oops"/>
 
             </div>
