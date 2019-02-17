@@ -5,9 +5,9 @@ const bodyParser = require("body-parser");
 const users = require("./routes/users");
 const navigationMenuItems = require("./routes/navigationMenuItems");
 const products = require("./routes/products");
-const carouseltems = require("./routes/carouseltems");
-const mailSubscribe = require("./routes/subscribe");
-const footerLinks = require("./routes/footer-links")
+const carouselItems = require("./routes/carouselItems");
+const subscribe = require("./routes/subscribe");
+const footerLinks = require("./routes/footer-links");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,8 +23,8 @@ mongoose
 app.use("/users", users);
 app.use("/", navigationMenuItems);
 app.use("/", products);
-app.use("/", carouseltems);
-app.use("/", mailSubscribe);
+app.use("/", carouselItems);
+app.use("/", subscribe);
 app.use("/", footerLinks);
 const port = process.env.PORT || 5000;
 
