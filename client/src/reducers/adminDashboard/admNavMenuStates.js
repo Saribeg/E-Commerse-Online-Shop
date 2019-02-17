@@ -1,6 +1,7 @@
 import {
   GET_NAV_MENU,
-  SEND_NAV_REQUEST
+  SEND_NAV_REQUEST,
+  CHANGE_SELECTED_ITEM_ACTIVE_STATUS
 } from "../../actions/adminDashboard/admNavMenuActions";
 
 const initialState = {
@@ -20,6 +21,11 @@ function admNavMenu(state = initialState, action) {
         ...state,
         navMenuItems: action.payload,
         isMenuFetching: false
+      };
+    case CHANGE_SELECTED_ITEM_ACTIVE_STATUS:
+      return {
+        ...state,
+        navMenuItems: action.payload
       };
     default:
       return { ...state };
