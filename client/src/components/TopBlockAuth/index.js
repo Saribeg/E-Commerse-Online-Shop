@@ -1,136 +1,290 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {NavLink} from "react-router-dom";
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
 import {
-  OPEN_LOGIN_FORM,
-  OPEN_LOGIN_DETAILS,
-  CLOSE_LOGIN_DETAILS,
-  LOGOUT
+    OPEN_LOGIN_FORM,
+    OPEN_LOGIN_DETAILS,
+    CLOSE_LOGIN_DETAILS,
+    LOGOUT, CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_REG_FORM
 } from "../../actions/login";
 
 import "./TopBlockAuth.scss";
 import Search from "../Search";
 
-import { faCogs } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faCogs} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 class TopBlockAuth extends Component {
-  render() {
-    let classLoginForm = this.props.windowsStatus.formLoginOpen
-      ? null
-      : "d-none";
 
-    let classRegistrationForm = this.props.windowsStatus.formRegisterOpen
-      ? null
-      : "d-none";
+    state = {
+        modalFormOpen: false,
+    }
 
-    let classDetailLogin = this.props.windowsStatus.loginDetails
-      ? null
-      : "d-none";
+    openModal = () => {
+        this.setState({
+            modalFormOpen: true,
+        })
+    }
 
-    let isLogged = this.props.login.isLogged ? null : "d-none";
+    closeModal = () => {
+        this.setState({
+            modalFormOpen: false,
+        })
+    }
 
-    let notLogged = !this.props.login.isLogged ? null : "d-none";
+    // clickRoot = () => {
+    //     this.props.closeLoginForm();
+    //     this.props.closeRegForm();
+    //     this.closeModal();
+    //     document.getElementById('root').removeEventListener('click', this.clickRoot);
+    //     document.getElementById('header-modal-form').removeEventListener('click', this.clickModalLoginHub);
+    //     document.getElementById('header-modal-form').removeEventListener('click', this.clickModalRegHub);
+    // }
+    //
+    // clickModalLogin = (e) => {
+    //
+    //     console.log(e.target)
+    //
+    //     if (e.target.dataset.btn !== 'btn-login-up-close') {
+    //         e.stopPropagation();
+    //     }
+    //     if (e.target.dataset.btn === 'btn-login-down-close') {
+    //         this.props.closeLoginForm();
+    //         this.closeModal();
+    //         this.clickOnRegistration();
+    //         document.getElementById('root').removeEventListener('click', this.clickRoot);
+    //         document.getElementById('header-modal-form').removeEventListener('click', this.clickModalLoginHub);
+    //     }
+    // }
+    //
+    // clickModalLoginHub = (e) => {
+    //     this.clickModalLogin(e);
+    // }
+    //
+    // clickModalRegHub = (e) => {
+    //     this.clickModalReg(e);
+    // }
+    //
+    //
+    // clickModalReg = (e) => {
+    //     console.log(e.target)
+    //
+    //     if (e.target.dataset.btn !== 'btn-reg-up-close') {
+    //         e.stopPropagation();
+    //     }
+    //     if (e.target.dataset.btn === 'btn-reg-down-close') {
+    //         this.props.closeRegForm();
+    //         this.closeModal();
+    //         this.clickOnLogin();
+    //         document.getElementById('root').removeEventListener('click', this.clickRoot);
+    //         document.getElementById('header-modal-form').removeEventListener('click', this.clickModalRegHub);
+    //     }
+    //
+    // }
 
-    return (
-      <div className="main-right">
-        <Search />
-        <div className="main-date">
-          <div className={notLogged}>
-            <div>
-              <input
-                type="button"
-                className="header-top-login-btn"
-                value="Log in"
-                onClick={() => this.props.openLoginForm()}
-              />
+
+    clickOnLogin = () => {
+
+        this.openModal();
+        this.props.openLoginForm();
+
+        // document.getElementById('root').addEventListener('click', this.clickRoot);
+        // document.getElementById('header-modal-form').addEventListener('click', this.clickModalLoginHub);
+
+        document.getElementById('root').onclick = () => {
+            this.props.closeLoginForm();
+            this.props.closeRegForm();
+            this.closeModal();
+        };
+
+        document.getElementById('header-modal-form').onclick = (e) => {
+
+            if (e.target.dataset.btn !== 'btn-login-up-close') {
+                e.stopPropagation();
+            }
+            if (e.target.dataset.btn === 'btn-login-down-close') {
+                this.props.closeLoginForm();
+                this.closeModal();
+                this.clickOnRegistration();
+            }
+        }
+
+    }
+
+
+    clickOnRegistration = () => {
+
+        this.openModal();
+        this.props.openRegForm();
+
+        // document.getElementById('root').addEventListener('click', this.clickRoot);
+        // document.getElementById('header-modal-form').addEventListener('click', this.clickModalRegHub);
+
+        document.getElementById('root').onClick = () => {
+            this.props.closeLoginForm();
+            this.props.closeRegForm();
+            this.closeModal();
+
+        };
+        document.getElementById('header-modal-form').onclick = (e) => {
+
+            if (e.target.dataset.btn !== 'btn-reg-up-close') {
+                e.stopPropagation();
+            }
+            if (e.target.dataset.btn === 'btn-reg-down-close') {
+                this.props.closeRegForm();
+                this.closeModal();
+                this.clickOnLogin();
+            }
+        }
+
+    }
+
+
+    render() {
+        let classLoginForm = this.props.windowsStatus.formLoginOpen
+            ? null
+            : "d-none";
+
+        let classRegistrationForm = this.props.windowsStatus.formRegisterOpen
+            ? null
+            : "d-none";
+
+        let classDetailLogin = this.props.windowsStatus.loginDetails
+            ? null
+            : "d-none";
+
+        let isLogged = this.props.login.isLogged ? null : "d-none";
+
+        let notLogged = !this.props.login.isLogged ? null : "d-none";
+
+
+        let isModalOpen = this.state.modalFormOpen ? null : "d-none";
+
+        return (
+            <div className="main-right">
+                <Search/>
+                <div className="main-date">
+                    <div className={notLogged}>
+                        <div>
+                            <input
+                                type="button"
+                                className="header-top-login-btn"
+                                value="Log in"
+                                onClick={() => this.clickOnLogin()}
+                            />
+                        </div>
+                    </div>
+
+
+                    <div className={isLogged}>
+                        <div className="user-info-mini">
+                            <span className="user-name">
+                                {this.props.login.loggedData.firstName}
+                            </span>
+                            <div className="user-avatar-mini">
+                                <img
+                                    src="/img/account.png"
+                                    alt=""
+                                    onClick={() => this.props.openLoginDetails()}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="pruduct-cart-ico">
+                        <img src="/img/basket.png" alt=""/>
+                    </div>
+
+                    <div className={`admin-dashboard ${isLogged}`}>
+                        <NavLink className="admin-dashboard-link" to="/admin/dashboard">
+                            <FontAwesomeIcon icon={faCogs}/>
+                        </NavLink>
+                    </div>
+                </div>
+
+                <div id="header-modal-form" className={isModalOpen}>
+                    <div>
+                        {this.props.windowsStatus.formLoginOpen && (
+                            <LoginForm/>
+                        )}
+                    </div>
+
+                    <div>
+                        {this.props.windowsStatus.formRegisterOpen && (
+                            <RegistrationForm/>
+                        )}
+                    </div>
+                </div>
+
+
+                {/*<div className={classRegistrationForm}>*/}
+                {/*<RegistrationForm/>*/}
+                {/*</div>*/}
+
+                <div className={classDetailLogin}>
+                    <div className="header-dropdown-login-details">
+                        <NavLink
+                            to="/profile/personalContent"
+                            onClick={() => this.props.closeLoginDetails()}
+                        >
+                            PROFILE
+                        </NavLink>
+                        <input
+                            type="button"
+                            value="logout"
+                            onClick={() => this.props.logout()}
+                        />
+                        <input
+                            type="button"
+                            value="close"
+                            onClick={() => this.props.closeLoginDetails()}
+                        />
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div className={`user-info-mini ${isLogged}`}>
-            <span className="user-name">
-              {this.props.login.loggedData.firstName}
-            </span>
-            <div className="user-avatar-mini">
-              <img
-                src="/img/account.png"
-                alt=""
-                onClick={() => this.props.openLoginDetails()}
-              />
-            </div>
-          </div>
-
-          <div className="pruduct-cart-ico">
-            <img src="/img/basket.png" alt="" />
-          </div>
-
-          <div className={`admin-dashboard ${isLogged}`}>
-            <NavLink className="admin-dashboard-link" to="/admin/dashboard">
-              <FontAwesomeIcon icon={faCogs} />
-            </NavLink>
-          </div>
-        </div>
-
-        <div className={classLoginForm}>
-          <LoginForm />
-        </div>
-
-        <div className={classRegistrationForm}>
-          <RegistrationForm />
-        </div>
-
-        <div className={classDetailLogin}>
-          <div className="header-dropdown-login-details">
-            <NavLink
-              to="/profile/personalContent"
-              onClick={() => this.props.closeLoginDetails()}
-            >
-              PROFILE
-            </NavLink>
-            <input
-              type="button"
-              value="logout"
-              onClick={() => this.props.logout()}
-            />
-            <input
-              type="button"
-              value="close"
-              onClick={() => this.props.closeLoginDetails()}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }
 
 const mapStateToProps = state => {
-  return {
-    windowsStatus: state.login.windowsStatus,
-    login: state.login
-  };
+    return {
+        windowsStatus: state.login.windowsStatus,
+        login: state.login
+    };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    openLoginForm: () => {
-      dispatch({ type: OPEN_LOGIN_FORM });
-    },
-    openLoginDetails: () => {
-      dispatch({ type: OPEN_LOGIN_DETAILS });
-    },
-    closeLoginDetails: () => {
-      dispatch({ type: CLOSE_LOGIN_DETAILS });
-    },
-    logout: () => {
-      dispatch({ type: LOGOUT });
-    }
-  };
+    return {
+        openLoginForm: () => {
+            dispatch({type: OPEN_LOGIN_FORM});
+        },
+        closeLoginForm: () => {
+            dispatch({type: CLOSE_LOGIN_FORM})
+        },
+        openLoginDetails: () => {
+            dispatch({type: OPEN_LOGIN_DETAILS});
+        },
+        closeLoginDetails: () => {
+            dispatch({type: CLOSE_LOGIN_DETAILS});
+        },
+        openRegForm: () => {
+            dispatch({type: CLOSE_LOGIN_FORM});
+            dispatch({type: OPEN_REG_FORM})
+        },
+        closeRegForm: () => {
+            dispatch({type: CLOSE_REG_FORM})
+        },
+        logout: () => {
+            dispatch({type: LOGOUT});
+        }
+    };
 };
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(TopBlockAuth);

@@ -16,6 +16,8 @@ class FormPersonalContent extends Component {
                 </div>
                 <Field name="firstName" component={customRequiredInput}
                        type="text" placeholder="Your first name..."
+                       className='section-profile-content-input'
+                       classError='input-error-message'
                        validate={[requiredInput]}
                 />
                 <div className='section-profile-content-label'>
@@ -23,6 +25,8 @@ class FormPersonalContent extends Component {
                 </div>
                 <Field name="secondName" component={customRequiredInput}
                        type="text" placeholder="Your second name..."
+                       className='section-profile-content-input'
+                       classError='input-error-message'
                        validate={[requiredInput]}
                 />
                 <div className='section-profile-content-label'>
@@ -30,6 +34,8 @@ class FormPersonalContent extends Component {
                 </div>
                 <Field name="email" component={customCorrectEmail}
                        type="text" placeholder="Your e-mail..."
+                       className='section-profile-content-input'
+                       classError='input-error-message'
                        validate={[correctEmail]}
                 />
 

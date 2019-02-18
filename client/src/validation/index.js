@@ -12,10 +12,11 @@ export const requiredInput = (input) => {
     return input ? undefined : `You have to fill this field`;
 }
 
-export const correctInput = (input) => {
-    return input.length < 3 ? 'Слишком короткий email' : undefined;
-}
 
 export const matchPasswords = (input, allInputs) => {
     return input === allInputs.newPass ? undefined :'Your entered passwords isn\'t matched';
+}
+
+export const matchPasswordsReg = (input, allInputs) => {
+    return input === allInputs.password ? undefined :'Your entered passwords isn\'t matched';
 }

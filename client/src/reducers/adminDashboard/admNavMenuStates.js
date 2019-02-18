@@ -1,7 +1,11 @@
 import {
   GET_NAV_MENU,
   SEND_NAV_REQUEST,
-  CHANGE_SELECTED_ITEM_ACTIVE_STATUS
+  CHANGE_SELECTED_ITEM_ACTIVE_STATUS,
+  ADD_NEW_CATEGORY,
+  ADD_NEW_SUB_CATEGORY,
+  ADD_NEW_FURTHER_SUB_CATEGORY,
+  SAVE_UPDATED_NAV_MENU
 } from "../../actions/adminDashboard/admNavMenuActions";
 
 const initialState = {
@@ -27,6 +31,27 @@ function admNavMenu(state = initialState, action) {
         ...state,
         navMenuItems: action.payload
       };
+    case ADD_NEW_CATEGORY:
+      return {
+        ...state,
+        navMenuItems: action.payload
+      };
+    case ADD_NEW_SUB_CATEGORY:
+      return {
+        ...state,
+        navMenuItems: action.payload
+      };
+    case ADD_NEW_FURTHER_SUB_CATEGORY:
+      return {
+        ...state,
+        navMenuItems: action.payload
+      };
+    case SAVE_UPDATED_NAV_MENU:
+      return {
+        ...state,
+        navMenuItems: action.payload
+      };
+
     default:
       return { ...state };
   }
