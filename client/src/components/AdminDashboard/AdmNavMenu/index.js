@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 
 import {
   getAdmNavMenuItems,
-  changeSelectedItemActiveStatus
+  changeSelectedItemActiveStatus,
+  addNewCategory,
+  addNewSubCategory,
+  addNewFurtherSubCategory,
+  saveUpdatedNavMenu
 } from "../../../actions/adminDashboard/admNavMenuActions";
 
 import "./admNavMenu.scss";
@@ -14,15 +18,37 @@ class AdmNavMenu extends Component {
     this.props.getAdmNavMenuItems();
   }
 
-  test = (e, name, state) => {
-    console.log(e.target.checked);
-    console.log(name);
-    console.log(state);
-  };
-
   state = {
     chosenCategory: "",
-    chosenSubCategory: ""
+    chosenSubCategory: "",
+    newCategotyName: "",
+    newSubCategotyName: "",
+    newFurtherSubCategotyName: "",
+    errorMsg: {}
+  };
+
+  resetState = e => {
+    this.setState({
+      newCategotyName: "",
+      newSubCategotyName: "",
+      newFurtherSubCategotyName: ""
+    });
+  };
+
+  handleNewItemsChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+
+    let errors = {};
+
+    if (e.target.value.length < 3) {
+      errors[e.target.name] = "Must be at least 3 characters long";
+    }
+
+    this.setState({
+      errorMsg: errors
+    });
   };
 
   handleCategoryRadio = e => {
@@ -63,7 +89,7 @@ class AdmNavMenu extends Component {
                 onChange={this.handleCategoryRadio}
               />
               {category.categoryName.charAt(0).toUpperCase() +
-                category.categoryName.slice(1)}
+                category.categoryName.slice(1).toLowerCase()}
             </label>
           </div>
           <div className="admin-nav-menu-item-right">
@@ -73,8 +99,8 @@ class AdmNavMenu extends Component {
                 name="onoffswitch"
                 className="onoffswitch-checkbox"
                 id={category.categoryName}
-                defaultChecked={category.active}
-                // checked={category.active}
+                // defaultChecked={category.active}
+                checked={category.active}
                 onChange={e =>
                   this.props.changeSelectedItemActiveStatus(
                     e,
@@ -123,7 +149,7 @@ class AdmNavMenu extends Component {
                     onChange={this.handleSubCategoryRadio}
                   />
                   {subCategory.subCategoryName.charAt(0).toUpperCase() +
-                    subCategory.subCategoryName.slice(1)}
+                    subCategory.subCategoryName.slice(1).toLowerCase()}
                 </label>
               </div>
               <div className="admin-nav-menu-item-right">
@@ -133,8 +159,8 @@ class AdmNavMenu extends Component {
                     name="onoffswitch"
                     className="onoffswitch-checkbox"
                     id={subCategory.subCategoryName}
-                    defaultChecked={subCategory.active}
-                    // сhecked={subCategory.active}
+                    // defaultChecked={subCategory.active}
+                    checked={subCategory.active}
                     onChange={e =>
                       this.props.changeSelectedItemActiveStatus(
                         e,
@@ -156,6 +182,7 @@ class AdmNavMenu extends Component {
           );
         });
       }
+      return null;
     });
 
     // Creating our Further Sub-category list ===========================================================
@@ -169,7 +196,12 @@ class AdmNavMenu extends Component {
             return (
               <li className="admin-nav-menu-item" key={furtherSubCategory._id}>
                 <div className="admin-nav-menu-item-left">
-                  {furtherSubCategory.furtherSubCategoryName}
+                  {furtherSubCategory.furtherSubCategoryName
+                    .charAt(0)
+                    .toUpperCase() +
+                    furtherSubCategory.furtherSubCategoryName
+                      .slice(1)
+                      .toLowerCase()}
                 </div>
                 <div className="admin-nav-menu-item-right">
                   <div className="onoffswitch">
@@ -178,8 +210,8 @@ class AdmNavMenu extends Component {
                       name="onoffswitch"
                       className="onoffswitch-checkbox"
                       id={furtherSubCategory.furtherSubCategoryName}
-                      defaultChecked={furtherSubCategory.active}
-                      // сhecked={furtherSubCategory.active}
+                      // defaultChecked={furtherSubCategory.active}
+                      checked={furtherSubCategory.active}
                       onChange={e =>
                         this.props.changeSelectedItemActiveStatus(
                           e,
@@ -201,38 +233,145 @@ class AdmNavMenu extends Component {
             );
           });
         }
+        return null;
       });
     });
 
     return (
-      <div className="admin-nav-menu-wrapper">
-        <div className="admin-nav-menu-block">
-          <div className="admin-nav-menu-block-heading">Category</div>
-          <div className="admin-nav-menu-block-content admin-nav-menu-categories">
-            <ul className="admin-nav-menu-list">{categories}</ul>
+      <>
+        <div className="admin-nav-menu-wrapper">
+          <div className="admin-nav-menu-block">
+            <div className="admin-nav-menu-block-heading">Category</div>
+            <div className="admin-nav-menu-block-content admin-nav-menu-categories">
+              <ul className="admin-nav-menu-list">{categories}</ul>
+              <div className="add-new-item-wrapper">
+                <input
+                  className="add-new-item-input"
+                  type="text"
+                  name="newCategotyName"
+                  placeholder="Add new category"
+                  value={this.state.newCategotyName}
+                  onChange={this.handleNewItemsChange}
+                />
+                <input
+                  className="add-new-item-save"
+                  type="button"
+                  value="Save"
+                  onClick={() => {
+                    this.props.addNewCategory(
+                      this.state.newCategotyName.toLowerCase(),
+                      this.props.navMenuItems
+                    );
+                    this.resetState();
+                  }}
+                />
+              </div>
+              {/* {validationText} */}
+              <div className="error-message">
+                {this.state.errorMsg.newCategotyName}
+              </div>
+            </div>
+          </div>
+          <div className="admin-nav-menu-block">
+            <div className="admin-nav-menu-block-heading">Sub-category</div>
+            <div className="admin-nav-menu-block-content admin-nav-menu-subcategories">
+              <ul className="admin-nav-menu-list">{subCategories}</ul>
+              {this.state.chosenCategory ? (
+                <div className="add-new-item-wrapper">
+                  <input
+                    className="add-new-item-input"
+                    type="text"
+                    name="newSubCategotyName"
+                    placeholder="Add new sub-category"
+                    value={this.state.newSubCategotyName}
+                    onChange={this.handleNewItemsChange}
+                  />
+                  <input
+                    className="add-new-item-save"
+                    type="button"
+                    value="Save"
+                    onClick={() => {
+                      this.props.addNewSubCategory(
+                        this.state.chosenCategory.toLowerCase(),
+                        this.state.newSubCategotyName.toLowerCase(),
+                        this.props.navMenuItems
+                      );
+                      this.resetState();
+                    }}
+                  />
+                </div>
+              ) : null}
+              {/* {validationText} */}
+              <div className="error-message">
+                {this.state.errorMsg.newSubCategotyName}
+              </div>
+            </div>
+          </div>
+          <div className="admin-nav-menu-block">
+            <div className="admin-nav-menu-block-heading">
+              Further Sub-category
+            </div>
+            <div className="admin-nav-menu-block-content admin-nav-menu-furthersubcategories">
+              <ul className="admin-nav-menu-list">{furtherSubCategories}</ul>
+              {this.state.chosenSubCategory ? (
+                <div className="add-new-item-wrapper">
+                  <input
+                    className="add-new-item-input"
+                    type="text"
+                    name="newFurtherSubCategotyName"
+                    placeholder="Add new sub-sub-category"
+                    value={this.state.newFurtherSubCategotyName}
+                    onChange={this.handleNewItemsChange}
+                  />
+                  <input
+                    className="add-new-item-save"
+                    type="button"
+                    value="Save"
+                    onClick={() => {
+                      this.props.addNewFurtherSubCategory(
+                        this.state.chosenCategory.toLowerCase(),
+                        this.state.chosenSubCategory.toLowerCase(),
+                        this.state.newFurtherSubCategotyName.toLowerCase(),
+                        this.props.navMenuItems
+                      );
+                      this.resetState();
+                    }}
+                  />
+                </div>
+              ) : null}
+              {/* {validationText} */}
+              <div className="error-message">
+                {this.state.errorMsg.newFurtherSubCategotyName}
+              </div>
+            </div>
           </div>
         </div>
-        <div className="admin-nav-menu-block">
-          <div className="admin-nav-menu-block-heading">Sub-category</div>
-          <div className="admin-nav-menu-block-content admin-nav-menu-subcategories">
-            <ul className="admin-nav-menu-list">{subCategories}</ul>
-          </div>
+        <div className="admin-nav-menu-actions">
+          <input
+            type="button"
+            className="admin-nav-menu-button admin-nav-menu-reset"
+            value="Reset"
+            onClick={() => {
+              this.props.getAdmNavMenuItems();
+            }}
+          />
+          <input
+            type="button"
+            className="admin-nav-menu-button admin-nav-menu-submit"
+            value="Save Changes"
+            onClick={() =>
+              this.props.saveUpdatedNavMenu(this.props.navMenuItems)
+            }
+          />
         </div>
-        <div className="admin-nav-menu-block">
-          <div className="admin-nav-menu-block-heading">
-            Further Sub-category
-          </div>
-          <div className="admin-nav-menu-block-content admin-nav-menu-furthersubcategories">
-            <ul className="admin-nav-menu-list">{furtherSubCategories}</ul>
-          </div>
-        </div>
-      </div>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
+    state: state,
     navMenuItems: state.navMenu.navMenuItems,
     isMenuFetching: state.navMenu.isMenuFetching
   };
@@ -240,5 +379,12 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getAdmNavMenuItems, changeSelectedItemActiveStatus }
+  {
+    getAdmNavMenuItems,
+    changeSelectedItemActiveStatus,
+    addNewCategory,
+    addNewSubCategory,
+    addNewFurtherSubCategory,
+    saveUpdatedNavMenu
+  }
 )(AdmNavMenu);

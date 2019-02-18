@@ -14,6 +14,7 @@ class FormChangePassword extends Component {
                 </div>
                 <Field name="currPass" component={customRequiredInput}
                        type="password" placeholder="Your current password..."
+                       className='section-profile-content-input'
                        validate={[requiredInput]}
                 />
                 <div className='section-profile-content-label'>
@@ -21,6 +22,7 @@ class FormChangePassword extends Component {
                 </div>
                 <Field name="newPass" component={customRequiredInput}
                        type="password" placeholder="Your current password..."
+                       className='section-profile-content-input'
                        validate={[requiredInput]}
                 />
                 <div className='section-profile-content-label'>
@@ -28,6 +30,7 @@ class FormChangePassword extends Component {
                 </div>
                 <Field name="newPass2" component={customRequiredInput}
                        type="password" placeholder="Your current password..."
+                       className='section-profile-content-input'
                        validate={[requiredInput, matchPasswords]}
                 />
 

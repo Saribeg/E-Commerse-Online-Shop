@@ -21,6 +21,9 @@
 }
 
 .admin-nav-menu-block-content {
+  height: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
   padding: 10px;
 }
 
@@ -121,4 +124,71 @@
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
+}
+
+.add-new-item-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.add-new-item-input {
+  width: 70%;
+}
+
+.add-new-item-save {
+  width: 20%;
+}
+
+.add-new-item-input {
+  height: 20px;
+  padding: 5px;
+  outline: 1px solid #3ac5c9;
+}
+
+.add-new-item-save {
+  border: 1px solid #1faa00;
+  border-radius: 5px;
+  background-color: #7ecb20;
+  outline: none;
+}
+
+.error-message {
+  color: #d50000;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.admin-nav-menu-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-nav-menu-button {
+  height: 50px;
+  width: 150px;
+  border: none;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.admin-nav-menu-reset {
+  border: 1px solid #655f5f;
+  background-color: #ffffff;
+}
+
+.admin-nav-menu-reset:focus {
+  background-color: #9b9090;
+}
+
+.admin-nav-menu-submit {
+  border: 1px solid #1faa00;
+  background-color: #7ecb20;
+}
+
+.admin-nav-menu-submit:focus {
+  background-color: #3af300;
 }
