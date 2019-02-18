@@ -12,7 +12,7 @@ router.post("/navigation-menu/add-list", (req, res) => {
       if (navMenuList) {
         NavigationMenu.findOneAndUpdate(
           { collectionName: "navMenuList" },
-          { $set: navigationMenuItems },
+          { $set: { categoryList: navigationMenuItems } },
           { new: true }
         ).then(navMenuList => res.json(navMenuList));
       } else {
@@ -25,85 +25,7 @@ router.post("/navigation-menu/add-list", (req, res) => {
     }
   );
 
-  // Don't touch thw code below, it is for testing
-  //============================================================
-  // const navigationMenuItems = {};
-  // navigationMenuItems.collectionName = "navMenuList";
-  // navigationMenuItems.categoryList = [];
-  // const newCategory = {};
-  // newCategory.categoryName = req.body.categoryName;
-  // newCategory.categoryUrl = `/${newCategory.categoryName}`;
-  // newCategory.subCategoryList = [];
-  // const newSubCategory = {};
-  // newSubCategory.subCategoryName = req.body.subCategoryName;
-  // newSubCategory.subCategoryUrl = `${newCategory.categoryUrl}/${
-  //   newSubCategory.subCategoryName
-  // }`;
-  // newSubCategory.furtherSubCategoryList = [];
-  // let newfurtherSubCategory = {};
-  // newfurtherSubCategory.furtherSubCategoryName =
-  //   req.body.furtherSubCategoryName;
-  // newfurtherSubCategory.furtherSubCategoryUrl = `${
-  //   newSubCategory.subCategoryUrl
-  // }/${newfurtherSubCategory.furtherSubCategoryName}`;
-  // if (req.body.furtherSubCategoryName)
-  //   newSubCategory.furtherSubCategoryList.push(newfurtherSubCategory);
-  // newCategory.subCategoryList.push(newSubCategory);
-  // navigationMenuItems.categoryList.push(newCategory);
-  // NavigationMenu.findOne({ collectionName: "navMenuList" }).then(
-  //   navMenuList => {
-  //     // If the collection with our navmenu items already exists then modify information in DB
-  //     if (navMenuList) {
-  //       if (
-  //         navMenuList.categoryList.some(
-  //           e => e.categoryName !== req.body.categoryName
-  //         )
-  //       ) {
-  //         if (req.body.categoryName) {
-  //           navMenuList.categoryList.push(newCategory);
-  //         }
-  //       }
-  //       if (!req.body.categoryName) {
-  //         res.json({
-  //           msg: `For adding Sub Category you have to choose Category first`
-  //         });
-  //       } else if (
-  //         navMenuList.categoryList[0].subCategoryList.some(
-  //           e => e.subCategoryName !== req.body.subCategoryName
-  //         )
-  //       ) {
-  //         if (req.body.subCategoryName) {
-  //           navMenuList.categoryList[0].subCategoryList.push(newSubCategory);
-  //         }
-  //       }
-  //       if (
-  //         (!req.body.categoryName && !req.body.subCategoryName) ||
-  //         (!req.body.categoryName && req.body.subCategoryName) ||
-  //         (!req.body.subCategoryName && req.body.furtherSubCategoryName)
-  //       ) {
-  //         res.json({
-  //           msg: `For adding Further Sub Category you have to choose Category and Sub Category first`
-  //         });
-  //       } else if (
-  //         navMenuList.categoryList[0].subCategoryList[0].furtherSubCategoryList.some(
-  //           e => e.furtherSubCategoryName !== req.body.furtherSubCategoryName
-  //         )
-  //       ) {
-  //         if (req.body.furtherSubCategoryName) {
-  //           navMenuList.categoryList[0].subCategoryList[0].furtherSubCategoryList.push(
-  //             newfurtherSubCategory
-  //           );
-  //         }
-  //       }
-  //       navMenuList.save().then(navMenuList => res.json(navMenuList));
-  //     } else {
-  //       new NavigationMenu(navigationMenuItems)
-  //         .save()
-  //         .then(data => res.json(data))
-  //         .catch(err => console.log(err));
-  //     }
-  //   }
-  // );
+  //The under code is for creating initial nav-menu collection, don't delete, you can use it with get request
   //============================================================
   //   let navCollection = {
   //     collectionName: "navMenuList",
@@ -214,6 +136,7 @@ router.post("/navigation-menu/add-list", (req, res) => {
   //       }
   //     ]
   //   };
+
   //   new NavigationMenu(navCollection)
   //     .save()
   //     .then(data => res.json(data))
