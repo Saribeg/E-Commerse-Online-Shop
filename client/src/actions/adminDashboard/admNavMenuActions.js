@@ -4,30 +4,29 @@ export const SEND_NAV_REQUEST = "SEND_NAV_REQUEST"; // Preloader while executing
 export const GET_NAV_MENU = "GET_NAV_MENU"; // Get Navigation menu items from server
 export const CHANGE_SELECTED_ITEM_ACTIVE_STATUS =
   "CHANGE_SELECTED_ITEM_ACTIVE_STATUS";
+export const ADD_NEW_CATEGORY = "ADD_NEW_CATEGORY";
+export const ADD_NEW_SUB_CATEGORY = "ADD_NEW_SUB_CATEGORY";
+export const ADD_NEW_FURTHER_SUB_CATEGORY = "ADD_NEW_FURTHER_SUB_CATEGORY";
+export const SAVE_UPDATED_NAV_MENU = "SAVE_UPDATED_NAV_MENU";
 
+// Get nav-menu items from mongoDB for initializing store
 export const getAdmNavMenuItems = () => dispatch => {
   dispatch({
     type: SEND_NAV_REQUEST
   });
 
   axios.get("/nav-menu").then(navMenuItems => {
+    let categoryList = navMenuItems.data[0].categoryList;
+    let navMenuItemsArr = JSON.parse(JSON.stringify(categoryList));
+
     dispatch({
       type: GET_NAV_MENU,
-      payload: navMenuItems.data[0].categoryList // The Array with the hierarchy Of Navigation menu categories (e.g. women) / subcategories (e.g. clothing) / further subcategories (e.g. pants, dresses)
+      payload: navMenuItemsArr // The Array with the hierarchy Of Navigation menu categories (e.g. women) / subcategories (e.g. clothing) / further subcategories (e.g. pants, dresses)
     });
   });
 };
 
-// changeSelectedItemActiveStatusWrapper = (e, array, id) => {
-// 	array.foreach(item => {
-// 		if(item._id = id){
-// 			item.active = e.target.checked;
-// 		} else {
-// 			if ()
-// 		}
-// 	})
-// }
-
+// Change the parameter "active" for chosen nav-menu item in store
 export const changeSelectedItemActiveStatus = (
   e,
   navMenuItems,
@@ -36,14 +35,6 @@ export const changeSelectedItemActiveStatus = (
   navMenuItems.forEach(category => {
     if (category._id === id) {
       category.active = e.target.checked;
-      // if (e.target.checked === false) {
-      //   category.subCategoryList.forEach(subCategory => {
-      //     subCategory.active = e.target.checked;
-      //     subCategory.furtherSubCategoryList.forEach(furtherSubCategory => {
-      //       furtherSubCategory.active = e.target.checked;
-      //     });
-      //   });
-      // }
     } else {
       category.subCategoryList.forEach(subCategory => {
         if (subCategory._id === id) {
@@ -59,8 +50,122 @@ export const changeSelectedItemActiveStatus = (
     }
   });
 
+  let newState = JSON.parse(JSON.stringify(navMenuItems));
+
   dispatch({
     type: CHANGE_SELECTED_ITEM_ACTIVE_STATUS,
-    payload: navMenuItems
+    payload: newState
   });
+};
+
+// Add new category in nav-menu in store
+export const addNewCategory = (categoryName, state) => dispatch => {
+  if (categoryName.length < 3) {
+    return null;
+  }
+
+  let newCategory = {
+    active: true,
+    subCategoryList: [],
+    _id: String(Math.random() * (100000 - 1) + 1),
+    categoryName: categoryName,
+    categoryUrl: `/${categoryName}`
+  };
+
+  state.push(newCategory);
+
+  let newState = JSON.parse(JSON.stringify(state));
+
+  dispatch({
+    type: ADD_NEW_CATEGORY,
+    payload: newState
+  });
+};
+
+// Add new sub-category in nav-menu in store
+export const addNewSubCategory = (
+  categoryName,
+  subCategoryName,
+  state
+) => dispatch => {
+  if (subCategoryName.length < 3) {
+    return null;
+  }
+
+  let newSubCategory = {
+    active: true,
+    furtherSubCategoryList: [],
+    _id: String(Math.random() * (100000 - 1) + 1),
+    subCategoryName: subCategoryName,
+    subCategoryUrl: `/${categoryName}/${subCategoryName}`
+  };
+
+  state.forEach(category => {
+    if (category.categoryName === categoryName) {
+      category.subCategoryList.push(newSubCategory);
+    }
+  });
+
+  let newState = JSON.parse(JSON.stringify(state));
+
+  dispatch({
+    type: ADD_NEW_SUB_CATEGORY,
+    payload: newState
+  });
+};
+
+// Add new sub-sub-category in nav-menu in store
+export const addNewFurtherSubCategory = (
+  categoryName,
+  subCategoryName,
+  furtherSubCategoryName,
+  state
+) => dispatch => {
+  if (furtherSubCategoryName.length < 3) {
+    return null;
+  }
+
+  let newFurtherSubCategory = {
+    active: true,
+    _id: String(Math.random() * (100000 - 1) + 1),
+    furtherSubCategoryName: furtherSubCategoryName,
+    furtherSubCategoryUrl: `/${categoryName}/${subCategoryName}/${furtherSubCategoryName}`
+  };
+
+  state.forEach(category => {
+    if (category.categoryName === categoryName) {
+      category.subCategoryList.forEach(subCategory => {
+        if (subCategory.subCategoryName === subCategoryName) {
+          subCategory.furtherSubCategoryList.push(newFurtherSubCategory);
+        }
+      });
+    }
+  });
+
+  let newState = JSON.parse(JSON.stringify(state));
+
+  dispatch({
+    type: ADD_NEW_FURTHER_SUB_CATEGORY,
+    payload: newState
+  });
+};
+
+// Save changes into mongoDB
+export const saveUpdatedNavMenu = state => dispatch => {
+  state.forEach(category => {
+    delete category._id;
+    category.subCategoryList.forEach(subCategory => {
+      delete subCategory._id;
+      subCategory.furtherSubCategoryList.forEach(furtherSubCategory => {
+        delete furtherSubCategory._id;
+      });
+    });
+  });
+
+  let updatedMenu = JSON.parse(JSON.stringify(state));
+
+  axios
+    .post("/navigation-menu/add-list", { navigationMenuItems: updatedMenu })
+    .then(response => console.log(response.data.categoryList))
+    .catch(err => console.log(err));
 };
