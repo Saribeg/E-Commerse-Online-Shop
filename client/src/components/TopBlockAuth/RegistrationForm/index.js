@@ -75,15 +75,15 @@ class RegistrationForm extends Component {
     render() {
 
         let classSecondPass = (this.checkPassValidation()) ? 'registration-input registration-form-input-grey' : 'registration-input registration-form-input-red';
-        let classExistEmail = (this.props.windowsStatus.existEmail) ? null : 'd-none';
+        let classExistEmail = (this.props.windowsStatus.existEmail) ? 'color-red' : 'd-none';
 
         return (
             <div className="registration">
                 <div className="cancel-btn" onClick={() => this.props.closeRegForm()}></div>
                 <h2 className='registration-header'>Registration</h2>
-                <form>
+                <form className="registration-form">
                     <div>
-                        <p>First Name</p>
+                        <p className='input-title'>First Name</p>
                         <input className='registration-input'
                                required
                                name='firstName'
@@ -92,7 +92,7 @@ class RegistrationForm extends Component {
                                type="text"/>
                     </div>
                     <div>
-                        <p>Last Name</p>
+                        <p className='input-title'>Last Name</p>
                         <input className='registration-input'
                                required
                                name='secondName'
@@ -100,11 +100,8 @@ class RegistrationForm extends Component {
                                onBlur={this.checkNameValidation}
                                type="text"/>
                     </div>
-                    <div className={classExistEmail}>
-                        This email is already used
-                    </div>
                     <div>
-                        <p>Email Address</p>
+                        <p className='input-title'>Email Address  <span className={classExistEmail}>(This email is already used)</span></p>
                         <input className='registration-input'
                                required
                                name='email'
@@ -114,7 +111,7 @@ class RegistrationForm extends Component {
                                id='email'/>
                     </div>
                     <div>
-                        <p>Password</p>
+                        <p className='input-title'>Password</p>
                         <input className='registration-input'
                                name='password'
                                onChange={this.onStateChange}
@@ -123,7 +120,7 @@ class RegistrationForm extends Component {
                                id='firstPassword'/>
                     </div>
                     <div>
-                        <p>Confirm Password</p>
+                        <p className='input-title'>Confirm Password</p>
                         <input className={classSecondPass}
                                required
                                name='password2'

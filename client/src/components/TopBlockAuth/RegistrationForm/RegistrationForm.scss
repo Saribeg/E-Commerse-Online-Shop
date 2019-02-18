@@ -3,107 +3,110 @@
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 0;
   left: 0;
-  // bottom: 0;
   right: 0;
   margin: auto;
   z-index: 1;
-  width: 615px;
-  height: 720px;
+  width: 515px;
+  height: 605px;
   border: 1px solid black;
   background: #fff;
+}
 
-  .cancel-btn {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: url("https://img.icons8.com/ios/50/000000/delete-sign.png")
-      no-repeat;
-    background-position: 7.5px 7px;
-    background-size: 15px;
-    background-color: rgba(0, 0, 0, 0.08);
-    align-self: flex-end;
-    margin: 15px 15px 0;
-    cursor: pointer;
-  }
+.cancel-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: url("https://img.icons8.com/ios/50/000000/delete-sign.png") no-repeat;
+  background-position: 7.5px 7px;
+  background-size: 15px;
+  background-color: rgba(0, 0, 0, 0.08);
+  align-self: flex-end;
+  margin: 15px 15px 0;
+  cursor: pointer;
+}
 
-  .registration-header {
-    width: 555px;
-    height: 43px;
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
-    color: #030303;
-    margin-bottom: 10px;
-  }
+.registration-header {
+  width: 555px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: #030303;
+  margin-bottom: 10px;
+}
 
-  form {
-    padding-top: 10px;
-    position: relative;
-    color: #33333a;
-    display: flex;
-    flex-direction: column;
+.registration-form {
+  position: relative;
+  color: #33333a;
+  display: flex;
+  flex-direction: column;
+}
 
-    .registration-input {
-      width: 396px;
-      height: 40px;
-      padding-left: 20px;
-      position: relative;
-      border: 1px solid #33333a;
-      outline: none;
-    }
+.registration-input {
+  width: 396px;
+  height: 35px;
+  padding-left: 20px;
+  position: relative;
+  border: 1px solid #33333a;
+  outline: none;
+}
 
-    p {
-      margin: 12px 0 7px;
-    }
+.input-title {
+  margin: 10px 0 7px;
+  font-size: 14px;
+}
 
-    .registration-form_button {
-      width: 270px;
-      height: 50px;
-      border-radius: 25px;
-      background-color: #33333a;
-      border: 1px solid #33333a;
-      margin-top: 20px;
-      text-align: center;
-      cursor: pointer;
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 12px;
-      align-self: center;
-    }
-  }
+.registration-form_button {
+  width: 270px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #33333a;
+  border: 1px solid #33333a;
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 12px;
+  align-self: center;
+  outline: none;
+}
 
-  .login-area {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.08);
-    height: 110px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 35px;
+.login-area {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.08);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 
-    .login_btn {
-      width: 270px;
-      height: 50px;
-      border-radius: 25px;
-      border: 1px solid #33333a;
-      text-align: center;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-size: 12px;
-      margin-top: 0;
-      padding-top: 16px;
-      background-color: rgba(0, 0, 0, 0.08);
-      color: #33333a;
-    }
-  }
+.login_btn {
+  width: 270px;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid #33333a;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-top: 0;
+  padding-top: 17px;
+  background-color: rgba(0, 0, 0, 0.08);
+  color: #33333a;
+}
 
-  .registration-form-input-grey {
-    border-color: #eaeaea;
-  }
 
-  .registration-form-input-red {
-    border-color: red;
-  }
+.registration-form-input-grey {
+  border-color: #eaeaea;
+}
+
+.registration-form-input-red {
+  border-color: red;
+}
+
+.color-red {
+  color: red;
+  font-size: 12px;
 }
