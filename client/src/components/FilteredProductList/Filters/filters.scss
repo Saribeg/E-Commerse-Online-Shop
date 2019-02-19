@@ -1,0 +1,34 @@
+@import "../../../scss/resources/resources.scss";
+
+.category-filter {
+  width: 24%;
+
+  &-active {
+    margin-bottom: 20px;
+
+    .filter-active-title {
+      display: flex;
+      justify-content: space-between;
+      font-family: $font-openSans;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: $black;
+      text-transform: uppercase;
+      padding-bottom: 20px;
+
+      .filter-reset {
+        color: #ff6008;
+      }
+    }
+  }
+}
+
+.filter-title {
+  display: inline-block;
+  font-family: $font-openSans;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
