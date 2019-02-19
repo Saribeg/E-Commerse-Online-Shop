@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import MainPage from "./components/MainPage";
 import Profile from "./components/Profile";
 // import ProductPage from "./components/ProductPage";
+import FilteredProductList from "./components/FilteredProductList";
 import AdminDashboard from "./components/AdminDashboard";
 
 import "./scss/style.scss";
@@ -24,6 +25,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route path="/profile" component={Profile} />
+          <Route
+            exact
+            path="/:category/:subcategory?/:furthersubcategory?"
+            component={FilteredProductList}
+          />
           <Route path="/admin/dashboard" component={AdminDashboard} />
           {/*<Route exact path="/product/1" component={ProductPage}/>*/}
         </Switch>
