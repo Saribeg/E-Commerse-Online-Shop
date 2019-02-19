@@ -8,6 +8,7 @@ import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MainPage from "./components/MainPage";
+import ProductPage from "./components/ProductPage";
 import Profile from "./components/Profile";
 // import ProductPage from "./components/ProductPage";
 import AdminDashboard from "./components/AdminDashboard";
@@ -25,7 +26,7 @@ class App extends Component {
           <Route exact path="/" component={MainPage} />
           <Route path="/profile" component={Profile} />
           <Route path="/admin/dashboard" component={AdminDashboard} />
-          {/*<Route exact path="/product/1" component={ProductPage}/>*/}
+          <Route exact path="/product/1" component={ProductPage}/>
         </Switch>
         <Footer />
       </Fragment>
