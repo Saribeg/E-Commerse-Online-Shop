@@ -1,0 +1,24 @@
+@import "../../../../scss/resources/resources.scss";
+
+.category-filter-color {
+  padding: 32px 0;
+
+  .filter-color-panel {
+    display: flex;
+    flex-wrap: wrap;
+
+    &-item {
+      margin-right: 24px;
+      margin-bottom: 14px;
+    }
+    &-link {
+      display: inline-block;
+      background-color: red;
+      width: 32px;
+      height: 32px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+  }
+}

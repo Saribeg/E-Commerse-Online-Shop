@@ -1,0 +1,42 @@
+@import "../../../../scss/resources/resources.scss";
+
+.category-list {
+  padding-bottom: 57px;
+
+  .category-list-menu {
+    .category-item {
+      padding-left: 20px;
+
+      &-title {
+        display: inline-block;
+        font-family: $font-openSans;
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: $black;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        position: relative;
+
+        &::before {
+          content: url("../../../../img/arrow.png");
+          position: absolute;
+          left: -20px;
+        }
+      }
+
+      &-sub-menu {
+        li {
+          margin-bottom: 15px;
+
+          a {
+            font-family: $font-openSans;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: $black;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+  }
+}
