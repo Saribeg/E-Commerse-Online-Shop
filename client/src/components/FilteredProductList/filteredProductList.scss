@@ -1,0 +1,27 @@
+@import "../../scss/resources/resources.scss";
+
+.category-block {
+  padding: 73px 0;
+}
+
+.category-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-product-listing {
+  width: 74%;
+
+  .btn-loading-products {
+    text-align: center;
+    a {
+      font-family: $font-openSans;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-align: center;
+      color: $black;
+      text-transform: uppercase;
+    }
+  }
+}

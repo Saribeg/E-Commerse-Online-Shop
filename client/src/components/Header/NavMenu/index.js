@@ -7,6 +7,8 @@ import {
   closeSubMenu
 } from "../../../actions/navMenuActions";
 
+import Preloader from "../../Preloader";
+
 // import "../../../scss/style.scss";
 import "./navMenu.scss";
 
@@ -89,7 +91,7 @@ class NavMenu extends Component {
     return (
       <Fragment>
         <ul className="main-menu-list">
-          {this.props.isMenuFetching ? <li>Загрузка...</li> : menuList}
+          {this.props.isMenuFetching ? <Preloader /> : menuList}
         </ul>
 
         {this.props.navMenuWindowStatus ? subMenuSection : null}
