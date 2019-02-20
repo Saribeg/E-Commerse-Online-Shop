@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const CategoryListSchema = new Schema({
+const CategoryCarouselSchema = new Schema({
     categoryName: {
         type: String,
         required: true
@@ -17,4 +17,4 @@ const CategoryListSchema = new Schema({
 
 });
 
-module.exports = CategoryList = mongoose.model("categoriesList", CategoryListSchema);
+module.exports = CategoryCarousel = mongoose.model("categoryCarousel", CategoryCarouselSchema);
