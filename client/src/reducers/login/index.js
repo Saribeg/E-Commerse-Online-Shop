@@ -1,8 +1,10 @@
-import {SET_LOGGED, SEND_NEW_USER, OPEN_LOGIN_FORM, CLOSE_LOGIN_FORM,
+import {
+    SET_LOGGED, SEND_NEW_USER, OPEN_LOGIN_FORM, CLOSE_LOGIN_FORM,
     OPEN_REG_FORM, CLOSE_REG_FORM, EXIST_USER, RESET_WINDOW_STATUS, INCORRECT_LOGIN,
     CORRECT_LOGIN, OPEN_LOGIN_DETAILS, CLOSE_LOGIN_DETAILS, LOGOUT, PROFILE_EXIST_EMAIL,
     PROFILE_CORRECT_PERSONAL_CHANGE, PROFILE_CORRECT_PASSWORD_CHANGE,
-    PROFILE_INCORRECT_PASSWORD_CHANGE} from '../../actions/login'
+    PROFILE_INCORRECT_PASSWORD_CHANGE, SET_JWT_CURRENT_USER, LOGOUT_JWT_CURRENT_USER
+} from '../../actions/login'
 
 const initialState = {
     isLogged: false,
@@ -46,6 +48,39 @@ function login(state = initialState, action) {
     switch (action.type) {
         case SET_LOGGED:
             return {...state}
+
+        case SET_JWT_CURRENT_USER:
+            return {
+                ...state,
+                isLogged: true,
+                loggedData: {...action.payload}
+            }
+        case LOGOUT_JWT_CURRENT_USER:
+            return {
+                ...state,
+                isLogged: false,
+                loggedData: {
+                    id: '',
+                    firstName: '',
+                    secondName: '',
+                    email: '',
+                    deliveryData: {
+                        country: '',
+                        zipcode: '',
+                        city: '',
+                        street: '',
+                        phone: ''
+
+                    },
+                    paymentInfo: {
+                        cardNumber: '',
+                        nameOnCard: '',
+                        expiryMonth: '',
+                        expiryYear: ''
+                    }
+                }
+            }
+
         case SEND_NEW_USER:
             return {...state}
 

@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
+const keys = require("../config/keys");
+
 const bcrypt = require('bcryptjs');
 const SALT_WORK_FACTOR = 10;
 
@@ -65,15 +69,31 @@ router.post("/login", (req, res) => {
         // if any mistakes of user was not found - send to FRONT object with status FALSE
         // If front get FALSE - then add field "incorrect login or password"
         if (err || !user) {
-            res.json({result: false});
+            res.json({success: false});
         } else {
             // if we get exist email then check password with bcrypt
             user.comparePassword(password, function (err, isMatch) {
                 if (!isMatch) {
-                    res.json({result: false});
+                    res.json({success: false});
                 } else {
+                    // console.log(user);
+                    let payload = {...user};
+
+                    jwt.sign(
+                        payload,
+                        keys.secretOrKey,
+                        { expiresIn: 3600000 },
+                        (err, token) => {
+                            res.json({
+                                success: true,
+                                token: "Bearer " + token
+                            });
+                        }
+                    );
+
+
                     // if all good - send object with data about user
-                    res.json(user);
+                    // res.json(user);
                 }
             });
         }
