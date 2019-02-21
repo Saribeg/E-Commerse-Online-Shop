@@ -17,4 +17,4 @@ const CategoryCarouselSchema = new Schema({
 
 });
 
-module.exports = CategoryCarousel = mongoose.model("categoryCarousel", CategoryCarouselSchema);
+module.exports = CategoryCarousel = mongoose.model("categoryCarousels", CategoryCarouselSchema);

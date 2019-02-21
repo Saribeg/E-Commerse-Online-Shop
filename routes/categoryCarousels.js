@@ -1,22 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const CategoriesCarousel = require("../models/CategoryCarousel");
+const CategoryCarousels = require("../models/CategoryCarousel");
 
-router.post("/categoryCarousel/add-categoryItem", (req, res) =>{
-    console.log("==========================");
+router.post("/categoryCarousels/add-categoryItem", (req, res) =>{
     const categoriesCarouselItems = {};
     categoriesCarouselItems.categoryName = req.body.categoryName;
     categoriesCarouselItems.categoryUrl = req.body.categoryUrl;
     categoriesCarouselItems.categoryImg = req.body.categoryImg;
 
-    new CategoriesCarousel(categoriesCarouselItems)
+    new CategoryCarousels(categoriesCarouselItems)
         .save()
         .then(categoriesCarousel => res.json(categoriesCarousel))
         .catch(err => console.log(err));
 })
 
-router.get("/categoryCarousel", (req,res) => {
-    CategoriesCarousel.find()
+router.get("/categoryCarousels", (req,res) => {
+    CategoryCarousels.find()
         .then(categoriesCarousel => res.json(categoriesCarousel))
         .catch(err => console.log(err));
 })

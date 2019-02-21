@@ -3,8 +3,9 @@ import ProductsCarousel from '../ProductsCarousel';
 import Subscribe from '../Subscribe';
 import ProductListing from "../ProductListing";
 import EmptyState from "../EmptyState";
+import CategoryCarousel from "../CategoryCarousel";
+import './MainPage.scss';
 
-import './MainPage.scss'
 class MainPage extends Component {
     render () {
 
@@ -20,6 +21,7 @@ class MainPage extends Component {
                         </div>
                     </div>
                 </section>
+                <CategoryCarousel/>
                 <Subscribe/>
                 <EmptyState title="Oops"/>
 
