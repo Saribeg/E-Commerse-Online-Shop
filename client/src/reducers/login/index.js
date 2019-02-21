@@ -53,7 +53,16 @@ function login(state = initialState, action) {
             return {
                 ...state,
                 isLogged: true,
-                loggedData: {...action.payload}
+                loggedData: {...action.payload},
+                windowsStatus: {
+                    formLoginOpen: false,
+                    formRegisterOpen: false,
+                    loginDetails: false,
+                    successRegister: false,
+                    invalidLogin: false,
+                    existEmail: false,
+                },
+
             }
         case LOGOUT_JWT_CURRENT_USER:
             return {
@@ -78,7 +87,15 @@ function login(state = initialState, action) {
                         expiryMonth: '',
                         expiryYear: ''
                     }
-                }
+                },
+                windowsStatus: {
+                    formLoginOpen: false,
+                    formRegisterOpen: false,
+                    loginDetails: false,
+                    successRegister: false,
+                    invalidLogin: false,
+                    existEmail: false,
+                },
             }
 
         case SEND_NEW_USER:

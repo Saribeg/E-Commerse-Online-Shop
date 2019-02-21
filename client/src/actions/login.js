@@ -54,6 +54,20 @@ export const unsetLoggedUser = () => dispatch => {
 };
 
 
+export function goToProfile() {
+    return dispatch => {
+        console.log('dispatch profile')
+        axios.get('/users/profile')
+            .then(() => {
+                console.log("GO TO PROFILE FRONT");
+                dispatch({type: CLOSE_LOGIN_DETAILS})
+            }
+
+            )
+            .catch(err => console.log(err))
+    }
+}
+
 export function checkLogin(loginForm) {
     return dispatch => {
         axios.post('/users/login', loginForm)
@@ -75,6 +89,8 @@ export function checkLogin(loginForm) {
                         dispatch({type: INCORRECT_LOGIN})
                     } else {
                         const { token } = data;
+                        console.log('TOKEN')
+                        console.log(token);
                         localStorage.setItem("jwtToken", token);
                         //Set token to Auth header
                         setAuthToken(token);

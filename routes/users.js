@@ -4,10 +4,47 @@ const User = require("../models/User");
 
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+const jwtsecret = "mysecretkey";
 const keys = require("../config/keys");
+
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+
 
 const bcrypt = require('bcryptjs');
 const SALT_WORK_FACTOR = 10;
+
+
+const jwtOptions = {
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: jwtsecret
+};
+
+passport.use(new JwtStrategy(jwtOptions, function (payload, done) {
+    console.log('JWT strategy');
+    console.log(payload);
+        User.findById(payload.id, (err, user) => {
+            if (err) {
+                return done(err)
+            }
+            if (user) {
+                done(null, user)
+            } else {
+                done(null, false)
+            }
+        })
+    })
+);
+
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+    User.getUserById(id, function (err, user) {
+        done(err, user);
+    });
+});
 
 // Load Input Validation
 const validateRegisterInput = require("../validation/register");
@@ -82,7 +119,7 @@ router.post("/login", (req, res) => {
                     jwt.sign(
                         payload,
                         keys.secretOrKey,
-                        { expiresIn: 3600000 },
+                        {expiresIn: 3600000},
                         (err, token) => {
                             res.json({
                                 success: true,
@@ -100,6 +137,21 @@ router.post("/login", (req, res) => {
     });
 });
 
+
+router.get(
+    "/profile",
+    passport.authenticate('jwt', { session: false }),
+    // passport.authenticate("jwt", { successRedirect: '/profile', failureRedirect: '/login', failureFlash: true }),
+    (req, res) => {
+        // console.log(passport.authenticate('jwt', { session: true }))
+        console.log('hi passport top')
+
+
+        console.log(passport.authenticate())
+        // res.json({});
+        res.send(req.user);
+    }
+);
 
 router.post("/update-profile/personal-info", (req, res) => {
 
@@ -175,10 +227,10 @@ router.post("/update-profile/password", (req, res) => {
                 let newPass = req.body.newPassword;
 
                 //use bcrypt
-                bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+                bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
                     if (err) return next(err);
                     // hash the password along with our new salt
-                    bcrypt.hash(newPass, salt, function(err, hash) {
+                    bcrypt.hash(newPass, salt, function (err, hash) {
                         if (err) return next(err);
                         newPass = hash;
                         //find user by ID ant set new crypted password

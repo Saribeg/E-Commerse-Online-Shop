@@ -7,7 +7,8 @@ import {
     OPEN_LOGIN_FORM,
     OPEN_LOGIN_DETAILS,
     CLOSE_LOGIN_DETAILS,
-    LOGOUT, CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_REG_FORM
+    LOGOUT, CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_REG_FORM,
+    LOGOUT_JWT_CURRENT_USER, unsetLoggedUser, checkLogin, goToProfile
 } from "../../actions/login";
 
 import "./TopBlockAuth.scss";
@@ -228,15 +229,15 @@ class TopBlockAuth extends Component {
                 <div className={classDetailLogin}>
                     <div className="header-dropdown-login-details">
                         <NavLink
-                            to="/profile/personalContent"
-                            onClick={() => this.props.closeLoginDetails()}
+                            to="users/profile/personalContent"
+                            onClick={() => this.props.goToProfile()}
                         >
                             PROFILE
                         </NavLink>
                         <input
                             type="button"
                             value="logout"
-                            onClick={() => this.props.logout()}
+                            onClick={() => this.props.unsetLoggedUser()}
                         />
                         <input
                             type="button"
@@ -279,8 +280,10 @@ const mapDispatchToProps = dispatch => {
             dispatch({type: CLOSE_REG_FORM})
         },
         logout: () => {
-            dispatch({type: LOGOUT});
-        }
+            dispatch({type: LOGOUT_JWT_CURRENT_USER});
+        },
+        unsetLoggedUser: () => dispatch(unsetLoggedUser()),
+        goToProfile: () => dispatch(goToProfile()),
     };
 };
 
