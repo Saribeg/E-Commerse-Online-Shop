@@ -1,13 +1,16 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
+import { withRouter } from "react-router-dom";
+
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
 import {
     OPEN_LOGIN_FORM,
     OPEN_LOGIN_DETAILS,
     CLOSE_LOGIN_DETAILS,
-    LOGOUT, CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_REG_FORM
+    LOGOUT, CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_REG_FORM,
+    LOGOUT_JWT_CURRENT_USER, unsetLoggedUser, checkLogin, goToProfile
 } from "../../actions/login";
 
 import "./TopBlockAuth.scss";
@@ -163,6 +166,10 @@ class TopBlockAuth extends Component {
 
         let isModalOpen = this.state.modalFormOpen ? null : "d-none";
 
+
+        console.log('FRONT history')
+        console.log(this.props.history)
+
         return (
             <div className="main-right">
                 <Search/>
@@ -221,22 +228,18 @@ class TopBlockAuth extends Component {
                 </div>
 
 
-                {/*<div className={classRegistrationForm}>*/}
-                {/*<RegistrationForm/>*/}
-                {/*</div>*/}
-
                 <div className={classDetailLogin}>
                     <div className="header-dropdown-login-details">
                         <NavLink
-                            to="/profile/personalContent"
-                            onClick={() => this.props.closeLoginDetails()}
+                            to="users/profile/personalContent"
+                            // onClick={() => this.props.goToProfile(this.props.history)}
                         >
                             PROFILE
                         </NavLink>
                         <input
                             type="button"
                             value="logout"
-                            onClick={() => this.props.logout()}
+                            onClick={() => this.props.unsetLoggedUser()}
                         />
                         <input
                             type="button"
@@ -279,12 +282,14 @@ const mapDispatchToProps = dispatch => {
             dispatch({type: CLOSE_REG_FORM})
         },
         logout: () => {
-            dispatch({type: LOGOUT});
-        }
+            dispatch({type: LOGOUT_JWT_CURRENT_USER});
+        },
+        unsetLoggedUser: () => dispatch(unsetLoggedUser()),
+        goToProfile: (history) => dispatch(goToProfile(history)),
     };
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(TopBlockAuth);
+)(withRouter(TopBlockAuth));
