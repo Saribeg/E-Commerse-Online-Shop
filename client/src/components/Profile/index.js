@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Route, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {Route} from 'react-router-dom';
-import {LOGOUT} from '../../actions/login'
+// import {Route} from 'react-router-dom';
+// import { withRouter } from "react-router-dom";
+import {goToProfile, LOGOUT, SAVE_HISTORY_PATH} from '../../actions/login'
 
 import './Profile.scss'
 
@@ -13,6 +14,13 @@ import PaymentDetails from './PaymentDetails';
 
 
 class Profile extends Component {
+
+    componentDidMount() {
+        this.props.setHistoryLink(this.props.history.location.pathname);
+        this.props.goToProfile(this.props.history)
+    }
+
+
     render() {
 
         return (
@@ -27,19 +35,19 @@ class Profile extends Component {
 
                 <div className='section-profile-main container'>
                     <div className='section-profile-navmenu'>
-                        <NavLink to='/profile/personalContent' className='section-profile-navmenu-item'
+                        <NavLink to='/users/profile/personalContent' className='section-profile-navmenu-item'
                                  activeClassName='section-profile-navmenu-item-active'>
                             Personal Information
                         </NavLink>
-                        <NavLink to='/profile/changePassword' className='section-profile-navmenu-item'
+                        <NavLink to='/users/profile/changePassword' className='section-profile-navmenu-item'
                                  activeClassName='section-profile-navmenu-item-active'>
                             Change Password
                         </NavLink>
-                        <NavLink to='/profile/deliveryInfo' className='section-profile-navmenu-item'
+                        <NavLink to='/users/profile/deliveryInfo' className='section-profile-navmenu-item'
                                  activeClassName='section-profile-navmenu-item-active'>
                             Delivery Information
                         </NavLink>
-                        <NavLink to='/profile/paymentDetails' className='section-profile-navmenu-item'
+                        <NavLink to='/users/profile/paymentDetails' className='section-profile-navmenu-item'
                                  activeClassName='section-profile-navmenu-item-active'>
                             Payment Information
                         </NavLink>
@@ -50,10 +58,10 @@ class Profile extends Component {
                     </div>
 
                     <div className='section-profile-content'>
-                        <Route exact path='/profile/personalContent' component={PersonalContent}/>
-                        <Route exact path='/profile/changePassword' component={ChangePassword}/>
-                        <Route exact path='/profile/deliveryInfo' component={DeliveryInfo}/>
-                        <Route exact path='/profile/paymentDetails' component={PaymentDetails}/>
+                        <Route exact path='/users/profile/personalContent' component={PersonalContent}/>
+                        <Route exact path='/users/profile/changePassword' component={ChangePassword}/>
+                        <Route exact path='/users/profile/deliveryInfo' component={DeliveryInfo}/>
+                        <Route exact path='/users/profile/paymentDetails' component={PaymentDetails}/>
 
                     </div>
                 </div>
@@ -69,9 +77,13 @@ const mapDispatchToProps = (dispatch) => {
     return {
         logout: () => {
             dispatch({type: LOGOUT})
-        }
+        },
+        setHistoryLink: (value) => {
+            dispatch({type: SAVE_HISTORY_PATH, payload: {link: value}})
+        },
+        goToProfile: (history) => dispatch(goToProfile(history)),
 
     }
 }
 
-export default connect(null, mapDispatchToProps)(Profile)
+export default connect(null, mapDispatchToProps)(withRouter(Profile))

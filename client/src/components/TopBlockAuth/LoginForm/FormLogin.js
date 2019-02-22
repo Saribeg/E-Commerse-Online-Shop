@@ -23,7 +23,7 @@ class FormLogin extends Component {
                            type="password" placeholder="Your email..."
                            validate={[requiredInput]}
                     />
-                    <p>Forgotten your password?</p>
+                    {/*<p>Forgotten your password?</p>*/}
                 </div>
 
                 <button name='loginSbm' type="submit" className='enter_btn login_btn' label="submit">Log In</button>

@@ -2,8 +2,49 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
+// const jwtsecret = "mysecretkey";
+const keys = require("../config/keys");
+
+// const JwtStrategy = require('passport-jwt').Strategy;
+// const ExtractJwt = require('passport-jwt').ExtractJwt;
+
+
 const bcrypt = require('bcryptjs');
 const SALT_WORK_FACTOR = 10;
+
+
+// const jwtOptions = {
+//     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+//     secretOrKey: jwtsecret
+// };
+
+// passport.use(new JwtStrategy(jwtOptions, function (payload, done) {
+//     console.log('JWT strategy');
+//     console.log(payload);
+//         User.findById(payload.id, (err, user) => {
+//             if (err) {
+//                 return done(err)
+//             }
+//             if (user) {
+//                 done(null, user)
+//             } else {
+//                 done(null, false)
+//             }
+//         })
+//     })
+// );
+
+// passport.serializeUser(function (user, done) {
+//     done(null, user.id);
+// });
+//
+// passport.deserializeUser(function (id, done) {
+//     User.getUserById(id, function (err, user) {
+//         done(err, user);
+//     });
+// });
 
 // Load Input Validation
 const validateRegisterInput = require("../validation/register");
@@ -46,39 +87,136 @@ router.post("/register", (req, res) => {
     });
 });
 
+
 //Send post-request from Login form
 router.post("/login", (req, res) => {
-    // const {errors, isValid} = validateLoginInput(req.body); //If not valid - send information about errors to client-side (React)
 
-    // Check validation
-    // if (!isValid) {
-    //     return res.status(400).json(errors);
-    // }
 
-    // get elements from body of form
-    const email = req.body.email;
-    const password = req.body.password;
-
-    // Find user by email in mongoose
-    User.findOne({email: email}, function (err, user) {
-
-        // if any mistakes of user was not found - send to FRONT object with status FALSE
-        // If front get FALSE - then add field "incorrect login or password"
+    passport.authenticate('local', {session: false}, (err, user, info) => {
+        console.log("hello passport");
+        console.log(user)
         if (err || !user) {
-            res.json({result: false});
-        } else {
-            // if we get exist email then check password with bcrypt
-            user.comparePassword(password, function (err, isMatch) {
-                if (!isMatch) {
-                    res.json({result: false});
-                } else {
-                    // if all good - send object with data about user
-                    res.json(user);
-                }
-            });
+            return res.json({success: false});
         }
-    });
+
+        req.login(user, {session: false}, (err) => {
+            if (err) {
+                res.json({success: false});
+            }
+
+            let payload = {...user};
+
+            jwt.sign(
+                payload,
+                keys.secretOrKey,
+                {expiresIn: 3600000},
+                (err, token) => {
+                    res.json({
+                        success: true,
+                        token: "Bearer " + token
+                    });
+                }
+            );
+        });
+    })
+    (req, res);
+
+
+    // const email = req.body.email;
+    // const password = req.body.password;
+    //
+    // // Find user by email in mongoose
+    // User.findOne({email: email}, function (err, user) {
+    //
+    //     // if any mistakes of user was not found - send to FRONT object with status FALSE
+    //     // If front get FALSE - then add field "incorrect login or password"
+    //     if (err || !user) {
+    //         res.json({success: false});
+    //     } else {
+    //         // if we get exist email then check password with bcrypt
+    //         user.comparePassword(password, function (err, isMatch) {
+    //             if (!isMatch) {
+    //                 res.json({success: false});
+    //             } else {
+    //                 let payload = {...user};
+    //
+    //                 jwt.sign(
+    //                     payload,
+    //                     keys.secretOrKey,
+    //                     {expiresIn: 3600000},
+    //                     (err, token) => {
+    //                         res.json({
+    //                             success: true,
+    //                             token: "Bearer " + token
+    //                         });
+    //                     }
+    //                 );
+    //             }
+    //         });
+    //     }
+    // });
 });
+
+
+// //Send post-request from Login form
+// router.post("/login", (req, res) => {
+//     // const {errors, isValid} = validateLoginInput(req.body); //If not valid - send information about errors to client-side (React)
+//
+//     // Check validation
+//     // if (!isValid) {
+//     //     return res.status(400).json(errors);
+//     // }
+//
+//     // get elements from body of form
+//     const email = req.body.email;
+//     const password = req.body.password;
+//
+//     // Find user by email in mongoose
+//     User.findOne({email: email}, function (err, user) {
+//
+//         // if any mistakes of user was not found - send to FRONT object with status FALSE
+//         // If front get FALSE - then add field "incorrect login or password"
+//         if (err || !user) {
+//             res.json({success: false});
+//         } else {
+//             // if we get exist email then check password with bcrypt
+//             user.comparePassword(password, function (err, isMatch) {
+//                 if (!isMatch) {
+//                     res.json({success: false});
+//                 } else {
+//                     // console.log(user);
+//                     let payload = {...user};
+//
+//                     jwt.sign(
+//                         payload,
+//                         keys.secretOrKey,
+//                         {expiresIn: 3600000},
+//                         (err, token) => {
+//                             res.json({
+//                                 success: true,
+//                                 token: "Bearer " + token
+//                             });
+//                         }
+//                     );
+//
+//
+//                     // if all good - send object with data about user
+//                     // res.json(user);
+//                 }
+//             });
+//         }
+//     });
+// });
+
+
+router.get(
+    "/profile",
+    passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+
+        res.send(req.user);
+    }
+);
 
 
 router.post("/update-profile/personal-info", (req, res) => {
@@ -155,10 +293,10 @@ router.post("/update-profile/password", (req, res) => {
                 let newPass = req.body.newPassword;
 
                 //use bcrypt
-                bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+                bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
                     if (err) return next(err);
                     // hash the password along with our new salt
-                    bcrypt.hash(newPass, salt, function(err, hash) {
+                    bcrypt.hash(newPass, salt, function (err, hash) {
                         if (err) return next(err);
                         newPass = hash;
                         //find user by ID ant set new crypted password
