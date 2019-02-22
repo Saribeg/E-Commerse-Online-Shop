@@ -19,6 +19,8 @@ const products = require("./routes/products");
 const carouselItems = require("./routes/carouselItems");
 const subscribe = require("./routes/subscribe");
 const footerLinks = require("./routes/footer-links");
+const colors = require("./routes/filters/colors");
+const sizes = require("./routes/filters/sizes");
 const categoryCarousels = require("./routes/categoryCarousels");
 const app = express();
 
@@ -68,6 +70,9 @@ app.use("/", products);
 app.use("/", carouselItems);
 app.use("/", subscribe);
 app.use("/", footerLinks);
+app.use("/", colors);
+app.use("/", sizes);
+
 app.use("/", categoryCarousels);
 const port = process.env.PORT || 5000;
 
