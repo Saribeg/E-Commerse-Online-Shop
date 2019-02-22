@@ -1,11 +1,15 @@
-import {SET_LOGGED, SEND_NEW_USER, OPEN_LOGIN_FORM, CLOSE_LOGIN_FORM,
+import {
+    SET_LOGGED, SEND_NEW_USER, OPEN_LOGIN_FORM, CLOSE_LOGIN_FORM,
     OPEN_REG_FORM, CLOSE_REG_FORM, EXIST_USER, RESET_WINDOW_STATUS, INCORRECT_LOGIN,
     CORRECT_LOGIN, OPEN_LOGIN_DETAILS, CLOSE_LOGIN_DETAILS, LOGOUT, PROFILE_EXIST_EMAIL,
     PROFILE_CORRECT_PERSONAL_CHANGE, PROFILE_CORRECT_PASSWORD_CHANGE,
-    PROFILE_INCORRECT_PASSWORD_CHANGE} from '../../actions/login'
+    PROFILE_INCORRECT_PASSWORD_CHANGE, SET_JWT_CURRENT_USER, LOGOUT_JWT_CURRENT_USER,
+    SAVE_HISTORY_PATH
+} from '../../actions/login'
 
 const initialState = {
     isLogged: false,
+    historyPath: '',
     loggedData: {
         id: '',
         firstName: '',
@@ -46,6 +50,62 @@ function login(state = initialState, action) {
     switch (action.type) {
         case SET_LOGGED:
             return {...state}
+
+        case SAVE_HISTORY_PATH:
+            return {
+                ...state,
+                historyPath: action.payload.link,
+            }
+
+        case SET_JWT_CURRENT_USER:
+            return {
+                ...state,
+                isLogged: true,
+                loggedData: {...action.payload},
+                windowsStatus: {
+                    formLoginOpen: false,
+                    formRegisterOpen: false,
+                    loginDetails: false,
+                    successRegister: false,
+                    invalidLogin: false,
+                    existEmail: false,
+                },
+
+            }
+        case LOGOUT_JWT_CURRENT_USER:
+            return {
+                ...state,
+                isLogged: false,
+                loggedData: {
+                    id: '',
+                    firstName: '',
+                    secondName: '',
+                    email: '',
+                    deliveryData: {
+                        country: '',
+                        zipcode: '',
+                        city: '',
+                        street: '',
+                        phone: ''
+
+                    },
+                    paymentInfo: {
+                        cardNumber: '',
+                        nameOnCard: '',
+                        expiryMonth: '',
+                        expiryYear: ''
+                    }
+                },
+                windowsStatus: {
+                    formLoginOpen: false,
+                    formRegisterOpen: false,
+                    loginDetails: false,
+                    successRegister: false,
+                    invalidLogin: false,
+                    existEmail: false,
+                },
+            }
+
         case SEND_NEW_USER:
             return {...state}
 
@@ -138,6 +198,7 @@ function login(state = initialState, action) {
 
         case PROFILE_CORRECT_PERSONAL_CHANGE:
             return {
+                ...state,
                 windowsStatus: {
                     formLoginOpen: false,
                     formRegisterOpen: false,
@@ -173,6 +234,7 @@ function login(state = initialState, action) {
             }
         case CORRECT_LOGIN:
             return {
+                ...state,
                 windowsStatus: {
                     formLoginOpen: false,
                     formRegisterOpen: false,
@@ -199,6 +261,7 @@ function login(state = initialState, action) {
 
         case LOGOUT:
             return {
+                ...state,
                 windowsStatus: {
                     formLoginOpen: false,
                     formRegisterOpen: false,
