@@ -21,6 +21,7 @@ const subscribe = require("./routes/subscribe");
 const footerLinks = require("./routes/footer-links");
 const colors = require("./routes/filters/colors");
 const sizes = require("./routes/filters/sizes");
+const categoryCarousels = require("./routes/categoryCarousels");
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -72,6 +73,7 @@ app.use("/", footerLinks);
 app.use("/", colors);
 app.use("/", sizes);
 
+app.use("/", categoryCarousels);
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
