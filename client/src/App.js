@@ -26,7 +26,7 @@ class App extends Component {
           <Route exact path="/" component={MainPage} />
           <Route path="/profile" component={Profile} />
           <Route path="/admin/dashboard" component={AdminDashboard} />
-          <Route exact path="/product/1" component={ProductPage}/>
+          <Route path="/products/:category/:subCategory/:furtherSubCategory/:id" component={ProductPage}/>
         </Switch>
         <Footer />
       </Fragment>
