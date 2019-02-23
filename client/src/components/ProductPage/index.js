@@ -1,11 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import axios from 'axios';
+import PhotoGallery from './PhotoGallery';
+import ProductInfo from './ProductInfo';
 import PropTypes from 'prop-types';
 
 export default class ProductPage extends Component {
-/* 	this.propTypes = {
-		withdrawnFromSale: 
-	} */
+
+	state = {
+		productFeatures: [
+			{
+				color: 'black'
+			}
+		]
+	}
 
 
 	componentDidMount() {
@@ -22,23 +29,26 @@ export default class ProductPage extends Component {
 					console.log(this.state);
 			})
 	}
-	render() {
-			const {itemNo, currentPrice, model} = {...this.state};
+
+    getColors = () => {
 			const {productFeatures} = {...this.state};
 			console.log(productFeatures);
-         const colors = productFeatures.map((elem) => {
-				return <li className="color-item red active">{elem.color}</li>
-		})      
-		return (
-			<div className="product-main-info">
-				<h2 className="product-title">{model}</h2>
-	<span className="product-meta">Item No. {itemNo}</span>
-	<p className="product-price">{currentPrice}</p>
-{/* 	<p className="product-filter">{colors}</p> */}
+			const colors = productFeatures.map((elem) => {
+				return(
+				<li className="color-item" style={{backgroundColor: elem.color}}></li>
+			)
+			})
+			return colors;
 
-	<ul className="product-colors">
-	</ul>
-			</div>
-		)
 	}
+	render() {
+			const {itemNo, currentPrice, model} = {...this.state};
+	    
+		return (
+		<section className="product-main container">
+		<PhotoGallery />
+    <ProductInfo itemNo={itemNo} currentPrice={ currentPrice} model={model} colors={this.getColors()}/>
+		</section>
+)
+}
 }

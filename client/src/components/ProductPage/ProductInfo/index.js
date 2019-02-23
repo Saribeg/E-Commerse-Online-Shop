@@ -2,10 +2,17 @@ import React, { Component } from 'react'
 
 export default class ProductInfo extends Component {
 	render() {
-		return (
-			<div>
-				
-			</div>
-		)
+		const {itemNo, currentPrice, model, colors} = {...this.props};
+		
+		return (			
+	<div className="product-main-info">
+			<h2 className="product-title">{model}</h2>
+			<span className="product-meta">Item No. {itemNo}</span>
+			<p className="product-price">{currentPrice}</p>
+ 			<p className="product-filter"></p>
+			<ul className="product-colors">{colors}</ul>
+</div>
+	)
+	
 	}
 }
