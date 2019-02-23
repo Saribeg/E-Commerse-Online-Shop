@@ -16,3 +16,12 @@ export default class ProductInfo extends Component {
 	
 	}
 }
+
+const mapStateToProps = state => {
+  return {
+    model: state.productsOpened.model,
+    itemNo: state.productsOpened.itemNo,
+    currentPrice: state.productsOpened.currentPrice,
+    currentOnMouseOverCategory: state.navMenu.currentOnMouseOverCategory
+  };
+};

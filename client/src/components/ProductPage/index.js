@@ -2,9 +2,10 @@ import React, { Component, Fragment } from 'react'
 import axios from 'axios';
 import PhotoGallery from './PhotoGallery';
 import ProductInfo from './ProductInfo';
-import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import {getProductDetails} from "../../actions/productDetails"
 
-export default class ProductPage extends Component {
+class ProductPage extends Component {
 
 	state = {
 		productFeatures: [
@@ -14,20 +15,8 @@ export default class ProductPage extends Component {
 		]
 	}
 
-
-	componentDidMount() {
-		const {category, subCategory, furtherSubCategory, id} = this.props.match.params
-			axios.get(`/products/${category}/${subCategory}/${furtherSubCategory}/${id}`, {
-				params: {
-					category: category,
-					subCategory: subCategory,
-					furtherSubCategory: furtherSubCategory,
-					id: id,					
-				}
-			}).then((result) =>{
-					this.setState(result.data[0]);
-					console.log(this.state);
-			})
+	componentDidMount(){
+	 	this.props.getProductDetails(this.props.match.params); 
 	}
 
     getColors = () => {
@@ -47,8 +36,16 @@ export default class ProductPage extends Component {
 		return (
 		<section className="product-main container">
 		<PhotoGallery />
-    <ProductInfo itemNo={itemNo} currentPrice={ currentPrice} model={model} colors={this.getColors()}/>
+    <ProductInfo colors={this.getColors()}/>
 		</section>
 )
 }
 }
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getProductDetails: (data) => dispatch(getProductDetails(data))
+	}
+}
+
+export default connect(null, mapDispatchToProps)(ProductPage);
