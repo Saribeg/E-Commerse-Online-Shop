@@ -12,16 +12,21 @@ class CategoryCarousel extends Component {
     }
 
     render() {
+        let categoryItems = 0;
         let listCategories = this.props.categoriesList.map((item) => {
-            return (
-                <>
-                    <NavLink key={item._id} to={item.categoryUrl} className="category-item">
-                        <img src="../../img/featured.png" alt={item.categoryName} className="category-img"/>
-                        <div className="category-name">{item.categoryName}</div>
-                        <div className="category-link">shop now</div>
-                    </NavLink>
-                </>
-            )
+            categoryItems++;
+            if (categoryItems < this.props.children){
+                return (
+                    <>
+                        <NavLink key={item._id} to={item.categoryUrl} className="category-item">
+                            <img src={item.categoryImg} alt={item.categoryName} className="category-img"/>
+                            <div className="category-name">{item.categoryName}</div>
+                            <div className="category-link">shop now</div>
+                        </NavLink>
+                    </>
+                )
+            }
+
         })
         return (
             <>
