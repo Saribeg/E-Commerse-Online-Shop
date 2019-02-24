@@ -2,10 +2,14 @@ import {
 	FETCH_PRODUCT_DETAIL_REQUEST, 
 	FETCH_PRODUCT_DETAIL_SUCCEED,
 	FETCH_PRODUCT_DETAIL_FAIL
-} from "../../actions/types";
+} from "../../actions/productDetails";
 
 const initialState = {
-	productsOpened: []
+	productOpened: {
+		itemNo: ' ',
+		model: ' ',
+		currentPrice: ' ',
+	}
 };
 
 function productDetails(state = initialState, action) {
@@ -13,12 +17,12 @@ function productDetails(state = initialState, action) {
 			case FETCH_PRODUCT_DETAIL_REQUEST:
 					return {
 							...state,
-							productsOpened: action.payload
+							productOpened: {...action.payload}
 					}
 			case FETCH_PRODUCT_DETAIL_SUCCEED:
 					return {
 							...state,
-							productsOpened: action.payload
+						 productOpened: {...action.payload}
 					}
 			default:
 					return{...state}

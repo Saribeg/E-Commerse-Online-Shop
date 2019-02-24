@@ -1,7 +1,8 @@
 import axios from "axios";
-import {FETCH_PRODUCT_DETAIL_REQUEST, 
-			 FETCH_PRODUCT_DETAIL_SUCCEED, 
-			 FETCH_PRODUCT_DETAIL_FAIL} from './types.js';
+
+export const FETCH_PRODUCT_DETAIL_REQUEST = "FETCH_PRODUCT_DETAIL_REQUEST";
+export const FETCH_PRODUCT_DETAIL_SUCCEED = "FETCH_PRODUCT_DETAIL_SUCCEED";
+export const FETCH_PRODUCT_DETAIL_FAIL = "FETCH_PRODUCT_DETAIL_FAIL";
 
 export const getProductDetails = (routeDetails) => dispatch => {
   dispatch({

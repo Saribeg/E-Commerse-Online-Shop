@@ -16,7 +16,6 @@ const rootReducer = combineReducers({
   product,
   categoryCarousel,
   productDetails,
-
   //For Admin Dashboard
   admNavMenu
 });

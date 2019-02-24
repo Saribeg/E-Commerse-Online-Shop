@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import ProductColors from './ProductColors';
 
-export default class ProductInfo extends Component {
+class ProductInfo extends Component {
 	render() {
-		const {itemNo, currentPrice, model, colors} = {...this.props};
+		const {itemNo, currentPrice, model} = {...this.props};
 		
 		return (			
 	<div className="product-main-info">
@@ -10,18 +11,12 @@ export default class ProductInfo extends Component {
 			<span className="product-meta">Item No. {itemNo}</span>
 			<p className="product-price">{currentPrice}</p>
  			<p className="product-filter"></p>
-			<ul className="product-colors">{colors}</ul>
+			<ProductColors colors={this.props.colors} /> 
 </div>
 	)
 	
 	}
 }
 
-const mapStateToProps = state => {
-  return {
-    model: state.productsOpened.model,
-    itemNo: state.productsOpened.itemNo,
-    currentPrice: state.productsOpened.currentPrice,
-    currentOnMouseOverCategory: state.navMenu.currentOnMouseOverCategory
-  };
-};
+
+export default ProductInfo;
