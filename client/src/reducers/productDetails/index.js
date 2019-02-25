@@ -5,24 +5,19 @@ import {
 } from "../../actions/productDetails";
 
 const initialState = {
-	productOpened: {
-		itemNo: ' ',
-		model: ' ',
-		currentPrice: ' ',
-	}
+	productOpened: []
 };
 
 function productDetails(state = initialState, action) {
 	switch (action.type) {
 			case FETCH_PRODUCT_DETAIL_REQUEST:
 					return {
-							...state,
-							productOpened: {...action.payload}
+							...state
 					}
 			case FETCH_PRODUCT_DETAIL_SUCCEED:
 					return {
 							...state,
-						 productOpened: {...action.payload}
+						 productOpened: action.payload
 					}
 			default:
 					return{...state}

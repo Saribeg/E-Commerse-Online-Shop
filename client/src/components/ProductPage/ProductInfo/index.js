@@ -3,7 +3,7 @@ import ProductColors from './ProductColors';
 
 class ProductInfo extends Component {
 	render() {
-		const {itemNo, currentPrice, model} = {...this.props};
+		const {itemNo, currentPrice, model, colors} = {...this.props};
 		
 		return (			
 	<div className="product-main-info">
@@ -11,7 +11,7 @@ class ProductInfo extends Component {
 			<span className="product-meta">Item No. {itemNo}</span>
 			<p className="product-price">{currentPrice}</p>
  			<p className="product-filter"></p>
-			<ProductColors colors={this.props.colors} /> 
+			<ProductColors colors={colors} />
 </div>
 	)
 	

@@ -21,12 +21,12 @@ class ProductPage extends Component {
 
 
 	render() {
-		const {itemNo, currentPrice, model, productFeatures} = {...this.props.productItem.productOpened}; 
-		console.log(productFeatures)
+		const {itemNo, currentPrice, model} = {...this.props.productItem.productOpened};
+				console.log(this.state);
 		return (
 		<section className="product-main container">
 		<PhotoGallery />
-		<ProductInfo colors={productFeatures}
+		<ProductInfo colors={this.props.colors}
 								 itemNo={itemNo}
 								 currentPrice={currentPrice}
 								 model={model}/>
