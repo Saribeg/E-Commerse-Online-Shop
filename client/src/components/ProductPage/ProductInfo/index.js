@@ -5,6 +5,7 @@ class ProductInfo extends Component {
 	render() {
 		const {itemNo, currentPrice, model, colors} = {...this.props};
 		
+		console.log(colors);
 		return (			
 	<div className="product-main-info">
 			<h2 className="product-title">{model}</h2>

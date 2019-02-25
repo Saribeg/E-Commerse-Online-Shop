@@ -5,7 +5,9 @@ import {
 } from "../../actions/productDetails";
 
 const initialState = {
-	productOpened: []
+	productOpened:  {
+		productFeatures: [] 
+	}	
 };
 
 function productDetails(state = initialState, action) {
