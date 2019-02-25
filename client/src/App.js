@@ -61,7 +61,7 @@ class App extends Component {
             component={FilteredProductList}
           /> 
           <Route path="/admin/dashboard" component={AdminDashboard} />
-          <Route path="/:category/:subCategory/:furtherSubCategory/:id" component={ProductPage}/>
+          <Route path="/:category/:subCategory/:furtherSubCategory/:id/:color" component={ProductPage}/>
 
           {/*<Route exact path="/product/1" component={ProductPage}/>*/}
         </Switch>

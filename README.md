@@ -6,5 +6,3 @@ To create development environment
 2. Run **npm install** in client folder
 3. Run **npm run dev** in main folder
 
-
-

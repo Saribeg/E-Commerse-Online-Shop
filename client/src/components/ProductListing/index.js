@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {getProductItem} from "../../actions/product";
+import {getProductItem, saveProductDetails} from "../../actions/product";
 import {NavLink} from "react-router-dom";
 import "./ProductListing.scss";
 
@@ -20,16 +20,18 @@ class ProductListing extends Component {
                 counterItems++;
 
                 if (counterItems <= this.props.children)
-
+                 console.log(productItem);  
                 return (
-                    <>
-                        <NavLink key={item._id} to={productItem.productUrl} className="product-item">
+                    <div onClick={() => saveProductDetails(item.colorName)}>
+                        <NavLink key={item._id} to={`${productItem.productUrl}/${item.colorName}`} className="product-item" onClick={()=> console.log(1)}>
+                       
                             <img src={item.imageUrls[0]} alt={productItem.model} className="product-img" />
                             <p className="product-name">{productItem.model} ({item.colorName})</p>
                             <p className="product-price">${productItem.currentPrice}</p>
+                      
                         </NavLink>
-
-                    </>
+                   </div>
+                   
                 )
             })
         })
@@ -49,4 +51,11 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {getProductItem})(ProductListing);
+const mapDispatchToProps = (dispatch) => {
+	return {
+        saveProductDetails: (data) => dispatch(saveProductDetails(data)),
+        getProductItem: () => dispatch(getProductItem())
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductListing);

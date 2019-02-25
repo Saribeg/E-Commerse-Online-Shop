@@ -7,26 +7,19 @@ import {getProductDetails} from "../../actions/productDetails"
 
 class ProductPage extends Component {
 
-	state = {
-		productFeatures: [
-			{
-				color: 'black'
-			}
-		]
-	}
-
 	componentDidMount(){
 		 this.props.getProductDetails(this.props.match.params);
 	}
 
-
 	render() {
 		const {itemNo, currentPrice, model} = {...this.props.productItem.productOpened};
-				console.log(this.state);
+	
+console.log(this.props.match.params)
+
 		return (
 		<section className="product-main container">
-		<PhotoGallery />
-		<ProductInfo colors={this.props.colors}
+	 	<PhotoGallery productFeatures ={this.props.productFeatures}/>
+		<ProductInfo colors={this.props.productFeatures}
 								 itemNo={itemNo}
 								 currentPrice={currentPrice}
 								 model={model}/>
@@ -38,7 +31,7 @@ class ProductPage extends Component {
 const mapStateToProps = (state) => {
 	return {
 		productItem: state.productDetails,
-		colors: state.productDetails.productOpened.productFeatures
+		productFeatures: state.productDetails.productOpened.productFeatures
 	}
 }
 

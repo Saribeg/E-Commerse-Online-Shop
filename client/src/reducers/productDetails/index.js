@@ -6,7 +6,11 @@ import {
 
 const initialState = {
 	productOpened:  {
-		productFeatures: [] 
+		productFeatures: [
+			{ imageUrls: []
+			
+			}
+		] 
 	}	
 };
 
