@@ -93,8 +93,7 @@ router.post("/login", (req, res) => {
 
 
     passport.authenticate('local', {session: false}, (err, user, info) => {
-        console.log("hello passport");
-        console.log(user)
+
         if (err || !user) {
             return res.json({success: false});
         }
@@ -121,92 +120,8 @@ router.post("/login", (req, res) => {
     })
     (req, res);
 
-
-    // const email = req.body.email;
-    // const password = req.body.password;
-    //
-    // // Find user by email in mongoose
-    // User.findOne({email: email}, function (err, user) {
-    //
-    //     // if any mistakes of user was not found - send to FRONT object with status FALSE
-    //     // If front get FALSE - then add field "incorrect login or password"
-    //     if (err || !user) {
-    //         res.json({success: false});
-    //     } else {
-    //         // if we get exist email then check password with bcrypt
-    //         user.comparePassword(password, function (err, isMatch) {
-    //             if (!isMatch) {
-    //                 res.json({success: false});
-    //             } else {
-    //                 let payload = {...user};
-    //
-    //                 jwt.sign(
-    //                     payload,
-    //                     keys.secretOrKey,
-    //                     {expiresIn: 3600000},
-    //                     (err, token) => {
-    //                         res.json({
-    //                             success: true,
-    //                             token: "Bearer " + token
-    //                         });
-    //                     }
-    //                 );
-    //             }
-    //         });
-    //     }
-    // });
 });
 
-
-// //Send post-request from Login form
-// router.post("/login", (req, res) => {
-//     // const {errors, isValid} = validateLoginInput(req.body); //If not valid - send information about errors to client-side (React)
-//
-//     // Check validation
-//     // if (!isValid) {
-//     //     return res.status(400).json(errors);
-//     // }
-//
-//     // get elements from body of form
-//     const email = req.body.email;
-//     const password = req.body.password;
-//
-//     // Find user by email in mongoose
-//     User.findOne({email: email}, function (err, user) {
-//
-//         // if any mistakes of user was not found - send to FRONT object with status FALSE
-//         // If front get FALSE - then add field "incorrect login or password"
-//         if (err || !user) {
-//             res.json({success: false});
-//         } else {
-//             // if we get exist email then check password with bcrypt
-//             user.comparePassword(password, function (err, isMatch) {
-//                 if (!isMatch) {
-//                     res.json({success: false});
-//                 } else {
-//                     // console.log(user);
-//                     let payload = {...user};
-//
-//                     jwt.sign(
-//                         payload,
-//                         keys.secretOrKey,
-//                         {expiresIn: 3600000},
-//                         (err, token) => {
-//                             res.json({
-//                                 success: true,
-//                                 token: "Bearer " + token
-//                             });
-//                         }
-//                     );
-//
-//
-//                     // if all good - send object with data about user
-//                     // res.json(user);
-//                 }
-//             });
-//         }
-//     });
-// });
 
 
 router.get(
