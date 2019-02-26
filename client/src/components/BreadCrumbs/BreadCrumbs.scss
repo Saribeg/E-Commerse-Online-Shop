@@ -1,0 +1,49 @@
+@import "../../scss/resources/resources";
+
+.breadcrumbs-block {
+  padding: 67px 0;
+  background-color: #f3f3f3;
+
+  .breadcrumbs {
+    .breadcrumbs-row {
+      margin-bottom: 15px;
+
+      ul {
+        li {
+          display: inline-block;
+          margin-right: 20px;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background-color: $black;
+            right: -12px;
+            top: 6px;
+            width: 3px;
+            height: 3px;
+
+          }
+
+          a {
+            font-family: $font-openSans;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: $black;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+
+    .category-title-active {
+      h2 {
+        font-family: $font-openSans;
+        font-size: 40px;
+        font-weight: bold;
+        color: $black;
+      }
+    }
+  }
+}
