@@ -7,22 +7,40 @@ import {getProductDetails} from "../../actions/productDetails"
 
 class ProductPage extends Component {
 
+	state = {
+		activeColor: this.props.activeColor,
+		productFeatures: []
+	}
+
 	componentDidMount(){
 		 this.props.getProductDetails(this.props.match.params);
 	}
 
+	changeColor = (color) =>{
+			this.setState({activeColor: color})
+	}
+	
+	setInitialState = () => {
+		 const activeItem = this.props.productFeatures;
+		 
+	}
+
 	render() {
 		const {itemNo, currentPrice, model} = {...this.props.productItem.productOpened};
-	
-console.log(this.props.match.params)
+		const {productFeatures} = {...this.props};
+		const activeColor = this.state.activeColor;
 
+		console.log(this.state);
 		return (
 		<section className="product-main container">
-	 	<PhotoGallery productFeatures ={this.props.productFeatures}/>
-		<ProductInfo colors={this.props.productFeatures}
+	 	<PhotoGallery productFeatures ={productFeatures} activeColor={activeColor}/>
+		<ProductInfo colors={productFeatures}
+								 activeColor={activeColor}
 								 itemNo={itemNo}
 								 currentPrice={currentPrice}
-								 model={model}/>
+								 model={model}
+								 changeColor={this.changeColor}
+								 />
 		</section>
 )
 }
@@ -31,7 +49,8 @@ console.log(this.props.match.params)
 const mapStateToProps = (state) => {
 	return {
 		productItem: state.productDetails,
-		productFeatures: state.productDetails.productOpened.productFeatures
+		productFeatures: state.productDetails.productOpened.productFeatures,
+		activeColor: state.product.activeColor
 	}
 }
 

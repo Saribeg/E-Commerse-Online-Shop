@@ -22,15 +22,14 @@ class ProductListing extends Component {
                 if (counterItems <= this.props.children)
                  console.log(productItem);  
                 return (
-                    <div onClick={() => saveProductDetails(item.colorName)}>
-                        <NavLink key={item._id} to={`${productItem.productUrl}/${item.colorName}`} className="product-item" onClick={()=> console.log(1)}>
+                   
+                        <NavLink key={item._id} to={productItem.productUrl} className="product-item" onClick={()=> this.props.saveProductDetails(item.colorName)}>
                        
                             <img src={item.imageUrls[0]} alt={productItem.model} className="product-img" />
                             <p className="product-name">{productItem.model} ({item.colorName})</p>
                             <p className="product-price">${productItem.currentPrice}</p>
                       
                         </NavLink>
-                   </div>
                    
                 )
             })

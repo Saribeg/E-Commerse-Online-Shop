@@ -9,16 +9,8 @@ export const getProductDetails = (routeDetails) => dispatch => {
   dispatch({
     type: FETCH_PRODUCT_DETAIL_REQUEST
 	});
-/* 
-	let result = product.getState();
-	console.log(result)
-	dispatch({
-		type: FETCH_PRODUCT_DETAIL_SUCCEED,
-		payload: result
-	}) */		
-
-	
-/* 	const {category, subCategory, furtherSubCategory, id} = routeDetails;
+		
+ 	const {category, subCategory, furtherSubCategory, id} = routeDetails;
 
 	axios.get(`/products/${category}/${subCategory}/${furtherSubCategory}/${id}`, {
 		params: {
@@ -32,5 +24,5 @@ export const getProductDetails = (routeDetails) => dispatch => {
 			type: FETCH_PRODUCT_DETAIL_SUCCEED,
 			payload: result.data[0]
 		})		
-	}) */
+	}) 
 };
