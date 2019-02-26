@@ -20,7 +20,7 @@ class MainPage extends Component {
                         </div>
                     </div>
                 </section>
-                <CategoryCarousel/>
+                <CategoryCarousel children={5}/>
                 <Subscribe/>
             </div>
         )
