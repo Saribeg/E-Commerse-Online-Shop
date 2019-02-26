@@ -54,11 +54,11 @@ class App extends Component {
           <Route exact path="/" component={MainPage} />
           <Route path="/users/profile" component={Profile} />
           <Route exact path="/login" component={RedirectLogin} />
-          {/* <Route
+          <Route
             exact
             path="/:category/:subcategory?/:furthersubcategory?"
             component={FilteredProductList}
-          /> */}
+          />
           <Route path="/admin/dashboard" component={AdminDashboard} />
 
           {/*<Route exact path="/product/1" component={ProductPage}/>*/}
