@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product");
+const Cart = require("../models/Cart");
 const uniqueRandom = require("unique-random");
 const rand = uniqueRandom(0, 999999);
 

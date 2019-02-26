@@ -20,6 +20,8 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import {setLoggedUser, unsetLoggedUser} from "./actions/login";
 
+import { SET_CART_FROM_LOCALSTORAGE, SET_ID_LOGGED_USER} from "./actions/cart";
+
 import "./scss/style.scss";
 
 library.add(faQuestion);
@@ -29,11 +31,9 @@ if (localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
     //Decode token and get user info and exp
     const decoded = jwt_decode(localStorage.jwtToken);
-
-    // console.log('DECODED TOKEN');
-    // console.log(decoded);
     //Set user ans is isAuthenticated
     store.dispatch(setLoggedUser(decoded._doc));
+    store.dispatch({type: SET_ID_LOGGED_USER, payload: {idUser: decoded._doc._id}})
 
     //Check for expired token
     const currentTime = Date.now() / 1000;
@@ -43,12 +43,21 @@ if (localStorage.jwtToken) {
         //Clear the curren profile
         // store.dispatch(clearCurrentProfile());
         //Redirect to login
-        window.location.href = "/login";
+        window.location.href = "/";
     }
 }
 
+
+// if (localStorage.savedCart) {
+//     store.dispatch({type: SET_CART_FROM_LOCALSTORAGE, payload: {arrLS: JSON.parse(localStorage.savedCart)}})
+// }
+
+
 class App extends Component {
+
     render() {
+
+        // localStorage.setItem("savedCart", null);
         return (
             <Fragment>
                 <Header/>

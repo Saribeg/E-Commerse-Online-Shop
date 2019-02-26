@@ -13,6 +13,11 @@ import {
     LOGOUT_JWT_CURRENT_USER, unsetLoggedUser, checkLogin, goToProfile
 } from "../../actions/login";
 
+import { SET_CART_FROM_LOCALSTORAGE} from "../../actions/cart";
+
+
+
+
 import "./TopBlockAuth.scss";
 import Search from "../Search";
 
@@ -23,6 +28,10 @@ class TopBlockAuth extends Component {
 
     state = {
         modalFormOpen: false,
+    }
+
+    componentDidMount () {
+
     }
 
     openModal = () => {
@@ -295,7 +304,7 @@ const mapDispatchToProps = dispatch => {
             dispatch({type: LOGOUT_JWT_CURRENT_USER});
         },
         unsetLoggedUser: () => dispatch(unsetLoggedUser()),
-        goToProfile: (history) => dispatch(goToProfile(history)),
+        goToProfile: (history) => dispatch(goToProfile(history))
     };
 };
 

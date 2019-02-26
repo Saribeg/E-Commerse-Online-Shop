@@ -15,37 +15,6 @@ const bcrypt = require('bcryptjs');
 const SALT_WORK_FACTOR = 10;
 
 
-// const jwtOptions = {
-//     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-//     secretOrKey: jwtsecret
-// };
-
-// passport.use(new JwtStrategy(jwtOptions, function (payload, done) {
-//     console.log('JWT strategy');
-//     console.log(payload);
-//         User.findById(payload.id, (err, user) => {
-//             if (err) {
-//                 return done(err)
-//             }
-//             if (user) {
-//                 done(null, user)
-//             } else {
-//                 done(null, false)
-//             }
-//         })
-//     })
-// );
-
-// passport.serializeUser(function (user, done) {
-//     done(null, user.id);
-// });
-//
-// passport.deserializeUser(function (id, done) {
-//     User.getUserById(id, function (err, user) {
-//         done(err, user);
-//     });
-// });
-
 // Load Input Validation
 const validateRegisterInput = require("../validation/register");
 const validateLoginInput = require("../validation/login");
