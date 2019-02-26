@@ -1,6 +1,7 @@
 import axios from "axios";
 export const SEND_PRODUCT_REQUEST = "SEND_PRODUCT_REQUEST";
 export const GET_PRODUCT_LISTING = "GET_PRODUCT_LISTING";
+export const SAVE_PRODUCT_DETAILS = "SAVE_PRODUCT_DETAILS";
 
 
 export const getProductItem = () => dispatch =>{
@@ -15,3 +16,12 @@ export const getProductItem = () => dispatch =>{
         })
     })
 };
+
+export const saveProductDetails = (data) => dispatch =>{
+    console.log(data);
+    dispatch({
+        type: SAVE_PRODUCT_DETAILS,
+        payload: data
+    });
+};
+
