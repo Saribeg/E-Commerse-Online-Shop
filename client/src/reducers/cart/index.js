@@ -1,6 +1,6 @@
 import {
     ADD_ITEM_TO_CART, CHANGE_AMOUT_OF_ITEM, SET_CART_FROM_LOCALSTORAGE,
-    SET_ID_LOGGED_USER, SET_ID_CART_FROM_DB, addNewCart, updateCart
+    SET_ID_LOGGED_USER, SET_ID_CART_FROM_DB, SET_DATA_CART_FROM_DB, addNewCart, updateCart
 } from '../../actions/cart'
 
 
@@ -18,10 +18,16 @@ function setLocalSrorage(arr) {
 }
 
 function countAmount(array) {
+    console.log('call countAmount')
+
     let count = 0;
-    array.forEach((elem) => {
-        count = count + elem.amount;
-    })
+    if (array) {
+        array.forEach((elem) => {
+            count = count + elem.amount;
+        })
+    }
+
+
     return count
 }
 
@@ -62,6 +68,15 @@ function cart(state = initialState, action) {
             return {
                 ...state,
                 idCartInDB: action.payload.idCartInDB
+            }
+
+        case SET_DATA_CART_FROM_DB:
+
+            return {
+                ...state,
+                idCartInDB: action.payload.infoDB._id,
+                arrayProduct: action.payload.infoDB.arrayProduct,
+                amountInBasket: countAmount(action.payload.infoDB.arrayProduct),
             }
 
         case ADD_ITEM_TO_CART:

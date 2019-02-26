@@ -4,6 +4,21 @@ const router = express.Router();
 const Cart = require("../models/Cart");
 
 
+router.post('/getCart', (req, res) => {
+
+    Cart.findOne({idUser: req.body.idUser, isFinished: false})
+        .then(info => {
+            console.log('info', info)
+
+            res.json({
+                success: true,
+                infoDB: JSON.stringify(info),
+            });
+        })
+        .catch(err => console.log(err));
+
+});
+
 router.post('/addCart', (req, res) => {
 
     let newCart = {
@@ -11,7 +26,6 @@ router.post('/addCart', (req, res) => {
         isFinished: false,
         arrayProduct: JSON.parse(req.body.arrayProduct)
     }
-
     const dbCart = new Cart(newCart);
 
     dbCart
@@ -28,7 +42,7 @@ router.post('/addCart', (req, res) => {
             res.json({
                 success: false,
                 idCartInDB: '',
-            })
+            });
             console.log(err)
         });
 
@@ -42,13 +56,6 @@ router.post('/updateCart', (req, res) => {
             arrayProduct: JSON.parse(req.body.arrayProduct)
         }
     })
-        .then((item) => {
-
-            console.log('back update, item')
-            console.log(item)
-
-            }
-        )
         .catch(err => console.log(err));
 
 

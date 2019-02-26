@@ -20,7 +20,7 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import {setLoggedUser, unsetLoggedUser} from "./actions/login";
 
-import { SET_CART_FROM_LOCALSTORAGE, SET_ID_LOGGED_USER} from "./actions/cart";
+import { SET_CART_FROM_LOCALSTORAGE, SET_ID_LOGGED_USER, getCart} from "./actions/cart";
 
 import "./scss/style.scss";
 
@@ -35,6 +35,9 @@ if (localStorage.jwtToken) {
     store.dispatch(setLoggedUser(decoded._doc));
     store.dispatch({type: SET_ID_LOGGED_USER, payload: {idUser: decoded._doc._id}})
 
+    // store.dispatch(getCart({idUser: decoded._doc._id}));
+    getCart({idUser: decoded._doc._id})
+
     //Check for expired token
     const currentTime = Date.now() / 1000;
     if (decoded.exp < currentTime) {
@@ -48,9 +51,9 @@ if (localStorage.jwtToken) {
 }
 
 
-// if (localStorage.savedCart) {
-//     store.dispatch({type: SET_CART_FROM_LOCALSTORAGE, payload: {arrLS: JSON.parse(localStorage.savedCart)}})
-// }
+if (localStorage.savedCart) {
+    store.dispatch({type: SET_CART_FROM_LOCALSTORAGE, payload: {arrLS: JSON.parse(localStorage.savedCart)}})
+}
 
 
 class App extends Component {
