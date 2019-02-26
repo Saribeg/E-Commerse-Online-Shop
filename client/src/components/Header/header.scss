@@ -2,7 +2,7 @@
 @import "../../scss/resources/resources.scss";
 
 .main-header {
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #ccc;
   position: relative;
 }
 
@@ -44,6 +44,7 @@
   height: 22px;
   margin-right: 41px;
 }
+
 @media (max-width: 992px) {
   .logo {
     margin-right: 0;
