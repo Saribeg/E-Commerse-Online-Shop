@@ -1,45 +1,40 @@
-import React, { Component} from 'react'
+import React, {Component} from 'react'
 import {NavLink} from "react-router-dom";
 
 class BreadCrumbs extends Component {
 
     render() {
-        let categoryName = this.props.match.params.category;
-        let subcategoryName = this.props.match.params.subcategory;
-        let furthersubcategoryName = this.props.match.params.furthersubcategory;
+        let {category, subcategory, furthersubcategory} = this.props.cattest;
 
-        // let paths = [];
         return (<>
                 <section className="breadcrumbs-section">
                     <div className="container">
                         <ul className="breadcrumbs-list">
                             <li><NavLink to="/" className="breadcrumbs-link">Home</NavLink></li>
-                            <li><NavLink to="/" className="breadcrumbs-link">{categoryName}</NavLink></li>
-                            <li><NavLink to="/" className="breadcrumbs-link">{subcategoryName}</NavLink></li>
-                            <li><NavLink to="/" className="breadcrumbs-link">{furthersubcategoryName}</NavLink></li>
+                            {
+                                this.props.cattest.category ?
+                                    <li><NavLink to="/"
+                                                 className="breadcrumbs-link">{this.props.cattest.category}</NavLink>
+                                    </li> : null
+                            }
+                            {
+                                (this.props.cattest.subcategory || this.props.cattest.subCategory) ?
+                                    <li><NavLink to="/"
+                                                 className="breadcrumbs-link">{this.props.cattest.subcategory || this.props.cattest.subCategory}</NavLink>
+                                    </li> : null
+                            }
+                            {
+                                (this.props.cattest.furthersubcategory || this.props.cattest.furtherSubCategory) ?
+                                    <li><NavLink to="/"
+                                                 className="breadcrumbs-link">{this.props.cattest.furthersubcategory || this.props.cattest.furtherSubCategory}</NavLink>
+                                    </li> : null
+                            }
                             {/*<li><NavLink to="/" className="breadcrumbs-link"></NavLink></li>*/}
                         </ul>
                     </div>
 
                 </section>
-            {/*<section className="breadcrumbs-block">*/}
-                {/*<div className="container">*/}
-                    {/*<div className="breadcrumbs">*/}
-                        {/*<div className="breadcrumbs-row">*/}
-                            {/*<ul>*/}
-                                {/*<li><NavLink to="/">home</NavLink></li>*/}
-                                {/*<li><NavLink to="/">{categoryName}</NavLink></li>*/}
-                                {/*<li><NavLink to="/">{subcategoryName}</NavLink></li>*/}
-                                {/*<li><NavLink to="/">{furthersubcategoryName}</NavLink></li>*/}
-                            {/*</ul>*/}
-                        {/*</div>*/}
 
-            {/*//             <div className="category-title-active">*/}
-            {/*//                 <h2>{categoryName}'s {subcategoryName}</h2>*/}
-            {/*//             </div>*/}
-            {/*//         </div>*/}
-            {/*//     </div>*/}
-            {/*// </section>*/}
             </>
         )
     }
