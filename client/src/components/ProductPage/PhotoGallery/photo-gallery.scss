@@ -16,7 +16,6 @@
     width: 68px;
     height: 68px;
     margin-bottom: 20px;
-    display: none;
 
     @include max-width($landscape-tablet) {
       margin-right: 12px;
