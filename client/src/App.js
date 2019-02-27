@@ -8,15 +8,19 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MainPage from "./components/MainPage";
 import Profile from "./components/Profile";
-// import ProductPage from "./components/ProductPage";
+import ProductPage from "./components/ProductPage";
 import FilteredProductList from "./components/FilteredProductList";
 import AdminDashboard from "./components/AdminDashboard";
+import Cart from "./components/Cart";
+import TestAddToCart from "./components/Cart/testAddToCart";
 import RedirectLogin from "./components/TopBlockAuth/RedirectLogin";
 
 import store from "./store";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { setLoggedUser, unsetLoggedUser } from "./actions/login";
+import {setLoggedUser, unsetLoggedUser} from "./actions/login";
+
+import { SET_CART_FROM_LOCALSTORAGE, SET_ID_LOGGED_USER, getCart} from "./actions/cart";
 
 import "./scss/style.scss";
 
