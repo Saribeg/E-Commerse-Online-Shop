@@ -7,7 +7,7 @@
 .admin-nav-menu-block {
   width: 33.3%;
   min-height: 50vh;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   border-collapse: collapse;
 }
 
@@ -17,7 +17,7 @@
   height: 30px;
   line-height: 30px;
   padding-left: 10px;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .admin-nav-menu-block-content {
@@ -64,7 +64,7 @@
   display: block;
   overflow: hidden;
   cursor: pointer;
-  border: 2px solid #ffffff;
+  border: 2px solid #fff;
   border-radius: 20px;
 }
 
@@ -73,6 +73,7 @@
   width: 200%;
   margin-left: -100%;
   transition: margin 0.3s ease-in 0s;
+
   &::before,
   &::after {
     display: block;
@@ -92,14 +93,14 @@
     content: "ON";
     padding-left: 6px;
     background-color: #3ac5c9;
-    color: #ffffff;
+    color: #fff;
   }
 
   &::after {
     content: "OFF";
     padding-right: 6px;
     background-color: #e85764;
-    color: #ffffff;
+    color: #fff;
     text-align: right;
   }
 }
@@ -108,12 +109,12 @@
   display: block;
   width: 15px;
   margin: 5px;
-  background: #ffffff;
+  background: #fff;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 30px;
-  border: 2px solid #ffffff;
+  border: 2px solid #fff;
   border-radius: 20px;
   transition: all 0.3s ease-in 0s;
 }
@@ -123,7 +124,7 @@
 }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-  right: 0px;
+  right: 0;
 }
 
 .add-new-item-wrapper {
@@ -177,7 +178,7 @@
 
 .admin-nav-menu-reset {
   border: 1px solid #655f5f;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .admin-nav-menu-reset:focus {

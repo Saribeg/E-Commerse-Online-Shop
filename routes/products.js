@@ -93,7 +93,7 @@ router.get(
       category: req.params.category,
       subCategory: req.params.subCategory,
       furtherSubCategory: req.params.furtherSubCategory,
-      id: req.params.id
+      itemNo: req.params.id
     })
       .then(products => res.json(products))
       .catch(err => console.log(err));
