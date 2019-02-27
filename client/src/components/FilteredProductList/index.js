@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {NavLink} from "react-router-dom";
+import {NavLink, Route} from "react-router-dom";
 
 import Filters from "./Filters";
 import ProductListing from "../ProductListing";
@@ -12,7 +12,12 @@ class FilteredProductList extends Component {
     render() {
         return (
             <>
-                <BreadCrumbs/>
+
+                <Route exact path="/:category/:subcategory?/:furthersubcategory?" render={(props) => {
+                    return <BreadCrumbs {...props}/>
+                }}/>
+
+
                 <section className="category-block">
                     <div className="container">
                         <div className="category-content">
