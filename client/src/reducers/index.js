@@ -5,6 +5,7 @@ import navMenu from "./navMenu";
 import product from "./product";
 import categoryCarousel from "./categoryCarousel";
 import filters from "./filters";
+import productDetails from "./productDetails";
 
 //For Admin Dashboard
 import admNavMenu from "./adminDashboard/admNavMenuStates";
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   product,
   categoryCarousel,
   filters,
+  productDetails,
 
   //For Admin Dashboard
   admNavMenu
