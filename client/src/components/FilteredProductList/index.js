@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { getFilteredProducts } from "../../actions/filterActions";
 
 import Filters from "./Filters";
+import BreadCrumbs from "../BreadCrumbs";
 
 import "./filteredProductList.scss";
 
@@ -39,20 +40,23 @@ class FilteredProductList extends Component {
     });
 
     return (
-      <section class="category-block">
-        <div class="container">
-          <div class="category-content">
-            <Filters urlParams={this.props.match.params} />
+      <>
+        <BreadCrumbs cattest={this.props.match.params} />
+        <section className="category-block">
+          <div className="container">
+            <div className="category-content">
+              <Filters urlParams={this.props.match.params} />
 
-            <div class="category-product-listing">
-              <div class="listing-products">{filteredProductList}</div>
-              <div class="btn-loading-products">
-                <a to="/">loading</a>
+              <div class="category-product-listing">
+                <div class="listing-products">{filteredProductList}</div>
+                <div class="btn-loading-products">
+                  <a to="/">loading</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </>
     );
   }
 }

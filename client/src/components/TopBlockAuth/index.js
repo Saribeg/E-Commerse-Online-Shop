@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
@@ -13,6 +13,11 @@ import {
     LOGOUT_JWT_CURRENT_USER, unsetLoggedUser, checkLogin, goToProfile
 } from "../../actions/login";
 
+import { SET_CART_FROM_LOCALSTORAGE} from "../../actions/cart";
+
+
+
+
 import "./TopBlockAuth.scss";
 import Search from "../Search";
 
@@ -23,6 +28,10 @@ class TopBlockAuth extends Component {
 
     state = {
         modalFormOpen: false,
+    }
+
+    componentDidMount () {
+
     }
 
     openModal = () => {
@@ -166,9 +175,7 @@ class TopBlockAuth extends Component {
 
         let isModalOpen = this.state.modalFormOpen ? null : "d-none";
 
-
-        console.log('FRONT history')
-        console.log(this.props.history)
+        let isCartNotEmpty = this.props.amountCart ? null : "d-none";
 
         return (
             <div className="main-right">
@@ -203,8 +210,19 @@ class TopBlockAuth extends Component {
 
 
                     <div className="pruduct-cart-ico">
-                        <img src="/img/basket.png" alt=""/>
+                        <NavLink to="/cart">
+                            <img src="/img/basket.png" alt=""/>
+
+                            <p className={isCartNotEmpty}>{this.props.amountCart}</p>
+                        </NavLink>
                     </div>
+
+                    <div>
+                        <NavLink to="/addCart">
+                            додати товар
+                        </NavLink>
+                    </div>
+
 
                     <div className={`admin-dashboard ${isLogged}`}>
                         <NavLink className="admin-dashboard-link" to="/admin/dashboard">
@@ -256,7 +274,8 @@ class TopBlockAuth extends Component {
 const mapStateToProps = state => {
     return {
         windowsStatus: state.login.windowsStatus,
-        login: state.login
+        login: state.login,
+        amountCart: state.cart.amountInBasket,
     };
 };
 
@@ -285,7 +304,7 @@ const mapDispatchToProps = dispatch => {
             dispatch({type: LOGOUT_JWT_CURRENT_USER});
         },
         unsetLoggedUser: () => dispatch(unsetLoggedUser()),
-        goToProfile: (history) => dispatch(goToProfile(history)),
+        goToProfile: (history) => dispatch(goToProfile(history))
     };
 };
 
