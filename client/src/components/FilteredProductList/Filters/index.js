@@ -17,9 +17,9 @@ class Filters extends Component {
             <input className="filter-reset" type="button" value="reset" />
           </div>
         </div>
-        <CategoryFilter />
-        <ColorFilter />
+        <CategoryFilter urlParams={this.props.urlParams} />
         <PriceFilter />
+        <ColorFilter />
         <SizeFilter />
       </div>
     );

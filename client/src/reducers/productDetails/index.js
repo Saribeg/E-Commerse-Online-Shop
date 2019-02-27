@@ -8,7 +8,8 @@ const initialState = {
 	productOpened:  {
 		productFeatures: [
 			{ colorName: '',
-			  imageUrls: []			
+				imageUrls: [],
+				sizes: [{}]		
 			}
 		] 
 	}	

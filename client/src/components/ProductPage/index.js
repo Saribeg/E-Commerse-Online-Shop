@@ -1,63 +1,82 @@
-import React, { Component, Fragment } from 'react'
-import axios from 'axios';
-import PhotoGallery from './PhotoGallery';
-import ProductInfo from './ProductInfo';
+import React, { Component, Fragment } from "react";
+import axios from "axios";
+import PhotoGallery from "./PhotoGallery";
+import ProductInfo from "./ProductInfo";
 import { connect } from "react-redux";
-import {getProductDetails} from "../../actions/productDetails"
+import { getProductDetails } from "../../actions/productDetails";
 
 class ProductPage extends Component {
+  state = {
+    activeColor: this.props.activeColor,
+    productFeatures: [
+      {
+        color: "",
+        sizes: []
+      }
+    ]
+  };
 
-	state = {
-		activeColor: this.props.activeColor,
-		productFeatures: []
-	}
+  componentDidMount() {
+    this.props.getProductDetails(this.props.match.params);
+  }
 
-	componentDidMount(){
-		 this.props.getProductDetails(this.props.match.params);
-	}
+  changeColor = color => {
+    this.setState({ activeColor: color });
+  };
 
-	changeColor = (color) =>{
-			this.setState({activeColor: color})
-	}
-	
-	setInitialState = () => {
-		 const activeItem = this.props.productFeatures;
-		 
-	}
+  setInitialColor = array => {
+    return array[0].colorName;
+  };
 
-	render() {
-		const {itemNo, currentPrice, model} = {...this.props.productItem.productOpened};
-		const {productFeatures} = {...this.props};
-		const activeColor = this.state.activeColor;
+  setInitialState = () => {
+    const activeItem = this.props.productFeatures;
+  };
 
-		console.log(this.state);
-		return (
-		<section className="product-main container">
-	 	<PhotoGallery productFeatures ={productFeatures} activeColor={activeColor}/>
-		<ProductInfo colors={productFeatures}
-								 activeColor={activeColor}
-								 itemNo={itemNo}
-								 currentPrice={currentPrice}
-								 model={model}
-								 changeColor={this.changeColor}
-								 />
-		</section>
-)
+  render() {
+    const { itemNo, currentPrice, model } = {
+      ...this.props.productItem.productOpened
+    };
+    const { productFeatures } = { ...this.props };
+    let activeColor = this.state.activeColor;
+
+    if (activeColor == "") {
+      activeColor = this.setInitialColor(productFeatures);
+    }
+
+    return (
+      <section className="product-main container">
+        <PhotoGallery
+          productFeatures={productFeatures}
+          activeColor={activeColor}
+        />
+        <ProductInfo
+          productFeatures={productFeatures}
+          activeColor={activeColor}
+          itemNo={itemNo}
+          currentPrice={currentPrice}
+          model={model}
+          changeColor={this.changeColor}
+        />
+      </section>
+    );
+  }
 }
-}
 
-const mapStateToProps = (state) => {
-	return {
-		productItem: state.productDetails,
-		productFeatures: state.productDetails.productOpened.productFeatures,
-		activeColor: state.product.activeColor
-	}
-}
+const mapStateToProps = state => {
+  return {
+    productItem: state.productDetails,
+    productFeatures: state.productDetails.productOpened.productFeatures,
+    activeColor: state.product.activeColor
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		getProductDetails: (data) => dispatch(getProductDetails(data))
-	}
-}
+const mapDispatchToProps = dispatch => {
+  return {
+    getProductDetails: data => dispatch(getProductDetails(data))
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductPage);
