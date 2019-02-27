@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
+// @flow
+import * as React from 'react';
 import ProductColors from './ProductColors';
 
-class ProductInfo extends Component {
+type Props = {
+	currentPrice: number,
+  itemNo?: string,
+};
+
+class ProductInfo extends React.Component<Props> {
 	render() {
 		const {itemNo, currentPrice, model, colors, activeColor} = {...this.props};
 		

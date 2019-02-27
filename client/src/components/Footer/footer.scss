@@ -7,7 +7,7 @@
 .footer-list {
   @include flex-between;
 
-  padding: 45px 0 134px;
+  padding: 45px 0;
   color: #fff;
 
   @include max-width($landscape-tablet) {
