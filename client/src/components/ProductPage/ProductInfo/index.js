@@ -2,6 +2,7 @@
 import * as React from 'react';
 import ProductColors from './ProductColors';
 
+class ProductInfo extends Component {
 type Props = {
 	currentPrice: number,
   itemNo?: string,
@@ -10,8 +11,8 @@ type Props = {
 class ProductInfo extends React.Component<Props> {
 	render() {
 		const {itemNo, currentPrice, model, colors, activeColor} = {...this.props};
-		
-		return (			
+
+		return (
 	<div className="product-main-info">
 			<h2 className="product-title">{model}</h2>
 			<span className="product-meta">Item No. {itemNo}</span>
@@ -20,7 +21,7 @@ class ProductInfo extends React.Component<Props> {
 			<ProductColors colors={colors} activeColor={activeColor} changeColor={this.props.changeColor}/>
 </div>
 	)
-	
+
 	}
 }
 
