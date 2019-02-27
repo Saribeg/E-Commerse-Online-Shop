@@ -6,9 +6,12 @@ export default class ProductCounter extends Component {
 			value: 0
 	}
 
-	increaseCount = () => {
+	increaseCount = (maxcount) => {
 			let existValue = this.state.value;
-			existValue++;
+			if (existValue > (maxcount -1)){
+				return;
+			}
+			++existValue;
 			this.setState({
 				value: existValue
 			})
@@ -16,6 +19,9 @@ export default class ProductCounter extends Component {
 
 	decreaseCount = () => {
 		let existValue = this.state.value;
+		if( existValue <=0 ){
+			return;
+		}		
 		existValue--;
 		this.setState({
 			value: existValue
@@ -26,7 +32,7 @@ export default class ProductCounter extends Component {
 			<div className="product-counter">
 			<button className="product-counter-btn" onClick={this.decreaseCount}>-</button>
 			<span className="product-counter-value">{this.state.value}</span>
-			<button className="product-counter-btn" onClick={this.increaseCount}>+</button>
+			<button className="product-counter-btn" onClick={() => this.increaseCount(this.props.maxCount)}>+</button>
 	</div>
     );
   }

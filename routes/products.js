@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product");
+const Cart = require("../models/Cart");
 const uniqueRandom = require("unique-random");
 const rand = uniqueRandom(0, 999999);
 
@@ -98,5 +99,41 @@ router.get(
       .catch(err => console.log(err));
   }
 );
+
+//Get filtered products
+router.post("/products/filtered-products", (req, res) => {
+  let category, subCategory, furtherSubCategory, colorName, size;
+
+  if (req.body.category) category = req.body.category;
+  if (req.body.subCategory) subCategory = req.body.subCategory;
+  if (req.body.furtherSubCategory)
+    furtherSubCategory = req.body.furtherSubCategory;
+  if (req.body.colorName) colorName = req.body.colorName;
+  if (req.body.size) size = req.body.size;
+
+  let filters = {
+    category,
+    subCategory,
+    furtherSubCategory,
+    "productFeatures.colorName": colorName,
+    "productFeatures.sizes.size": size
+  };
+
+  function filter(data) {
+    let query = {};
+
+    for (let key in data) {
+      if (data[key] !== undefined) {
+        query[key] = data[key];
+      }
+    }
+
+    return query;
+  }
+
+  Product.find(filter(filters))
+    .then(products => res.json(products))
+    .catch(err => console.log(err));
+});
 
 module.exports = router;
