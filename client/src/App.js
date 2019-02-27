@@ -61,7 +61,8 @@ class App extends Component {
             exact
             path="/:category/:subcategory?/:furthersubcategory?"
             component={FilteredProductList}
-          /> 
+          />
+
         </Switch>
         <Footer />
       </Fragment>
