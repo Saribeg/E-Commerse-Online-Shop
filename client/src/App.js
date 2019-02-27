@@ -24,6 +24,7 @@ import {setLoggedUser, unsetLoggedUser} from "./actions/login";
 import { SET_CART_FROM_LOCALSTORAGE, SET_ID_LOGGED_USER, getCart} from "./actions/cart";
 
 import "./scss/style.scss";
+import Unsubscribe from "./components/Unsubscribe";
 
 library.add(faQuestion);
 
@@ -62,17 +63,16 @@ class App extends Component {
           <Route exact path="/" component={MainPage} />
           <Route path="/users/profile" component={Profile} />
           <Route exact path="/login" component={RedirectLogin} />
-
-            <Route exact path="/cart" component={Cart}/>
-            <Route exact path="/addCart" component={TestAddToCart}/>
+          <Route exact path="/cart" component={Cart}/>
+          <Route exact path="/addCart" component={TestAddToCart}/>
           <Route path="/admin/dashboard" component={AdminDashboard} />
           <Route exact path="/:category/:subCategory/:furtherSubCategory/:id" component={ProductPage}/>
           <Route
-            exact
-            path="/:category/:subcategory?/:furthersubcategory?"
-            component={FilteredProductList}
+                exact
+                path="/:category/:subcategory?/:furthersubcategory?"
+                component={FilteredProductList}
           />
-
+          <Route exact path="/unsubscribe/:id" component={Unsubscribe} />
         </Switch>
         <Footer />
       </Fragment>
