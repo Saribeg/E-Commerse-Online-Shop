@@ -3,8 +3,9 @@ import { reducer as formReducer } from "redux-form";
 import login from "./login";
 import navMenu from "./navMenu";
 import product from "./product";
+import categoryCarousel from "./categoryCarousel";
+import filters from "./filters";
 import productDetails from "./productDetails";
-import categoryCarousel from "./categoryCarousel"
 
 //For Admin Dashboard
 import admNavMenu from "./adminDashboard/admNavMenuStates";
@@ -15,7 +16,9 @@ const rootReducer = combineReducers({
   form: formReducer,
   product,
   categoryCarousel,
+  filters,
   productDetails,
+
   //For Admin Dashboard
   admNavMenu
 });

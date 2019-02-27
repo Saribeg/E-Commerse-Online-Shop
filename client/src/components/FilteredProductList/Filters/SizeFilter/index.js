@@ -2,37 +2,48 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Select from "react-select";
 
-import "./sizeFilter.scss";
+import { selectFilters } from "../../../../actions/filterActions";
 
-const options = [
-  { value: "XS", label: "XS" },
-  { value: "S", label: "S" },
-  { value: "M", label: "M" },
-  { value: "L", label: "L" },
-  { value: "XL", label: "XL" }
-];
+import Preloader from "../../../Preloader";
+
+import "./sizeFilter.scss";
 
 class SizeFilter extends Component {
   state = {
     selectedOption: null
   };
 
-  handleChange = selectedOption => {
+  sizeFilterChange = selectedOption => {
     this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+    this.props.selectFilters(this.props.currentFilters, {
+      size: selectedOption.value
+    });
   };
 
   render() {
     const { selectedOption } = this.state;
+    const { sizeFilters, sizeOptions, isFilterFetching } = this.props;
 
     return (
       <Select
         value={selectedOption}
-        onChange={this.handleChange}
-        options={options}
+        onChange={this.sizeFilterChange}
+        options={sizeOptions}
       />
     );
   }
 }
 
-export default connect()(SizeFilter);
+const mapStateToProps = state => {
+  return {
+    sizeFilters: state.filters.sizeFilters,
+    sizeOptions: state.filters.sizeOptions,
+    isFilterFetching: state.filters.isFilterFetching,
+    currentFilters: state.filters.selected
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { selectFilters }
+)(SizeFilter);
