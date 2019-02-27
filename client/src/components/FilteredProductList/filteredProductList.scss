@@ -26,3 +26,15 @@
     }
   }
 }
+
+.product-price {
+  display: inline-block;
+}
+
+.previous-price {
+  display: inline-block;
+  margin-left: 30px;
+  font-size: 13px;
+  color: gray;
+  text-decoration: line-through;
+}

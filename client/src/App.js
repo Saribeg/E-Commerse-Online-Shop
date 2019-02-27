@@ -7,12 +7,11 @@ import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MainPage from "./components/MainPage";
-import Profile from "./components/Profile";
 import ProductPage from "./components/ProductPage";
+import Profile from "./components/Profile";
+// import ProductPage from "./components/ProductPage";
 import FilteredProductList from "./components/FilteredProductList";
 import AdminDashboard from "./components/AdminDashboard";
-import Cart from "./components/Cart";
-import TestAddToCart from "./components/Cart/testAddToCart";
 import RedirectLogin from "./components/TopBlockAuth/RedirectLogin";
 
 import store from "./store";
@@ -71,9 +70,7 @@ class App extends Component {
             path="/:category/:subcategory?/:furthersubcategory?"
             component={FilteredProductList}
           />
-          <Route path="/admin/dashboard" component={AdminDashboard} />
 
-          {/*<Route exact path="/product/1" component={ProductPage}/>*/}
         </Switch>
         <Footer />
       </Fragment>
