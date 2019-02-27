@@ -110,8 +110,6 @@ class TestAddToCart extends Component {
 
 
         });
-
-
         return (
             <>
 

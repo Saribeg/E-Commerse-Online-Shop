@@ -1,6 +1,8 @@
 import {
     ADD_ITEM_TO_CART, CHANGE_AMOUT_OF_ITEM, SET_CART_FROM_LOCALSTORAGE,
-    SET_ID_LOGGED_USER, SET_ID_CART_FROM_DB, SET_DATA_CART_FROM_DB, addNewCart, updateCart
+    SET_ID_LOGGED_USER, SET_ID_CART_FROM_DB, SET_DATA_CART_FROM_DB,
+    CLEAR_CART_ON_LOGOUT, CART_FROM_LOCALSTORAGE_TO_DB,
+    addNewCart, updateCart
 } from '../../actions/cart'
 
 
@@ -75,8 +77,29 @@ function cart(state = initialState, action) {
             return {
                 ...state,
                 idCartInDB: action.payload.infoDB._id,
+                idUser: action.payload.infoDB.idUser,
                 arrayProduct: action.payload.infoDB.arrayProduct,
                 amountInBasket: countAmount(action.payload.infoDB.arrayProduct),
+            }
+
+        case CART_FROM_LOCALSTORAGE_TO_DB:
+
+            return {
+                ...state,
+                idCartInDB: action.payload.infoDB._id,
+                idUser: action.payload.infoDB.idUser,
+                arrayProduct: action.payload.infoDB.arrayProduct,
+                amountInBasket: countAmount(action.payload.infoDB.arrayProduct),
+            }
+
+        case CLEAR_CART_ON_LOGOUT:
+
+            return {
+                amountInBasket: 0,
+                idUser: '',
+                idCartInDB: '',
+                arrayProduct: [],
+                arrayCheckout: [],
             }
 
         case ADD_ITEM_TO_CART:

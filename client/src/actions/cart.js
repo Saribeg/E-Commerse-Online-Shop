@@ -6,23 +6,22 @@ export const CHANGE_AMOUT_OF_ITEM = 'CHANGE_AMOUT_OF_ITEM';
 
 export const SET_CART_FROM_LOCALSTORAGE = 'SET_CART_FROM_LOCALSTORAGE';
 
+export const CART_FROM_LOCALSTORAGE_TO_DB = 'CART_FROM_LOCALSTORAGE_TO_DB';
+
 export const SET_ID_LOGGED_USER = 'SET_ID_LOGGED_USER';
 
 export const SET_ID_CART_FROM_DB = 'SET_ID_CART_FROM_DB';
 
 export const SET_DATA_CART_FROM_DB = 'SET_DATA_CART_FROM_DB';
 
+export const CLEAR_CART_ON_LOGOUT = 'CLEAR_CART_ON_LOGOUT';
+
 export function getCart(userId) {
 
     axios.post('/getCart', userId)
         .then(res => res.data)
         .then(data => {
-
-            console.log('data', data)
-
             let readyData = JSON.parse(data.infoDB);
-
-            console.log('readyData', readyData)
 
                 if (data.success) {
                     store.dispatch({type: SET_DATA_CART_FROM_DB, payload: {infoDB: readyData}})

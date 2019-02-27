@@ -48,10 +48,7 @@ if (localStorage.jwtToken) {
         //Redirect to login
         window.location.href = "/";
     }
-}
-
-
-if (localStorage.savedCart) {
+} else if (localStorage.savedCart) {
     store.dispatch({type: SET_CART_FROM_LOCALSTORAGE, payload: {arrLS: JSON.parse(localStorage.savedCart)}})
 }
 
@@ -60,7 +57,7 @@ class App extends Component {
 
     render() {
 
-        // localStorage.setItem("savedCart", null);
+        // localStorage.removeItem("savedCart");
         return (
             <Fragment>
                 <Header/>
