@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import PhotoGallery from "./PhotoGallery";
 import ProductInfo from "./ProductInfo";

@@ -3,7 +3,8 @@ import "./photo-gallery.scss";
 
 export default class PhotoGallery extends Component {
   state = {
-    activePhotoSrc: ""
+		activePhotoSrc: "",
+		activeColor: this.props.activeColor
   };
 
   changeMainPhoto = url => {
@@ -23,10 +24,12 @@ export default class PhotoGallery extends Component {
       let active = this.props.activeColor === elem.colorName;
       if (active) {
         firstPhoto = elem.imageUrls[0];
-        console.log(firstPhoto);
+				console.log(firstPhoto);
+				console.log(firstPhoto);
         return elem.imageUrls.map(elem => {
           return (
             <img
+						  key={elem._id}
               className={`all-photos-item`}
               src={elem}
               alt="pants"
@@ -36,7 +39,7 @@ export default class PhotoGallery extends Component {
         });
       }
     });
-    if (this.state.activePhotoSrc === "") {
+    if (this.state.activePhotoSrc === "" || this.state.activeColor) {
       this.changeMainPhoto(firstPhoto);
     }
 
