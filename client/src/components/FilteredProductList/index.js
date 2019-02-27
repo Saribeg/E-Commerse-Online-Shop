@@ -47,36 +47,17 @@ class FilteredProductList extends Component {
                         <div className="category-content">
                             <Filters urlParams={this.props.match.params}/>
 
-                            <div className="category-product-listing">
-                                <div className="listing-products">
-                                    {filteredProductList}
-
-                                    {/* <NavLink to="/" class="product-item">
-                  <img src="../img/featured.png" alt="" class="product-img" />
-                  <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
-                  <p class="product-price">$599.00</p>
-                </NavLink>
-                <NavLink to="/" class="product-item">
-                  <img src="../img/featured.png" alt="" class="product-img" />
-                  <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
-                  <p class="product-price">$599.00</p>
-                </NavLink>
-                <NavLink to="/" class="product-item">
-                  <img src="../img/featured.png" alt="" class="product-img" />
-                  <p class="product-name">No-Iron Easy Care Sleeveless Shirt</p>
-                  <p class="product-price">$599.00</p>
-                </NavLink> */}
-                                </div>
-                                <div className="btn-loading-products">
-                                    <NavLink to="/">loading</NavLink>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </>
-        );
-    }
+            <div class="category-product-listing">
+              <div class="listing-products">{filteredProductList}</div>
+              <div class="btn-loading-products">
+                <a to="/">loading</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 }
 
 const mapStateToProps = state => {
