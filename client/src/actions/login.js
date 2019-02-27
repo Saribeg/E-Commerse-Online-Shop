@@ -1,6 +1,10 @@
 import axios from 'axios';
+
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
+
+import {CLEAR_CART_ON_LOGOUT, SET_DATA_CART_FROM_DB, CART_FROM_LOCALSTORAGE_TO_DB} from "./cart";
+import store from "../store";
 
 export const SET_LOGGED = 'SET_LOGGED';
 export const LOGOUT = 'LOGOUT';
@@ -34,6 +38,49 @@ export const LOGOUT_JWT_CURRENT_USER = 'LOGOUT_JWT_CURRENT_USER';
 export const SAVE_HISTORY_PATH = 'SAVE_HISTORY_PATH';
 
 
+function checkSavedCart(userId) {
+
+    if (localStorage.savedCart) {
+        let sendObj = {
+            userId: userId.idUser,
+            arrLS: localStorage.savedCart
+        }
+
+        axios.post('/setSavedCart', sendObj)
+            .then(res => res.data)
+            .then(data => {
+                    if (data.success) {
+                        localStorage.removeItem("savedCart");
+                        store.dispatch({type: CART_FROM_LOCALSTORAGE_TO_DB, payload: {infoDB: data.item}})
+                    }
+
+                }
+            )
+
+    } else {
+        axios.post('/getCart', userId)
+            .then(res => res.data)
+            .then(data => {
+
+                    if (data.success) {
+                        let readyData = JSON.parse(data.infoDB);
+                        console.log('readyData', readyData)
+
+                        store.dispatch({type: SET_DATA_CART_FROM_DB, payload: {infoDB: readyData}})
+                    }
+
+                }
+            )
+            .catch(err => console.log(err))
+    }
+
+    // console.log('checkSavedCart', userId)
+
+    // }
+
+}
+
+
 export const setLoggedUser = decoded => {
     return {
         type: SET_JWT_CURRENT_USER,
@@ -51,6 +98,9 @@ export const unsetLoggedUser = () => dispatch => {
     dispatch({
         type: LOGOUT_JWT_CURRENT_USER,
     });
+    dispatch({
+        type: CLEAR_CART_ON_LOGOUT,
+    });
 
 
 };
@@ -63,9 +113,8 @@ export function goToProfile(history) {
         axios.get('/users/profile')
             .then(res => res.data)
             .then(data => {
-                dispatch({type: CLOSE_LOGIN_DETAILS})
-            }
-
+                    dispatch({type: CLOSE_LOGIN_DETAILS})
+                }
             )
             .catch(err => {
                 dispatch({type: CLOSE_LOGIN_DETAILS});
@@ -87,7 +136,7 @@ export function checkRedirectLogin(loginForm, history, link) {
                         dispatch({type: INCORRECT_LOGIN})
                     } else {
 
-                        const { token } = data;
+                        const {token} = data;
                         localStorage.setItem("jwtToken", token);
                         //Set token to Auth header
                         setAuthToken(token);
@@ -114,7 +163,7 @@ export function checkLogin(loginForm) {
                     if (data.success === false) {
                         dispatch({type: INCORRECT_LOGIN})
                     } else {
-                        const { token } = data;
+                        const {token} = data;
                         localStorage.setItem("jwtToken", token);
                         //Set token to Auth header
                         setAuthToken(token);
@@ -122,6 +171,8 @@ export function checkLogin(loginForm) {
                         const decoded = jwt_decode(token);
                         //Set current user
                         dispatch(setLoggedUser(decoded._doc));
+
+                        checkSavedCart({idUser: decoded._doc._id});
 
                         // if login is succesfull then add and change info to store of redux
                     }
