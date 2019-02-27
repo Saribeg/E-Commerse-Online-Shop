@@ -4,6 +4,7 @@ import PhotoGallery from "./PhotoGallery";
 import ProductInfo from "./ProductInfo";
 import { connect } from "react-redux";
 import { getProductDetails } from "../../actions/productDetails";
+import BreadCrumbs from "../BreadCrumbs";
 
 class ProductPage extends Component {
   state = {
@@ -18,6 +19,7 @@ class ProductPage extends Component {
 
   componentDidMount() {
     this.props.getProductDetails(this.props.match.params);
+    console.log("===============", this.props.match.params);
   }
 
   changeColor = color => {
@@ -44,7 +46,10 @@ class ProductPage extends Component {
     }
 
     return (
-      <section className="product-main container">
+        <>
+          <BreadCrumbs cattest={this.props.match.params}/>
+
+          <section className="product-main container">
         <PhotoGallery
           productFeatures={productFeatures}
           activeColor={activeColor}
@@ -58,6 +63,7 @@ class ProductPage extends Component {
           changeColor={this.changeColor}
         />
       </section>
+          </>
     );
   }
 }
