@@ -4,27 +4,38 @@ import './product-sizes.scss'
 
 export default class ProductSizes extends Component {
   state = {
-    productCount: 0
+		productCount: 0, 
+		chosenSize: ''
   };
 
-  getAvailableSizes = maxcount => {
-    this.setState({
-      productCount: maxcount
-    });
-    console.log(this.state);
+  choseSizes = (maxcount, chosenSize) => {
+		if(maxcount, chosenSize){
+			this.setState({
+				productCount: maxcount,
+				chosenSize: chosenSize
+			});
+			console.log(this.state);
+		}
+   
   };
-
+  
   render() {
-    let productFeatures = this.props.productFeatures;
 
+		let productFeatures = this.props.productFeatures;
+		let chosenSize = this.state.chosenSize;
+		
     let sizes = productFeatures.map(elem => {
-      if (elem.colorName === this.props.activeColor) {
+      if (elem.colorName === this.props.activeColor) {			
         return elem.sizes.map(elem => {
           if (Number(elem.quantity) > 0) {
+				if (this.state.chosenSize === "") {
+					console.log(elem.size)
+					this.choseSizes(elem.quantity, elem.size);
+				}
             return (
               <li key={elem._id}
                 className="size-item"
-                onClick={() => this.getAvailableSizes(elem.quantity)}
+                onClick={() => this.choseSizes(elem.quantity, elem.size)}
               >
                 {elem.size}
               </li>
@@ -32,7 +43,9 @@ export default class ProductSizes extends Component {
           }
         });
       }
-    });
+		});
+		
+	
 
     return (
       <Fragment>

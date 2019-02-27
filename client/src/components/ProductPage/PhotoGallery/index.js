@@ -10,7 +10,7 @@ export default class PhotoGallery extends Component {
   changeMainPhoto = url => {
     if (url) {
       this.setState({
-        activePhotoSrc: url
+				activePhotoSrc: url
       });
     }
   };
@@ -18,28 +18,26 @@ export default class PhotoGallery extends Component {
     let productFeatures = this.props.productFeatures;
     let firstPhoto = null;
 
-    let mainPhoto = <img src={this.state.activePhotoSrc} alt="pants" />;
+    let mainPhoto = <img src={this.state.activePhotoSrc} alt="img" />;
 
     let photoGallery = productFeatures.map(elem => {
       let active = this.props.activeColor === elem.colorName;
       if (active) {
         firstPhoto = elem.imageUrls[0];
-				console.log(firstPhoto);
-				console.log(firstPhoto);
         return elem.imageUrls.map(elem => {
           return (
             <img
 						  key={elem._id}
               className={`all-photos-item`}
               src={elem}
-              alt="pants"
+              alt={this.state.activeColor}
               onClick={() => this.changeMainPhoto(elem)}
             />
           );
         });
       }
     });
-    if (this.state.activePhotoSrc === "" || this.state.activeColor) {
+    if (this.state.activePhotoSrc === "") {
       this.changeMainPhoto(firstPhoto);
     }
 
