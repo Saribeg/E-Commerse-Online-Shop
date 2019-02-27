@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import MainPage from "./components/MainPage";
 import ProductPage from "./components/ProductPage";
 import Profile from "./components/Profile";
+import Cart from "./components/Cart";
+import TestAddToCart from "./components/Cart/testAddToCart";
 // import ProductPage from "./components/ProductPage";
 import FilteredProductList from "./components/FilteredProductList";
 import AdminDashboard from "./components/AdminDashboard";

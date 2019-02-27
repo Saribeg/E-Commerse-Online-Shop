@@ -3,7 +3,6 @@ import {reducer as formReducer} from "redux-form";
 import login from "./login";
 import navMenu from "./navMenu";
 import product from "./product";
-import categoryCarousel from "./categoryCarousel";
 import filters from "./filters";
 import productDetails from "./productDetails";
 import categoryCarousel from "./categoryCarousel"
