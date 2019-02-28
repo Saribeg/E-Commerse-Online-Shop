@@ -6,6 +6,7 @@ import { getFilteredProducts } from "../../actions/filterActions";
 
 import Filters from "./Filters";
 import BreadCrumbs from "../BreadCrumbs";
+import ProductCard from "../ProductCard";
 
 import "./filteredProductList.scss";
 
@@ -21,20 +22,29 @@ class FilteredProductList extends Component {
     let filteredProductList = products.map(product => {
       return product.productFeatures.map(color => {
         return (
-          <NavLink to={product.productUrl} className="product-item">
-            <img
-              src={color.imageUrls[0]}
-              alt={product.model}
-              className="product-img"
-            />
-            <p className="product-name">{`${product.model} (${
-              color.colorName
-            })`}</p>
-            <p className="product-price">{`$${product.currentPrice}`}</p>
-            {product.previousPrice ? (
-              <span className="previous-price"> {product.previousPrice} </span>
-            ) : null}
-          </NavLink>
+          <ProductCard
+            productUrl={product.productUrl}
+            key={product._id}
+            imageUrl={color.imageUrls[0]}
+            model={product.model}
+            colorName={color.colorName}
+            currentPrice={product.currentPrice}
+            previousPrice={product.previousPrice}
+          />
+          // <NavLink to={product.productUrl} className="product-item">
+          //   <img
+          //     src={color.imageUrls[0]}
+          //     alt={product.model}
+          //     className="product-img"
+          //   />
+          //   <p className="product-name">{`${product.model} (${
+          //     color.colorName
+          //   })`}</p>
+          //   <p className="product-price">{`$${product.currentPrice}`}</p>
+          //   {product.previousPrice ? (
+          //     <span className="previous-price"> {product.previousPrice} </span>
+          //   ) : null}
+          // </NavLink>
         );
       });
     });
