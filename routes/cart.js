@@ -101,6 +101,7 @@ router.post('/addCart', (req, res) => {
 
 router.post('/updateCart', (req, res) => {
 
+
     Cart.update({_id: req.body.idCartInDB}, {
         $set: {
             arrayProduct: JSON.parse(req.body.arrayProduct)

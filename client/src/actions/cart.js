@@ -2,7 +2,9 @@ import axios from 'axios';
 import store from "../store";
 
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
+export const DELETE_ITEM_TO_CART = 'DELETE_ITEM_TO_CART';
 export const CHANGE_AMOUT_OF_ITEM = 'CHANGE_AMOUT_OF_ITEM';
+export const CHANGE_ARRAY_AMOUT_OF_ITEM = 'CHANGE_ARRAY_AMOUT_OF_ITEM';
 
 export const SET_CART_FROM_LOCALSTORAGE = 'SET_CART_FROM_LOCALSTORAGE';
 
@@ -15,6 +17,9 @@ export const SET_ID_CART_FROM_DB = 'SET_ID_CART_FROM_DB';
 export const SET_DATA_CART_FROM_DB = 'SET_DATA_CART_FROM_DB';
 
 export const CLEAR_CART_ON_LOGOUT = 'CLEAR_CART_ON_LOGOUT';
+
+
+
 
 export function getCart(userId) {
 
