@@ -65,7 +65,7 @@ const ProductSchema = new Schema({
     }
   ],
   withdrawnFromSale: {
-    type: String,
+    type: Boolean,
     required: true,
     default: false
   },

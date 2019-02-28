@@ -18,22 +18,29 @@ class Subscribe extends Component {
             mail: this.state.mail
         };
         axios.post('/subscribe', {subMail});
-        console.log(subMail.mail)
+        this.setState({mail: ''})
     };
 
     render() {
 
         return (
             <>
-                <div className="subscribe-section">
-                    <h4 className="subscribe-text">Subscribe</h4>
-                    <p className="subscribe-info">Get the day’s top news stories<br/>delivered to your inbox</p>
-                    <form onSubmit={this.sendMail} className="input-form">
-                        <input onChange={this.handleChange} id='subscribe-mail' className="input-email__text" type="email"
-                               placeholder="Enter your email here..." value={this.state.mail}/>
-                        <input id='subscribe-btn' type="submit" className="subscribe-button" value='SUBSCRIBE'/>
-                    </form>
-                </div>
+                <section className="section-subscribe">
+                    <div className="container">
+                        <div className="subscribe">
+                            <h2 className="subscribe-title">Subscribe</h2>
+                            <div className="subscribe-description">Get the day’s top news stories delivered to your
+                                inbox
+                            </div>
+                            <form onSubmit={this.sendMail} className="subscribe-form">
+                                <input onChange={this.handleChange} id='subscribe-mail' type="text"
+                                       className="subscribe-email" placeholder="Enter your email here..."
+                                       value={this.state.mail}/>
+                                <input id='subscribe-btn' type="submit" className="subscribe-btn" value='SUBSCRIBE'/>
+                            </form>
+                        </div>
+                    </div>
+                </section>
             </>
         )
     }

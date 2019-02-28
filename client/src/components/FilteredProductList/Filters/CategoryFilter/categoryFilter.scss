@@ -2,6 +2,16 @@
 
 .category-list {
   padding-bottom: 57px;
+  display: flex;
+  flex-direction: column;
+
+  .filter-title {
+    color: #ff6008;
+
+    &-active {
+      color: #ff6008;
+    }
+  }
 
   .category-list-menu {
     .category-item {
@@ -16,6 +26,15 @@
         text-transform: uppercase;
         margin-bottom: 15px;
         position: relative;
+        transition: all 0.3s ease;
+
+        &-active {
+          color: #ff6008;
+        }
+
+        &:hover {
+          color: #ff6008;
+        }
 
         &::before {
           content: url("../../../../img/arrow.png");
@@ -25,18 +44,31 @@
       }
 
       &-sub-menu {
-        li {
+        .further-sub-category-item {
           margin-bottom: 15px;
 
-          a {
+          .further-sub-category-link {
             font-family: $font-openSans;
             font-size: 14px;
             letter-spacing: 1px;
             color: $black;
             text-transform: uppercase;
+            transition: all 0.3s ease;
+
+            &-active {
+              color: #ff6008;
+            }
+
+            &:hover {
+              color: #ff6008;
+            }
           }
         }
       }
     }
   }
+}
+
+.filter-title-active {
+  color: #ff6008;
 }
