@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +11,6 @@ import ProductPage from "./components/ProductPage";
 import Profile from "./components/Profile";
 import Cart from "./components/Cart";
 import TestAddToCart from "./components/Cart/testAddToCart";
-// import ProductPage from "./components/ProductPage";
 import FilteredProductList from "./components/FilteredProductList";
 import AdminDashboard from "./components/AdminDashboard";
 import RedirectLogin from "./components/TopBlockAuth/RedirectLogin";
@@ -27,8 +26,8 @@ import {
   getCart
 } from "./actions/cart";
 
-import "./scss/style.scss";
 import Unsubscribe from "./components/Unsubscribe";
+import "./scss/style.scss";
 
 library.add(faQuestion);
 
@@ -67,7 +66,7 @@ if (localStorage.jwtToken) {
 class App extends Component {
   render() {
     return (
-      <Fragment>
+      <>
         <Header />
         <Switch>
           <Route exact path="/" component={MainPage} />
@@ -83,14 +82,13 @@ class App extends Component {
           />
           <Route
             exact
-            path="/:category/:subcategory?/:furthersubcategory?"
+            path="/:category/:subCategory?/:furtherSubCategory?"
             component={FilteredProductList}
           />
-          {/*<Route exact path="/product/1" component={ProductPage}/>*/}
           <Route exact path="/unsubscribe/:id" component={Unsubscribe} />
         </Switch>
         <Footer />
-      </Fragment>
+      </>
     );
   }
 }
