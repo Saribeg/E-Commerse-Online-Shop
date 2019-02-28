@@ -1,0 +1,28 @@
+.about-us {
+    
+    &__wrapper {
+        @include flex-center-between;
+        padding-bottom: 30px;
+        @media (max-width: 600px){
+            flex-direction: column;
+        }
+    }
+    &__content{
+        color: $black;
+        line-height: 135%;
+        padding: 15px;
+    }
+    &__title{
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        padding-bottom: 5px;
+    }
+    &__paragraph{
+        padding: 10px;
+        &:first-child{
+            padding-bottom: 25px;
+            border-bottom: 1px solid $grey-light;
+        }
+    }
+}
