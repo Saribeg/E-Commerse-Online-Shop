@@ -62,16 +62,16 @@ class FilteredProductList extends Component {
 
     return (
       <>
-        <BreadCrumbs cattest={this.props.match.params} />
+        <BreadCrumbs categoryAway={this.props.match.params} />
         <section className="category-block">
           <div className="container">
             <div className="category-content">
               <Filters urlParams={this.props.match.params} />
 
-              <div class="category-product-listing">
-                <div class="listing-products">{filteredProductList}</div>
-                <div class="btn-loading-products">
-                  <a to="/">loading</a>
+              <div className="category-product-listing">
+                <div className="listing-products">{filteredProductList}</div>
+                <div className="btn-loading-products">
+                  <NavLink to="/">loading</NavLink>
                 </div>
               </div>
             </div>

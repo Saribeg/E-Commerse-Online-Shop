@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-
+const staticPages = require("./routes/staticPages");
 
 const users = require("./routes/users");
 const navigationMenuItems = require("./routes/navigationMenuItems");
@@ -43,7 +43,7 @@ app.use("/", footerLinks);
 app.use("/", colors);
 app.use("/", sizes);
 app.use("/", cart);
-
+app.use("/", staticPages);
 
 app.use("/", categoryCarousels);
 const port = process.env.PORT || 5000;
