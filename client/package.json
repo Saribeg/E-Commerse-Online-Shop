@@ -32,7 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "scss": "stylelint '**/*.scss'"
+    "scss": "stylelint '**/*.scss' --fix",
+    "flow": "flow"
   },
   "stylelint": {
     "extends": "stylelint-config-standard"
@@ -47,6 +48,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "flow-bin": "^0.93.0",
     "node-sass": "^4.11.0"
   }
 }

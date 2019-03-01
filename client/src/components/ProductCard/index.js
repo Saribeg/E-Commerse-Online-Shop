@@ -1,17 +1,26 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import "./CardProduct.scss";
 
 class ProductCard extends Component {
   render() {
+    let {
+      productUrl,
+      id,
+      imageUrl,
+      model,
+      colorName,
+      currentPrice,
+      previousPrice
+    } = this.props;
     return (
-      <>
-        <NavLink to={`/product/1`} className="product-item">
-          <img src="../../img/featured.png" alt="" className="product-img" />
-          <p className="product-name">No-Iron Easy Care Sleeveless Shirt</p>
-          <p className="product-price">$599.00</p>
-        </NavLink>
-      </>
+      <NavLink to={productUrl} key={id} className="product-item">
+        <img src={imageUrl} alt={model} className="product-img" />
+        <p className="product-name">{`${model} (${colorName})`}</p>
+        <p className="product-price">{`$${currentPrice}`}</p>
+        {previousPrice ? (
+          <span className="previous-price"> {previousPrice} </span>
+        ) : null}
+      </NavLink>
     );
   }
 }

@@ -33,7 +33,7 @@ class CategoryCarousel extends Component {
                 <section className="shop-category">
                     <div className="container">
                         <h2 className="category-title">Shop</h2>
-                        <div className="category-list">
+                        <div className="category-listing">
                             {this.props.isCategoriesFetching ? <Preloader/> : listCategories}
                         </div>
                     </div>

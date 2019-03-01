@@ -1,0 +1,63 @@
+@import '../../scss/resources/resources';
+
+.section-unsubscribe {
+  padding: 65px 0;
+}
+
+.unsubscribe {
+  @include flex-center-between;
+
+  @include max-width($landscape-tablet) {
+    flex-direction: column;
+  }
+
+  &-form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include max-width($landscape-tablet) {
+      flex-direction: column;
+      margin-bottom: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
+  }
+
+  &-email {
+    border: none;
+    outline: none;
+    max-width: 318px;
+    width: 100%;
+    border-radius: 22px;
+    padding: 15px;
+    background-color: $grey-light;
+    margin-right: 39px;
+
+    @include max-width($landscape-tablet) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  &-btn {
+    max-width: 300px;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 100px;
+    background-color: $black;
+
+    font-family: $font-openSans;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+  }
+}

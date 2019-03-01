@@ -1,3 +1,4 @@
+
 .sub-page {
     &__title {
         color: $black;
@@ -12,6 +13,7 @@
         text-align: center;
         padding-bottom: 40px;
 
+      
         @include mobile-normal {
             padding-bottom: 10px;
         }
@@ -24,6 +26,14 @@
 
 .job-offer {
     &__feedback {
+        @include mobile-normal{
+            padding-bottom: 10px;
+        }  
+        @include mobile-min{
+            padding-bottom: 10px;
+        }  
+    }
+    &__feedback{
         font-size: 16px;
         text-align: center;
         max-width: 70%;
@@ -42,10 +52,10 @@
 
 }
 
-.job-description {
+ 
+.job-description{
     padding: 14px 65px;
-
-    &__border {
+    &__border{
         border-bottom: 1px solid $grey-light;
         max-width: 70%;
         margin: 0 auto;
@@ -81,3 +91,5 @@
         padding: 5px;
     }
 }
+
+
