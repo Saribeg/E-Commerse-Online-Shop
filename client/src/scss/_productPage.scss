@@ -75,29 +75,5 @@
       background-color: $red;
     }
   }
-
-  &-sizes {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-
-    .size-item {
-      width: 50px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid $grey-bg;
-      font-size: 14px;
-      line-height: 20px;
-      color: #515356;
-      margin-right: 10px;
-
-      &.active {
-        border-color: #dedede;
-        background-color: $grey-bg;
-      }
-    }
-  }
 }
 
