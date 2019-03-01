@@ -5,15 +5,17 @@ import './product-sizes.scss'
 export default class ProductSizes extends Component {
   state = {
 		productCount: 0, 
-		chosenSize: ''
+    chosenSize: '',
+    activeClass: false
   };
 
   choseSizes = (maxcount, chosenSize) => {
 		if(maxcount, chosenSize){
 			this.setState({
 				productCount: maxcount,
-				chosenSize: chosenSize
-			});
+        chosenSize: chosenSize,
+      });
+      
 			console.log(this.state);
 		}
    
@@ -27,14 +29,13 @@ export default class ProductSizes extends Component {
     let sizes = productFeatures.map(elem => {
       if (elem.colorName === this.props.activeColor) {			
         return elem.sizes.map(elem => {
-          if (Number(elem.quantity) > 0) {
+      if (Number(elem.quantity) > 0) {
 				if (this.state.chosenSize === "") {
-					console.log(elem.size)
 					this.choseSizes(elem.quantity, elem.size);
 				}
             return (
               <li key={elem._id}
-                className="size-item"
+                className={`${this.state.chosenSize === elem.size ? 'active' : null} size-item`}
                 onClick={() => this.choseSizes(elem.quantity, elem.size)}
               >
                 {elem.size}
@@ -51,7 +52,7 @@ export default class ProductSizes extends Component {
       <Fragment>
         <p className="product-filter">Size</p>
         <ul className="product-sizes">{sizes}</ul>
-        <p className="product-filter">Quantity</p>
+        <p className="product-filter">Quantity Available: {this.state.productCount}</p>
         <ProductCounter maxCount={this.state.productCount} />
       </Fragment>
     );

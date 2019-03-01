@@ -1,50 +1,50 @@
 import React, { Component, Fragment } from "react";
+import MainPhoto from './MainPhoto';
 import "./photo-gallery.scss";
 
 export default class PhotoGallery extends Component {
   state = {
-		activePhotoSrc: "",
-		activeColor: this.props.activeColor
+    activePhotoSrc: "",
   };
 
-  changeMainPhoto = url => {
-    if (url) {
+  setMainPhoto = (url) => {
       this.setState({
-				activePhotoSrc: url
+        activePhotoSrc: url,
       });
     }
-  };
+
   render() {
     let productFeatures = this.props.productFeatures;
-    let firstPhoto = null;
-
-    let mainPhoto = <img src={this.state.activePhotoSrc} alt="img" />;
-
+    let firstPhotoSrc = null;
+    
     let photoGallery = productFeatures.map(elem => {
       let active = this.props.activeColor === elem.colorName;
       if (active) {
-        firstPhoto = elem.imageUrls[0];
+         firstPhotoSrc = elem.imageUrls[0];
         return elem.imageUrls.map(elem => {
           return (
             <img
 						  key={elem._id}
               className={`all-photos-item`}
               src={elem}
-              alt={this.state.activeColor}
-              onClick={() => this.changeMainPhoto(elem)}
-            />
+              alt={this.props.activeColor}
+              onClick={() => {             
+               this.setMainPhoto(elem);             
+              }}
+            />           
           );
         });
       }
     });
-    if (this.state.activePhotoSrc === "") {
-      this.changeMainPhoto(firstPhoto);
+    if(this.state.activePhotoSrc === "" || this.state.activePhotoSrc !== firstPhotoSrc){
+      this.setMainPhoto(firstPhotoSrc);
     }
-
+   
+   
     return (
       <Fragment>
         <div className="all-photos">{photoGallery}</div>
-        <div className="photo-main">{mainPhoto}</div>
+        <MainPhoto activePhotoSrc={this.state.activePhotoSrc}/>
       </Fragment>
     );
   }
