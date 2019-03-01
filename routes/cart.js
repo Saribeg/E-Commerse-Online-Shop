@@ -8,18 +8,22 @@ const Product = require("../models/Product");
 
 router.post('/checkAvailableItem', (req, res) => {
 
+    console.log("checkAvailableItem")
 
     let isUpdated = 0;
-
     let checkArr = [];
 
-    console.log('req.body.arrItemData',req.body.arrItemData)
+    let readyArr = [];
+
+    let sizeAvailable = 0;
+    let colorAvailable = 0;
+    let currentPrice = 0;
 
     req.body.arrItemData.forEach((elem) => {
         checkArr.push(elem)
     });
-
-    console.log("checkArr", checkArr);
+    //
+    // console.log("checkArr", checkArr);
 
 
     let arrMessage = [
@@ -32,50 +36,77 @@ router.post('/checkAvailableItem', (req, res) => {
 
     checkArr.forEach((elem, index) => {
 
+        console.log('check product ', index)
 
         Product.findOne({_id: elem.id})
             .then(info => {
+                if (info) {
+                    if (info.withdrawnFromSale === "true") {
+                        if (!elem.reasonNotAvailable === arrMessage[0]) {
+                            isUpdated = 1;
+                            elem.isAvailable = false;
+                            elem.reasonNotAvailable = arrMessage[0]
+                        }
+                    } else {
 
-                if (!info || info.withdrawnFromSale === "true") {
+                        if (elem.currentPrice !== info.currentPrice) {
+                            isUpdated = 1;
+                            elem.currentPrice = info.currentPrice;
+                        }
 
+                        info.productFeatures.forEach((elemColors) => {
 
+                            elemColors.sizes.forEach((elemSizes) => {
 
+                                if (elemSizes.size === elem.size && elemColors.colorName === elem.colorName) {
+                                    sizeAvailable = elemSizes.quantity;
+                                }
+                                colorAvailable += elemSizes.quantity;
+
+                            })
+
+                        });
+
+                        if (colorAvailable === 0) {
+                            if (!elem.reasonNotAvailable !== arrMessage[1]) {
+                                isUpdated = 1;
+                                elem.isAvailable = false;
+                                elem.reasonNotAvailable = arrMessage[1]
+                            }
+                        } else if (sizeAvailable === 0) {
+                            if (!elem.reasonNotAvailable !== arrMessage[2]) {
+                                isUpdated = 1;
+                                elem.isAvailable = false;
+                                elem.reasonNotAvailable = arrMessage[1]
+                            }
+                        } else if (elem.amount < sizeAvailable) {
+                            if (!elem.reasonNotAvailable.includes(arrMessage[3])) {
+                                isUpdated = 1;
+                                elem.isAvailable = false;
+                                elem.reasonNotAvailable = arrMessage[3] + sizeAvailable
+                            }
+                        } else {
+                            if (elem.isAvailable === false) {
+                                isUpdated = 1;
+                                elem.isAvailable = true;
+                                elem.reasonNotAvailable = ""
+                            }
+
+                        }
+
+                    }
+                } else {
 
                     if (!elem.reasonNotAvailable === arrMessage[0]) {
                         isUpdated = 1;
                         elem.isAvailable = false;
                         elem.reasonNotAvailable = arrMessage[0]
                     }
-
-                    // res.json({success: false, message: "This product is withdrawn from sale"})
-                } else {
-
-                    if (elem.reasonNotAvailable === arrMessage[0]) {
-                        isUpdated = 1;
-                        elem.isAvailable = true;
-                        elem.reasonNotAvailable = ''
-                    }
-
-
-
-                    info.productFeatures.forEach((elemColors) => {
-
-
-                        if (elemColors.colorName === req.body.colorName) {
-
-                            elemColors.sizes.forEach((elemSizes) => {
-
-
-
-                            })
-
-                        }
-
-
-                    })
-
-
                 }
+
+                readyArr.push(elem);
+
+                console.log('index ', index, ' array ', readyArr[index]);
 
 
             })
@@ -86,9 +117,11 @@ router.post('/checkAvailableItem', (req, res) => {
             });
 
 
+    });
 
-    })
 
+    console.log('END isUpdated', isUpdated);
+    console.log('END readyArr', readyArr);
 
 
 });
