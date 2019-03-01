@@ -55,15 +55,29 @@ export const getFilteredProducts = (
       size: size
     })
     .then(products => {
+      let newProducts = JSON.parse(JSON.stringify(products.data));
       dispatch({
         type: FETCH_PRODUCT_SUCCEEDED,
-        payload: products.data
+        payload: newProducts
       });
     })
     .catch(err => console.log(err));
 };
 
 export const selectFilters = (currentFilters, newFilters) => dispatch => {
+  if (newFilters.subCategory === undefined) {
+    delete currentFilters.subCategory;
+  }
+  if (newFilters.furtherSubCategory === undefined) {
+    delete currentFilters.furtherSubCategory;
+  }
+  if (newFilters.colorName === undefined) {
+    delete currentFilters.colorName;
+  }
+  if (newFilters.size === undefined) {
+    delete currentFilters.size;
+  }
+
   let filters = Object.assign(currentFilters, newFilters);
 
   dispatch({
@@ -80,18 +94,11 @@ export const selectFilters = (currentFilters, newFilters) => dispatch => {
       size: filters.size
     })
     .then(products => {
+      let newProducts = JSON.parse(JSON.stringify(products.data));
       dispatch({
         type: FETCH_PRODUCT_SUCCEEDED,
-        payload: products.data
+        payload: newProducts
       });
     })
     .catch(err => console.log(err));
-
-  // getFilteredProducts(
-  //   filters.category,
-  //   filters.subCategory,
-  //   filters.furtherSubCategory,
-  //   filters.colorName,
-  //   filters.size
-  // );
 };
