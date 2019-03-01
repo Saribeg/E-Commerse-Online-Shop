@@ -41,6 +41,12 @@
   }
 }
 
+@mixin mobile-min{
+  @media (max-width: #{$landscape-mobile-normal}){
+    @content;
+  }
+}
+
 @mixin mobile-normal { // 401 - 480
   @media (min-width: #{$landscape-mobile-normal + 1}) and (max-width: #{$landscape-mobile-big}) {
     @content;

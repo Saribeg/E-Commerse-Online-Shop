@@ -66,32 +66,32 @@ export const getFilteredProducts = (
 export const selectFilters = (currentFilters, newFilters) => dispatch => {
   let filters = Object.assign(currentFilters, newFilters);
 
-  // console.log(currentFilters);
-  // console.log(newFilters);
-  // console.log(filters);
-
-  // let filters = {
-  //   category,
-  //   subCategory,
-  //   furtherSubCategory,
-  //   colorName,
-  //   size
-  // };
-
-  // function filter(data) {
-  //   let selected = {};
-
-  //   for (let key in data) {
-  //     if (data[key] !== undefined) {
-  //       selected[key] = data[key];
-  //     }
-  //   }
-
-  //   return selected;
-  // }
-
   dispatch({
     type: SELECT_FILTERS,
     payload: filters
   });
+
+  axios
+    .post("/products/filtered-products", {
+      category: filters.category,
+      subCategory: filters.subCategory,
+      furtherSubCategory: filters.furtherSubCategory,
+      colorName: filters.colorName,
+      size: filters.size
+    })
+    .then(products => {
+      dispatch({
+        type: FETCH_PRODUCT_SUCCEEDED,
+        payload: products.data
+      });
+    })
+    .catch(err => console.log(err));
+
+  // getFilteredProducts(
+  //   filters.category,
+  //   filters.subCategory,
+  //   filters.furtherSubCategory,
+  //   filters.colorName,
+  //   filters.size
+  // );
 };

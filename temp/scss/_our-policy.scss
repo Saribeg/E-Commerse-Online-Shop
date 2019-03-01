@@ -1,0 +1,27 @@
+.our-policy{
+    padding-bottom: 45px;
+    &__paragraph{
+        color: $black;
+        line-height: 135%;
+        padding: 15px;
+        text-indent: 50px;
+
+    }
+}
+.list{
+    color: #585757;
+    list-style-type: decimal;
+    padding: 5px 55px;
+    @include mobile-normal{
+        padding: 5px 25px ;
+    }
+    @include mobile-min{
+        padding: 5px 25px;
+    }
+    &__item{
+        padding: 7px 0;
+        &-bold{
+            font-weight: bold;
+        }
+    }
+}
