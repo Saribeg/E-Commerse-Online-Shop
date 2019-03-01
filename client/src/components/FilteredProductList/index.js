@@ -21,6 +21,15 @@ class FilteredProductList extends Component {
 
     let filteredProductList = products.map(product => {
       return product.productFeatures.map(color => {
+        let isSizePresent = color.sizes.some(size => {
+          return currentFilters.size === size.size && size.quantity > 0;
+        });
+
+        // if (
+        //   currentFilters.colorName &&
+        //   currentFilters.colorName === color.colorName &&
+        //   isSizePresent
+        // ) {
         return (
           <ProductCard
             productUrl={product.productUrl}
@@ -30,8 +39,9 @@ class FilteredProductList extends Component {
             colorName={color.colorName}
             currentPrice={product.currentPrice}
             previousPrice={product.previousPrice}
+            currentFilters={currentFilters}
           />
-          // <NavLink to={product.productUrl} className="product-item">
+          // <NavLink to={product.productUrl} key={product._id} className="product-item">
           //   <img
           //     src={color.imageUrls[0]}
           //     alt={product.model}
@@ -46,6 +56,7 @@ class FilteredProductList extends Component {
           //   ) : null}
           // </NavLink>
         );
+        // }
       });
     });
 
