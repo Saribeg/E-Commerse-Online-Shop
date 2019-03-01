@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./footer.scss";
 import logo from "../../img/matter-white.svg";
 import axios from "axios";
@@ -24,9 +24,9 @@ class Footer extends Component {
             key={Math.random() * (100000 - 1) + 1}
             className="footer-column-item"
           >
-            <a href="/" className="footer-column-link">
+            <NavLink to="/" className="footer-column-link">
               {item}
-            </a>
+            </NavLink>
           </li>
         );
       });
