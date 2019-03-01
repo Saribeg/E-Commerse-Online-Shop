@@ -15,9 +15,28 @@ class SizeFilter extends Component {
 
   sizeFilterChange = selectedOption => {
     this.setState({ selectedOption });
-    this.props.selectFilters(this.props.currentFilters, {
-      size: selectedOption.value
-    });
+
+    let { currentFilters } = this.props;
+
+    if (selectedOption.value === "all sizes") {
+      this.props.selectFilters(currentFilters, {
+        category: currentFilters.category,
+        subCategory: currentFilters.subCategory,
+        furtherSubCategory: currentFilters.furtherSubCategory,
+        colorName: currentFilters.colorName,
+        size: undefined,
+        price: currentFilters.price
+      });
+    } else {
+      this.props.selectFilters(currentFilters, {
+        category: currentFilters.category,
+        subCategory: currentFilters.subCategory,
+        furtherSubCategory: currentFilters.furtherSubCategory,
+        colorName: currentFilters.colorName,
+        size: selectedOption.value,
+        price: currentFilters.price
+      });
+    }
   };
 
   render() {
