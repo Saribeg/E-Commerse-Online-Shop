@@ -4,7 +4,11 @@ import {NavLink} from "react-router-dom";
 class BreadCrumbs extends Component {
 
     render() {
-        let {category, subcategory, furthersubcategory} = this.props.cattest;
+        let { category, subCategory, furtherSubCategory } = this.props.categoryAway;
+
+        let categoryUrl = "/" + this.props.categoryAway.category;
+        let subCategoryUrl = categoryUrl + "/" + this.props.categoryAway.subCategory;
+        let furtherSubCategoryUrl = subCategoryUrl + "/" + this.props.categoryAway.furtherSubCategory;
 
         return (<>
                 <section className="breadcrumbs-section">
@@ -12,24 +16,27 @@ class BreadCrumbs extends Component {
                         <ul className="breadcrumbs-list">
                             <li><NavLink to="/" className="breadcrumbs-link">Home</NavLink></li>
                             {
-                                this.props.cattest.category ?
-                                    <li><NavLink to="/"
-                                                 className="breadcrumbs-link">{this.props.cattest.category}</NavLink>
+                                this.props.categoryAway.category ?
+                                    <li><NavLink to={categoryUrl}
+                                                 className="breadcrumbs-link">{this.props.categoryAway.category}</NavLink>
                                     </li> : null
                             }
                             {
-                                (this.props.cattest.subcategory || this.props.cattest.subCategory) ?
-                                    <li><NavLink to="/"
-                                                 className="breadcrumbs-link">{this.props.cattest.subcategory || this.props.cattest.subCategory}</NavLink>
+                                this.props.categoryAway.subCategory ?
+                                    <li><NavLink to={subCategoryUrl}
+                                                 className="breadcrumbs-link">{this.props.categoryAway.subCategory}</NavLink>
                                     </li> : null
                             }
                             {
-                                (this.props.cattest.furthersubcategory || this.props.cattest.furtherSubCategory) ?
-                                    <li><NavLink to="/"
-                                                 className="breadcrumbs-link">{this.props.cattest.furthersubcategory || this.props.cattest.furtherSubCategory}</NavLink>
+                                this.props.categoryAway.furtherSubCategory ?
+                                    <li><NavLink to={furtherSubCategoryUrl}
+                                                 className="breadcrumbs-link">{this.props.categoryAway.furtherSubCategory}</NavLink>
                                     </li> : null
                             }
-                            {/*<li><NavLink to="/" className="breadcrumbs-link"></NavLink></li>*/}
+                            { this.props.modelName ?
+                                <li><NavLink to="/" className="breadcrumbs-link">{this.props.modelName} ({this.props.activeColor})</NavLink></li>
+                                : null
+                            }
                         </ul>
                     </div>
 
