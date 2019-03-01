@@ -6,41 +6,38 @@ import axios from "axios";
 
 class Footer extends Component {
   state = {
-    links: []
+   content: []
   };
 
   componentDidMount() {
     axios.get(`/get-footer`).then(res => {
-      this.setState({ links: res.data });
+      console.log(res.data)
+      this.setState({ content: res.data });
     });
   }
 
   render() {
-    let columns = this.state.links.map(item => {
-      let itemLinks = item.links.map(item => {
-        // Тут надо заменить Math.random() на реальный ключ из БД, для этого в БД нужно хранить не просто массив стрингов links, а массив объектов и там будет свойство объекта в виде стринга, у каждого объекта будет генерироваться свой уникальный ключ (монго дб так устроен, что если внури объекта/массива есть другие вложенные объекты, то у каждого вложенного объекта генерится свой айди)
-        return (
-          <li
-            key={Math.random() * (100000 - 1) + 1}
-            className="footer-column-item"
-          >
-            <NavLink to="/" className="footer-column-link">
-              {item}
-            </NavLink>
-          </li>
-        );
-      });
+    
+    const footerContent = this.state.content.map((elem)=>{
 
-      return (
-        <div key={item._id} className="footer-menu-column">
-          <h3 className="footer-menu-column-title">
-            {item.title}
-            <i className="fas fa-plus block-hidden" />
-          </h3>
-          <ul className="footer-column-list">{itemLinks}</ul>
+      const linksList = elem.links.map((link)=>{
+          return (
+            <ul className="footer-column-list">
+              <li key={link._id} className="footer-column-item">
+               <NavLink to={link.path}>{link.title}</NavLink>
+             </li>
+            </ul>
+          )
+      })
+
+      return(
+        <div className="footer-menu-column">
+           <h3 className="footer-menu-column-title">{elem.title}</h3>
+           {linksList}
         </div>
-      );
-    });
+
+      )
+    })
 
     return (
       <footer className="main-footer">
@@ -51,7 +48,7 @@ class Footer extends Component {
                 <img src={logo} alt="logo" />
               </Link>
             </div>
-            <div className="footer-menu">{columns}</div>
+            <div className="footer-menu">{footerContent}</div>
           </div>
         </div>
       </footer>

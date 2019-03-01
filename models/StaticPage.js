@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const StaticPageSchema = new Schema({
-  title: {
+   title: {
     type: String
   },
   content: [
@@ -14,7 +14,7 @@ const StaticPageSchema = new Schema({
         type: String
       }
     }
-  ]
+  ] 
 });
 
-module.exports = StaticPage = mongoose.model("static-pages-content", StaticPageSchema);
+module.exports = StaticPage = mongoose.model("static-pages", StaticPageSchema);
