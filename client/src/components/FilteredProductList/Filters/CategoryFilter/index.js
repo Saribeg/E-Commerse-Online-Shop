@@ -8,19 +8,19 @@ import "./categoryFilter.scss";
 
 class CategoryFilter extends Component {
   componentDidMount = () => {
-    let { category, subcategory, furthersubcategory } = this.props.urlParams;
+    let { category, subCategory, furtherSubCategory } = this.props.urlParams;
 
     let newFilters = {
       category: category,
-      subCategory: subcategory,
-      furtherSubCategory: furthersubcategory
+      subCategory: subCategory,
+      furtherSubCategory: furtherSubCategory
     };
 
     this.props.selectFilters(this.props.currentFilters, newFilters);
   };
 
   render() {
-    let { category, subcategory, furthersubcategory } = this.props.urlParams;
+    let { category, subCategory, furtherSubCategory } = this.props.urlParams;
     let { navMenuItems, selectFilters, currentFilters } = this.props;
 
     let subCategories = navMenuItems.map(cat => {
@@ -82,7 +82,7 @@ class CategoryFilter extends Component {
         };
 
         return (
-          <div class="category-list border-category" key={cat._id}>
+          <div className="category-list border-category" key={cat._id}>
             <NavLink
               to={cat.categoryUrl}
               className="filter-title"
