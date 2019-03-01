@@ -4,9 +4,10 @@ import {connect} from "react-redux";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-import {CHANGE_AMOUT_OF_ITEM, CHANGE_ARRAY_AMOUT_OF_ITEM, DELETE_ITEM_TO_CART} from '../../actions/cart';
+import {CHANGE_AMOUT_OF_ITEM, CHANGE_ARRAY_AMOUT_OF_ITEM, DELETE_ITEM_TO_CART, checkAvailableItem} from '../../actions/cart';
 
 import './cart.scss'
+import {goToProfile} from "../../actions/login";
 
 class Cart extends Component {
 
@@ -136,6 +137,11 @@ class Cart extends Component {
 
     }
 
+    // checkAvailableItem = () => {
+    //
+    //
+    // }
+
     componentWillUpdate(nextProps, nextState) {
         let isUpdate = 0;
         let obj = {}
@@ -166,11 +172,31 @@ class Cart extends Component {
 
     render() {
 
+        let arrayCheckProducts = [];
+
+
         let productList = this.props.dataBasket.arrayProduct.map((elem, index) => {
 
             let keyItem = index;
-            let amount = '';
-            amount = this.state[keyItem];
+            let amount = this.state[keyItem];
+
+            let checkItem = {
+                id: elem.id,
+                isAvailable: elem.isAvailable,
+                reasonNotAvailable: elem.reasonNotAvailable,
+                colorName: elem.colorName,
+                size: elem.size,
+                amount: elem.amount,
+                priceFormDB: elem.priceFormDB,
+            }
+
+            arrayCheckProducts.push(checkItem);
+
+            // console.log('this.props.checkAvailableItem(checkItem)')
+
+
+            let classIsAvailable = elem.isAvailable ? 'basket-item-available' : 'd-none';
+            let classIsNotAvailable = !elem.isAvailable ? 'basket-item-notavailable' : 'd-none';
 
             return (
                 <li key={keyItem + "indexCart"} className="basket-item">
@@ -183,6 +209,15 @@ class Cart extends Component {
                         <p className="basket-item-title">{elem.model}</p>
                         <p>{elem.colorName}</p>
                         <p>{elem.size}</p>
+                        <p className={classIsAvailable}>
+                            In Stock
+                        </p>
+                        <p className={classIsNotAvailable}>
+                            Out Stock
+                        </p>
+                        <p className={classIsNotAvailable}>
+                            {elem.reasonNotAvailable}
+                        </p>
                     </div>
                     <div className="product-counter">
                         <button className="product-counter-btn" onClick={() => this.minusAmount(keyItem)}>-</button>
@@ -196,6 +231,11 @@ class Cart extends Component {
 
         })
 
+        // console.log('arrayCheckProducts', arrayCheckProducts)
+
+        if (arrayCheckProducts.length > 0) {
+            this.props.checkAvailableItem(arrayCheckProducts);
+        }
 
         return (
             <section className="basket-page container">
@@ -239,7 +279,11 @@ const mapDispatchToProps = dispatch => {
 
         deleteItem: (array) => {
             dispatch({type: DELETE_ITEM_TO_CART, payload: {array: array}})
-        }
+        },
+
+        checkAvailableItem: (arrItemData) => dispatch(checkAvailableItem(arrItemData))
+
+
     };
 };
 

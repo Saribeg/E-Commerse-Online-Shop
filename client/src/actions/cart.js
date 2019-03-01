@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from "../store";
+import {CLOSE_LOGIN_DETAILS} from "./login";
 
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
 export const DELETE_ITEM_TO_CART = 'DELETE_ITEM_TO_CART';
@@ -19,7 +20,28 @@ export const SET_DATA_CART_FROM_DB = 'SET_DATA_CART_FROM_DB';
 export const CLEAR_CART_ON_LOGOUT = 'CLEAR_CART_ON_LOGOUT';
 
 
+export function checkAvailableItem(arrItemData) {
 
+
+    console.log('action arrItemData', arrItemData)
+
+    return dispatch => {
+        axios.post('/checkAvailableItem', {arrItemData: arrItemData})
+            .then(res => res.data)
+            .then(data => {
+
+                    // dispatch({type: CLOSE_LOGIN_DETAILS})
+                }
+            )
+            .catch(err => {
+                // dispatch({type: CLOSE_LOGIN_DETAILS});
+
+                // history.push("/login")
+                // window.location.href = "/login";
+            })
+
+    }
+}
 
 export function getCart(userId) {
 

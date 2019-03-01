@@ -126,6 +126,15 @@
   font-size: 14px; }
 .product-counter-input-value {
   font-size: 18px;
-  width: 100px;
+  width: 70px;
   padding: 14px 0px 14px 18px;
+}
+
+.basket-item-available {
+  color: green;
+  font-weight: bold;
+}
+.basket-item-notavailable {
+  color: red;
+  font-weight: bold;
 }
