@@ -13,10 +13,7 @@ class ProductInfo extends React.Component<Props> {
     const { itemNo, currentPrice, model, productFeatures, activeColor } = {
       ...this.props
     };
-    const activeItem = productFeatures.filter(elem => {
-      return activeColor === elem.colorName;
-    })[0];
-
+ 
     return (
       <div className="product-main-info">
         <h2 className="product-title">{model}</h2>

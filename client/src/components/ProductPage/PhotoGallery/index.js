@@ -1,43 +1,51 @@
-import React, { Component, Fragment } from 'react'
-import './photo-gallery.scss'
+import React, { Component, Fragment } from "react";
+import "./photo-gallery.scss";
 
 export default class PhotoGallery extends Component {
-	
-	render() {
-	 let productFeatures = this.props.productFeatures;
-/* 	 let photoGallery = productFeatures.filter((elem) => {
-		 return this.props.activeColor === elem.colorName
-	 }).map((elem) => {
-		return elem.imageUrls.map((elem) => {
-			return (<img class="all-photos-item" src={elem} alt="pants" />)
-		 })
-	 })
-  */
+  state = {
+		activePhotoSrc: "",
+		activeColor: this.props.activeColor
+  };
 
-   let mainPhoto = null;
- 	 let photoGallery = productFeatures.map((elem) => {
-	 let active =  this.props.activeColor === elem.colorName ? 'd-flex' : '';
-	  if(active){
-			mainPhoto = <img src={elem.imageUrls[0]} alt="pants" /> 
-		} 
-		return elem.imageUrls.map((elem) => {
-			return (<img className={`${active} all-photos-item`} src={elem} alt="pants" />)
-		 })
-	 });
- 	   
+  changeMainPhoto = url => {
+    if (url) {
+      this.setState({
+				activePhotoSrc: url
+      });
+    }
+  };
+  render() {
+    let productFeatures = this.props.productFeatures;
+    let firstPhoto = null;
 
-		return (
-			<Fragment>
-			
-			<div className="all-photos">
-			  {photoGallery}
-			</div>
-			<div className="photo-main">
-		 	{mainPhoto} 
-			</div>
-			</ Fragment>
-		)
-	}		
+    let mainPhoto = <img src={this.state.activePhotoSrc} alt="img" />;
+
+    let photoGallery = productFeatures.map(elem => {
+      let active = this.props.activeColor === elem.colorName;
+      if (active) {
+        firstPhoto = elem.imageUrls[0];
+        return elem.imageUrls.map(elem => {
+          return (
+            <img
+						  key={elem._id}
+              className={`all-photos-item`}
+              src={elem}
+              alt={this.state.activeColor}
+              onClick={() => this.changeMainPhoto(elem)}
+            />
+          );
+        });
+      }
+    });
+    if (this.state.activePhotoSrc === "") {
+      this.changeMainPhoto(firstPhoto);
+    }
+
+    return (
+      <Fragment>
+        <div className="all-photos">{photoGallery}</div>
+        <div className="photo-main">{mainPhoto}</div>
+      </Fragment>
+    );
+  }
 }
-	
-
