@@ -25,6 +25,11 @@ export const getFilterElems = () => dispatch => {
         };
       });
 
+      sizeOptions.unshift({
+        value: "all sizes",
+        label: "All sizes"
+      });
+
       dispatch({
         type: FETCH_FILTER_SUCCEEDED,
         colors: colorFilters.data,
@@ -78,6 +83,20 @@ export const selectFilters = (currentFilters, newFilters) => dispatch => {
     delete currentFilters.size;
   }
 
+  // function filterObject(obj) {
+  //   const ret = {};
+  //   Object.keys(obj)
+  //     .filter(key => obj[key] !== undefined)
+  //     .forEach(key => (ret[key] = obj[key]));
+  //   console.log(
+  //     "ret ======================================================================="
+  //   );
+  //   console.log(ret);
+  //   return ret;
+  // }
+
+  // filterObject(newFilters);
+
   let filters = Object.assign(currentFilters, newFilters);
 
   dispatch({
@@ -91,7 +110,9 @@ export const selectFilters = (currentFilters, newFilters) => dispatch => {
       subCategory: filters.subCategory,
       furtherSubCategory: filters.furtherSubCategory,
       colorName: filters.colorName,
-      size: filters.size
+      size: filters.size,
+      minPrice: filters.price.min,
+      maxPrice: filters.price.max
     })
     .then(products => {
       let newProducts = JSON.parse(JSON.stringify(products.data));

@@ -102,7 +102,13 @@ router.get(
 
 //Get filtered products
 router.post("/products/filtered-products", (req, res) => {
-  let category, subCategory, furtherSubCategory, colorName, size;
+  let category,
+    subCategory,
+    furtherSubCategory,
+    colorName,
+    size,
+    minPrice = 0,
+    maxPrice = 1000;
 
   if (req.body.category) category = req.body.category;
   if (req.body.subCategory) subCategory = req.body.subCategory;
@@ -110,13 +116,16 @@ router.post("/products/filtered-products", (req, res) => {
     furtherSubCategory = req.body.furtherSubCategory;
   if (req.body.colorName) colorName = req.body.colorName;
   if (req.body.size) size = req.body.size;
+  if (req.body.minPrice) minPrice = req.body.minPrice;
+  if (req.body.maxPrice) maxPrice = req.body.maxPrice;
 
   let filters = {
     category,
     subCategory,
     furtherSubCategory,
     "productFeatures.colorName": colorName,
-    "productFeatures.sizes.size": size
+    "productFeatures.sizes.size": size,
+    currentPrice: { $gt: minPrice, $lt: maxPrice }
   };
 
   function filter(data) {
