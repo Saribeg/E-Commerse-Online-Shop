@@ -20,13 +20,11 @@ export const SET_DATA_CART_FROM_DB = 'SET_DATA_CART_FROM_DB';
 export const CLEAR_CART_ON_LOGOUT = 'CLEAR_CART_ON_LOGOUT';
 
 
-export function checkAvailableItem(arrItemData) {
-
-
-    console.log('action arrItemData', arrItemData)
+export function checkAvailableItem(arrData) {
+    // console.log('action arrItemData', arrItemData)
 
     return dispatch => {
-        axios.post('/checkAvailableItem', {arrItemData: arrItemData})
+        axios.post('/checkAvailableItem', {arrData: arrData})
             .then(res => res.data)
             .then(data => {
 
@@ -42,6 +40,28 @@ export function checkAvailableItem(arrItemData) {
 
     }
 }
+
+
+// export function checkAvailableItem(itemData, index) {
+//     // console.log('action arrItemData', arrItemData)
+//
+//     return dispatch => {
+//         axios.post('/checkAvailableItem', {itemData: itemData, index: index})
+//             .then(res => res.data)
+//             .then(data => {
+//
+//                     // dispatch({type: CLOSE_LOGIN_DETAILS})
+//                 }
+//             )
+//             .catch(err => {
+//                 // dispatch({type: CLOSE_LOGIN_DETAILS});
+//
+//                 // history.push("/login")
+//                 // window.location.href = "/login";
+//             })
+//
+//     }
+// }
 
 export function getCart(userId) {
 

@@ -4,7 +4,12 @@ import {connect} from "react-redux";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-import {CHANGE_AMOUT_OF_ITEM, CHANGE_ARRAY_AMOUT_OF_ITEM, DELETE_ITEM_TO_CART, checkAvailableItem} from '../../actions/cart';
+import {
+    CHANGE_AMOUT_OF_ITEM,
+    CHANGE_ARRAY_AMOUT_OF_ITEM,
+    DELETE_ITEM_TO_CART,
+    checkAvailableItem
+} from '../../actions/cart';
 
 import './cart.scss'
 import {goToProfile} from "../../actions/login";
@@ -142,6 +147,16 @@ class Cart extends Component {
     //
     // }
 
+    // checkArrayAvailableItem = (array) => {
+    //
+    //     array.forEach((elem, index) => {
+    //         this.props.checkAvailableItem(elem, index);
+    //     })
+    //
+    //
+    // }
+
+
     componentWillUpdate(nextProps, nextState) {
         let isUpdate = 0;
         let obj = {}
@@ -172,8 +187,9 @@ class Cart extends Component {
 
     render() {
 
-        let arrayCheckProducts = [];
-
+        let arrayCheckProducts = [{id: '5c62e45b9103d2041423d03f', isAvailable: true,
+            reasonNotAvailable: '', colorName: 'black', size: 's', amount: 3,}];
+        // let arrayCheckProducts = [];
 
         let productList = this.props.dataBasket.arrayProduct.map((elem, index) => {
 
@@ -200,7 +216,8 @@ class Cart extends Component {
 
             return (
                 <li key={keyItem + "indexCart"} className="basket-item">
-                    <span className="basket-item-delete" onClick={() => this.deleteItem(keyItem)}><FontAwesomeIcon icon={faTimes}/></span>
+                    <span className="basket-item-delete" onClick={() => this.deleteItem(keyItem)}><FontAwesomeIcon
+                        icon={faTimes}/></span>
                     <img
                         className="basket-item-img"
                         src={elem.urlPhoto}
@@ -233,8 +250,12 @@ class Cart extends Component {
 
         // console.log('arrayCheckProducts', arrayCheckProducts)
 
+        // if (arrayCheckProducts.length > 0) {
+        //     this.checkArrayAvailableItem(arrayCheckProducts);
+        // }
+
         if (arrayCheckProducts.length > 0) {
-            this.props.checkAvailableItem(arrayCheckProducts);
+            this.props.checkArrayAvailableItems(arrayCheckProducts);
         }
 
         return (
@@ -281,7 +302,9 @@ const mapDispatchToProps = dispatch => {
             dispatch({type: DELETE_ITEM_TO_CART, payload: {array: array}})
         },
 
-        checkAvailableItem: (arrItemData) => dispatch(checkAvailableItem(arrItemData))
+        // checkAvailableItem: (itemData, index) => dispatch(checkAvailableItem(itemData, index)),
+
+        checkArrayAvailableItems: (arrData) => dispatch(checkAvailableItem(arrData))
 
 
     };

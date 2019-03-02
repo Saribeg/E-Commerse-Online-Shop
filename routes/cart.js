@@ -8,9 +8,10 @@ const Product = require("../models/Product");
 
 router.post('/checkAvailableItem', (req, res) => {
 
-    console.log("checkAvailableItem")
+    // console.log("checkAvailableItem")
 
     let isUpdated = 0;
+    let checkArrIndex = [];
     let checkArr = [];
 
     let readyArr = [];
@@ -19,11 +20,12 @@ router.post('/checkAvailableItem', (req, res) => {
     let colorAvailable = 0;
     let currentPrice = 0;
 
-    req.body.arrItemData.forEach((elem) => {
-        checkArr.push(elem)
+    req.body.arrData.forEach((elem) => {
+        checkArrIndex.push(elem.id)
+        checkArr.push(elem);
     });
-    //
-    // console.log("checkArr", checkArr);
+
+    // console.log("checkArr", checkArrIndex);
 
 
     let arrMessage = [
@@ -33,95 +35,123 @@ router.post('/checkAvailableItem', (req, res) => {
         "You can order only this amount of items - "
     ]
 
+    // console.log('req.body', req.body);
 
-    checkArr.forEach((elem, index) => {
+    // let elem = req.body.itemData;
 
-        console.log('check product ', index)
 
-        Product.findOne({_id: elem.id})
-            .then(info => {
-                if (info) {
-                    if (info.withdrawnFromSale === "true") {
-                        if (!elem.reasonNotAvailable === arrMessage[0]) {
-                            isUpdated = 1;
-                            elem.isAvailable = false;
-                            elem.reasonNotAvailable = arrMessage[0]
-                        }
-                    } else {
+    // readyArr = checkArr.map( (elem, index) => {
 
-                        if (elem.currentPrice !== info.currentPrice) {
-                            isUpdated = 1;
-                            elem.currentPrice = info.currentPrice;
-                        }
+    // console.log('check product ', index)
 
-                        info.productFeatures.forEach((elemColors) => {
+    // Product.findOne({_id: elem.id})
+    Product.find({_id: {$in: checkArrIndex}})
+        .then(info => {
 
-                            elemColors.sizes.forEach((elemSizes) => {
+            if (info.length > 0) {
 
-                                if (elemSizes.size === elem.size && elemColors.colorName === elem.colorName) {
-                                    sizeAvailable = elemSizes.quantity;
-                                }
-                                colorAvailable += elemSizes.quantity;
+                let interArray = [];
 
-                            })
+                //if in an array from client and an array from DB different amount of items then have to deal this case
+                //and save array correct indexes in interArray
+                let j = 0;
+                for (let i = 0; i < checkArr.length; i++) {
+                    if (checkArr[i].id == info[j]._id) {
 
-                        });
+                        if (info[j].withdrawnFromSale === true) {
 
-                        if (colorAvailable === 0) {
-                            if (!elem.reasonNotAvailable !== arrMessage[1]) {
+                            if (checkArr[i].reasonNotAvailable !== arrMessage[0]) {
                                 isUpdated = 1;
-                                elem.isAvailable = false;
-                                elem.reasonNotAvailable = arrMessage[1]
-                            }
-                        } else if (sizeAvailable === 0) {
-                            if (!elem.reasonNotAvailable !== arrMessage[2]) {
-                                isUpdated = 1;
-                                elem.isAvailable = false;
-                                elem.reasonNotAvailable = arrMessage[1]
-                            }
-                        } else if (elem.amount < sizeAvailable) {
-                            if (!elem.reasonNotAvailable.includes(arrMessage[3])) {
-                                isUpdated = 1;
-                                elem.isAvailable = false;
-                                elem.reasonNotAvailable = arrMessage[3] + sizeAvailable
+                                checkArr[i].isAvailable = false;
+                                checkArr[i].reasonNotAvailable = arrMessage[0]
                             }
                         } else {
-                            if (elem.isAvailable === false) {
+
+                            // console.log('not withdrawn ', info[j]._id);
+
+                            if (checkArr[i].currentPrice !== info[j].currentPrice) {
                                 isUpdated = 1;
-                                elem.isAvailable = true;
-                                elem.reasonNotAvailable = ""
+                                checkArr[i].currentPrice = info[j].currentPrice;
+                            }
+
+                            info[j].productFeatures.forEach((elemColors) => {
+
+                                elemColors.sizes.forEach((elemSizes) => {
+
+                                    if (elemSizes.size === checkArr[i].size && elemColors.colorName === checkArr[i].colorName) {
+                                        sizeAvailable = elemSizes.quantity;
+                                    }
+                                    colorAvailable += elemSizes.quantity;
+
+                                })
+
+                            });
+
+                            if (colorAvailable === 0) {
+                                if (checkArr[i].reasonNotAvailable !== arrMessage[1]) {
+                                    isUpdated = 1;
+                                    checkArr[i].isAvailable = false;
+                                    checkArr[i].reasonNotAvailable = arrMessage[1]
+                                }
+                            } else if (sizeAvailable === 0) {
+                                if (checkArr[i].reasonNotAvailable !== arrMessage[2]) {
+                                    isUpdated = 1;
+                                    checkArr[i].isAvailable = false;
+                                    checkArr[i].reasonNotAvailable = arrMessage[2]
+                                }
+                            } else if (checkArr[i].amount > sizeAvailable) {
+                                if (checkArr[i].reasonNotAvailable !== arrMessage[3] + sizeAvailable) {
+                                    isUpdated = 1;
+                                    checkArr[i].isAvailable = false;
+                                    checkArr[i].reasonNotAvailable = arrMessage[3] + sizeAvailable
+                                }
+                            } else {
+                                if (checkArr[i].isAvailable === false) {
+                                    isUpdated = 1;
+                                    checkArr[i].isAvailable = true;
+                                    checkArr[i].reasonNotAvailable = ""
+                                }
+
                             }
 
                         }
 
-                    }
-                } else {
-
-                    if (!elem.reasonNotAvailable === arrMessage[0]) {
-                        isUpdated = 1;
-                        elem.isAvailable = false;
-                        elem.reasonNotAvailable = arrMessage[0]
+                        interArray[i] = checkArr[i];
+                        j++;
+                    } else {
+                        if (checkArr[i].reasonNotAvailable === arrMessage[0]) {
+                            //If in object was status false with reason "not available"
+                            //then we don't call rewrite Redux store in action
+                            interArray[i] = checkArr[i];
+                        } else {
+                            //If ID doesn't exist in DB then write in object available FALSE and call change redux store
+                            isUpdated = 1;
+                            checkArr[i].isAvailable = false;
+                            checkArr[i].reasonNotAvailable = arrMessage[0];
+                            interArray[i] = checkArr[i];
+                        }
                     }
                 }
 
-                readyArr.push(elem);
-
-                console.log('index ', index, ' array ', readyArr[index]);
 
 
-            })
-            .catch(err => {
-                console.log(err);
 
 
-            });
+            }
 
 
-    });
 
 
-    console.log('END isUpdated', isUpdated);
-    console.log('END readyArr', readyArr);
+
+        })
+        .catch(err => {
+            console.log(err);
+
+
+        });
+
+
+    // });
 
 
 });
