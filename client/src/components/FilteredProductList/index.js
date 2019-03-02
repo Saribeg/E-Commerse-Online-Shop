@@ -20,10 +20,44 @@ class FilteredProductList extends Component {
     let { products, isProductFetching, currentFilters } = this.props;
 
     let filteredProductList = products.map(product => {
-      return product.productFeatures.map(color => {
-        let isSizePresent = color.sizes.some(size => {
-          return currentFilters.size === size.size && size.quantity > 0;
+      if (currentFilters.colorName) {
+        return product.productFeatures.map(color => {
+          if (currentFilters.colorName === color.colorName) {
+            return (
+              <ProductCard
+                productUrl={product.productUrl}
+                key={color._id}
+                imageUrl={color.imageUrls[0]}
+                model={product.model}
+                colorName={color.colorName}
+                currentPrice={product.currentPrice}
+                previousPrice={product.previousPrice}
+                currentFilters={currentFilters}
+              />
+            );
+          }
         });
+      } else {
+        return product.productFeatures.map(color => {
+          return (
+            <ProductCard
+              productUrl={product.productUrl}
+              key={color._id}
+              imageUrl={color.imageUrls[0]}
+              model={product.model}
+              colorName={color.colorName}
+              currentPrice={product.currentPrice}
+              previousPrice={product.previousPrice}
+              currentFilters={currentFilters}
+            />
+          );
+        });
+      }
+
+      return product.productFeatures.map(color => {
+        // let isSizePresent = color.sizes.some(size => {
+        //   return currentFilters.size === size.size && size.quantity > 0;
+        // });
 
         // if (
         //   currentFilters.colorName &&
@@ -59,42 +93,41 @@ class FilteredProductList extends Component {
         //   return allProducts;
         // }
 
-        // if (
-        //   currentFilters.colorName &&
-        //   currentFilters.colorName === color.colorName &&
-        //   isSizePresent
-        // ) {
-        return (
-          <ProductCard
-            productUrl={product.productUrl}
-            key={color._id}
-            imageUrl={color.imageUrls[0]}
-            model={product.model}
-            colorName={color.colorName}
-            currentPrice={product.currentPrice}
-            previousPrice={product.previousPrice}
-            currentFilters={currentFilters}
-          />
-          // <NavLink
-          //   to={product.productUrl}
-          //   key={color._id}
-          //   className="product-item"
-          // >
-          //   <img
-          //     src={color.imageUrls[0]}
-          //     alt={product.model}
-          //     className="product-img"
-          //   />
-          //   <p className="product-name">{`${product.model} (${
-          //     color.colorName
-          //   })`}</p>
-          //   <p className="product-price">{`$${product.currentPrice}`}</p>
-          //   {product.previousPrice ? (
-          //     <span className="previous-price"> {product.previousPrice} </span>
-          //   ) : null}
-          // </NavLink>
-        );
-        // }
+        if (
+          currentFilters.colorName &&
+          currentFilters.colorName === color.colorName
+        ) {
+          return (
+            <ProductCard
+              productUrl={product.productUrl}
+              key={color._id}
+              imageUrl={color.imageUrls[0]}
+              model={product.model}
+              colorName={color.colorName}
+              currentPrice={product.currentPrice}
+              previousPrice={product.previousPrice}
+              currentFilters={currentFilters}
+            />
+            // <NavLink
+            //   to={product.productUrl}
+            //   key={color._id}
+            //   className="product-item"
+            // >
+            //   <img
+            //     src={color.imageUrls[0]}
+            //     alt={product.model}
+            //     className="product-img"
+            //   />
+            //   <p className="product-name">{`${product.model} (${
+            //     color.colorName
+            //   })`}</p>
+            //   <p className="product-price">{`$${product.currentPrice}`}</p>
+            //   {product.previousPrice ? (
+            //     <span className="previous-price"> {product.previousPrice} </span>
+            //   ) : null}
+            // </NavLink>
+          );
+        }
       });
     });
 
