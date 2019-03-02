@@ -19,13 +19,37 @@ class ColorFilter extends Component {
   };
 
   handleColorRadio = e => {
-    this.setState({
-      chosenColor: e.target.value
-    });
+    if (e.target.value === "all colors") {
+      this.setState({
+        chosenColor: ""
+      });
+    } else {
+      this.setState({
+        chosenColor: e.target.value
+      });
+    }
 
-    this.props.selectFilters(this.props.currentFilters, {
-      colorName: e.target.value
-    });
+    let { currentFilters } = this.props;
+
+    if (e.target.value === "all colors") {
+      this.props.selectFilters(currentFilters, {
+        category: currentFilters.category,
+        subCategory: currentFilters.subCategory,
+        furtherSubCategory: currentFilters.furtherSubCategory,
+        colorName: undefined,
+        size: currentFilters.size,
+        price: currentFilters.price
+      });
+    } else {
+      this.props.selectFilters(currentFilters, {
+        category: currentFilters.category,
+        subCategory: currentFilters.subCategory,
+        furtherSubCategory: currentFilters.furtherSubCategory,
+        colorName: e.target.value,
+        size: currentFilters.size,
+        price: currentFilters.price
+      });
+    }
   };
 
   render() {
@@ -72,9 +96,21 @@ class ColorFilter extends Component {
     });
 
     return (
-      <div class="category-filter-color border-category">
-        <p class="filter-title">color</p>
-        <ul class="filter-color-panel">
+      <div className="category-filter-color border-category">
+        <div className="color-filter-header">
+          <p className="filter-title">color</p>
+          <label className="reset-color-filters">
+            all colors
+            <input
+              type="radio"
+              className="filter-color-panel-input"
+              name="colorFilters"
+              value="all colors"
+              onChange={this.handleColorRadio}
+            />
+          </label>
+        </div>
+        <ul className="filter-color-panel">
           {isFilterFetching ? <Preloader /> : colorItems}
         </ul>
       </div>

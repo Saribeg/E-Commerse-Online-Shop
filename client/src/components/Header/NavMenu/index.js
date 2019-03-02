@@ -42,7 +42,10 @@ class NavMenu extends Component {
           let subfurtherSubCategory = subCategory.furtherSubCategoryList.map(
             furtherSubCategory => {
               return (
-                <li className="sub-menu-category-item">
+                <li
+                  className="sub-menu-category-item"
+                  key={furtherSubCategory._id}
+                >
                   <Link
                     to={furtherSubCategory.furtherSubCategoryUrl}
                     className="sub-menu-category-link"
