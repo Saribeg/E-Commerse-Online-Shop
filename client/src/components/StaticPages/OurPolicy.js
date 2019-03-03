@@ -8,7 +8,7 @@ export default class OurPolicy extends Component {
   }
 
 	componentDidMount() {
-    axios.get('/about-us').then(res => {
+    axios.get('/our-policy').then(res => {
 		/* 	this.setState({ content: res.data }); */
 			console.log(res);
 			console.log(res.status);

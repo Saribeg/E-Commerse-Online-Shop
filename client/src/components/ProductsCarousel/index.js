@@ -30,7 +30,7 @@ class ProductsCarousel extends Component {
     render() {
         let itemsCarousel = this.state.items.map(item => {
             return (
-                <div id={item.desc} key={item.id} className="carousel-item container">
+                <div id={item.desc} key={item.id} className="carousel-item">
                     <img src={item.imgLink} alt="product"/>
                     <div className="price">{item.price}</div>
                     <div className="info">{item.desc}</div>
