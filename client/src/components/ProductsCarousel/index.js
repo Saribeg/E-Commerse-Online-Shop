@@ -33,8 +33,9 @@ class ProductsCarousel extends Component {
             <Carousel
                 className="products-carousel"
                 autoPlay={true}
+                interval={5000}
                 transitionTime={700}
-                // stopOnHover={true}
+                stopOnHover={true}
                 showIndicators={false}
                 infiniteLoop={true}
                 showStatus={false}
