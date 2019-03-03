@@ -29,7 +29,7 @@ export default class AboutUs extends Component {
 		</div>
 			 )
 		})
-		console.log(this.state)
+
 		return (
 			<div className="container">
 				<h2 className="sub-page__title">{this.state.pageTitle}</h2>
