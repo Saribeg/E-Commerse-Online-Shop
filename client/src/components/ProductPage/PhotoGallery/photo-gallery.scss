@@ -47,4 +47,23 @@
   }
 }
 
+.product-details-carousel {
+/*   display: flex;
+  flex-direction: row-reverse; */
+  .slide.selected, .carousel.carousel-slider{
+    width: 450px !important;
+    max-height: 680px;
+    margin: 0 30px;
+  }
+
+/*   .thumbs{
+    display: flex;
+    flex-direction: column;
+  } */
+
+  .carousel{
+    width: auto;
+  }
+}
+
 
