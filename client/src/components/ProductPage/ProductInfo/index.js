@@ -2,7 +2,7 @@
 import * as React from "react";
 import ProductColors from "./ProductColors";
 import ProductSizes from "./ProductSizes";
-
+import BtnAddToCart from "../../atomic/BtnAddToCart";
 type Props = {
   currentPrice: number,
   itemNo?: string
@@ -29,6 +29,7 @@ class ProductInfo extends React.Component<Props> {
           activeColor={activeColor}
           productFeatures={productFeatures}
         />
+          <BtnAddToCart />
       </div>
     );
   }

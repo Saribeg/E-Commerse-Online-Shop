@@ -35,21 +35,21 @@
     &__title {
         color: $black;
         font-size: 32px;
-        padding: 30px 0 8px 0;
+        margin: 30px 0 8px 0;
         text-align: center;
     }
     &__sub-title {
         color: #a7a3a3;
         font-size: 14px;
         text-align: center;
-        padding-bottom: 40px;
+        margin-bottom: 40px;
       
         @include mobile-normal {
-            padding-bottom: 10px;
+            margin-bottom: 10px;
         }
 
         @include mobile-min {
-            padding-bottom: 10px;
+            margin-bottom: 10px;
         }
     }
 }
