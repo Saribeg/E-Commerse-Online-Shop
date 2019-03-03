@@ -25,6 +25,11 @@ export const getFilterElems = () => dispatch => {
         };
       });
 
+      sizeOptions.unshift({
+        value: "all sizes",
+        label: "All sizes"
+      });
+
       dispatch({
         type: FETCH_FILTER_SUCCEEDED,
         colors: colorFilters.data,
@@ -55,15 +60,43 @@ export const getFilteredProducts = (
       size: size
     })
     .then(products => {
+      let newProducts = JSON.parse(JSON.stringify(products.data));
       dispatch({
         type: FETCH_PRODUCT_SUCCEEDED,
-        payload: products.data
+        payload: newProducts
       });
     })
     .catch(err => console.log(err));
 };
 
 export const selectFilters = (currentFilters, newFilters) => dispatch => {
+  if (newFilters.subCategory === undefined) {
+    delete currentFilters.subCategory;
+  }
+  if (newFilters.furtherSubCategory === undefined) {
+    delete currentFilters.furtherSubCategory;
+  }
+  if (newFilters.colorName === undefined) {
+    delete currentFilters.colorName;
+  }
+  if (newFilters.size === undefined) {
+    delete currentFilters.size;
+  }
+
+  // function filterObject(obj) {
+  //   const ret = {};
+  //   Object.keys(obj)
+  //     .filter(key => obj[key] !== undefined)
+  //     .forEach(key => (ret[key] = obj[key]));
+  //   console.log(
+  //     "ret ======================================================================="
+  //   );
+  //   console.log(ret);
+  //   return ret;
+  // }
+
+  // filterObject(newFilters);
+
   let filters = Object.assign(currentFilters, newFilters);
 
   dispatch({
@@ -77,21 +110,16 @@ export const selectFilters = (currentFilters, newFilters) => dispatch => {
       subCategory: filters.subCategory,
       furtherSubCategory: filters.furtherSubCategory,
       colorName: filters.colorName,
-      size: filters.size
+      size: filters.size,
+      minPrice: filters.price.min,
+      maxPrice: filters.price.max
     })
     .then(products => {
+      let newProducts = JSON.parse(JSON.stringify(products.data));
       dispatch({
         type: FETCH_PRODUCT_SUCCEEDED,
-        payload: products.data
+        payload: newProducts
       });
     })
     .catch(err => console.log(err));
-
-  // getFilteredProducts(
-  //   filters.category,
-  //   filters.subCategory,
-  //   filters.furtherSubCategory,
-  //   filters.colorName,
-  //   filters.size
-  // );
 };

@@ -16,7 +16,7 @@ export default class PhotoGallery extends Component {
   render() {
     let productFeatures = this.props.productFeatures;
     let firstPhotoSrc = null;
-    
+
     let photoGallery = productFeatures.map(elem => {
       let active = this.props.activeColor === elem.colorName;
       if (active) {
@@ -28,10 +28,10 @@ export default class PhotoGallery extends Component {
               className={`all-photos-item`}
               src={elem}
               alt={this.props.activeColor}
-              onClick={() => {             
-               this.setMainPhoto(elem);             
+              onClick={() => {
+               this.setMainPhoto(elem);
               }}
-            />           
+            />
           );
         });
       }
@@ -39,8 +39,8 @@ export default class PhotoGallery extends Component {
     if(this.state.activePhotoSrc === "" || this.state.activePhotoSrc !== firstPhotoSrc){
       this.setMainPhoto(firstPhotoSrc);
     }
-   
-   
+
+
     return (
       <Fragment>
         <div className="all-photos">{photoGallery}</div>
@@ -49,3 +49,5 @@ export default class PhotoGallery extends Component {
     );
   }
 }
+	
+

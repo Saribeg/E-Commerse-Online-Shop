@@ -11,13 +11,13 @@ class Footer extends Component {
 
   componentDidMount() {
     axios.get(`/get-footer`).then(res => {
-      console.log(res.data)
+      console.log(res.data);
       this.setState({ content: res.data });
     });
   }
 
   render() {
-    
+
     const footerContent = this.state.content.map((elem)=>{
 
       const linksList = elem.links.map((link)=>{

@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from "react";
 import ProductCounter from "../../../atomic/ProductCounter";
-import './product-sizes.scss'
 
 export default class ProductSizes extends Component {
   state = {
-		productCount: 0, 
+		productCount: 0,
     chosenSize: '',
     activeClass: false
   };
@@ -15,19 +14,19 @@ export default class ProductSizes extends Component {
 				productCount: maxcount,
         chosenSize: chosenSize,
       });
-      
+
 			console.log(this.state);
 		}
-   
+
   };
-  
+
   render() {
 
 		let productFeatures = this.props.productFeatures;
 		let chosenSize = this.state.chosenSize;
-		
+
     let sizes = productFeatures.map(elem => {
-      if (elem.colorName === this.props.activeColor) {			
+      if (elem.colorName === this.props.activeColor) {
         return elem.sizes.map(elem => {
       if (Number(elem.quantity) > 0) {
 				if (this.state.chosenSize === "") {
@@ -45,8 +44,8 @@ export default class ProductSizes extends Component {
         });
       }
 		});
-		
-	
+
+
 
     return (
       <Fragment>

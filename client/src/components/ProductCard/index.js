@@ -10,7 +10,8 @@ class ProductCard extends Component {
       model,
       colorName,
       currentPrice,
-      previousPrice
+      previousPrice,
+      currentFilters
     } = this.props;
     return (
       <NavLink to={productUrl} key={id} className="product-item">
