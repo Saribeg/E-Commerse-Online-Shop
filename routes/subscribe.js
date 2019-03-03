@@ -22,9 +22,9 @@ router.post('/subscribe', (req, res) => {
     const newSubscribeMail = {};
     newSubscribeMail.mail = req.body.subMail.mail;
     let dbMailObj = new Subscribe(newSubscribeMail);
-    dbMailObj.save();
-    // dbMailObj.then(newSubscribeMail => res.json(newSubscribeMail));
-    // dbMailObj.catch(err => console.log(err));
+    dbMailObj.save()
+        .then(newSubscribeMail => res.json(newSubscribeMail))
+        .catch(err => console.log(err));
 
     //authorization for sending welcome email
     let transporter = nodemailer.createTransport({

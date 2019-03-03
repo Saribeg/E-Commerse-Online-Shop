@@ -15,20 +15,30 @@ class Unsubscribe extends Component {
 
     render() {
 
-        return (
-            <>
-                <section className="section-unsubscribe">
+        if (this.state.submitted === true) {
+            return (
+                <>
                     <div className="container">
-                        <div className="unsubscribe">
-                            <form onSubmit={this.unsubscribeMail} className="unsubscribe-form">
-                                <input id='unsubscribe-btn' type="submit" className="unsubscribe-btn"
-                                       value='UNSUBSCRIBE'/>
-                            </form>
-                        </div>
+                        <p className="unsubscribe-text">You have been unsubscribed from our mailing!</p>
                     </div>
-                </section>
-            </>
-        );
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <section className="section-unsubscribe">
+                        <div className="container">
+                            <div className="unsubscribe">
+                                <form onSubmit={this.unsubscribeMail} className="unsubscribe-form">
+                                    <input id='unsubscribe-btn' type="submit" className="unsubscribe-form-btn"
+                                           value='UNSUBSCRIBE'/>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </>
+            );
+        }
     }
 }
 
