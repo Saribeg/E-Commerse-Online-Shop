@@ -18,7 +18,6 @@ class ProductPage extends Component {
 
     componentDidMount() {
         this.props.getProductDetails(this.props.match.params);
-        console.log("===============", this.props.match.params);
     }
 
     changeColor = color => {
@@ -61,7 +60,9 @@ class ProductPage extends Component {
                         model={model}
                         changeColor={this.changeColor}
                     />
+                  
                 </section>
+
             </>
         );
     }

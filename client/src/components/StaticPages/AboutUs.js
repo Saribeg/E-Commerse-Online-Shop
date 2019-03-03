@@ -11,8 +11,8 @@ export default class AboutUs extends Component {
 
 	componentDidMount() {
     axios.get('/about-us').then(res => {
-		 const pageTitle = res.data[0].title;
-		 const content = res.data[0].content;
+		 const pageTitle = res.data.title;
+		 const content = res.data.content;
 		 this.setState({ 
 			 pageTitle: pageTitle,
 			 content: content })
