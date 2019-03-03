@@ -13,7 +13,8 @@ class ProductPage extends Component {
                 color: "",
                 sizes: []
             }
-        ]
+        ],
+        thumbs: true
     };
 
     componentDidMount() {
@@ -21,7 +22,8 @@ class ProductPage extends Component {
     }
 
     changeColor = color => {
-        this.setState({activeColor: color});
+        this.setState({activeColor: color,
+        thumbs: false});
     };
 
     setInitialColor = array => {
@@ -51,6 +53,8 @@ class ProductPage extends Component {
                     <PhotoGallery
                         productFeatures={productFeatures}
                         activeColor={activeColor}
+                        thumbs={this.props.thumbs}
+                        changeColor={this.changeColor}
                     />
                     <ProductInfo
                         productFeatures={productFeatures}

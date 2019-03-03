@@ -42,7 +42,7 @@ class ProductsCarousel extends Component {
         return (
             <Carousel
                 className="products-carousel"
-                // autoPlay={true}
+                 autoPlay={true}
                 transitionTime={700}
                 // emulateTouch = {true}
                 showIndicators={false}
