@@ -27,21 +27,21 @@
     color: $black;
     font-size: 24px;
     border: 1px solid $black;
-    border-radius: 500px;
-    padding: 40px 10px;
+    border-radius: 100px;
+    padding: 20px;
 
     @include max-width($landscape-tablet) {
       left: 20px;
       top: 20px;
       font-size: 18px;
-      padding: 27px 5px;
+      padding: 10px;
     }
 
     @include max-width($landscape-mobile-big) {
       left: 20px;
       top: 15px;
       font-size: 14px;
-      padding: 23px 5px;
+      padding: 5px;
     }
   }
 }
@@ -54,7 +54,7 @@
     font-weight: bold;
     position: absolute;
     top: 25%;
-    left: 70%;
+    left: 68%;
     width: 30%;
     text-align: left;
 
@@ -70,15 +70,17 @@
   .carousel-btn {
     position: absolute;
     top: 50%;
-    left: 70%;
+    left: 68%;
     width: 200px;
     height: 40px;
     border-radius: 100px;
     border: 1px solid $black;
+    line-height: 40px;
     background: transparent;
     letter-spacing: 1.4px;
     font-size: 18px;
     color: $black;
+    outline: none;
 
     &:hover {
       cursor: pointer;
@@ -91,12 +93,14 @@
       width: 120px;
       height: 30px;
       font-size: 14px;
+      line-height: 30px;
     }
 
     @include max-width($landscape-mobile-big) {
       width: 80px;
       height: 20px;
       font-size: 10px;
+      line-height: 20px;
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import "btn-add-to-cart.scss";
+import "./btn-add-to-cart.scss";
 
 export default class componentName extends Component {
   render() {

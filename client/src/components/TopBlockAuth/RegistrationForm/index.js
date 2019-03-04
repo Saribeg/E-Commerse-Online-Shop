@@ -34,14 +34,14 @@ class RegistrationForm extends Component {
         let classExistEmail = (this.props.windowsStatus.existEmail) ? null : 'd-none';
 
         return (
-            <div className="registration">
-                <div data-btn="btn-reg-up-close" className="cancel-btn"></div>
-                <h2 className='registration-header'>Registration</h2>
+            <div className='login-menu'>
+                <div data-btn="btn-reg-up-close" className="login-cancel-btn" />
+                <h2 className='login-menu_header'>Registration</h2>
                 <FormRegistration onSubmit={this.handleSubmit}/>
 
 
-                <div className='login-area'>
-                    <div data-btn="btn-reg-down-close" className='login_btn' >Login Here</div>
+                <div className='registration-area'>
+                    <div data-btn="btn-reg-down-close" className='login-form_btn register_btn' >Login Here</div>
                 </div>
             </div>
         );

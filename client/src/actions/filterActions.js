@@ -10,6 +10,9 @@ export const FETCH_PRODUCT_FAILED = "FETCH_PRODUCT_FAILED";
 
 export const SELECT_FILTERS = "SELECT_FILTERS";
 
+export const SELECT_SIZE = "SELECT_SIZE";
+export const SELECT_PRICE = "SELECT_PRICE";
+
 export const getFilterElems = () => dispatch => {
   dispatch({
     type: FETCH_FILTER_REQUESTED
@@ -104,6 +107,10 @@ export const selectFilters = (currentFilters, newFilters) => dispatch => {
     payload: filters
   });
 
+  dispatch({
+    type: FETCH_PRODUCT_REQUESTED
+  });
+
   axios
     .post("/products/filtered-products", {
       category: filters.category,
@@ -122,4 +129,18 @@ export const selectFilters = (currentFilters, newFilters) => dispatch => {
       });
     })
     .catch(err => console.log(err));
+};
+
+export const selectSize = size => dispatch => {
+  dispatch({
+    type: SELECT_SIZE,
+    payload: size
+  });
+};
+
+export const selectPrice = price => dispatch => {
+  dispatch({
+    type: SELECT_PRICE,
+    payload: price
+  });
 };
