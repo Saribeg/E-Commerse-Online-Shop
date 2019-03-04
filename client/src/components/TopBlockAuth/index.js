@@ -158,7 +158,7 @@ class TopBlockAuth extends Component {
 
                     <div className="product-cart-ico">
                         <NavLink to="/cart">
-                            <img src="/img/cart_img.png" alt="icon basket"/>
+                            <img src="/img/cart_img.png" alt="icon basket" className="product-cart-ico"/>
 
                             <p className={isCartNotEmpty}>{this.props.amountCart}</p>
                         </NavLink>
