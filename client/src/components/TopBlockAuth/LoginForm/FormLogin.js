@@ -7,12 +7,12 @@ class FormLogin extends Component {
     render(){
         const {handleSubmit} = this.props;
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='login-menu_form'>
 
                 <div className='login-menu_form-fields'>
                     <p className='login-form-input-title'>First name</p>
                     <Field name="email" component={customRequiredInput}
-                           className='login-field'
+                           className='login-form-input'
                            classError='input-error-message'
                            type="text" placeholder="Your email..."
                            validate={[requiredInput]}
@@ -20,7 +20,7 @@ class FormLogin extends Component {
 
                     <p className='login-form-input-title'>Password</p>
                     <Field name="password" component={customRequiredInput}
-                           className='login-field'
+                           className='login-form-input'
                            classError='input-error-message'
                            type="password" placeholder="Your email..."
                            validate={[requiredInput]}
@@ -28,7 +28,7 @@ class FormLogin extends Component {
                     {/*<p>Forgotten your password?</p>*/}
                 </div>
 
-                <button name='loginSbm' type="submit" className='enter_btn login_btn' label="submit">Log In</button>
+                <button name='loginSbm' type="submit" className='login-form_btn' label="submit">Log In</button>
             </form>
         );
     }

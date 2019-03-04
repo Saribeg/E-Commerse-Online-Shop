@@ -5,81 +5,73 @@ import customRequiredInput from '../../atomic/customRequiredInput';
 import {connect} from "react-redux";
 
 class FormRegistration extends Component {
-    render(){
+    render() {
         const {handleSubmit} = this.props;
         let classExistEmail = (this.props.windowsStatus.existEmail) ? null : 'd-none';
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='login-menu_form'>
 
-                <div>
-                    <p>First Name</p>
+                <div className='login-menu_form-fields'>
+                    <p className='login-form-input-title'>First Name</p>
                     <Field name="firstName" component={customRequiredInput}
-                           className='registration-input'
+                           className='login-form-input'
                            classError='input-error-message'
                            type="text" placeholder="Your first name..."
                            validate={[requiredInput]}
                     />
-                </div>
 
-                <div>
-                    <p>Last Name</p>
+                    <p className='login-form-input-title'>Last Name</p>
                     <Field name="secondName" component={customRequiredInput}
-                           className='registration-input'
+                           className='login-form-input'
                            classError='input-error-message'
                            type="text" placeholder="Your last name..."
                            validate={[requiredInput]}
                     />
-                </div>
-                <div className={classExistEmail}>
-                    This email is already used
-                </div>
-
-                <div>
-                    <p>Email Address</p>
+                    <div className={classExistEmail}>
+                        This email is already used
+                    </div>
+                    <p className='login-form-input-title'>Email Address</p>
                     <Field name="email" component={customRequiredInput}
-                           className='registration-input'
+                           className='login-form-input'
                            classError='input-error-message'
                            type="email" placeholder="Your email..."
                            validate={[requiredInput, correctEmail]}
                     />
-                </div>
-
-                <div>
-                    <p>Password</p>
+                    <p className='login-form-input-title'>Password</p>
                     <Field name="password" component={customRequiredInput}
-                           className='registration-input'
+                           className='login-form-input'
                            classError='input-error-message'
                            type="password" placeholder="Your password..."
                            validate={[requiredInput]}
                     />
-                </div>
-
-                <div>
-                    <p>Confirm Password</p>
+                    <p className='login-form-input-title'>Confirm Password</p>
                     <Field name="password2" component={customRequiredInput}
-                           className='registration-input'
+                           className='login-form-input'
                            classError='input-error-message'
                            type="password" placeholder="Your password..."
                            validate={[requiredInput, matchPasswordsReg]}
                     />
+
+
+
                 </div>
-
-
-                <button name='registrationSbm' type="submit" className='registration-form_button' label="submit">Register</button>
+                <button name='registrationSbm' type="submit" className='login-form_btn'
+                        label="submit">Register
+                </button>
             </form>
-        );
+    );
     }
-}
+    }
 
 
-const mapStateToProps = (state) => {
-    return {
+    const mapStateToProps = (state) => {
+        return {
         windowsStatus: state.login.windowsStatus,
     }
-}
+    }
 
-FormRegistration = reduxForm({
-    form: 'formRegistration'
-})(FormRegistration);
+    FormRegistration = reduxForm({
+        form: 'formRegistration'
+    })(FormRegistration);
 
-export default connect(mapStateToProps)(FormRegistration);
+    export default connect(mapStateToProps)(FormRegistration);
