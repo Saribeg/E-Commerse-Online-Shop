@@ -2,15 +2,12 @@ import React, { Component } from "react";
 import InputRange from "react-input-range";
 import { connect } from "react-redux";
 
-import { selectFilters } from "../../../../actions/filterActions";
+import { selectFilters, selectPrice } from "../../../../actions/filterActions";
 
 import "react-input-range/lib/css/index.css";
 import "./priceFilter.scss";
 
 class PriceFilter extends Component {
-  state = {
-    value: { min: 5, max: 1000 }
-  };
 
   componentDidMount = () => {
     let { category, subCategory, furtherSubCategory } = this.props.urlParams;
@@ -22,19 +19,13 @@ class PriceFilter extends Component {
       furtherSubCategory: furtherSubCategory,
       colorName: currentFilters.colorName,
       size: currentFilters.size,
-      price: this.state.value
+      price: currentFilters.price
     };
 
     this.props.selectFilters(currentFilters, newFilters);
   };
 
-  onPriceChange = value => {
-    this.setState({
-      value
-    });
-  };
-
-  onPriceFilter = value => {
+  onPriceFilter = price => {
     let { currentFilters } = this.props;
 
     let newFilters = {
@@ -43,7 +34,7 @@ class PriceFilter extends Component {
       furtherSubCategory: currentFilters.furtherSubCategory,
       colorName: currentFilters.colorName,
       size: currentFilters.size,
-      price: value
+      price: price
     };
     this.props.selectFilters(currentFilters, newFilters);
   };
@@ -55,10 +46,10 @@ class PriceFilter extends Component {
         maxValue={1000}
         minValue={5}
         step={5}
-        value={this.state.value}
+        value={this.props.currentFilters.price}
         allowSameValues={true}
-        draggableTrack
-        onChange={this.onPriceChange}
+        draggableTrack={true}
+        onChange={this.props.selectPrice}
         onChangeComplete={this.onPriceFilter}
       />
     );
@@ -67,11 +58,12 @@ class PriceFilter extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentFilters: state.filters.selected
+    currentFilters: state.filters.selected,
+    selectedPrice: state.filters.selected.price
   };
 };
 
 export default connect(
   mapStateToProps,
-  { selectFilters }
+  { selectFilters, selectPrice }
 )(PriceFilter);

@@ -26,18 +26,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 class TopBlockAuth extends Component {
 
-    state = {
-        modalFormOpen: false,
-    }
 
     componentDidMount () {
 
-    }
-
-    openModal = () => {
-        this.setState({
-            modalFormOpen: true,
-        })
     }
 
     closeModal = () => {
@@ -46,123 +37,55 @@ class TopBlockAuth extends Component {
         })
     }
 
-    // clickRoot = () => {
-    //     this.props.closeLoginForm();
-    //     this.props.closeRegForm();
-    //     this.closeModal();
-    //     document.getElementById('root').removeEventListener('click', this.clickRoot);
-    //     document.getElementById('header-modal-form').removeEventListener('click', this.clickModalLoginHub);
-    //     document.getElementById('header-modal-form').removeEventListener('click', this.clickModalRegHub);
-    // }
-    //
-    // clickModalLogin = (e) => {
-    //
-    //     console.log(e.target)
-    //
-    //     if (e.target.dataset.btn !== 'btn-login-up-close') {
-    //         e.stopPropagation();
-    //     }
-    //     if (e.target.dataset.btn === 'btn-login-down-close') {
-    //         this.props.closeLoginForm();
-    //         this.closeModal();
-    //         this.clickOnRegistration();
-    //         document.getElementById('root').removeEventListener('click', this.clickRoot);
-    //         document.getElementById('header-modal-form').removeEventListener('click', this.clickModalLoginHub);
-    //     }
-    // }
-    //
-    // clickModalLoginHub = (e) => {
-    //     this.clickModalLogin(e);
-    // }
-    //
-    // clickModalRegHub = (e) => {
-    //     this.clickModalReg(e);
-    // }
-    //
-    //
-    // clickModalReg = (e) => {
-    //     console.log(e.target)
-    //
-    //     if (e.target.dataset.btn !== 'btn-reg-up-close') {
-    //         e.stopPropagation();
-    //     }
-    //     if (e.target.dataset.btn === 'btn-reg-down-close') {
-    //         this.props.closeRegForm();
-    //         this.closeModal();
-    //         this.clickOnLogin();
-    //         document.getElementById('root').removeEventListener('click', this.clickRoot);
-    //         document.getElementById('header-modal-form').removeEventListener('click', this.clickModalRegHub);
-    //     }
-    //
-    // }
-
-
     clickOnLogin = () => {
 
-        this.openModal();
         this.props.openLoginForm();
-
-        // document.getElementById('root').addEventListener('click', this.clickRoot);
-        // document.getElementById('header-modal-form').addEventListener('click', this.clickModalLoginHub);
-
-        document.getElementById('root').onclick = () => {
-            this.props.closeLoginForm();
-            this.props.closeRegForm();
-            this.closeModal();
-        };
-
-        document.getElementById('header-modal-form').onclick = (e) => {
-
-            if (e.target.dataset.btn !== 'btn-login-up-close') {
-                e.stopPropagation();
-            }
-            if (e.target.dataset.btn === 'btn-login-down-close') {
-                this.props.closeLoginForm();
-                this.closeModal();
-                this.clickOnRegistration();
-            }
-        }
 
     }
 
 
     clickOnRegistration = () => {
-
-        this.openModal();
         this.props.openRegForm();
 
-        // document.getElementById('root').addEventListener('click', this.clickRoot);
-        // document.getElementById('header-modal-form').addEventListener('click', this.clickModalRegHub);
+    }
 
-        document.getElementById('root').onClick = () => {
+    handleLoginForm = (e) => {
+
+        console.log('on click handleLoginForm')
+
+        console.log('e.target', e.target)
+
+        if (e.target.dataset.btn !== 'btn-login-up-close') {
+            e.stopPropagation();
+        }
+        if (e.target.dataset.btn === 'btn-login-down-close') {
             this.props.closeLoginForm();
+            this.closeModal();
+            this.clickOnRegistration();
+        }
+
+    }
+
+    handleRegistrationForm = (e) => {
+        if (e.target.dataset.btn !== 'btn-reg-up-close') {
+            e.stopPropagation();
+        }
+        if (e.target.dataset.btn === 'btn-reg-down-close') {
             this.props.closeRegForm();
             this.closeModal();
-
-        };
-        document.getElementById('header-modal-form').onclick = (e) => {
-
-            if (e.target.dataset.btn !== 'btn-reg-up-close') {
-                e.stopPropagation();
-            }
-            if (e.target.dataset.btn === 'btn-reg-down-close') {
-                this.props.closeRegForm();
-                this.closeModal();
-                this.clickOnLogin();
-            }
+            this.clickOnLogin();
         }
+
+    }
+
+    handleDropDownProfile = (e) => {
+
 
     }
 
 
     render() {
-        let classLoginForm = this.props.windowsStatus.formLoginOpen
-            ? null
-            : "d-none";
 
-        let classRegistrationForm = this.props.windowsStatus.formRegisterOpen
-            ? null
-            : "d-none";
 
         let classDetailLogin = this.props.windowsStatus.loginDetails
             ? null
@@ -172,13 +95,10 @@ class TopBlockAuth extends Component {
 
         let notLogged = !this.props.login.isLogged ? null : "d-none";
 
-
-        let isModalOpen = this.state.modalFormOpen ? null : "d-none";
-
-        let isCartNotEmpty = this.props.amountCart ? null : "d-none";
+        let isCartNotEmpty = this.props.amountCart ? 'product-cart-ico-amount' : "d-none";
 
         return (
-            <div className="main-right">
+            <div className="header-right-block">
                 <Search/>
                 <div className="main-date">
                     <div className={notLogged}>
@@ -187,9 +107,8 @@ class TopBlockAuth extends Component {
                                 className="header-top-login-btn"
                                 value="Log in"
                                 onClick={() => this.clickOnLogin()}/>
-                        
-                    </div>
 
+                    </div>
 
                     <div className={isLogged}>
                         <div className="user-info-mini">
@@ -198,18 +117,48 @@ class TopBlockAuth extends Component {
                             </span>
                             <div className="user-avatar-mini">
                                 <img
-                                    src="/img/account.png"
+                                    className="user-avatar-mini-img"
+                                    src="/img/profile_logo.png"
                                     alt="icon-account"
                                     onClick={() => this.props.openLoginDetails()}
                                 />
+
+                                <div onClick={this.handleDropDownProfile}>
+                                    {this.props.windowsStatus.loginDetails && (
+                                        <div className="header-dropdown-login-details">
+                                            <NavLink
+                                                className="header-dropdown-login-details-item"
+                                                to="/users/profile/personalContent"
+                                                // onClick={() => this.props.goToProfile(this.props.history)}
+                                            >
+                                                Profile
+                                            </NavLink>
+                                            <NavLink
+                                                className="header-dropdown-login-details-item"
+                                                to="/users/profile/ordersHistory"
+                                                // onClick={() => this.props.goToProfile(this.props.history)}
+                                            >
+                                                My Orders
+                                            </NavLink>
+                                            <NavLink
+                                                className="header-dropdown-login-details-item"
+                                                to="/"
+                                                onClick={() => this.props.unsetLoggedUser()}
+                                            >
+                                                Logout
+                                            </NavLink>
+                                        </div>
+                                    )}
+                                </div>
+
                             </div>
                         </div>
                     </div>
 
 
-                    <div className="pruduct-cart-ico">
+                    <div className="product-cart-ico">
                         <NavLink to="/cart">
-                            <img src="/img/basket.png" alt="icon basket"/>
+                            <img src="/img/cart_img.png" alt="icon basket" className="product-cart-ico"/>
 
                             <p className={isCartNotEmpty}>{this.props.amountCart}</p>
                         </NavLink>
@@ -229,43 +178,25 @@ class TopBlockAuth extends Component {
                     </div>
                 </div>
 
-                <div id="header-modal-form" className={isModalOpen}>
-                    <div>
+                <div id="header-modal-form" >
+                    <div onClick={this.handleLoginForm}>
                         {this.props.windowsStatus.formLoginOpen && (
-                            <LoginForm/>
+                            <LoginForm />
                         )}
                     </div>
 
-                    <div>
+                    <div onClick={this.handleRegistrationForm}>
                         {this.props.windowsStatus.formRegisterOpen && (
-                            <RegistrationForm/>
+                            <RegistrationForm />
                         )}
                     </div>
+
+
+
                 </div>
 
 
-                <div className={classDetailLogin}>
-                    <div className="header-dropdown-login-details">
-                        <NavLink
-                            to="users/profile/personalContent"
-                            // onClick={() => this.props.goToProfile(this.props.history)}
-                        >
-                            PROFILE
-                        </NavLink>
-                        <input
-                            type="button"
-                            value="logout"
-                            className="login-btn"
-                            onClick={() => this.props.unsetLoggedUser()}
-                        />
-                        <input
-                            type="button"
-                            value="x"
-                            className="login-close-btn"
-                            onClick={() => this.props.closeLoginDetails()}
-                        />
-                    </div>
-                </div>
+
             </div>
         );
     }
