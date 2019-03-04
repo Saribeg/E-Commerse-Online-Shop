@@ -6,7 +6,7 @@ import axios from "axios";
 
 class Footer extends Component {
   state = {
-   content: []
+    content: []
   };
 
   componentDidMount() {
@@ -32,12 +32,11 @@ class Footer extends Component {
 
       return(
         <div className="footer-menu-column">
-           <h3 className="footer-menu-column-title">{elem.title}</h3>
-           {linksList}
+          <h3 className="footer-menu-column-title">{elem.title}</h3>
+          {linksList}
         </div>
-
-      )
-    })
+      );
+    });
 
     return (
       <footer className="main-footer">

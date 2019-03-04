@@ -19,7 +19,7 @@ class ProductCard extends Component {
         <p className="product-name">{`${model} (${colorName})`}</p>
         <p className="product-price">{`$${currentPrice}`}</p>
         {previousPrice ? (
-          <span className="previous-price"> {previousPrice} </span>
+          <span className="previous-price"> {`$${previousPrice}`} </span>
         ) : null}
       </NavLink>
     );

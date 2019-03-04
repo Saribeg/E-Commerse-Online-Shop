@@ -2,19 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Select from "react-select";
 
-import { selectFilters } from "../../../../actions/filterActions";
+import { selectFilters, selectSize } from "../../../../actions/filterActions";
 
 import Preloader from "../../../Preloader";
 
 import "./sizeFilter.scss";
 
 class SizeFilter extends Component {
-  state = {
-    selectedOption: null
-  };
-
   sizeFilterChange = selectedOption => {
-    this.setState({ selectedOption });
+    this.props.selectSize(selectedOption);
 
     let { currentFilters } = this.props;
 
@@ -40,15 +36,67 @@ class SizeFilter extends Component {
   };
 
   render() {
-    const { selectedOption } = this.state;
-    const { sizeFilters, sizeOptions, isFilterFetching } = this.props;
+    const {
+      sizeFilters,
+      isFilterFetching,
+      currentSizeOption,
+      currentFilters
+    } = this.props;
+
+    let { category, subCategory, furtherSubCategory } = currentFilters;
+    let currentCategories = `${
+      furtherSubCategory
+        ? category + "-" + subCategory + "-" + furtherSubCategory
+        : subCategory
+        ? category + "-" + subCategory
+        : category
+    }`;
+
+    let currentCategoriesLength;
+
+    if (currentCategories.includes("-")) {
+      currentCategoriesLength = currentCategories.split("-").length;
+    } else {
+      currentCategoriesLength = 1;
+    }
+
+    let relevantSizeOptions = sizeFilters
+      .map(size => {
+        let sizeIsPresentInCategories = size.categories.some(cat => {
+          let splitedCat = cat.split("-");
+          splitedCat.length = currentCategoriesLength;
+          let sizeCategories = splitedCat.join("-");
+          return sizeCategories === currentCategories;
+        });
+
+        if (sizeIsPresentInCategories) {
+          return {
+            value: size.value,
+            label: size.value
+          };
+        }
+      })
+      .filter(item => {
+        return item !== undefined;
+      });
+
+    relevantSizeOptions.unshift({
+      value: "all sizes",
+      label: "All sizes"
+    });
 
     return (
-      <Select
-        value={selectedOption}
-        onChange={this.sizeFilterChange}
-        options={sizeOptions}
-      />
+      <>
+        {isFilterFetching ? (
+          <Preloader />
+        ) : (
+          <Select
+            value={currentSizeOption}
+            onChange={this.sizeFilterChange}
+            options={relevantSizeOptions}
+          />
+        )}
+      </>
     );
   }
 }
@@ -56,7 +104,7 @@ class SizeFilter extends Component {
 const mapStateToProps = state => {
   return {
     sizeFilters: state.filters.sizeFilters,
-    sizeOptions: state.filters.sizeOptions,
+    currentSizeOption: state.filters.currentSizeOption,
     isFilterFetching: state.filters.isFilterFetching,
     currentFilters: state.filters.selected
   };
@@ -64,5 +112,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { selectFilters }
+  { selectFilters, selectSize }
 )(SizeFilter);
