@@ -982,6 +982,7 @@ body {
 
 .job-description {
   padding: 14px 65px; }
+<<<<<<< HEAD
   .job-description__border {
     border-bottom: 1px solid #d8d8d8;
     max-width: 70%;
@@ -991,6 +992,37 @@ body {
     font-size: 22px;
     font-weight: bold;
     color: #33333a; }
+=======
+  .job-description__border__mail {
+    color: #d8d8d8; }
+  .job-description .job-description {
+    padding: 14px 65px; }
+    .job-description .job-description__border {
+      border-bottom: 1px solid #d8d8d8;
+      max-width: 70%;
+      margin: 0 auto;
+      padding: 10px 0; }
+    .job-description .job-description__position {
+      font-size: 22px;
+      font-weight: bold;
+      color: #33333a; }
+    .job-description .job-description__location {
+      font-size: 16px;
+      color: #78909c;
+      padding: 5px 0; }
+    .job-description .job-description__text {
+      font-size: 16px;
+      color: #33333a; }
+    @media (min-width: 481px) and (max-width: 992px) {
+      .job-description .job-description {
+        padding: 10px 30px; } }
+    @media (min-width: 401px) and (max-width: 480px) {
+      .job-description .job-description {
+        padding: 10px; } }
+    @media (max-width: 400px) {
+      .job-description .job-description {
+        padding: 5px; } }
+>>>>>>> 05afea504bd51dcabfba0a87c37a71c495428044
   .job-description__location {
     font-size: 16px;
     color: #78909c;

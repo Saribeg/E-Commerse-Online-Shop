@@ -14,6 +14,10 @@ import TestAddToCart from "./components/Cart/testAddToCart";
 import FilteredProductList from "./components/FilteredProductList";
 import AdminDashboard from "./components/AdminDashboard";
 import RedirectLogin from "./components/TopBlockAuth/RedirectLogin";
+import AboutUs from "./components/StaticPages/AboutUs";
+import OurPolicy from "./components/StaticPages/OurPolicy";
+import Careers from "./components/StaticPages/Careers";
+
 
 import store from "./store";
 import jwt_decode from "jwt-decode";
@@ -70,22 +74,15 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={MainPage} />
+          <Route exact path="/about-us" component={AboutUs} />
           <Route path="/users/profile" component={Profile} />
           <Route exact path="/login" component={RedirectLogin} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/addCart" component={TestAddToCart} />
           <Route path="/admin/dashboard" component={AdminDashboard} />
-          <Route
-            exact
-            path="/:category/:subCategory/:furtherSubCategory/:id"
-            component={ProductPage}
-          />
-          <Route
-            exact
-            path="/:category/:subCategory?/:furtherSubCategory?"
-            component={FilteredProductList}
-          />
           <Route exact path="/unsubscribe/:id" component={Unsubscribe} />
+          <Route exact path="/:category/:subCategory/:furtherSubCategory/:id" component={ProductPage} />
+          <Route exact path="/:category/:subCategory?/:furtherSubCategory?" component={FilteredProductList} />
         </Switch>
         <Footer />
       </>

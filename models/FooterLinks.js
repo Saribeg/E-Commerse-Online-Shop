@@ -10,4 +10,4 @@ const FooterSchema = new Schema({
   },
 });
 
-module.exports = Footer = mongoose.model("static-pages", FooterSchema);
+module.exports = Footer = mongoose.model("footer-links", FooterSchema);
