@@ -1,8 +1,7 @@
 .main-right {
   display: flex;
   justify-content: flex-end;
-
-  /* max-width: 450px; */
+  align-items: center;
   width: 60%;
 }
 
@@ -26,13 +25,19 @@
 }
 
 .header-dropdown-login-details {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   position: absolute;
   top: 50px;
   right: 316px;
   z-index: 1;
+  box-shadow: 0, 0, 10px, 10px #ccc;
 }
+
+
 
 .user-info-mini {
   display: flex;

@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
+import {Helmet} from "react-helmet";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -71,6 +72,9 @@ class App extends Component {
   render() {
     return (
       <>
+      <Helmet>
+                <title>Matter - you're matter</title>
+      </Helmet>
         <Header />
         <Switch>
           <Route exact path="/" component={MainPage} />
@@ -83,7 +87,7 @@ class App extends Component {
           <Route exact path="/addCart" component={TestAddToCart} />
           <Route path="/admin/dashboard" component={AdminDashboard} />
           <Route exact path="/unsubscribe/:id" component={Unsubscribe} />
-          <Route exact path="/:category/:subCategory/:furtherSubCategory/:id" component={ProductPage} />
+          <Route exact path="/:category/:subCategory/:furtherSubCategory?/:id" component={ProductPage} />
           <Route exact path="/:category/:subCategory?/:furtherSubCategory?" component={FilteredProductList} />
         </Switch>
         <Footer />

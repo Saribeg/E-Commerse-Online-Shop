@@ -14,9 +14,6 @@ export const getProductDetails = (routeDetails) => dispatch => {
 
 	axios.get(`/products/${category}/${subCategory}/${furtherSubCategory}/${id}`, {
 		params: {
-			category: category,
-			subCategory: subCategory,
-			furtherSubCategory: furtherSubCategory,
 			id: id,					
 		}
 	}).then((result) =>{

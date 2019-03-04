@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Helmet} from "react-helmet";
 import axios from 'axios';
 
 export default class Careers extends Component {
@@ -32,6 +33,9 @@ export default class Careers extends Component {
 	
 		return (
 			<>
+			<Helmet>
+			<title>{this.state.pageTitle}</title>
+			</Helmet>
 			<h2 className="sub-page__title">{this.state.pageTitle}</h2>
 			<h3 className="sub-page__sub-title">There are several options to suggest</h3>
 			{pageContent}

@@ -255,11 +255,13 @@ class TopBlockAuth extends Component {
                         <input
                             type="button"
                             value="logout"
+                            className="login-btn"
                             onClick={() => this.props.unsetLoggedUser()}
                         />
                         <input
                             type="button"
-                            value="close"
+                            value="x"
+                            className="login-close-btn"
                             onClick={() => this.props.closeLoginDetails()}
                         />
                     </div>
