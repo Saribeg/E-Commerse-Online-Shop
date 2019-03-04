@@ -22,6 +22,30 @@ app.use(bodyParser.json());
 
 const db = require("./config/keys").mongoURI;
 
+
+// const jwtOptions = {
+//     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+//     secretOrKey: jwtsecret
+// };
+//
+// passport.use(new JwtStrategy(jwtOptions, function (payload, done) {
+//
+//         console.log('JWT strategy');
+//         console.log(payload);
+//
+//         User.findById(payload.id, (err, user) => {
+//             if (err) {
+//                 return done(err)
+//             }
+//             if (user) {
+//                 done(null, user)
+//             } else {
+//                 done(null, false)
+//             }
+//         })
+//     })
+// );
+
 mongoose
     .connect(db, {useNewUrlParser: true})
     .then(() => console.log("MongoDB Connected"))

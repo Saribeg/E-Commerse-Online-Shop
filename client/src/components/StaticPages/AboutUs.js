@@ -11,12 +11,11 @@ export default class AboutUs extends Component {
 
 	componentDidMount() {
     axios.get('/about-us').then(res => {
-		 const pageTitle = res.data[0].title;
-		 const content = res.data[0].content;
+
 		 this.setState({ 
-			 pageTitle: pageTitle,
-			 content: content })
-    });
+			 pageTitle: res.data.title,
+			 content:  res.data.content})
+		});
   }
 
 	render() {

@@ -23,41 +23,31 @@
       align-items: center;
     }
 
-  }
+    &-btn {
+      max-width: 300px;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 100px;
+      background-color: $black;
+      font-family: $font-openSans;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #ffffff;
+      border: none;
+      outline: none;
+      cursor: pointer;
 
-  &-email {
-    border: none;
-    outline: none;
-    max-width: 318px;
-    width: 100%;
-    border-radius: 22px;
-    padding: 15px;
-    background-color: $grey-light;
-    margin-right: 39px;
-
-    @include max-width($landscape-tablet) {
-      margin-right: 0;
-      margin-bottom: 10px;
     }
   }
+}
 
-  &-btn {
-    max-width: 300px;
-    width: 100%;
-    padding: 12px 0;
-    border-radius: 100px;
-    background-color: $black;
-
-    font-family: $font-openSans;
-    font-size: 13px;
-    font-weight: bold;
-    text-align: center;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    color: #ffffff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-
-  }
+.unsubscribe-text {
+  text-align: center;
+  font-family: $font-openSans;
+  font-size: 24px;
+  letter-spacing: 1.4px;
+  padding: 65px 0;
 }

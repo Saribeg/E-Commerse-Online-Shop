@@ -4,62 +4,228 @@ import {connect} from "react-redux";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-import {CHANGE_AMOUT_OF_ITEM} from '../../actions/cart';
+import {
+    CHANGE_AMOUT_OF_ITEM,
+    CHANGE_ARRAY_AMOUT_OF_ITEM,
+    DELETE_ITEM_TO_CART,
+    checkAvailableItem
+} from '../../actions/cart';
 
 import './cart.scss'
+import {goToProfile} from "../../actions/login";
 
 class Cart extends Component {
 
-    state = {}
+    state = {
+        isBlock: false,
+        isRequest: false,
+    }
 
     handleChange = (event) => {
+
+        console.log('handleChange')
+
         let name = event.target.name;
         let value = Number(event.target.value);
-        console.log(value)
         if (!isNaN(value)) {
             this.props.changeAmount(name, value);
             this.setState({[name]: value});
         }
     }
 
-    plusCount = (index) => {
-        // console.log(value)
+    falseBlock = () => {
+
+        console.log('call false block')
+
+        this.setState({
+            isBlock: false,
+        });
+    }
+
+    falseRequest = () => {
+        console.log('call request false')
+        this.props.changeArrayAmount({
+            ...this.state,
+        });
+
+        this.setState({
+            isRequest: false,
+        });
+    }
+
+    addAmount = (index) => {
+        // console.log("addamount")
+
+        // let newAmount = this.state[index];
+        // newAmount++;
+        // this.props.changeAmount(index, newAmount);
+        // this.setState({[index]: newAmount});
 
         let newAmount = this.state[index];
         newAmount++;
-        this.props.changeAmount(index, newAmount);
-        this.setState({[index]: newAmount});
+
+        if (!this.state.isBlock) {
+
+            this.props.changeArrayAmount({
+                ...this.state,
+                [index]: newAmount
+            });
+            setTimeout(this.falseBlock, 2000);
+            this.setState({
+                isBlock: true,
+                [index]: newAmount
+            });
+        } else {
+
+            if (!this.state.isRequest) {
+                setTimeout(this.falseRequest, 2000);
+                this.setState({
+                    isRequest: true,
+                    [index]: newAmount
+                });
+            } else {
+                this.setState({
+                    [index]: newAmount
+                });
+            }
+
+        }
 
     }
 
-    minusCount = (index) => {
+    minusAmount = (index) => {
         // console.log(value)
         let newAmount = this.state[index];
 
         if (newAmount - 1 >= 0) {
             newAmount--;
-            this.props.changeAmount(index, newAmount);
-            this.setState({[index]: newAmount});
+            if (!this.state.isBlock) {
+
+                this.props.changeArrayAmount({
+                    ...this.state,
+                    [index]: newAmount
+                });
+                setTimeout(this.falseBlock, 2000);
+                this.setState({
+                    isBlock: true,
+                    [index]: newAmount
+                });
+            } else {
+
+                if (!this.state.isRequest) {
+                    setTimeout(this.falseRequest, 2000);
+                    this.setState({
+                        isRequest: true,
+                        [index]: newAmount
+                    });
+                } else {
+                    this.setState({
+                        [index]: newAmount
+                    });
+                }
+
+            }
         }
 
     }
 
-    componentDidMount() {
-        this.props.dataBasket.arrayProduct.forEach((elem, index) => {
+    deleteItem = (index) => {
+        let arr = this.props.dataBasket.arrayProduct;
+        arr.splice(index, 1);
+
+        this.props.deleteItem(arr);
+
+        arr.forEach((elem, index) => {
             this.setState({[index]: elem.amount})
         })
+
+
+    }
+
+    // checkAvailableItem = () => {
+    //
+    //
+    // }
+
+    // checkArrayAvailableItem = (array) => {
+    //
+    //     array.forEach((elem, index) => {
+    //         this.props.checkAvailableItem(elem, index);
+    //     })
+    //
+    //
+    // }
+
+
+    componentWillUpdate(nextProps, nextState) {
+
+        console.log('component will update')
+        let isUpdate = 0;
+        let obj = {}
+        nextProps.dataBasket.arrayProduct.forEach((elem, index) => {
+            if (!this.state[index]) {
+                obj[index] = elem.amount;
+                isUpdate = 1;
+            }
+        })
+        if (isUpdate) {
+            this.setState({...obj})
+        }
+
+    }
+
+
+    componentDidMount() {
+
+        let obj = {}
+
+        this.props.dataBasket.arrayProduct.forEach((elem, index) => {
+            obj[index] = elem.amount;
+        })
+        this.setState({...obj})
+
+        // this.setState({[index]: elem.amount})
     }
 
     render() {
+
+        // let arrayCheckProducts = [{id: '5c62e45b9103d2041423d03f', isAvailable: true,
+        //     reasonNotAvailable: '', colorName: 'black', size: 's', amount: 3,}];
+        let arrayCheckProducts = [];
+
+        console.log(this.state);
+
         let productList = this.props.dataBasket.arrayProduct.map((elem, index) => {
 
+            console.log('start loop')
+
             let keyItem = index;
-            let amount = '';
-            amount = this.state[keyItem]
+            let amount = this.state[keyItem];
+            let checkItem = {
+                id: elem.id,
+                isAvailable: elem.isAvailable,
+                reasonNotAvailable: elem.reasonNotAvailable,
+                colorName: elem.colorName,
+                size: elem.size,
+                amount: elem.amount,
+                priceFormDB: elem.priceFormDB,
+            }
+            arrayCheckProducts.push(checkItem);
+
+            // console.log('this.props.checkAvailableItem(checkItem)')
+
+
+            let classIsAvailable = elem.isAvailable ? 'basket-item-available' : 'd-none';
+            let classIsNotAvailable = !elem.isAvailable ? 'basket-item-notavailable' : 'd-none';
+
+            let classWasChangedPrice = (Number(elem.price) !== Number(elem.priceFormDB)) ? null : 'd-none';
+            let classWasntChangedPrice = (Number(elem.price) === Number(elem.priceFormDB)) ? null : 'd-none';
+
 
             return (
-                <li className="basket-item">
-                    <span className="basket-item-delete"><FontAwesomeIcon icon={faTimes}/></span>
+                <li key={keyItem + "indexCart"} className="basket-item">
+                    <span className="basket-item-delete" onClick={() => this.deleteItem(keyItem)}><FontAwesomeIcon
+                        icon={faTimes}/></span>
                     <img
                         className="basket-item-img"
                         src={elem.urlPhoto}
@@ -68,18 +234,56 @@ class Cart extends Component {
                         <p className="basket-item-title">{elem.model}</p>
                         <p>{elem.colorName}</p>
                         <p>{elem.size}</p>
+                        <p className={classIsAvailable}>
+                            In Stock
+                        </p>
+                        <p className={classIsNotAvailable}>
+                            Out Stock
+                        </p>
+                        <p className={classIsNotAvailable}>
+                            {elem.reasonNotAvailable}
+                        </p>
                     </div>
                     <div className="product-counter">
-                        <button className="product-counter-btn" onClick={() => this.minusCount(keyItem)}>-</button>
+                        <button className="product-counter-btn" onClick={() => this.minusAmount(keyItem)}>-</button>
                         <input name={keyItem} type="text" className="product-counter-input-value" value={amount}
                                onChange={this.handleChange}/>
-                        <button className="product-counter-btn" onClick={() => this.plusCount(keyItem)}>+</button>
+                        <button className="product-counter-btn" onClick={() => this.addAmount(keyItem)}>+</button>
                     </div>
-                    <p className="basket-item-title">{elem.price}</p>
+                    <p className="basket-item-title">
+                        <div className={classWasChangedPrice}>
+                            <div className='basket-item-old-price'>
+                                {elem.price}
+                            </div>
+                            <div className='basket-item-new-price'>
+                                {elem.priceFormDB}
+                            </div>
+                        </div>
+
+                        <div className={classWasntChangedPrice}>
+                            {elem.price}
+                        </div>
+
+
+                    </p>
                 </li>
             )
 
         })
+
+        // console.log('arrayCheckProducts', arrayCheckProducts)
+
+        // if (arrayCheckProducts.length > 0) {
+        //     this.checkArrayAvailableItem(arrayCheckProducts);
+        // }
+
+
+
+        if (arrayCheckProducts.length > 0) {
+            this.props.checkArrayAvailableItems(arrayCheckProducts);
+        }
+
+
 
 
         return (
@@ -116,7 +320,21 @@ const mapDispatchToProps = dispatch => {
     return {
         changeAmount: (index, value) => {
             dispatch({type: CHANGE_AMOUT_OF_ITEM, payload: {index: index, value}})
-        }
+        },
+
+        changeArrayAmount: (obj) => {
+            dispatch({type: CHANGE_ARRAY_AMOUT_OF_ITEM, payload: {obj: obj}})
+        },
+
+        deleteItem: (array) => {
+            dispatch({type: DELETE_ITEM_TO_CART, payload: {array: array}})
+        },
+
+        // checkAvailableItem: (itemData, index) => dispatch(checkAvailableItem(itemData, index)),
+
+        checkArrayAvailableItems: (arrData) => dispatch(checkAvailableItem(arrData))
+
+
     };
 };
 

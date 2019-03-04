@@ -21,7 +21,6 @@ router.get("/carousel", (req, res) => {
     .populate("product", [
       "model",
       "currentPrice",
-      "previousPrice",
       "productUrl"
     ])
     .then(items => res.json(items))

@@ -10,28 +10,17 @@ import {
 import "./colorFilter.scss";
 
 class ColorFilter extends Component {
-  state = {
-    chosenColor: ""
-  };
-
+  // Fetching our list of colors from server
   componentDidMount = () => {
     this.props.getFilterElems();
   };
 
-  handleColorRadio = e => {
-    if (e.target.value === "all colors") {
-      this.setState({
-        chosenColor: ""
-      });
-    } else {
-      this.setState({
-        chosenColor: e.target.value
-      });
-    }
-
+  // Actualizing the checked radio color in store
+  handleColorRadio = newColorName => {
     let { currentFilters } = this.props;
 
-    if (e.target.value === "all colors") {
+    // If user choses "all colors" - delete colorName from store to not filter by color
+    if (newColorName === "all colors") {
       this.props.selectFilters(currentFilters, {
         category: currentFilters.category,
         subCategory: currentFilters.subCategory,
@@ -40,12 +29,13 @@ class ColorFilter extends Component {
         size: currentFilters.size,
         price: currentFilters.price
       });
+      // If user choses concret color - add the chosen colorName into store to filter by this color
     } else {
       this.props.selectFilters(currentFilters, {
         category: currentFilters.category,
         subCategory: currentFilters.subCategory,
         furtherSubCategory: currentFilters.furtherSubCategory,
-        colorName: e.target.value,
+        colorName: newColorName,
         size: currentFilters.size,
         price: currentFilters.price
       });
@@ -57,40 +47,29 @@ class ColorFilter extends Component {
       colorFilters,
       isFilterFetching,
       selectFilters,
-      currentFilters
+      currentFilters,
+      currentColorName
     } = this.props;
 
+    // The list of our unique colors? that we have in db
     let colorItems = colorFilters.map(color => {
-      const isColorCurrent = this.state.chosenColor === color.colorName;
-
       return (
         <li className="filter-color-panel-item" key={color._id}>
+          <input
+            className="filter-color-panel-input"
+            type="radio"
+            name="colorFilters"
+            value={color.colorName}
+            checked={currentColorName === color.colorName}
+            id={color.colorName}
+            onChange={() => this.handleColorRadio(color.colorName)}
+          />
           <label
-            className={
-              color.colorName === "white" && isColorCurrent
-                ? "filter-color-panel-link filter-color-panel-link--selected-white"
-                : isColorCurrent
-                ? "filter-color-panel-link filter-color-panel-link--selected"
-                : "filter-color-panel-link"
-            }
+            className="filter-color-panel-link"
             title={color.colorName}
-            style={
-              color.colorName === "white"
-                ? {
-                    border: "1px solid #000000",
-                    backgroundColor: color.cssHexCode
-                  }
-                : { backgroundColor: color.cssHexCode }
-            }
-          >
-            <input
-              className="filter-color-panel-input"
-              type="radio"
-              name="colorFilters"
-              value={color.colorName}
-              onChange={this.handleColorRadio}
-            />
-          </label>
+            style={{ backgroundColor: color.cssHexCode }}
+            htmlFor={color.colorName}
+          />
         </li>
       );
     });
@@ -106,7 +85,7 @@ class ColorFilter extends Component {
               className="filter-color-panel-input"
               name="colorFilters"
               value="all colors"
-              onChange={this.handleColorRadio}
+              onChange={() => this.handleColorRadio("all colors")}
             />
           </label>
         </div>
@@ -122,7 +101,8 @@ const mapStateToProps = state => {
   return {
     colorFilters: state.filters.colorFilters,
     isFilterFetching: state.filters.isFilterFetching,
-    currentFilters: state.filters.selected
+    currentFilters: state.filters.selected, //The object, where we store all our actual filters
+    currentColorName: state.filters.selected.colorName
   };
 };
 
