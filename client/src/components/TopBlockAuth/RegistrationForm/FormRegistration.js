@@ -15,6 +15,7 @@ class FormRegistration extends Component {
                     <p>First Name</p>
                     <Field name="firstName" component={customRequiredInput}
                            className='registration-input'
+                           classError='input-error-message'
                            type="text" placeholder="Your first name..."
                            validate={[requiredInput]}
                     />
@@ -24,6 +25,7 @@ class FormRegistration extends Component {
                     <p>Last Name</p>
                     <Field name="secondName" component={customRequiredInput}
                            className='registration-input'
+                           classError='input-error-message'
                            type="text" placeholder="Your last name..."
                            validate={[requiredInput]}
                     />
@@ -36,6 +38,7 @@ class FormRegistration extends Component {
                     <p>Email Address</p>
                     <Field name="email" component={customRequiredInput}
                            className='registration-input'
+                           classError='input-error-message'
                            type="email" placeholder="Your email..."
                            validate={[requiredInput, correctEmail]}
                     />
@@ -45,6 +48,7 @@ class FormRegistration extends Component {
                     <p>Password</p>
                     <Field name="password" component={customRequiredInput}
                            className='registration-input'
+                           classError='input-error-message'
                            type="password" placeholder="Your password..."
                            validate={[requiredInput]}
                     />
@@ -54,6 +58,7 @@ class FormRegistration extends Component {
                     <p>Confirm Password</p>
                     <Field name="password2" component={customRequiredInput}
                            className='registration-input'
+                           classError='input-error-message'
                            type="password" placeholder="Your password..."
                            validate={[requiredInput, matchPasswordsReg]}
                     />

@@ -34,9 +34,9 @@ class LoginForm extends Component {
         return (
             <Fragment>
                 <div className='login-menu' onClick={this.clickLog}>
-                    <div data-btn="btn-login-up-close" className="cancel-btn"  />
+                    <div data-btn="btn-login-up-close" className="login-cancel-btn"  />
                     <h2 className='login-menu_header'>Log in</h2>
-                    <p className='login-menu_par'>Please enter your account details to log in to your user account</p>
+                    <p className='login-menu_par'>Please enter your account details to log in</p>
 
 
                     <div className={classCheckEmail}>

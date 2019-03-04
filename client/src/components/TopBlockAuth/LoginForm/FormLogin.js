@@ -10,16 +10,18 @@ class FormLogin extends Component {
             <form onSubmit={handleSubmit}>
 
                 <div className='login-menu_form-fields'>
-                    <p className='form-email_par'>First name</p>
+                    <p className='login-form-input-title'>First name</p>
                     <Field name="email" component={customRequiredInput}
                            className='login-field'
+                           classError='input-error-message'
                            type="text" placeholder="Your email..."
                            validate={[requiredInput]}
                     />
 
-                    <p className='form-pass_par'>Password</p>
+                    <p className='login-form-input-title'>Password</p>
                     <Field name="password" component={customRequiredInput}
                            className='login-field'
+                           classError='input-error-message'
                            type="password" placeholder="Your email..."
                            validate={[requiredInput]}
                     />

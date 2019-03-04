@@ -8,7 +8,7 @@ const Product = require("../models/Product");
 
 router.post('/checkAvailableItem', (req, res) => {
 
-    console.log("checkAvailableItem")
+    // console.log("checkAvailableItem")
 
     let isUpdated = 0;
     let checkArrIndex = [];
@@ -106,14 +106,14 @@ router.post('/checkAvailableItem', (req, res) => {
                                 }
                             } else if (checkArr[i].amount > sizeAvailable) {
                                 if (checkArr[i].reasonNotAvailable !== arrMessage[3] + sizeAvailable) {
-                                    console.log('update 5')
+                                    // console.log('update 5')
                                     isUpdated = 1;
                                     checkArr[i].isAvailable = false;
                                     checkArr[i].reasonNotAvailable = arrMessage[3] + sizeAvailable
                                 }
                             } else {
                                 if (checkArr[i].isAvailable === false) {
-                                    console.log('update 6')
+                                    // console.log('update 6')
                                     isUpdated = 1;
                                     checkArr[i].isAvailable = true;
                                     checkArr[i].reasonNotAvailable = ""
