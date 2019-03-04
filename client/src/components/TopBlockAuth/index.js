@@ -102,14 +102,12 @@ class TopBlockAuth extends Component {
                 <Search/>
                 <div className="main-date">
                     <div className={notLogged}>
-                        <div>
                             <input
                                 type="button"
                                 className="header-top-login-btn"
                                 value="Log in"
-                                onClick={() => this.clickOnLogin()}
-                            />
-                        </div>
+                                onClick={() => this.clickOnLogin()}/>
+
                     </div>
 
                     <div className={isLogged}>
@@ -121,7 +119,7 @@ class TopBlockAuth extends Component {
                                 <img
                                     className="user-avatar-mini-img"
                                     src="/img/profile_logo.png"
-                                    alt=""
+                                    alt="icon-account"
                                     onClick={() => this.props.openLoginDetails()}
                                 />
 
@@ -160,7 +158,7 @@ class TopBlockAuth extends Component {
 
                     <div className="product-cart-ico">
                         <NavLink to="/cart">
-                            <img className="product-cart-ico-img" src="/img/cart_img.png" alt=""/>
+                            <img src="/img/cart_img.png" alt="icon basket"/>
 
                             <p className={isCartNotEmpty}>{this.props.amountCart}</p>
                         </NavLink>

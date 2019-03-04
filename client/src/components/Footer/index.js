@@ -6,25 +6,25 @@ import axios from "axios";
 
 class Footer extends Component {
   state = {
-   content: []
+    content: []
   };
 
   componentDidMount() {
     axios.get(`/get-footer`).then(res => {
-      console.log(res.data)
+      console.log(res.data);
       this.setState({ content: res.data });
     });
   }
 
   render() {
-    
+
     const footerContent = this.state.content.map((elem)=>{
 
       const linksList = elem.links.map((link)=>{
           return (
             <ul className="footer-column-list">
               <li key={link._id} className="footer-column-item">
-               <NavLink to={link.path}>{link.title}</NavLink>
+               <NavLink to={link.path} className="footer-column-link" activeClassName="footer-column-link">{link.title}</NavLink>
              </li>
             </ul>
           )
@@ -32,12 +32,11 @@ class Footer extends Component {
 
       return(
         <div className="footer-menu-column">
-           <h3 className="footer-menu-column-title">{elem.title}</h3>
-           {linksList}
+          <h3 className="footer-menu-column-title">{elem.title}</h3>
+          {linksList}
         </div>
-
-      )
-    })
+      );
+    });
 
     return (
       <footer className="main-footer">

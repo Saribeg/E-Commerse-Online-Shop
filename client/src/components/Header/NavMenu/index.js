@@ -7,6 +7,8 @@ import {
   closeSubMenu
 } from "../../../actions/navMenuActions";
 
+import { selectFilters, selectSize } from "../../../actions/filterActions";
+
 import Preloader from "../../Preloader";
 
 // import "../../../scss/style.scss";
@@ -18,6 +20,25 @@ class NavMenu extends Component {
     this.props.getNavMenuItems();
   }
 
+  initiateCategoryFilters = (
+    newCategory,
+    newSubCategory,
+    newFurtherSubCategory
+  ) => {
+    let { currentFilters } = this.props;
+
+    this.props.selectSize(null);
+
+    this.props.selectFilters(currentFilters, {
+      category: newCategory,
+      subCategory: newSubCategory,
+      furtherSubCategory: newFurtherSubCategory,
+      colorName: undefined,
+      size: undefined,
+      price: { min: 5, max: 1000 }
+    });
+  };
+
   render() {
     // Creating the category list (men, women)
     let menuList = this.props.navMenuItems.map(e => {
@@ -26,6 +47,10 @@ class NavMenu extends Component {
           className="main-menu-item"
           key={e._id}
           onMouseOver={() => this.props.openSubMenu(e.categoryName)}
+          onClick={() => {
+            this.initiateCategoryFilters(e.categoryName);
+            this.props.closeSubMenu();
+          }}
         >
           <Link to={e.categoryUrl} className="main-menu-link">
             {e.categoryName}
@@ -42,10 +67,21 @@ class NavMenu extends Component {
           let subfurtherSubCategory = subCategory.furtherSubCategoryList.map(
             furtherSubCategory => {
               return (
-                <li className="sub-menu-category-item">
+                <li
+                  className="sub-menu-category-item"
+                  key={furtherSubCategory._id}
+                >
                   <Link
                     to={furtherSubCategory.furtherSubCategoryUrl}
                     className="sub-menu-category-link"
+                    onClick={() => {
+                      this.initiateCategoryFilters(
+                        category.categoryName,
+                        subCategory.subCategoryName,
+                        furtherSubCategory.furtherSubCategoryName
+                      );
+                      this.props.closeSubMenu();
+                    }}
                   >
                     {furtherSubCategory.furtherSubCategoryName}
                   </Link>
@@ -60,6 +96,13 @@ class NavMenu extends Component {
               <Link
                 to={subCategory.subCategoryUrl}
                 className="sub-menu-left-title"
+                onClick={() => {
+                  this.initiateCategoryFilters(
+                    category.categoryName,
+                    subCategory.subCategoryName
+                  );
+                  this.props.closeSubMenu();
+                }}
               >
                 {subCategory.subCategoryName.charAt(0).toUpperCase() +
                   subCategory.subCategoryName.slice(1)}
@@ -105,11 +148,12 @@ const mapStateToProps = state => {
     navMenuItems: state.navMenu.navMenuItems,
     isMenuFetching: state.navMenu.isMenuFetching,
     navMenuWindowStatus: state.navMenu.navMenuWindowStatus,
-    currentOnMouseOverCategory: state.navMenu.currentOnMouseOverCategory
+    currentOnMouseOverCategory: state.navMenu.currentOnMouseOverCategory,
+    currentFilters: state.filters.selected
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getNavMenuItems, openSubMenu, closeSubMenu }
+  { getNavMenuItems, openSubMenu, closeSubMenu, selectFilters, selectSize }
 )(NavMenu);

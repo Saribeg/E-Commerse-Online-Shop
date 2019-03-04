@@ -2,21 +2,41 @@ import React, { Component } from "react";
 import InputRange from "react-input-range";
 import { connect } from "react-redux";
 
-import { selectFilters } from "../../../../actions/filterActions";
+import { selectFilters, selectPrice } from "../../../../actions/filterActions";
 
 import "react-input-range/lib/css/index.css";
 import "./priceFilter.scss";
 
 class PriceFilter extends Component {
-  state = {
-    value: { min: 2, max: 10 }
+
+  componentDidMount = () => {
+    let { category, subCategory, furtherSubCategory } = this.props.urlParams;
+    let { currentFilters } = this.props;
+
+    let newFilters = {
+      category: category,
+      subCategory: subCategory,
+      furtherSubCategory: furtherSubCategory,
+      colorName: currentFilters.colorName,
+      size: currentFilters.size,
+      price: currentFilters.price
+    };
+
+    this.props.selectFilters(currentFilters, newFilters);
   };
 
-  onPriceChange = value => {
-    this.setState({
-      value
-    });
-    this.props.selectFilters(this.props.currentFilters, { price: value });
+  onPriceFilter = price => {
+    let { currentFilters } = this.props;
+
+    let newFilters = {
+      category: currentFilters.category,
+      subCategory: currentFilters.subCategory,
+      furtherSubCategory: currentFilters.furtherSubCategory,
+      colorName: currentFilters.colorName,
+      size: currentFilters.size,
+      price: price
+    };
+    this.props.selectFilters(currentFilters, newFilters);
   };
 
   render() {
@@ -24,10 +44,13 @@ class PriceFilter extends Component {
       <InputRange
         formatLabel={value => `$ ${value}`}
         maxValue={1000}
-        minValue={10}
+        minValue={5}
         step={5}
-        value={this.state.value}
-        onChange={this.onPriceChange}
+        value={this.props.currentFilters.price}
+        allowSameValues={true}
+        draggableTrack={true}
+        onChange={this.props.selectPrice}
+        onChangeComplete={this.onPriceFilter}
       />
     );
   }
@@ -35,11 +58,12 @@ class PriceFilter extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentFilters: state.filters.selected
+    currentFilters: state.filters.selected,
+    selectedPrice: state.filters.selected.price
   };
 };
 
 export default connect(
   mapStateToProps,
-  { selectFilters }
+  { selectFilters, selectPrice }
 )(PriceFilter);

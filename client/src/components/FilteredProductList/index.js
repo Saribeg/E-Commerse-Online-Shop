@@ -7,6 +7,8 @@ import { getFilteredProducts } from "../../actions/filterActions";
 import Filters from "./Filters";
 import BreadCrumbs from "../BreadCrumbs";
 import ProductCard from "../ProductCard";
+import Preloader from "../Preloader";
+import EmptyState from "../EmptyState";
 
 import "./filteredProductList.scss";
 
@@ -20,34 +22,105 @@ class FilteredProductList extends Component {
     let { products, isProductFetching, currentFilters } = this.props;
 
     let filteredProductList = products.map(product => {
-      return product.productFeatures.map(color => {
-        return (
-          <ProductCard
-            productUrl={product.productUrl}
-            key={product._id}
-            imageUrl={color.imageUrls[0]}
-            model={product.model}
-            colorName={color.colorName}
-            currentPrice={product.currentPrice}
-            previousPrice={product.previousPrice}
-          />
-          // <NavLink to={product.productUrl} className="product-item">
-          //   <img
-          //     src={color.imageUrls[0]}
-          //     alt={product.model}
-          //     className="product-img"
-          //   />
-          //   <p className="product-name">{`${product.model} (${
-          //     color.colorName
-          //   })`}</p>
-          //   <p className="product-price">{`$${product.currentPrice}`}</p>
-          //   {product.previousPrice ? (
-          //     <span className="previous-price"> {product.previousPrice} </span>
-          //   ) : null}
-          // </NavLink>
-        );
-      });
+      if (currentFilters.colorName && !currentFilters.size) {
+        return product.productFeatures.map(color => {
+          if (currentFilters.colorName === color.colorName) {
+            return (
+              <ProductCard
+                productUrl={product.productUrl}
+                key={color._id}
+                imageUrl={color.imageUrls[0]}
+                model={product.model}
+                colorName={color.colorName}
+                currentPrice={product.currentPrice}
+                previousPrice={product.previousPrice}
+                currentFilters={currentFilters}
+              />
+            );
+          }
+        });
+      } else if (currentFilters.size && !currentFilters.colorName) {
+        return product.productFeatures.map(color => {
+          let isSizePresent = color.sizes.some(size => {
+            return currentFilters.size === size.size && size.quantity > 0;
+          });
+
+          if (isSizePresent) {
+            return (
+              <ProductCard
+                productUrl={product.productUrl}
+                key={color._id}
+                imageUrl={color.imageUrls[0]}
+                model={product.model}
+                colorName={color.colorName}
+                currentPrice={product.currentPrice}
+                previousPrice={product.previousPrice}
+                currentFilters={currentFilters}
+              />
+            );
+          }
+        });
+      } else if (currentFilters.colorName && currentFilters.size) {
+        return product.productFeatures.map(color => {
+          let isSizePresent = color.sizes.some(size => {
+            return currentFilters.size === size.size && size.quantity > 0;
+          });
+
+          if (currentFilters.colorName === color.colorName && isSizePresent) {
+            return (
+              <ProductCard
+                productUrl={product.productUrl}
+                key={color._id}
+                imageUrl={color.imageUrls[0]}
+                model={product.model}
+                colorName={color.colorName}
+                currentPrice={product.currentPrice}
+                previousPrice={product.previousPrice}
+                currentFilters={currentFilters}
+              />
+            );
+          }
+        });
+      } else {
+        return product.productFeatures.map(color => {
+          return (
+            <ProductCard
+              productUrl={product.productUrl}
+              key={color._id}
+              imageUrl={color.imageUrls[0]}
+              model={product.model}
+              colorName={color.colorName}
+              currentPrice={product.currentPrice}
+              previousPrice={product.previousPrice}
+              currentFilters={currentFilters}
+            />
+          );
+        });
+      }
     });
+
+    let {
+      category,
+      subCategory,
+      furtherSubCategory,
+      colorName,
+      size,
+      price
+    } = currentFilters;
+
+    let filterEmptyState = (
+      <EmptyState
+        isFilterResultEmpty={true}
+        category={category}
+        subCategory={subCategory}
+        furtherSubCategory={furtherSubCategory}
+        colorName={colorName}
+        size={size}
+        price={price}
+        returnToMainPage={false}
+        title="By the following filtering options you specified, no products were found. Please try the other filters."
+      />
+    );
 
     return (
       <>
@@ -58,7 +131,15 @@ class FilteredProductList extends Component {
               <Filters urlParams={this.props.match.params} />
 
               <div className="category-product-listing">
-                <div className="listing-products">{filteredProductList}</div>
+                <div className="listing-products">
+                  {isProductFetching ? (
+                    <Preloader />
+                  ) : this.props.products.length < 1 ? (
+                    filterEmptyState
+                  ) : (
+                    filteredProductList
+                  )}
+                </div>
                 <div className="btn-loading-products">
                   <NavLink to="/">loading</NavLink>
                 </div>

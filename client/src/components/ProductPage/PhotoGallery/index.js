@@ -1,50 +1,72 @@
 import React, { Component, Fragment } from "react";
 import "./photo-gallery.scss";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import {Carousel} from "react-responsive-carousel";
 
 export default class PhotoGallery extends Component {
   state = {
-		activePhotoSrc: "",
-		activeColor: this.props.activeColor
-  };
+    thumbnails: this.props.thumbs
+  }
 
-  changeMainPhoto = url => {
-    if (url) {
-      this.setState({
-				activePhotoSrc: url
-      });
-    }
-  };
-  render() {
+   renderGallery = () => {
     let productFeatures = this.props.productFeatures;
-    let firstPhoto = null;
-
-    let mainPhoto = <img src={this.state.activePhotoSrc} alt="img" />;
-
     let photoGallery = productFeatures.map(elem => {
-      let active = this.props.activeColor === elem.colorName;
+    let active = this.props.activeColor === elem.colorName;
       if (active) {
-        firstPhoto = elem.imageUrls[0];
         return elem.imageUrls.map(elem => {
-          return (
-            <img
-						  key={elem._id}
-              className={`all-photos-item`}
+            return (<img
+              className={``}
               src={elem}
-              alt={this.state.activeColor}
-              onClick={() => this.changeMainPhoto(elem)}
-            />
-          );
+              alt={this.props.activeColor}
+            />)
+
         });
       }
     });
-    if (this.state.activePhotoSrc === "") {
-      this.changeMainPhoto(firstPhoto);
-    }
+    let photoGalleryFiltered = photoGallery.filter((elem) => {
+      return elem !== undefined
+    })[0];
+
+
+    return photoGalleryFiltered;
+  };
+
+  render() {
+
+
+    let carousel =
+    <Carousel
+    className="product-details-carousel"
+     showThumbs={this.state.thumbnails}
+     showArrows={false}
+
+     onChange={()=> {this.renderGallery(); }}
+    // emulateTouch = {true}
+    showIndicators={false}
+    infiniteLoop={true}
+    showStatus={false}
+    activeColor={this.props.activeColor}
+>
+ {this.renderGallery()}
+
+{/*       { photoGallery.map((elem) => {
+        return (<img
+          className={``}
+          src={elem}
+          alt={this.props.activeColor}
+        />)
+    })} */}
+</Carousel>
+
+
+
+
 
     return (
       <Fragment>
-        <div className="all-photos">{photoGallery}</div>
-        <div className="photo-main">{mainPhoto}</div>
+        {carousel}
+
+       {/*  <div className="all-photos">{photoGallery}</div> */}
       </Fragment>
     );
   }

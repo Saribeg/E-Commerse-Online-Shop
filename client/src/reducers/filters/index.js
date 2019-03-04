@@ -5,7 +5,9 @@ import {
   FETCH_PRODUCT_REQUESTED,
   FETCH_PRODUCT_SUCCEEDED,
   FETCH_PRODUCT_FAILED,
-  SELECT_FILTERS
+  SELECT_FILTERS,
+  SELECT_SIZE,
+  SELECT_PRICE
 } from "../../actions/filterActions";
 
 const initialState = {
@@ -14,13 +16,10 @@ const initialState = {
   colorFilters: [],
   sizeFilters: [],
   sizeOptions: [],
+  currentSizeOption: null,
   products: [],
   selected: {
-    // category: "",
-    // subCategory: "",
-    // furtherSubCategory: "",
-    // colorName: "",
-    // size: ""
+    price: { min: 5, max: 1000 }
   }
 };
 
@@ -54,6 +53,19 @@ function filters(state = initialState, action) {
       return {
         ...state,
         selected: action.payload
+      };
+    case SELECT_SIZE:
+      return {
+        ...state,
+        currentSizeOption: action.payload
+      };
+    case SELECT_PRICE:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          price: action.payload
+        }
       };
     default:
       return { ...state };
