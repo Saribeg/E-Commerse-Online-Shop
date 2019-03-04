@@ -4,7 +4,7 @@
   "description": "JS1 final project - creating an e-commerse web shop",
   "main": "server.js",
   "scripts": {
-    "test": "mocha './routes/categoryCarousels.test.js' tests",
+    "test": "mocha \"./routes/categoryCarousels.test.js\" --timeout 10000",
     "server": "nodemon server.js",
     "front": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\"  \"npm run front\""
