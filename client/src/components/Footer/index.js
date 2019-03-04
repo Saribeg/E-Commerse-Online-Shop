@@ -17,20 +17,24 @@ class Footer extends Component {
   }
 
   render() {
+    const footerContent = this.state.content.map(elem => {
+      const linksList = elem.links.map(link => {
+        return (
+          <ul className="footer-column-list">
+            <li key={link._id} className="footer-column-item">
+              <NavLink
+                to={link.path}
+                className="footer-column-link"
+                activeClassName="footer-column-link"
+              >
+                {link.title}
+              </NavLink>
+            </li>
+          </ul>
+        );
+      });
 
-    const footerContent = this.state.content.map((elem)=>{
-
-      const linksList = elem.links.map((link)=>{
-          return (
-            <ul className="footer-column-list">
-              <li key={link._id} className="footer-column-item">
-               <NavLink to={link.path} className="footer-column-link" activeClassName="footer-column-link">{link.title}</NavLink>
-             </li>
-            </ul>
-          )
-      })
-
-      return(
+      return (
         <div className="footer-menu-column">
           <h3 className="footer-menu-column-title">{elem.title}</h3>
           {linksList}
