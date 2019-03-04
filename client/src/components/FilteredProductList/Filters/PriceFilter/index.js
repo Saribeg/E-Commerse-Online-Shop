@@ -9,14 +9,43 @@ import "./priceFilter.scss";
 
 class PriceFilter extends Component {
   state = {
-    value: { min: 2, max: 10 }
+    value: { min: 5, max: 1000 }
+  };
+
+  componentDidMount = () => {
+    let { category, subCategory, furtherSubCategory } = this.props.urlParams;
+    let { currentFilters } = this.props;
+
+    let newFilters = {
+      category: category,
+      subCategory: subCategory,
+      furtherSubCategory: furtherSubCategory,
+      colorName: currentFilters.colorName,
+      size: currentFilters.size,
+      price: this.state.value
+    };
+
+    this.props.selectFilters(currentFilters, newFilters);
   };
 
   onPriceChange = value => {
     this.setState({
       value
     });
-    this.props.selectFilters(this.props.currentFilters, { price: value });
+  };
+
+  onPriceFilter = value => {
+    let { currentFilters } = this.props;
+
+    let newFilters = {
+      category: currentFilters.category,
+      subCategory: currentFilters.subCategory,
+      furtherSubCategory: currentFilters.furtherSubCategory,
+      colorName: currentFilters.colorName,
+      size: currentFilters.size,
+      price: value
+    };
+    this.props.selectFilters(currentFilters, newFilters);
   };
 
   render() {
@@ -24,10 +53,13 @@ class PriceFilter extends Component {
       <InputRange
         formatLabel={value => `$ ${value}`}
         maxValue={1000}
-        minValue={10}
+        minValue={5}
         step={5}
         value={this.state.value}
+        allowSameValues={true}
+        draggableTrack
         onChange={this.onPriceChange}
+        onChangeComplete={this.onPriceFilter}
       />
     );
   }

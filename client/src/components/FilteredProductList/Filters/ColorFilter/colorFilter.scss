@@ -4,6 +4,10 @@
   padding: 32px 0;
   margin-top: 30px;
 
+  .filter-title {
+    margin-bottom: 0;
+  }
+
   .filter-color-panel {
     display: flex;
     flex-wrap: wrap;
@@ -23,6 +27,7 @@
       -moz-border-radius: 50%;
       border-radius: 50%;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
   }
 }
@@ -66,4 +71,26 @@
     border-radius: 50%;
     border: 2px solid #000000;
   }
+}
+
+.color-filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.reset-color-filters {
+  padding: 7px;
+  border-radius: 100px;
+  background-color: #33333a;
+  font-family: "OpenSans", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

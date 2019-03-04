@@ -21,17 +21,67 @@ class FilteredProductList extends Component {
 
     let filteredProductList = products.map(product => {
       return product.productFeatures.map(color => {
+        let isSizePresent = color.sizes.some(size => {
+          return currentFilters.size === size.size && size.quantity > 0;
+        });
+
+        // if (
+        //   currentFilters.colorName &&
+        //   currentFilters.colorName === color.colorName &&
+        //   isSizePresent
+        // ) {
+        //   let filteredProducts = (
+        //     <ProductCard
+        //       productUrl={product.productUrl}
+        //       key={product._id}
+        //       imageUrl={color.imageUrls[0]}
+        //       model={product.model}
+        //       colorName={color.colorName}
+        //       currentPrice={product.currentPrice}
+        //       previousPrice={product.previousPrice}
+        //       currentFilters={currentFilters}
+        //     />
+        //   );
+        //   return filteredProducts;
+        // } else if (!currentFilters.colorName && !isSizePresent) {
+        //   let allProducts = (
+        //     <ProductCard
+        //       productUrl={product.productUrl}
+        //       key={product._id}
+        //       imageUrl={color.imageUrls[0]}
+        //       model={product.model}
+        //       colorName={color.colorName}
+        //       currentPrice={product.currentPrice}
+        //       previousPrice={product.previousPrice}
+        //       currentFilters={currentFilters}
+        //     />
+        //   );
+        //   return allProducts;
+        // }
+
+        // if (
+        //   currentFilters.colorName &&
+        //   currentFilters.colorName === color.colorName &&
+        //   isSizePresent
+        // ) {
+        
         return (
           <ProductCard
             productUrl={product.productUrl}
-            key={product._id}
+            key={color._id}
             imageUrl={color.imageUrls[0]}
             model={product.model}
             colorName={color.colorName}
             currentPrice={product.currentPrice}
             previousPrice={product.previousPrice}
+            currentFilters={currentFilters}
           />
-          // <NavLink to={product.productUrl} className="product-item">
+
+          // <NavLink
+          //   to={product.productUrl}
+          //   key={color._id}
+          //   className="product-item"
+          // >
           //   <img
           //     src={color.imageUrls[0]}
           //     alt={product.model}
@@ -46,6 +96,7 @@ class FilteredProductList extends Component {
           //   ) : null}
           // </NavLink>
         );
+        // }
       });
     });
 

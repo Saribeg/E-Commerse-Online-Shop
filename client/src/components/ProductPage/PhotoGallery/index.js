@@ -1,43 +1,73 @@
-import React, { Component, Fragment } from 'react'
-import './photo-gallery.scss'
+import React, { Component, Fragment } from "react";
+import "./photo-gallery.scss";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import {Carousel} from "react-responsive-carousel";
 
 export default class PhotoGallery extends Component {
-	
-	render() {
-	 let productFeatures = this.props.productFeatures;
-/* 	 let photoGallery = productFeatures.filter((elem) => {
-		 return this.props.activeColor === elem.colorName
-	 }).map((elem) => {
-		return elem.imageUrls.map((elem) => {
-			return (<img class="all-photos-item" src={elem} alt="pants" />)
-		 })
-	 })
-  */
+  state = {
+    thumbnails: this.props.thumbs
+  }
 
-   let mainPhoto = null;
- 	 let photoGallery = productFeatures.map((elem) => {
-	 let active =  this.props.activeColor === elem.colorName ? 'd-flex' : '';
-	  if(active){
-			mainPhoto = <img src={elem.imageUrls[0]} alt="pants" /> 
-		} 
-		return elem.imageUrls.map((elem) => {
-			return (<img className={`${active} all-photos-item`} src={elem} alt="pants" />)
-		 })
-	 });
- 	   
+   renderGallery = () => {
+    let productFeatures = this.props.productFeatures;
+    let photoGallery = productFeatures.map(elem => {
+    let active = this.props.activeColor === elem.colorName;
+      if (active) {
+        return elem.imageUrls.map(elem => {
+            return (<img
+              className={``}
+              src={elem}
+              alt={this.props.activeColor}
+            />)
 
-		return (
-			<Fragment>
-			
-			<div className="all-photos">
-			  {photoGallery}
-			</div>
-			<div className="photo-main">
-		 	{mainPhoto} 
-			</div>
-			</ Fragment>
-		)
-	}		
+        });
+      }
+    });
+    let photoGalleryFiltered = photoGallery.filter((elem) => {
+      return elem !== undefined
+    })[0];
+
+
+    return photoGalleryFiltered;
+  };
+
+  render() {
+
+
+    let carousel =
+    <Carousel
+    className="product-details-carousel"
+     showThumbs={this.state.thumbnails}
+     showArrows={false}
+
+     onChange={()=> {this.renderGallery(); }}
+    // emulateTouch = {true}
+    showIndicators={false}
+    infiniteLoop={true}
+    showStatus={false}
+    activeColor={this.props.activeColor}
+>
+ {this.renderGallery()}
+
+{/*       { photoGallery.map((elem) => {
+        return (<img
+          className={``}
+          src={elem}
+          alt={this.props.activeColor}
+        />)
+    })} */}
+</Carousel>
+
+
+
+
+
+    return (
+      <Fragment>
+        {carousel}
+
+       {/*  <div className="all-photos">{photoGallery}</div> */}
+      </Fragment>
+    );
+  }
 }
-	
-

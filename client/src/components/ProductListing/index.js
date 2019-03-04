@@ -20,7 +20,6 @@ class ProductListing extends Component {
                 counterItems++;
 
                 if (counterItems <= this.props.children)
-                 console.log(productItem);  
                 return (
                    
                         <NavLink key={item._id} to={productItem.productUrl} className="product-item" onClick={()=> this.props.saveProductDetails(item.colorName)}>

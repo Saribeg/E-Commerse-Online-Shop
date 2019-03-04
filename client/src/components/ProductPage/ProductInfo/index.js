@@ -2,6 +2,7 @@
 import * as React from "react";
 import ProductColors from "./ProductColors";
 import ProductSizes from "./ProductSizes";
+import BtnAddToCart from "../../atomic/BtnAddToCart";
 
 type Props = {
   currentPrice: number,
@@ -13,9 +14,6 @@ class ProductInfo extends React.Component<Props> {
     const { itemNo, currentPrice, model, productFeatures, activeColor } = {
       ...this.props
     };
-    const activeItem = productFeatures.filter(elem => {
-      return activeColor === elem.colorName;
-    })[0];
 
     return (
       <div className="product-main-info">
@@ -32,6 +30,7 @@ class ProductInfo extends React.Component<Props> {
           activeColor={activeColor}
           productFeatures={productFeatures}
         />
+        <BtnAddToCart />
       </div>
     );
   }

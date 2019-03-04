@@ -18,7 +18,7 @@ class Filters extends Component {
           </div>
         </div>
         <CategoryFilter urlParams={this.props.urlParams} />
-        <PriceFilter />
+        <PriceFilter urlParams={this.props.urlParams} />
         <ColorFilter />
         <SizeFilter />
       </div>
