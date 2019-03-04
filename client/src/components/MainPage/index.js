@@ -15,7 +15,7 @@ class MainPage extends Component {
                 <section className="section-listing-products">
                     <div className="container">
                         <div className="listing">
-                            <h2 className="listing-title">Featured</h2>
+                            <h2 className="listing-title">Most popular items</h2>
                             <ProductListing children={8}/>
                         </div>
                     </div>
