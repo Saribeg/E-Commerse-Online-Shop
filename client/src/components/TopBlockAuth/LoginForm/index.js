@@ -22,6 +22,10 @@ class LoginForm extends Component {
 
     }
 
+    clickLog = () => {
+        console.log('hi click')
+    }
+
 
     render() {
 
@@ -29,7 +33,7 @@ class LoginForm extends Component {
 
         return (
             <Fragment>
-                <div className='login-menu'>
+                <div className='login-menu' onClick={this.clickLog}>
                     <div data-btn="btn-login-up-close" className="cancel-btn"  />
                     <h2 className='login-menu_header'>Log in</h2>
                     <p className='login-menu_par'>Please enter your account details to log in to your user account</p>

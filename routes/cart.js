@@ -8,7 +8,7 @@ const Product = require("../models/Product");
 
 router.post('/checkAvailableItem', (req, res) => {
 
-    // console.log("checkAvailableItem")
+    console.log("checkAvailableItem")
 
     let isUpdated = 0;
     let checkArrIndex = [];
@@ -61,22 +61,25 @@ router.post('/checkAvailableItem', (req, res) => {
                         if (info[j].withdrawnFromSale === true) {
 
                             if (checkArr[i].reasonNotAvailable !== arrMessage[0]) {
+                                // console.log('update 1')
                                 isUpdated = 1;
                                 checkArr[i].isAvailable = false;
                                 checkArr[i].reasonNotAvailable = arrMessage[0]
                             }
                         } else {
 
-                            // console.log('not withdrawn ', info[j]._id);
+                            console.log('not withdrawn ', info[j]._id);
 
-                            if (checkArr[i].currentPrice !== info[j].currentPrice) {
+                            if (Number(checkArr[i].priceFormDB) !== info[j].currentPrice) {
+                                // console.log('update 2')
                                 isUpdated = 1;
-                                checkArr[i].currentPrice = info[j].currentPrice;
+                                checkArr[i].priceFormDB = info[j].currentPrice;
                             }
 
                             info[j].productFeatures.forEach((elemColors) => {
 
                                 elemColors.sizes.forEach((elemSizes) => {
+
 
                                     if (elemSizes.size === checkArr[i].size && elemColors.colorName === checkArr[i].colorName) {
                                         sizeAvailable = elemSizes.quantity;
@@ -89,24 +92,28 @@ router.post('/checkAvailableItem', (req, res) => {
 
                             if (colorAvailable === 0) {
                                 if (checkArr[i].reasonNotAvailable !== arrMessage[1]) {
+                                    // console.log('update 3')
                                     isUpdated = 1;
                                     checkArr[i].isAvailable = false;
                                     checkArr[i].reasonNotAvailable = arrMessage[1]
                                 }
                             } else if (sizeAvailable === 0) {
                                 if (checkArr[i].reasonNotAvailable !== arrMessage[2]) {
+                                    // console.log('update 4')
                                     isUpdated = 1;
                                     checkArr[i].isAvailable = false;
                                     checkArr[i].reasonNotAvailable = arrMessage[2]
                                 }
                             } else if (checkArr[i].amount > sizeAvailable) {
                                 if (checkArr[i].reasonNotAvailable !== arrMessage[3] + sizeAvailable) {
+                                    console.log('update 5')
                                     isUpdated = 1;
                                     checkArr[i].isAvailable = false;
                                     checkArr[i].reasonNotAvailable = arrMessage[3] + sizeAvailable
                                 }
                             } else {
                                 if (checkArr[i].isAvailable === false) {
+                                    console.log('update 6')
                                     isUpdated = 1;
                                     checkArr[i].isAvailable = true;
                                     checkArr[i].reasonNotAvailable = ""
@@ -125,6 +132,7 @@ router.post('/checkAvailableItem', (req, res) => {
                             interArray[i] = checkArr[i];
                         } else {
                             //If ID doesn't exist in DB then write in object available FALSE and call change redux store
+                            // console.log('update 7')
                             isUpdated = 1;
                             checkArr[i].isAvailable = false;
                             checkArr[i].reasonNotAvailable = arrMessage[0];
@@ -133,7 +141,14 @@ router.post('/checkAvailableItem', (req, res) => {
                     }
                 }
 
+                // console.log('isUpdated', isUpdated)
 
+                res.json({
+                    wasUpdated: isUpdated,
+                    updatedArray: interArray
+                })
+
+                // console.log('interArray', interArray);
 
 
 

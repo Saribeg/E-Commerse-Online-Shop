@@ -158,6 +158,8 @@ class Cart extends Component {
 
 
     componentWillUpdate(nextProps, nextState) {
+
+        console.log('component will update')
         let isUpdate = 0;
         let obj = {}
         nextProps.dataBasket.arrayProduct.forEach((elem, index) => {
@@ -187,15 +189,18 @@ class Cart extends Component {
 
     render() {
 
-        let arrayCheckProducts = [{id: '5c62e45b9103d2041423d03f', isAvailable: true,
-            reasonNotAvailable: '', colorName: 'black', size: 's', amount: 3,}];
-        // let arrayCheckProducts = [];
+        // let arrayCheckProducts = [{id: '5c62e45b9103d2041423d03f', isAvailable: true,
+        //     reasonNotAvailable: '', colorName: 'black', size: 's', amount: 3,}];
+        let arrayCheckProducts = [];
+
+        console.log(this.state);
 
         let productList = this.props.dataBasket.arrayProduct.map((elem, index) => {
 
+            console.log('start loop')
+
             let keyItem = index;
             let amount = this.state[keyItem];
-
             let checkItem = {
                 id: elem.id,
                 isAvailable: elem.isAvailable,
@@ -205,7 +210,6 @@ class Cart extends Component {
                 amount: elem.amount,
                 priceFormDB: elem.priceFormDB,
             }
-
             arrayCheckProducts.push(checkItem);
 
             // console.log('this.props.checkAvailableItem(checkItem)')
@@ -213,6 +217,10 @@ class Cart extends Component {
 
             let classIsAvailable = elem.isAvailable ? 'basket-item-available' : 'd-none';
             let classIsNotAvailable = !elem.isAvailable ? 'basket-item-notavailable' : 'd-none';
+
+            let classWasChangedPrice = (Number(elem.price) !== Number(elem.priceFormDB)) ? null : 'd-none';
+            let classWasntChangedPrice = (Number(elem.price) === Number(elem.priceFormDB)) ? null : 'd-none';
+
 
             return (
                 <li key={keyItem + "indexCart"} className="basket-item">
@@ -242,7 +250,22 @@ class Cart extends Component {
                                onChange={this.handleChange}/>
                         <button className="product-counter-btn" onClick={() => this.addAmount(keyItem)}>+</button>
                     </div>
-                    <p className="basket-item-title">{elem.price}</p>
+                    <p className="basket-item-title">
+                        <div className={classWasChangedPrice}>
+                            <div className='basket-item-old-price'>
+                                {elem.price}
+                            </div>
+                            <div className='basket-item-new-price'>
+                                {elem.priceFormDB}
+                            </div>
+                        </div>
+
+                        <div className={classWasntChangedPrice}>
+                            {elem.price}
+                        </div>
+
+
+                    </p>
                 </li>
             )
 
@@ -254,9 +277,14 @@ class Cart extends Component {
         //     this.checkArrayAvailableItem(arrayCheckProducts);
         // }
 
+
+
         if (arrayCheckProducts.length > 0) {
             this.props.checkArrayAvailableItems(arrayCheckProducts);
         }
+
+
+
 
         return (
             <section className="basket-page container">

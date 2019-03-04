@@ -99,7 +99,7 @@ class TopBlockAuth extends Component {
 
     clickOnLogin = () => {
 
-        this.openModal();
+        // this.openModal();
         this.props.openLoginForm();
 
         // document.getElementById('root').addEventListener('click', this.clickRoot);
@@ -108,7 +108,7 @@ class TopBlockAuth extends Component {
         document.getElementById('root').onclick = () => {
             this.props.closeLoginForm();
             this.props.closeRegForm();
-            this.closeModal();
+            // this.closeModal();
         };
 
         document.getElementById('header-modal-form').onclick = (e) => {
@@ -118,7 +118,7 @@ class TopBlockAuth extends Component {
             }
             if (e.target.dataset.btn === 'btn-login-down-close') {
                 this.props.closeLoginForm();
-                this.closeModal();
+                // this.closeModal();
                 this.clickOnRegistration();
             }
         }
@@ -128,7 +128,7 @@ class TopBlockAuth extends Component {
 
     clickOnRegistration = () => {
 
-        this.openModal();
+        // this.openModal();
         this.props.openRegForm();
 
         // document.getElementById('root').addEventListener('click', this.clickRoot);
@@ -137,9 +137,10 @@ class TopBlockAuth extends Component {
         document.getElementById('root').onClick = () => {
             this.props.closeLoginForm();
             this.props.closeRegForm();
-            this.closeModal();
+            // this.closeModal();
 
         };
+
         document.getElementById('header-modal-form').onclick = (e) => {
 
             if (e.target.dataset.btn !== 'btn-reg-up-close') {
@@ -147,12 +148,41 @@ class TopBlockAuth extends Component {
             }
             if (e.target.dataset.btn === 'btn-reg-down-close') {
                 this.props.closeRegForm();
-                this.closeModal();
+                // this.closeModal();
                 this.clickOnLogin();
             }
         }
 
     }
+
+    // handleLoginForm = (e) => {
+    //
+    //     console.log('on click handleLoginForm')
+    //
+    //     console.log('e.target', e.target)
+    //
+    //     if (e.target.dataset.btn !== 'btn-login-up-close') {
+    //         e.stopPropagation();
+    //     }
+    //     if (e.target.dataset.btn === 'btn-login-down-close') {
+    //         this.props.closeLoginForm();
+    //         this.closeModal();
+    //         this.clickOnRegistration();
+    //     }
+    //
+    // }
+    //
+    // handleRegistrationForm = (e) => {
+    //     if (e.target.dataset.btn !== 'btn-reg-up-close') {
+    //         e.stopPropagation();
+    //     }
+    //     if (e.target.dataset.btn === 'btn-reg-down-close') {
+    //         this.props.closeRegForm();
+    //         this.closeModal();
+    //         this.clickOnLogin();
+    //     }
+    //
+    // }
 
 
     render() {
@@ -231,16 +261,16 @@ class TopBlockAuth extends Component {
                     </div>
                 </div>
 
-                <div id="header-modal-form" className={isModalOpen}>
-                    <div>
+                <div id="header-modal-form" >
+                    <div >
                         {this.props.windowsStatus.formLoginOpen && (
-                            <LoginForm/>
+                            <LoginForm handleLoginForm={this.handleLoginForm}/>
                         )}
                     </div>
 
-                    <div>
+                    <div >
                         {this.props.windowsStatus.formRegisterOpen && (
-                            <RegistrationForm/>
+                            <RegistrationForm />
                         )}
                     </div>
                 </div>

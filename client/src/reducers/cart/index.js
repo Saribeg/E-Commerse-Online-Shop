@@ -2,7 +2,7 @@ import {
     ADD_ITEM_TO_CART, CHANGE_AMOUT_OF_ITEM, SET_CART_FROM_LOCALSTORAGE,
     SET_ID_LOGGED_USER, SET_ID_CART_FROM_DB, SET_DATA_CART_FROM_DB,
     CLEAR_CART_ON_LOGOUT, CART_FROM_LOCALSTORAGE_TO_DB, DELETE_ITEM_TO_CART,
-    CHANGE_ARRAY_AMOUT_OF_ITEM,
+    CHANGE_ARRAY_AMOUT_OF_ITEM, UPDATE_STORE_AFTER_CHECK_IN_DB,
     addNewCart, updateCart
 } from '../../actions/cart'
 
@@ -210,6 +210,38 @@ function cart(state = initialState, action) {
                 ...state,
                 arrayProduct: action.payload.arrLS,
                 amountInBasket: countAmount(action.payload.arrLS),
+            }
+
+        case UPDATE_STORE_AFTER_CHECK_IN_DB:
+            let changeAfterCheck = [];
+            state.arrayProduct.forEach((elem, index) => {
+                changeAfterCheck[index] = {
+                    ...elem,
+                    id: action.payload.newArr[index].id,
+                    isAvailable: action.payload.newArr[index].isAvailable,
+                    reasonNotAvailable: action.payload.newArr[index].reasonNotAvailable,
+                    colorName: action.payload.newArr[index].colorName,
+                    size: action.payload.newArr[index].size,
+                    amount: action.payload.newArr[index].amount,
+                    priceFormDB: action.payload.newArr[index].priceFormDB,
+
+                }
+            });
+
+            if (state.idUser) {
+                if (state.idCartInDB) {
+                    updateInDB(state.idCartInDB, changeAfterCheck);
+                } else {
+                    saveInDB(state.idUser, changeAfterCheck);
+                }
+            } else {
+                setLocalStorage(changeAfterCheck);
+            }
+
+            return {
+                ...state,
+                arrayProduct: changeAfterCheck,
+                amountInBasket: countAmount(changeAfterCheck),
             }
 
         default:
