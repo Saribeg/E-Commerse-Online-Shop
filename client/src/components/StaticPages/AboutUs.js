@@ -16,7 +16,6 @@ export default class AboutUs extends Component {
 			 pageTitle: res.data.title,
 			 content:  res.data.content})
 		});
-		console.log(this.state)
   }
 
 	render() {

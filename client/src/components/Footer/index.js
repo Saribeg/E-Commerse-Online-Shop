@@ -24,7 +24,7 @@ class Footer extends Component {
           return (
             <ul className="footer-column-list">
               <li key={link._id} className="footer-column-item">
-               <NavLink to={`/${link.path}`}>{link.title}</NavLink>
+               <NavLink to={link.path} className="footer-column-link" activeClassName="footer-column-link">{link.title}</NavLink>
              </li>
             </ul>
           )
