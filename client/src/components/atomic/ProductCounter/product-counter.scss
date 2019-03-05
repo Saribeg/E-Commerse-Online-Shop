@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   border: 1px solid #dedede;
-
+  margin: 15px 0;
 
   &-btn {
     @include clear-default-inputs-style;
@@ -16,9 +16,12 @@
   }
 
   &-value {
-    min-width: 45px;
+    @include clear-default-inputs-style;
+
+    width: 45px;
     padding: 5px 18px;
     background-color: #fff;
     font-size: 14px;
+    text-align: center;
   }
 }

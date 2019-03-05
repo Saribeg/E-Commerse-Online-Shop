@@ -1,0 +1,18 @@
+.product-colors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .color-item {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    margin-right: 15px;
+
+    &.active {
+      border: 2px solid blue;
+      box-shadow: 0 0 2px 2px rgb(83, 83, 134);
+    }
+  }
+}

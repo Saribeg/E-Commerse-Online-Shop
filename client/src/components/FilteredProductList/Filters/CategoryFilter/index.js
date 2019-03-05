@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { selectFilters } from "../../../../actions/filterActions";
 
-import "./categoryFilter.scss";
+import "./category-filter.scss";
 
 class CategoryFilter extends Component {
   changeCategoryFilters = (
