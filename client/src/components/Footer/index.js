@@ -15,7 +15,7 @@ class Footer extends Component {
       this.setState({ content: res.data });
     });
   }
-
+  
   render() {
     const footerContent = this.state.content.map(elem => {
       const linksList = elem.links.map(link => {
