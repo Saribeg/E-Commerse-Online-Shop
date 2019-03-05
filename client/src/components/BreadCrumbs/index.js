@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {NavLink} from "react-router-dom";
+import "./BreadCrumbs.scss"
 
 class BreadCrumbs extends Component {
 
