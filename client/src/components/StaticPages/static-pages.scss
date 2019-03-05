@@ -1,5 +1,14 @@
 @import "../../scss/resources/resources";
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.container{
+  flex: 1 0 auto;
+}
+
 .about-us {
   &__wrapper {
     @include flex-center-between;
