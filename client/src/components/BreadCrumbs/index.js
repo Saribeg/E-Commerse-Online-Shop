@@ -5,7 +5,6 @@ class BreadCrumbs extends Component {
 
     render() {
         let { category, subCategory, furtherSubCategory } = this.props.categoryAway;
-
         let categoryUrl = "/" + this.props.categoryAway.category;
         let subCategoryUrl = categoryUrl + "/" + this.props.categoryAway.subCategory;
         let furtherSubCategoryUrl = subCategoryUrl + "/" + this.props.categoryAway.furtherSubCategory;
