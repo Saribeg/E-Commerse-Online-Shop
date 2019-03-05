@@ -38,3 +38,22 @@
   color: gray;
   text-decoration: line-through;
 }
+
+.listing-products {
+  min-width: 100%;
+  min-height: 80vh;
+  position: relative;
+
+  & .universal-preloader {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  & .empty-state {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

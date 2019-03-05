@@ -1,13 +1,15 @@
 @import '../../scss/resources/resources';
 
+
 .main-footer {
   background-color: $black;
+
 }
 
 .footer-list {
   @include flex-between;
 
-  padding: 45px 0;
+  padding: 25px 0;
   color: #fff;
 
   @include max-width($landscape-tablet) {
