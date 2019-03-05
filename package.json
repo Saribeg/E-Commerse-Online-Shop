@@ -24,15 +24,16 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "handlebars": "latest",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.8",
     "nodemailer": "^5.1.1",
+    "p-debounce": "^1.0.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "unique-random": "^2.0.0",
-    "validator": "^10.11.0",
-    "handlebars": "latest"
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",

@@ -1,3 +1,5 @@
+// const pDebounce = require('p-debounce');
+
 import React, {Component} from 'react'
 import {connect} from "react-redux";
 
@@ -14,12 +16,38 @@ import {
 import './cart.scss'
 import {goToProfile} from "../../actions/login";
 
+const debounce = (fn, delay) => {
+    let timer = null;
+    return function (...args) {
+        const context = this;
+        timer && clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn.apply(context, args);
+        }, delay);
+    };
+}
+
 class Cart extends Component {
 
     state = {
         isBlock: false,
         isRequest: false,
     }
+
+    // constructor(props) {
+    //     super(props);
+    //     this.checkArrayAvailableItemsDebounce = debounce(this.props.checkArrayAvailableItems, 200);
+    // }
+
+
+    // checkArrayAvailableItems = (arrayCheckProducts) =>
+    //     debounce(this.props.checkArrayAvailableItems(arrayCheckProducts), 500)  ;
+
+
+    // checkArrayAvailableItemsDebounce = (arrayCheckProducts) => {
+    //     this.props.checkArrayAvailableItems(arrayCheckProducts);
+    //
+    // }
 
     handleChange = (event) => {
 
@@ -48,18 +76,15 @@ class Cart extends Component {
             ...this.state,
         });
 
+        setTimeout(this.funcCheckAvailable, 500);
+
         this.setState({
             isRequest: false,
         });
     }
 
     addAmount = (index) => {
-        // console.log("addamount")
 
-        // let newAmount = this.state[index];
-        // newAmount++;
-        // this.props.changeAmount(index, newAmount);
-        // this.setState({[index]: newAmount});
 
         let newAmount = this.state[index];
         newAmount++;
@@ -70,6 +95,7 @@ class Cart extends Component {
                 ...this.state,
                 [index]: newAmount
             });
+            setTimeout(this.funcCheckAvailable, 500);
             setTimeout(this.falseBlock, 2000);
             this.setState({
                 isBlock: true,
@@ -105,6 +131,7 @@ class Cart extends Component {
                     ...this.state,
                     [index]: newAmount
                 });
+                setTimeout(this.funcCheckAvailable, 500);
                 setTimeout(this.falseBlock, 2000);
                 this.setState({
                     isBlock: true,
@@ -157,6 +184,9 @@ class Cart extends Component {
     // }
 
 
+
+
+
     componentWillUpdate(nextProps, nextState) {
 
         console.log('component will update')
@@ -174,8 +204,35 @@ class Cart extends Component {
 
     }
 
+    funcCheckAvailable = () => {
+
+        console.log('funcCheckAvailable')
+
+        let arrayCheckProducts = [];
+
+        if (this.props.dataBasket.arrayProduct.length > 0) {
+            this.props.dataBasket.arrayProduct.forEach((elem, index) => {
+                let checkItem = {
+                    id: elem.id,
+                    isAvailable: elem.isAvailable,
+                    reasonNotAvailable: elem.reasonNotAvailable,
+                    colorName: elem.colorName,
+                    size: elem.size,
+                    amount: elem.amount,
+                    priceFormDB: elem.priceFormDB,
+                }
+                arrayCheckProducts.push(checkItem);
+            })
+
+            console.log('componentDidMount array', arrayCheckProducts)
+
+            this.props.checkArrayAvailableItems(arrayCheckProducts);
+        }
+    }
 
     componentDidMount() {
+
+        this.funcCheckAvailable();
 
         let obj = {}
 
@@ -271,17 +328,16 @@ class Cart extends Component {
 
         })
 
-        // console.log('arrayCheckProducts', arrayCheckProducts)
+
+
 
         // if (arrayCheckProducts.length > 0) {
-        //     this.checkArrayAvailableItem(arrayCheckProducts);
+        //     this.props.checkArrayAvailableItems(arrayCheckProducts);
         // }
 
-
-
-        if (arrayCheckProducts.length > 0) {
-            this.props.checkArrayAvailableItems(arrayCheckProducts);
-        }
+        // if (arrayCheckProducts.length > 0) {
+        //     debounce(this.props.checkArrayAvailableItems(arrayCheckProducts), 1000);
+        // }
 
 
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from "../store";
+
 import {CLOSE_LOGIN_DETAILS} from "./login";
 
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
@@ -23,28 +24,26 @@ export const UPDATE_STORE_AFTER_CHECK_IN_DB = 'UPDATE_STORE_AFTER_CHECK_IN_DB';
 
 
 export function checkAvailableItem(arrData) {
-    // console.log('action arrItemData', arrItemData)
+
+    console.log('call axios');
 
     return dispatch => {
-
-
         axios.post('/checkAvailableItem', {arrData: arrData})
             .then(res => res.data)
             .then(data => {
 
-                if (data.wasUpdated) {
-                    console.log('---------- was updated')
-                    dispatch({type: UPDATE_STORE_AFTER_CHECK_IN_DB, payload: {newArr: data.updatedArray}})
-                }
-                else {
-                    console.log('---------- wasnt updated')
-                }
+                    if (data.wasUpdated) {
+                        console.log('wasUpdated')
+                        dispatch({type: UPDATE_STORE_AFTER_CHECK_IN_DB, payload: {newArr: data.updatedArray}})
+                    } else {
+                        console.log('wasnt Updated')
+                    }
 
-
-                    // dispatch({type: CLOSE_LOGIN_DETAILS})
                 }
             )
             .catch(err => {
+
+                console.log('-------ERROOOOOOR')
                 // dispatch({type: CLOSE_LOGIN_DETAILS});
 
                 // history.push("/login")
@@ -55,33 +54,12 @@ export function checkAvailableItem(arrData) {
 }
 
 
-// export function checkAvailableItem(itemData, index) {
-//     // console.log('action arrItemData', arrItemData)
-//
-//     return dispatch => {
-//         axios.post('/checkAvailableItem', {itemData: itemData, index: index})
-//             .then(res => res.data)
-//             .then(data => {
-//
-//                     // dispatch({type: CLOSE_LOGIN_DETAILS})
-//                 }
-//             )
-//             .catch(err => {
-//                 // dispatch({type: CLOSE_LOGIN_DETAILS});
-//
-//                 // history.push("/login")
-//                 // window.location.href = "/login";
-//             })
-//
-//     }
-// }
-
 export function getCart(userId) {
 
     axios.post('/getCart', userId)
         .then(res => res.data)
         .then(data => {
-            let readyData = JSON.parse(data.infoDB);
+                let readyData = JSON.parse(data.infoDB);
 
                 if (data.success) {
                     store.dispatch({type: SET_DATA_CART_FROM_DB, payload: {infoDB: readyData}})
@@ -94,16 +72,16 @@ export function getCart(userId) {
 
 export function addNewCart(dataCart) {
 
-        axios.post('/addCart', dataCart)
-            .then(res => res.data)
-            .then(data => {
+    axios.post('/addCart', dataCart)
+        .then(res => res.data)
+        .then(data => {
 
                 if (data.success) {
                     store.dispatch({type: SET_ID_CART_FROM_DB, payload: {idCartInDB: data.idCartInDB}})
                 }
-                }
-            )
-            .catch(err => console.log(err))
+            }
+        )
+        .catch(err => console.log(err))
 
 }
 
@@ -111,14 +89,14 @@ export function addNewCart(dataCart) {
 export function updateCart(dataCart) {
 
     axios.post('/updateCart', dataCart)
-        // .then(res => res.data)
-        // .then(data => {
-        //
-        //         if (data.success) {
-        //             // store.dispatch({type: SET_ID_CART_FROM_DB, payload: {idCartInDB: data.idCartInDB}})
-        //         }
-        //     }
-        // )
+    // .then(res => res.data)
+    // .then(data => {
+    //
+    //         if (data.success) {
+    //             // store.dispatch({type: SET_ID_CART_FROM_DB, payload: {idCartInDB: data.idCartInDB}})
+    //         }
+    //     }
+    // )
         .catch(err => console.log(err))
 
 }

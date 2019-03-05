@@ -6,9 +6,9 @@ const Cart = require("../models/Cart");
 const Product = require("../models/Product");
 
 
-router.post('/checkAvailableItem', (req, res) => {
+router.post('/checkAvailableItem', async (req, res) => {
 
-    // console.log("checkAvailableItem")
+    console.log("checkAvailableItem")
 
     let isUpdated = 0;
     let checkArrIndex = [];
@@ -45,7 +45,7 @@ router.post('/checkAvailableItem', (req, res) => {
     // console.log('check product ', index)
 
     // Product.findOne({_id: elem.id})
-    Product.find({_id: {$in: checkArrIndex}})
+    await Product.find({_id: {$in: checkArrIndex}})
         .then(info => {
 
             if (info.length > 0) {
@@ -141,7 +141,7 @@ router.post('/checkAvailableItem', (req, res) => {
                     }
                 }
 
-                // console.log('isUpdated', isUpdated)
+                console.log('isUpdated', isUpdated)
 
                 res.json({
                     wasUpdated: isUpdated,
@@ -180,7 +180,6 @@ router.post('/setSavedCart', (req, res) => {
         isFinished: false,
         arrayProduct: JSON.parse(req.body.arrLS)
     };
-    console.log('newCart', newCart);
 
     Cart.deleteOne({idUser: req.body.userId, isFinished: false})
         .then(() => {
@@ -268,6 +267,7 @@ router.post('/addCart', (req, res) => {
 
 router.post('/updateCart', (req, res) => {
 
+    console.log("updateCart")
 
     Cart.update({_id: req.body.idCartInDB}, {
         $set: {

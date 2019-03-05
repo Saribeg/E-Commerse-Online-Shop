@@ -165,7 +165,7 @@ function cart(state = initialState, action) {
 
             if (state.idUser) {
                 if (state.idCartInDB) {
-                    updateInDB(state.idCartInDB, changeArrayAmountProd);
+                    // updateInDB(state.idCartInDB, changeArrayAmountProd);
                 } else {
                     saveInDB(state.idUser, changeArrayAmountProd);
                 }
@@ -191,7 +191,7 @@ function cart(state = initialState, action) {
 
             if (state.idUser) {
                 if (state.idCartInDB) {
-                    updateInDB(state.idCartInDB, changeAmountProd);
+                    // updateInDB(state.idCartInDB, changeAmountProd);
                 } else {
                     saveInDB(state.idUser, changeAmountProd);
                 }
