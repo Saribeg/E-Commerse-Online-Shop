@@ -14,8 +14,9 @@ export default class PhotoGallery extends Component {
         let array = elem.imageUrls;
         return elem.imageUrls.map(elem => {
           return (
+            <div className={`all-photos-item`}> 
             <img
-              className={`all-photos-item`}
+              
               src={elem}
               alt={this.props.activeColor}
               onClick={() => {
@@ -23,7 +24,7 @@ export default class PhotoGallery extends Component {
                   index: array.indexOf(elem)
                 });
               }}
-            />
+            /></div>
           );
         });
       }

@@ -1,14 +1,28 @@
-import React, { Component} from "react";
+// @flow
+
+import * as React from "react";
 import "./product-counter.scss";
 
-export default class ProductCounter extends Component {
+type Props = {
+  maxCount: number,
+};
+
+type State = {
+  value: number,
+};
+
+export default class ProductCounter extends React.Component<Props, State> {
 	state = {
-			value: 0
+		value: 0,			
 	}
+
+	handleChange = (event) => {
+    this.setState({value: event.target.value});
+  }
 
 	increaseCount = (maxcount) => {
 			let existValue = this.state.value;
-			if (existValue > (maxcount -1)){
+			if (existValue > (maxcount - 1)){
 				return;
 			}
 			++existValue;
@@ -28,10 +42,25 @@ export default class ProductCounter extends Component {
 		})
 	}
   render() {
+
+		let inputValue = this.state.value;
+
+		if(inputValue > this.props.maxCount){
+			this.setState({
+				value: this.props.maxCount
+			})
+		}
+
+		if (typeof inputValue !== 'number'){
+			this.setState({
+				value: this.props.maxCount
+			})
+		}
+		
     return (
 			<div className="product-counter">
 			<button className="product-counter-btn" onClick={this.decreaseCount}>-</button>
-			<span className="product-counter-value">{this.state.value}</span>
+			<input type="tel" className="product-counter-value" value={this.state.value} onInput={this.handleChange}/>
 			<button className="product-counter-btn" onClick={() => this.increaseCount(this.props.maxCount)}>+</button>
 	</div>
     );

@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component, Fragment } from "react";
 import ProductCounter from "../../../atomic/ProductCounter";
 import "./product-sizes.scss";
@@ -6,7 +8,6 @@ export default class ProductSizes extends Component {
   state = {
     productCount: 0,
     chosenSize: "",
-    activeClass: false
   };
 
   choseSizes = (maxcount, chosenSize) => {

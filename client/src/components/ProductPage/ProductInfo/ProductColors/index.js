@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './product-colors.scss'
 
 export default class ProductColors extends Component {
 
@@ -16,7 +17,7 @@ export default class ProductColors extends Component {
 				 return;
 			 }
 			let activeElement =
-        elem.colorName === this.props.activeColor ? "active" : null;
+        elem.colorName === this.props.activeColor ? "active" : '';
 			
       return (
         <li key={elem._id}

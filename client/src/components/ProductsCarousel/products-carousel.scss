@@ -5,10 +5,6 @@
   text-align: center;
 }
 
-.carousel .slide {
-  background: #fff;
-}
-
 .slide.selected {
   position: relative;
 }
@@ -47,6 +43,8 @@
 }
 
 .carousel .slide {
+  background: #fff;
+  
   .info {
     letter-spacing: 2px;
     color: $black;
