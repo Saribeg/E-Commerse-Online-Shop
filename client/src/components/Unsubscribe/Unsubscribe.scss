@@ -35,19 +35,18 @@
       text-align: center;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: #fff;
       border: none;
       outline: none;
       cursor: pointer;
+    }
 
+    &-text {
+      text-align: center;
+      font-family: $font-openSans;
+      font-size: 24px;
+      letter-spacing: 1.4px;
+      padding: 65px 0;
     }
   }
-}
-
-.unsubscribe-text {
-  text-align: center;
-  font-family: $font-openSans;
-  font-size: 24px;
-  letter-spacing: 1.4px;
-  padding: 65px 0;
 }

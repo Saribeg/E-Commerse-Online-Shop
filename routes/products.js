@@ -87,12 +87,9 @@ router.get(
 
 // Make a GET request for url "/products/:category/:subCategory/:furtherSubCategory/:id" to get information about the interested product
 router.get(
-  "/products/:category/:subCategory/:furtherSubCategory/:id",
+  "/products/:category/:subCategory/:furtherSubCategory?/:id",
   (req, res) => {
     Product.find({
-      category: req.params.category,
-      subCategory: req.params.subCategory,
-      furtherSubCategory: req.params.furtherSubCategory,
       itemNo: req.params.id
     })
       .then(products => res.json(products))

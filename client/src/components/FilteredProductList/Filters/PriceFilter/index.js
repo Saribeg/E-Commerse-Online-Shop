@@ -8,7 +8,6 @@ import "react-input-range/lib/css/index.css";
 import "./priceFilter.scss";
 
 class PriceFilter extends Component {
-
   componentDidMount = () => {
     let { category, subCategory, furtherSubCategory } = this.props.urlParams;
     let { currentFilters } = this.props;

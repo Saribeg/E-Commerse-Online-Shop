@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import './product-colors.scss'
 
 export default class ProductColors extends Component {
+
   render() {
     const colorArray = this.props.colors;
 
@@ -15,7 +17,7 @@ export default class ProductColors extends Component {
 				 return;
 			 }
 			let activeElement =
-        elem.colorName === this.props.activeColor ? "active" : null;
+        elem.colorName === this.props.activeColor ? "active" : '';
 			
       return (
         <li key={elem._id}

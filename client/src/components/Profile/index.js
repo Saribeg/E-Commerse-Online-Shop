@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
-import {NavLink, Route, withRouter} from 'react-router-dom'
-import {connect} from 'react-redux'
+import React, {Component} from 'react';
+import {NavLink, Route, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Helmet} from "react-helmet";
 // import {Route} from 'react-router-dom';
 // import { withRouter } from "react-router-dom";
 import {goToProfile, LOGOUT, SAVE_HISTORY_PATH} from '../../actions/login'
@@ -33,11 +34,15 @@ class Profile extends Component {
 
 
         return (
+            <>
+            <Helmet>
+			<title>My account</title>
+			</Helmet>
             <section className='section-profile'>
                 <div className='section-profile-title'>
                     <div className='container'>
                         <div className='section-profile-title-text'>
-                            my account
+                            My account
                         </div>
                     </div>
                 </div>
@@ -81,6 +86,7 @@ class Profile extends Component {
 
 
             </section>
+            </>
         )
 
     }
