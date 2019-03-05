@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import {Helmet} from "react-helmet";
 

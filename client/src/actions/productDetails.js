@@ -1,5 +1,4 @@
 import axios from "axios";
-import product from '../reducers/product';
 
 export const FETCH_PRODUCT_DETAIL_REQUEST = "FETCH_PRODUCT_DETAIL_REQUEST";
 export const FETCH_PRODUCT_DETAIL_SUCCEED = "FETCH_PRODUCT_DETAIL_SUCCEED";

@@ -30,10 +30,6 @@ class ProductPage extends Component {
         return array[0].colorName;
     };
 
-    setInitialState = () => {
-        const activeItem = this.props.productFeatures;
-    };
-
     render() {
         const {itemNo, currentPrice, model} = {
             ...this.props.productItem.productOpened
@@ -41,7 +37,7 @@ class ProductPage extends Component {
         const {productFeatures} = {...this.props};
         let activeColor = this.state.activeColor;
 
-        if (activeColor == "") {
+        if (activeColor === "") {
             activeColor = this.setInitialColor(productFeatures);
         }
 
