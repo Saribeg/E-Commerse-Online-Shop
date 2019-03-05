@@ -1,12 +1,9 @@
-@import "../../../scss/reset.scss";
 @import "../../../scss/resources/resources.scss";
 
 .main-menu-list {
   display: flex;
-}
 
-@media (max-width: 992px) {
-  .main-menu-list {
+  @include max-width(992px) {
     display: flex;
     justify-content: space-between;
     position: absolute;
@@ -15,38 +12,30 @@
     right: 0;
     background: #ccc;
   }
-}
 
-.main-menu-list .main-menu-item {
-  margin-right: 54px;
-  position: relative;
-}
+  .main-menu-item {
+    margin-right: 54px;
+    position: relative;
 
-.main-menu-list .main-menu-item::after {
-  content: url("../../../img/arrow.png");
-  position: absolute;
-  right: -20px;
-}
+    @include max-width(992px) {
+      margin-right: 0;
+      width: calc(100% / 3);
+      text-align: center;
+    }
 
-@media (max-width: 992px) {
-  .main-menu-list .main-menu-item::after {
-    display: none;
-  }
-}
+    &:last-child {
+      margin-right: 0;
+    }
 
-.main-menu-list .main-menu-item:last-child {
-  margin-right: 0;
-}
+    &::after {
+      content: url("../../../img/arrow.png");
+      position: absolute;
+      right: -20px;
 
-@media (max-width: 992px) {
-  .main-menu-list .main-menu-item {
-    margin-right: 0;
-    width: calc(100% / 3);
-    text-align: center;
-  }
-
-  .main-menu-list .main-menu-item:hover {
-    background-color: #e3ffca;
+      @include max-width(992px) {
+        display: none;
+      }
+    }
   }
 }
 
@@ -75,7 +64,6 @@
   height: 16px;
 }
 
-/* =========================================== */
 
 .sub-menu-wrapper {
   background-color: #fff;
@@ -125,7 +113,6 @@
 
 .sub-menu-left-title {
   display: block;
-  margin-bottom: 20px;
   font-family: $font-openSans;
   font-size: 24px;
   font-weight: 600;
@@ -136,9 +123,6 @@
   &:hover {
     color: #ff6008;
   }
-}
-
-.sub-menu-category-list {
 }
 
 .sub-menu-category-item {

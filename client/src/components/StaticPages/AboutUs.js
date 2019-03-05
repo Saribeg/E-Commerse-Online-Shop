@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Helmet} from "react-helmet";
 import axios from 'axios';
 import './static-pages.scss'
 
@@ -30,6 +31,10 @@ export default class AboutUs extends Component {
 		})
 
 		return (
+			<>
+			<Helmet>
+			<title>{this.state.pageTitle}</title>
+			</Helmet>
 			<div className="container">
 				<h2 className="sub-page__title">{this.state.pageTitle}</h2>
 				<h3 className="sub-page__sub-title">
@@ -46,6 +51,7 @@ export default class AboutUs extends Component {
 				</div>
 				</div>
 			</div>
+			</>
 		)
 	}
 }
