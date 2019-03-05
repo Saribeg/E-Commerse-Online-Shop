@@ -1,21 +1,28 @@
-import React, {Component} from 'react'
-import {NavLink, Route, withRouter} from 'react-router-dom'
-import {connect} from 'react-redux'
+import React, {Component} from 'react';
+import {NavLink, Route, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Helmet} from "react-helmet";
 // import {Route} from 'react-router-dom';
 // import { withRouter } from "react-router-dom";
 import {goToProfile, LOGOUT, SAVE_HISTORY_PATH} from '../../actions/login'
 
-import './Profile.scss'
 
 import PersonalContent from './PersonalContent';
 import DeliveryInfo from './DeliveryInfo';
 import ChangePassword from './ChangePassword';
 import PaymentDetails from './PaymentDetails';
+import OrdersHistory from './OrdersHistory';
+
+import './Profile.scss'
+
 
 
 class Profile extends Component {
 
     componentDidMount() {
+
+        console.log('this.props.history.location.pathname', this.props.history.location.pathname)
+
         this.props.setHistoryLink(this.props.history.location.pathname);
         this.props.goToProfile(this.props.history)
     }
@@ -23,12 +30,19 @@ class Profile extends Component {
 
     render() {
 
+        console.log('render profile')
+
+
         return (
+            <>
+            <Helmet>
+			<title>My account</title>
+			</Helmet>
             <section className='section-profile'>
                 <div className='section-profile-title'>
                     <div className='container'>
                         <div className='section-profile-title-text'>
-                            my account
+                            My account
                         </div>
                     </div>
                 </div>
@@ -51,6 +65,10 @@ class Profile extends Component {
                                  activeClassName='section-profile-navmenu-item-active'>
                             Payment Information
                         </NavLink>
+                        <NavLink to='/users/profile/ordersHistory' className='section-profile-navmenu-item'
+                                 activeClassName='section-profile-navmenu-item-active'>
+                            My Orders
+                        </NavLink>
                         <NavLink to='/' className='section-profile-navmenu-logout' onClick={() => this.props.logout()}>
                             Logout
                         </NavLink>
@@ -62,12 +80,13 @@ class Profile extends Component {
                         <Route exact path='/users/profile/changePassword' component={ChangePassword}/>
                         <Route exact path='/users/profile/deliveryInfo' component={DeliveryInfo}/>
                         <Route exact path='/users/profile/paymentDetails' component={PaymentDetails}/>
-
+                        <Route exact path='/users/profile/ordersHistory' component={OrdersHistory}/>
                     </div>
                 </div>
 
 
             </section>
+            </>
         )
 
     }

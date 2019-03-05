@@ -25,14 +25,14 @@ class LoginForm extends Component {
 
     render() {
 
-        let classCheckEmail = (this.props.windowsStatus.invalidLogin) ? null : 'd-none';
+        let classCheckEmail = (this.props.windowsStatus.invalidLogin) ? 'login-menu_error-msg' : 'd-none';
 
         return (
             <Fragment>
                 <div className='login-menu'>
-                    <div data-btn="btn-login-up-close" className="cancel-btn"  />
+                    <div data-btn="btn-login-up-close" className="login-cancel-btn"  />
                     <h2 className='login-menu_header'>Log in</h2>
-                    <p className='login-menu_par'>Please enter your account details to log in to your user account</p>
+                    <p className='login-menu_par'>Please enter your account details to log in</p>
 
 
                     <div className={classCheckEmail}>
@@ -41,7 +41,7 @@ class LoginForm extends Component {
                     <FormLogin onSubmit={this.handleSubmit}/>
 
                     <div className='registration-area'>
-                        <div id='header-from-login-to-reg' data-btn="btn-login-down-close" className='enter_btn register_btn'>Register Here
+                        <div id='header-from-login-to-reg' data-btn="btn-login-down-close" className='login-form_btn register_btn'>Register Here
                         </div>
                     </div>
                 </div>

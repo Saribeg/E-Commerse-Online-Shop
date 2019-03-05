@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
-import { withRouter } from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import FormLogin from '../LoginForm/FormLogin'
 
 import './RedirectLogin.scss';
@@ -28,9 +29,15 @@ class RedirectLogin extends Component {
 
         return (
             <Fragment>
+                <NavLink
+                    to="/"
+                    // onClick={() => this.props.goToProfile(this.props.history)}
+                >
+                    Back to main page
+                </NavLink>
                 <div className='redirect-login'>
                     <h2 className='login-menu_header'>Log in</h2>
-                    <p className='login-menu_par'>Please enter your account details to log in to your user account</p>
+                    <p className='login-menu_par'>Please enter your account details to log in</p>
 
 
                     <div className={classCheckEmail}>

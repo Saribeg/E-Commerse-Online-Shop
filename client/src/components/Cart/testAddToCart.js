@@ -21,12 +21,12 @@ class TestAddToCart extends Component {
                 subCategory: 'clothing',
                 furtherSubCategory: 'dresses',
                 model: 'Mega Sexy Dress',
-                colorName: 'blue',
+                colorName: 'black',
                 size: 's',
                 amount: 3,
                 price: 229.99,
                 priceFormDB: 229.99,
-                urlPhoto: "/img/products/women/clothing/pants/002/53a5e4/021.png"
+                urlPhoto: "/img/products/women/clothing/dresses/001/000000/030.png"
             },
             {
                 id: '5c62e45b9103d2041423d03e',
@@ -36,12 +36,12 @@ class TestAddToCart extends Component {
                 subCategory: 'clothing',
                 furtherSubCategory: 'dresses',
                 model: 'Mega Sexy Dress',
-                colorName: 'blue',
+                colorName: 'black',
                 size: 'xs',
                 amount: 1,
                 price: 229.99,
                 priceFormDB: 229.99,
-                urlPhoto: "/img/products/women/clothing/pants/002/53a5e4/021.png"
+                urlPhoto: "/img/products/women/clothing/dresses/001/000000/030.png"
             },
             {
                 id: '5c62e83e12c9d12dbc9ecf16',
@@ -100,7 +100,7 @@ class TestAddToCart extends Component {
                     <div>
                         <p>model - {elem.model}</p>
                         <p>Size - {elem.size}</p>
-                        <p>Color - {elem.color}</p>
+                        <p>Color - {elem.colorName}</p>
                         <p>Amount - {elem.amount}</p>
                         <input type="button" value="add to Cart" onClick={() => this.addToCart(elem)}/>
                     </div>
