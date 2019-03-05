@@ -34,37 +34,16 @@ class Dashboard extends Component {
     }
   };
 
-    render() {
-
-        return (
-            <div onClick={this.handleCloseForms}>
-                <Header/>
-                <Switch>
-                    <Route exact path="/" component={MainPage}/>
-                    <Route exact path="/about-us" component={AboutUs}/>
-                    <Route exact path="/our-policy" component={OurPolicy} />
-                    <Route exact path="/careers" component={Careers} />
-                    <Route path="/users/profile" component={Profile}/>
-                    <Route exact path="/cart" component={Cart}/>
-                    <Route exact path="/addCart" component={TestAddToCart}/>
-    
-                    <Route
-                        exact
-                        path="/:category/:subCategory?/:furtherSubCategory?"
-                        component={FilteredProductList}
-                    />
-                    <Route
-                        exact
-                        path="/:category/:subCategory/:furtherSubCategory?/:id"
-                        component={ProductPage}
-                    />
-                    <Route exact path="/unsubscribe/:id" component={Unsubscribe}/>
-                </Switch>
-                <Footer/>
-            </div>
-
-        )
-    }
+  render() {
+    return (
+      <div onClick={this.handleCloseForms}>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/about-us" component={AboutUs} />
+          <Route exact path="/our-policy" component={OurPolicy} />
+          <Route exact path="/careers" component={Careers} />
+          <Route path="/users/profile" component={Profile} />
 
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/addCart" component={TestAddToCart} />
