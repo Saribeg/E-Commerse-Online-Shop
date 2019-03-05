@@ -31,7 +31,7 @@ class Search extends Component {
       <>
         <input
           type="text"
-          style={this.state.focus ? { width: "450px" } : { width: "224px" }}
+          style={this.state.focus ? { width: "420px" } : { width: "185px" }}
           className="main-search"
           name="search"
           placeholder="Search"
