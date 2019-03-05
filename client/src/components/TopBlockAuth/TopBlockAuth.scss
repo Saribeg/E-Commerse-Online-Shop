@@ -1,3 +1,5 @@
+@import "../../scss/resources/resources";
+
 .header-right-block {
   display: flex;
   justify-content: flex-end;
@@ -36,6 +38,7 @@
   z-index: 1;
   border: 1px solid #ccc;
   box-shadow: 0, 0, 10px, 10px #ccc;
+
   &-item {
     display: block;
     height: 30px;
@@ -52,10 +55,8 @@
   &-item:hover {
     background-color: #eee;
   }
-  box-shadow: 0, 0, 10px, 10px #ccc;
+
 }
-
-
 
 .user-info-mini {
   display: flex;
@@ -72,22 +73,21 @@
   height: 60px;
   width: 60px;
   cursor: pointer;
+
   &-img {
-    height: 100%;
-    width: 100%;
+    @include image;
   }
 }
 
 .product-cart-ico {
   position: relative;
   display: inline-block;
-
   height: 45px;
   width: 45px;
   cursor: pointer;
+
   &-img {
-    height: 100%;
-    width: 100%;
+    @include image;
   }
 
   &-amount {
@@ -101,12 +101,7 @@
     color: #ff6008;
     font-size: 18px;
     font-weight: bold;
-
   }
-}
-
-.d-none {
-  display: none;
 }
 
 .admin-dashboard-link {

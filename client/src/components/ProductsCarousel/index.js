@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Carousel} from "react-responsive-carousel";
-import "./ProductsCarousel.scss";
+import "./products-carousel.scss";
 import {NavLink} from "react-router-dom";
 import axios from 'axios';
 
