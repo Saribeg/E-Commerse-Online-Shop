@@ -44,18 +44,18 @@ class Dashboard extends Component {
                     <Route exact path="/our-policy" component={OurPolicy} />
                     <Route exact path="/careers" component={Careers} />
                     <Route path="/users/profile" component={Profile}/>
-
                     <Route exact path="/cart" component={Cart}/>
                     <Route exact path="/addCart" component={TestAddToCart}/>
-                    <Route
-                        exact
-                        path="/:category/:subCategory/:furtherSubCategory/:id"
-                        component={ProductPage}
-                    />
+    
                     <Route
                         exact
                         path="/:category/:subCategory?/:furtherSubCategory?"
                         component={FilteredProductList}
+                    />
+                    <Route
+                        exact
+                        path="/:category/:subCategory/:furtherSubCategory?/:id"
+                        component={ProductPage}
                     />
                     <Route exact path="/unsubscribe/:id" component={Unsubscribe}/>
                 </Switch>
