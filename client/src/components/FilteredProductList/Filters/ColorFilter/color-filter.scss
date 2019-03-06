@@ -30,7 +30,7 @@
       transition: all 0.3s ease;
       cursor: pointer;
 
-      &:after {
+      &::after {
         content: "";
         display: block;
         width: 7px;
@@ -40,7 +40,7 @@
         top: 50%;
         transform: translate(-50%, -50%);
         border-radius: 50%;
-        background-color: #ffffff;
+        background-color: #fff;
         opacity: 0;
         transition: all 0.3s ease;
       }
@@ -55,8 +55,9 @@
   opacity: 0;
 
   &:checked + .filter-color-panel-link {
-    border: 2px solid #000000;
-    &:after {
+    border: 2px solid #000;
+
+    &::after {
       opacity: 1;
     }
   }
@@ -78,29 +79,7 @@
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  color: #ffffff;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.color-filter-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.reset-color-filters {
-  padding: 7px;
-  border-radius: 100px;
-  background-color: #33333a;
-  font-family: "OpenSans", sans-serif;
-  font-size: 11px;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase;
-  color: #ffffff;
+  color: #fff;
   border: none;
   outline: none;
   cursor: pointer;

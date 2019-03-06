@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component} from "react";
 import "./photo-gallery.scss";
 
 export default class PhotoGallery extends Component {
@@ -8,16 +8,15 @@ export default class PhotoGallery extends Component {
 
   render() {
     let productFeatures = this.props.productFeatures;
-    let firstPhoto = null;
     let photoGallery = productFeatures.map(elem => {
       let active = this.props.activeColor === elem.colorName;
       if (active) {
-        firstPhoto = elem.imageUrls[this.state.index];
         let array = elem.imageUrls;
         return elem.imageUrls.map(elem => {
           return (
+            <div className={`all-photos-item`}> 
             <img
-              className={`all-photos-item`}
+              
               src={elem}
               alt={this.props.activeColor}
               onClick={() => {
@@ -25,7 +24,7 @@ export default class PhotoGallery extends Component {
                   index: array.indexOf(elem)
                 });
               }}
-            />
+            /></div>
           );
         });
       }
@@ -35,11 +34,13 @@ export default class PhotoGallery extends Component {
       return elem !== undefined;
     })[0];
 
+    let mainPhoto = (photoGalleryFiltered) ? photoGalleryFiltered[this.state.index] : null;
+
     return (
       <>
         <div className="all-photos">{photoGallery}</div>
         <div className="photo-main">
-          {photoGalleryFiltered[this.state.index]}
+            {mainPhoto}
         </div>
       </>
     );

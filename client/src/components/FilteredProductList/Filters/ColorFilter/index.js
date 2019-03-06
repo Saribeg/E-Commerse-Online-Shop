@@ -7,7 +7,7 @@ import {
   selectFilters
 } from "../../../../actions/filterActions";
 
-import "./colorFilter.scss";
+import "./color-filter.scss";
 
 class ColorFilter extends Component {
   // Fetching our list of colors from server
