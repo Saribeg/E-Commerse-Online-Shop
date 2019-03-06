@@ -21,34 +21,37 @@ export const CLEAR_CART_ON_LOGOUT = 'CLEAR_CART_ON_LOGOUT';
 
 export const UPDATE_STORE_AFTER_CHECK_IN_DB = 'UPDATE_STORE_AFTER_CHECK_IN_DB';
 
+export const CHANGE_CHECK_AMOUT_OF_ITEM = 'CHANGE_CHECK_AMOUT_OF_ITEM';
+
+
 
 export function checkAvailableItem(arrData) {
     // console.log('action arrItemData', arrItemData)
 
     return dispatch => {
 
+        // console.log('hi axios')
+
 
         axios.post('/checkAvailableItem', {arrData: arrData})
             .then(res => res.data)
             .then(data => {
 
-                if (data.wasUpdated) {
-                    console.log('---------- was updated')
-                    dispatch({type: UPDATE_STORE_AFTER_CHECK_IN_DB, payload: {newArr: data.updatedArray}})
-                }
-                else {
-                    console.log('---------- wasnt updated')
-                }
+                setTimeout(dispatch({type: CHANGE_CHECK_AMOUT_OF_ITEM, payload: {newArr: data.updatedArray}}), 500)
 
 
-                    // dispatch({type: CLOSE_LOGIN_DETAILS})
+
+                // if (data.wasUpdated) {
+                //     console.log('---------- was updated')
+                //     dispatch({type: UPDATE_STORE_AFTER_CHECK_IN_DB, payload: {newArr: data.updatedArray}})
+                // }
+                // else {
+                //     console.log('---------- wasnt updated')
+                // }
+
                 }
             )
             .catch(err => {
-                // dispatch({type: CLOSE_LOGIN_DETAILS});
-
-                // history.push("/login")
-                // window.location.href = "/login";
             })
 
     }

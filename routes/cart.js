@@ -68,7 +68,7 @@ router.post('/checkAvailableItem', (req, res) => {
                             }
                         } else {
 
-                            console.log('not withdrawn ', info[j]._id);
+                            // console.log('not withdrawn ', info[j]._id);
 
                             if (Number(checkArr[i].priceFormDB) !== info[j].currentPrice) {
                                 // console.log('update 2')
@@ -173,14 +173,14 @@ router.post('/checkAvailableItem', (req, res) => {
 
 router.post('/setSavedCart', (req, res) => {
 
-    console.log('setSavedCart');
+    // console.log('setSavedCart');
 
     let newCart = {
         idUser: req.body.userId,
         isFinished: false,
         arrayProduct: JSON.parse(req.body.arrLS)
     };
-    console.log('newCart', newCart);
+    // console.log('newCart', newCart);
 
     Cart.deleteOne({idUser: req.body.userId, isFinished: false})
         .then(() => {
@@ -268,6 +268,7 @@ router.post('/addCart', (req, res) => {
 
 router.post('/updateCart', (req, res) => {
 
+    // console.log('updateCart')
 
     Cart.update({_id: req.body.idCartInDB}, {
         $set: {
