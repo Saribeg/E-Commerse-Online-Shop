@@ -114,6 +114,11 @@ export function addNewCart(dataCart) {
 export function updateCart(dataCart) {
 
     axios.post('/updateCart', dataCart)
+        .then(res => res.data)
+        .then(data => {
+            console.log(data.success)
+            }
+        )
         // .then(res => res.data)
         // .then(data => {
         //

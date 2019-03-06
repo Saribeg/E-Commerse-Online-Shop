@@ -274,6 +274,10 @@ router.post('/updateCart', (req, res) => {
         $set: {
             arrayProduct: JSON.parse(req.body.arrayProduct)
         }
+    }).then(() => {
+        res.json({
+            success: true,
+        })
     })
         .catch(err => console.log(err));
 
