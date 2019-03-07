@@ -70,24 +70,28 @@
 .user-avatar-mini {
   display: inline-block;
   position: relative;
-  height: 60px;
-  width: 60px;
+  width: 30px;
+  margin-left: 15px;
+  margin-right: 30px;
   cursor: pointer;
 
   &-img {
     @include image;
+    color: black;
+
   }
 }
 
 .product-cart-ico {
   position: relative;
   display: inline-block;
-  height: 45px;
-  width: 45px;
+  height: 31px;
+  width: 36px;
+  margin-right: 10px;
   cursor: pointer;
 
   &-img {
-    @include image;
+    @include image;   // already used above on string 78.
   }
 
   &-amount {
