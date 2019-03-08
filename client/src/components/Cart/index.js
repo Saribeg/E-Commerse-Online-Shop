@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
 
+import FinalOrder from "./FinalOrder"
+
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
@@ -28,8 +30,65 @@ class Cart extends Component {
         let name = event.target.name;
         let value = Number(event.target.value);
         if (!isNaN(value)) {
-            this.props.changeAmount(name, value);
+            // this.props.changeAmount(name, value);
+            // this.props.changeArrayAmount({
+            //     ...this.state,
+            //     [name]: value
+            // });
+
+            let arrayCheckProducts = [];
+
+            if (this.props.dataBasket.arrayProduct.length > 0) {
+                this.props.dataBasket.arrayProduct.forEach((elem, i) => {
+                    let checkItem = {}
+                    if (i == name) {
+                        checkItem = {
+                            ...elem,
+                            amount: value
+                        }
+                    } else {
+                        checkItem = {
+                            ...elem
+                        }
+                    }
+
+                    arrayCheckProducts.push(checkItem);
+                })
+                console.log('componentWillUpdate array', arrayCheckProducts)
+                this.props.checkArrayAvailableItems(arrayCheckProducts);
+            }
+
+
             this.setState({[name]: value});
+        }
+    }
+
+    funcCheckAvailable = () => {
+
+        console.log('funcCheckAvailable')
+
+        let arrayCheckProducts = [];
+
+        if (this.props.dataBasket.arrayProduct.length > 0) {
+            this.props.dataBasket.arrayProduct.forEach((elem, index) => {
+                let checkItem = {
+                    id: elem.id,
+                    isAvailable: elem.isAvailable,
+                    reasonNotAvailable: elem.reasonNotAvailable,
+                    colorName: elem.colorName,
+                    // size: elem.size,
+                    size: this.state[index],
+                    amount: elem.amount,
+                    priceFormDB: elem.priceFormDB,
+                }
+                arrayCheckProducts.push(checkItem);
+            })
+
+            console.log('this.state', this.state)
+
+            console.log('componentDidMount array', arrayCheckProducts)
+
+            // this.props.checkArrayAvailableItems(arrayCheckProducts);
         }
     }
 
@@ -44,33 +103,72 @@ class Cart extends Component {
 
     falseRequest = () => {
         console.log('call request false')
-        this.props.changeArrayAmount({
-            ...this.state,
-        });
 
+        let arrayCheckProducts = [];
+
+        if (this.props.dataBasket.arrayProduct.length > 0) {
+            this.props.dataBasket.arrayProduct.forEach((elem, i) => {
+                let checkItem = {}
+                checkItem = {
+                    ...elem,
+                    amount: this.state[i]
+                }
+                arrayCheckProducts.push(checkItem);
+            })
+
+
+            this.props.checkArrayAvailableItems(arrayCheckProducts);
+        }
+        // console.log('componentWillUpdate array', arrayCheckProducts)
         this.setState({
             isRequest: false,
         });
+
     }
 
-    addAmount = (index) => {
-        // console.log("addamount")
 
-        // let newAmount = this.state[index];
-        // newAmount++;
-        // this.props.changeAmount(index, newAmount);
-        // this.setState({[index]: newAmount});
+    // this.props.changeArrayAmount({
+    //     ...this.state,
+    // });
+
+
+    addAmount = (index) => {
 
         let newAmount = this.state[index];
         newAmount++;
 
         if (!this.state.isBlock) {
 
-            this.props.changeArrayAmount({
-                ...this.state,
-                [index]: newAmount
-            });
-            setTimeout(this.falseBlock, 2000);
+            let arrayCheckProducts = [];
+
+            if (this.props.dataBasket.arrayProduct.length > 0) {
+                this.props.dataBasket.arrayProduct.forEach((elem, i) => {
+                    let checkItem = {}
+                    if (i == index) {
+                        checkItem = {
+                            ...elem,
+                            amount: newAmount
+                        }
+                    } else {
+                        checkItem = {
+                            ...elem
+                        }
+                    }
+
+                    arrayCheckProducts.push(checkItem);
+                })
+                // console.log('componentWillUpdate array', arrayCheckProducts)
+                this.props.checkArrayAvailableItems(arrayCheckProducts);
+            }
+
+
+            // this.props.changeArrayAmount({
+            //     ...this.state,
+            //     [index]: newAmount
+            // });
+
+
+            setTimeout(this.falseBlock, 1500);
             this.setState({
                 isBlock: true,
                 [index]: newAmount
@@ -78,7 +176,7 @@ class Cart extends Component {
         } else {
 
             if (!this.state.isRequest) {
-                setTimeout(this.falseRequest, 2000);
+                setTimeout(this.falseRequest, 1500);
                 this.setState({
                     isRequest: true,
                     [index]: newAmount
@@ -101,11 +199,34 @@ class Cart extends Component {
             newAmount--;
             if (!this.state.isBlock) {
 
-                this.props.changeArrayAmount({
-                    ...this.state,
-                    [index]: newAmount
-                });
-                setTimeout(this.falseBlock, 2000);
+                let arrayCheckProducts = [];
+
+                if (this.props.dataBasket.arrayProduct.length > 0) {
+                    this.props.dataBasket.arrayProduct.forEach((elem, i) => {
+                        let checkItem = {}
+                        if (i == index) {
+                            checkItem = {
+                                ...elem,
+                                amount: newAmount
+                            }
+                        } else {
+                            checkItem = {
+                                ...elem
+                            }
+                        }
+
+                        arrayCheckProducts.push(checkItem);
+                    })
+                    // console.log('componentWillUpdate array', arrayCheckProducts)
+                    this.props.checkArrayAvailableItems(arrayCheckProducts);
+                }
+
+                // this.props.changeArrayAmount({
+                //     ...this.state,
+                //     [index]: newAmount
+                // });
+
+                setTimeout(this.falseBlock, 1500);
                 this.setState({
                     isBlock: true,
                     [index]: newAmount
@@ -113,7 +234,7 @@ class Cart extends Component {
             } else {
 
                 if (!this.state.isRequest) {
-                    setTimeout(this.falseRequest, 2000);
+                    setTimeout(this.falseRequest, 1500);
                     this.setState({
                         isRequest: true,
                         [index]: newAmount
@@ -142,20 +263,6 @@ class Cart extends Component {
 
     }
 
-    // checkAvailableItem = () => {
-    //
-    //
-    // }
-
-    // checkArrayAvailableItem = (array) => {
-    //
-    //     array.forEach((elem, index) => {
-    //         this.props.checkAvailableItem(elem, index);
-    //     })
-    //
-    //
-    // }
-
 
     componentWillUpdate(nextProps, nextState) {
 
@@ -168,8 +275,24 @@ class Cart extends Component {
                 isUpdate = 1;
             }
         })
+
+
         if (isUpdate) {
+            let arrayCheckProducts = [];
+
+            if (this.props.dataBasket.arrayProduct.length > 0) {
+                this.props.dataBasket.arrayProduct.forEach((elem, index) => {
+                    let checkItem = {
+                        ...elem,
+                        amount: obj[index]
+                    }
+                    arrayCheckProducts.push(checkItem);
+                })
+                // console.log('componentWillUpdate array', arrayCheckProducts)
+                this.props.checkArrayAvailableItems(arrayCheckProducts);
+            }
             this.setState({...obj})
+
         }
 
     }
@@ -193,26 +316,11 @@ class Cart extends Component {
         //     reasonNotAvailable: '', colorName: 'black', size: 's', amount: 3,}];
         let arrayCheckProducts = [];
 
-        console.log(this.state);
-
         let productList = this.props.dataBasket.arrayProduct.map((elem, index) => {
 
-            console.log('start loop')
 
             let keyItem = index;
             let amount = this.state[keyItem];
-            let checkItem = {
-                id: elem.id,
-                isAvailable: elem.isAvailable,
-                reasonNotAvailable: elem.reasonNotAvailable,
-                colorName: elem.colorName,
-                size: elem.size,
-                amount: elem.amount,
-                priceFormDB: elem.priceFormDB,
-            }
-            arrayCheckProducts.push(checkItem);
-
-            // console.log('this.props.checkAvailableItem(checkItem)')
 
 
             let classIsAvailable = elem.isAvailable ? 'basket-item-available' : 'd-none';
@@ -271,20 +379,6 @@ class Cart extends Component {
 
         })
 
-        // console.log('arrayCheckProducts', arrayCheckProducts)
-
-        // if (arrayCheckProducts.length > 0) {
-        //     this.checkArrayAvailableItem(arrayCheckProducts);
-        // }
-
-
-
-        if (arrayCheckProducts.length > 0) {
-            this.props.checkArrayAvailableItems(arrayCheckProducts);
-        }
-
-
-
 
         return (
             <section className="basket-page container">
@@ -292,18 +386,9 @@ class Cart extends Component {
                     {productList}
                 </ul>
 
-                <div className="basket-final-order">
-                    <h3 className="basket-final-order-title">My order</h3>
-                    <ul className="basket-final-order-info">
-                        <li>
-                            <span className="title">Total</span><span className="price">$65.99</span>
-                        </li>
-                        <li>
-                            <span className="title">Доставка</span><span className="price">Free</span>
-                        </li>
-                    </ul>
-                    <a href="#" className="btn-add-to-cart">Checkout</a>
-                </div>
+                <FinalOrder />
+
+
             </section>
         )
     }
@@ -318,9 +403,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeAmount: (index, value) => {
-            dispatch({type: CHANGE_AMOUT_OF_ITEM, payload: {index: index, value}})
-        },
+        // changeAmount: (index, value) => {
+        //     dispatch({type: CHANGE_AMOUT_OF_ITEM, payload: {index: index, value}})
+        // },
 
         changeArrayAmount: (obj) => {
             dispatch({type: CHANGE_ARRAY_AMOUT_OF_ITEM, payload: {obj: obj}})

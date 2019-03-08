@@ -118,7 +118,9 @@ class TopBlockAuth extends Component {
                             <div className="user-avatar-mini">
                                 <img
                                     className="user-avatar-mini-img"
-                                    src="/img/profile_logo.png"
+                                    // src="/img/profile_logo.png"
+                                    //     src="/img/logo-test.png"
+                                    src="img/user-solid.svg"
                                     alt="icon-account"
                                     onClick={() => this.props.openLoginDetails()}
                                 />
@@ -158,7 +160,7 @@ class TopBlockAuth extends Component {
 
                     <div className="product-cart-ico">
                         <NavLink to="/cart">
-                            <img src="/img/cart_img.png" alt="icon basket" className="product-cart-ico"/>
+                            <img src="/img/shopping-cart-solid.svg" alt="icon basket" className="product-cart-ico"/>
 
                             <p className={isCartNotEmpty}>{this.props.amountCart}</p>
                         </NavLink>

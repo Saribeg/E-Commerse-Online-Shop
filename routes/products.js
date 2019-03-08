@@ -99,6 +99,7 @@ router.get(
 
 //Get filtered products
 router.post("/products/filtered-products", (req, res) => {
+
   let category,
     subCategory,
     furtherSubCategory,

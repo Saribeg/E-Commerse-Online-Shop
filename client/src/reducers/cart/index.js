@@ -2,7 +2,7 @@ import {
     ADD_ITEM_TO_CART, CHANGE_AMOUT_OF_ITEM, SET_CART_FROM_LOCALSTORAGE,
     SET_ID_LOGGED_USER, SET_ID_CART_FROM_DB, SET_DATA_CART_FROM_DB,
     CLEAR_CART_ON_LOGOUT, CART_FROM_LOCALSTORAGE_TO_DB, DELETE_ITEM_TO_CART,
-    CHANGE_ARRAY_AMOUT_OF_ITEM, UPDATE_STORE_AFTER_CHECK_IN_DB,
+    CHANGE_ARRAY_AMOUT_OF_ITEM, UPDATE_STORE_AFTER_CHECK_IN_DB, CHANGE_CHECK_AMOUT_OF_ITEM,
     addNewCart, updateCart
 } from '../../actions/cart'
 
@@ -148,61 +148,87 @@ function cart(state = initialState, action) {
 
             }
 
-        case CHANGE_ARRAY_AMOUT_OF_ITEM:
+        case CHANGE_CHECK_AMOUT_OF_ITEM:
 
 
-            let changeArrayAmountProd = [];
-            state.arrayProduct.forEach((elem, index) => {
-                changeArrayAmountProd[index] = {...elem}
+            let changeCheckArrayAmountProd = action.payload.newArr.map((elem) => {
+                return elem;
             });
 
-            changeArrayAmountProd.forEach((elem, index) => {
-                elem.amount = action.payload.obj[index]
-            })
 
             // changeArrayAmountProd[action.payload.index].amount = action.payload.value;
 
 
             if (state.idUser) {
                 if (state.idCartInDB) {
-                    updateInDB(state.idCartInDB, changeArrayAmountProd);
+                    updateInDB(state.idCartInDB, changeCheckArrayAmountProd);
                 } else {
-                    saveInDB(state.idUser, changeArrayAmountProd);
+                    saveInDB(state.idUser, changeCheckArrayAmountProd);
                 }
             } else {
-                setLocalStorage(changeArrayAmountProd);
+                setLocalStorage(changeCheckArrayAmountProd);
             }
             return {
                 ...state,
-                arrayProduct: changeArrayAmountProd,
-                amountInBasket: countAmount(changeArrayAmountProd),
+                arrayProduct: changeCheckArrayAmountProd,
+                amountInBasket: countAmount(changeCheckArrayAmountProd),
             }
 
+        // case CHANGE_ARRAY_AMOUT_OF_ITEM:
+        //
+        //
+        //     let changeArrayAmountProd = [];
+        //     state.arrayProduct.forEach((elem, index) => {
+        //         changeArrayAmountProd[index] = {...elem}
+        //     });
+        //
+        //     changeArrayAmountProd.forEach((elem, index) => {
+        //         elem.amount = action.payload.obj[index]
+        //     })
+        //
+        //     // changeArrayAmountProd[action.payload.index].amount = action.payload.value;
+        //
+        //
+        //     if (state.idUser) {
+        //         if (state.idCartInDB) {
+        //             updateInDB(state.idCartInDB, changeArrayAmountProd);
+        //         } else {
+        //             saveInDB(state.idUser, changeArrayAmountProd);
+        //         }
+        //     } else {
+        //         setLocalStorage(changeArrayAmountProd);
+        //     }
+        //     return {
+        //         ...state,
+        //         arrayProduct: changeArrayAmountProd,
+        //         amountInBasket: countAmount(changeArrayAmountProd),
+        //     }
 
-        case CHANGE_AMOUT_OF_ITEM:
-            let changeAmountProd = [];
-            state.arrayProduct.forEach((elem, index) => {
-                changeAmountProd[index] = {...elem}
-            });
 
-            changeAmountProd[action.payload.index].amount = action.payload.value;
-
-            // console.log('changeAmountProd', changeAmountProd)
-
-            if (state.idUser) {
-                if (state.idCartInDB) {
-                    updateInDB(state.idCartInDB, changeAmountProd);
-                } else {
-                    saveInDB(state.idUser, changeAmountProd);
-                }
-            } else {
-                setLocalStorage(changeAmountProd);
-            }
-            return {
-                ...state,
-                arrayProduct: changeAmountProd,
-                amountInBasket: countAmount(changeAmountProd),
-            }
+        // case CHANGE_AMOUT_OF_ITEM:
+        //     let changeAmountProd = [];
+        //     state.arrayProduct.forEach((elem, index) => {
+        //         changeAmountProd[index] = {...elem}
+        //     });
+        //
+        //     changeAmountProd[action.payload.index].amount = action.payload.value;
+        //
+        //     // console.log('changeAmountProd', changeAmountProd)
+        //
+        //     if (state.idUser) {
+        //         if (state.idCartInDB) {
+        //             updateInDB(state.idCartInDB, changeAmountProd);
+        //         } else {
+        //             saveInDB(state.idUser, changeAmountProd);
+        //         }
+        //     } else {
+        //         setLocalStorage(changeAmountProd);
+        //     }
+        //     return {
+        //         ...state,
+        //         arrayProduct: changeAmountProd,
+        //         amountInBasket: countAmount(changeAmountProd),
+        //     }
 
         case SET_CART_FROM_LOCALSTORAGE:
 
