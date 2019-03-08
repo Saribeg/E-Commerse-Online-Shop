@@ -1,9 +1,23 @@
-import React, { Component } from "react";
+// @flow
+
+import * as React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import "./empty-state.scss";
 
-export default class EmptyState extends Component {
+type Props = {
+  isFilterResultEmpty: boolean,
+  category: string,
+  subCategory: string,
+  furtherSubCategory: string,
+  colorName: string,
+  size: string,
+  price: Object,
+  returnToMainPage: boolean,
+  title: string
+
+};
+export default class EmptyState extends React.Component<Props> {
   render() {
     let {
       isFilterResultEmpty,
