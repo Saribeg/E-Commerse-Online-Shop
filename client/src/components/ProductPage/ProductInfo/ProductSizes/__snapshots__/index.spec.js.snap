@@ -1,0 +1,248 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductSizes component ProductSizes component render 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ProductSizes
+    productFeatures={
+      Array [
+        Object {
+          "color": "#000000",
+          "colorName": "black",
+          "imageUrls": Array [
+            "/img/products/women/clothing/hoodies/002/000000/021.jpg",
+            "/img/products/women/clothing/hoodies/002/000000/022.jpg",
+            "/img/products/women/clothing/hoodies/002/000000/023.jpg",
+            "/img/products/women/clothing/hoodies/002/000000/024.jpg",
+          ],
+          "sizes": Array [
+            Object {
+              "quantity": 0,
+              "size": "xs",
+            },
+            Object {
+              "quantity": 0,
+              "size": "s",
+            },
+            Object {
+              "quantity": 18,
+              "size": "m",
+            },
+            Object {
+              "quantity": 23,
+              "size": "l",
+            },
+          ],
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <p
+          className="product-filter"
+        >
+          Size
+        </p>,
+        <ul
+          className="product-sizes"
+        />,
+        <p
+          className="product-filter"
+        >
+          Quantity Available: 
+          0
+        </p>,
+        <ProductCounter
+          maxCount={0}
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Size",
+          "className": "product-filter",
+        },
+        "ref": null,
+        "rendered": "Size",
+        "type": "p",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            undefined,
+          ],
+          "className": "product-sizes",
+        },
+        "ref": null,
+        "rendered": Array [
+          undefined,
+        ],
+        "type": "ul",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Quantity Available: ",
+            0,
+          ],
+          "className": "product-filter",
+        },
+        "ref": null,
+        "rendered": Array [
+          "Quantity Available: ",
+          0,
+        ],
+        "type": "p",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "maxCount": 0,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <p
+            className="product-filter"
+          >
+            Size
+          </p>,
+          <ul
+            className="product-sizes"
+          />,
+          <p
+            className="product-filter"
+          >
+            Quantity Available: 
+            0
+          </p>,
+          <ProductCounter
+            maxCount={0}
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Size",
+            "className": "product-filter",
+          },
+          "ref": null,
+          "rendered": "Size",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              undefined,
+            ],
+            "className": "product-sizes",
+          },
+          "ref": null,
+          "rendered": Array [
+            undefined,
+          ],
+          "type": "ul",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Quantity Available: ",
+              0,
+            ],
+            "className": "product-filter",
+          },
+          "ref": null,
+          "rendered": Array [
+            "Quantity Available: ",
+            0,
+          ],
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "maxCount": 0,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;

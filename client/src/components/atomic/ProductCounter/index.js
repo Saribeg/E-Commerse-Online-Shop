@@ -16,11 +16,11 @@ export default class ProductCounter extends React.Component<Props, State> {
 		value: 0,			
 	}
 
-	handleChange = (event) => {
+	handleChange = (event: Object) => {
     this.setState({value: event.target.value});
   }
 
-	increaseCount = (maxcount) => {
+	increaseCount = (maxcount: number) => {
 			let existValue = this.state.value;
 			if (existValue > (maxcount - 1)){
 				return;
