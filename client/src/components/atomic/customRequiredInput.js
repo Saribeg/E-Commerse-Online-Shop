@@ -3,7 +3,6 @@ import React, { Fragment } from 'react';
 const customRequiredInput = (props) => {
     const {input, type, className, classError, placeholder, meta} = props;
 
-    console.log(classError);
 
     // const errorClass = meta.error ? 'section-profile-content-input section-profile-content-input-error' : 'section-profile-content-input'
     return (

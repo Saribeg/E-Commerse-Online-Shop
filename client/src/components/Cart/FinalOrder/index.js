@@ -15,7 +15,7 @@ class FinalOrder extends Component {
                     arrayCheckout.push(
                         <li>
                             <span className="title">{`${elem.model} x ${elem.amount}`}</span><span
-                            className="price">{`$${elem.priceFormDB * elem.amount}`}</span>
+                            className="price">{`$${(elem.priceFormDB * elem.amount).toFixed(2)}`}</span>
                         </li>)
 
 
