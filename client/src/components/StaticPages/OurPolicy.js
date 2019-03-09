@@ -1,8 +1,18 @@
-import React, { Component } from "react";
-import {Helmet} from "react-helmet";
+// @flow
+
+import * as React from "react";
+import { Helmet } from "react-helmet";
 import axios from "axios";
 import "./static-pages.scss";
-export default class OurPolicy extends Component {
+
+type Props = {};
+
+type State = {
+  pageTitle: string,
+  content: Array<Object>
+};
+
+export default class OurPolicy extends React.Component<Props, State> {
   state = {
     pageTitle: "",
     content: []
@@ -16,7 +26,6 @@ export default class OurPolicy extends Component {
         content: res.data.content
       });
     });
-    console.log(this.state);
   }
 
   render() {
@@ -32,9 +41,9 @@ export default class OurPolicy extends Component {
 
     return (
       <>
-			<Helmet>
-			<title>{this.state.pageTitle}</title>
-			</Helmet>
+        <Helmet>
+          <title>{this.state.pageTitle}</title>
+        </Helmet>
         <h2 className="sub-page__title">{this.state.pageTitle}</h2>
         <h3 className="sub-page__sub-title">We are at the top of the market</h3>
         <p className="our-policy__paragraph">

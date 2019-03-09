@@ -16,11 +16,11 @@ export default class ProductCounter extends React.Component<Props, State> {
 		value: 0,			
 	}
 
-	handleChange = (event) => {
+	handleChange = (event: Object) => {
     this.setState({value: event.target.value});
   }
 
-	increaseCount = (maxcount) => {
+	increaseCount = (maxcount: number) => {
 			let existValue = this.state.value;
 			if (existValue > (maxcount - 1)){
 				return;
@@ -60,7 +60,7 @@ export default class ProductCounter extends React.Component<Props, State> {
     return (
 			<div className="product-counter">
 			<button className="product-counter-btn" onClick={this.decreaseCount}>-</button>
-			<input type="tel" className="product-counter-value" value={this.state.value} onInput={this.handleChange}/>
+			<input type="tel" className="product-counter-value" value={this.state.value} onChange={this.handleChange} onInput={this.handleChange}/>
 			<button className="product-counter-btn" onClick={() => this.increaseCount(this.props.maxCount)}>+</button>
 	</div>
     );

@@ -51,7 +51,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-        saveProductDetails: (data) => dispatch(saveProductDetails(data)),
         getProductItem: () => dispatch(getProductItem())
 	}
 }

@@ -9,6 +9,8 @@
     border-radius: 50%;
     border: 2px solid transparent;
     margin-right: 15px;
+    box-shadow: 0 0 5px 5px #ccc;
+    cursor: pointer;
 
     &.active {
       border: 2px solid blue;

@@ -28,7 +28,7 @@ const UserSchema = new Schema({
     },
     deliveryData: {
         country: {
-            tyoe: String,
+            type: String,
             default: ''
         },
         zipcode: {

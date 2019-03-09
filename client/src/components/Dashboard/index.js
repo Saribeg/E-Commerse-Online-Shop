@@ -50,7 +50,7 @@ class Dashboard extends Component {
                     <Route exact path="/addCart" component={TestAddToCart}/>
                     <Route
                         exact
-                        path="/:category/:subCategory/:furtherSubCategory/:id"
+                        path="/:category/:subCategory/:furtherSubCategory?/:id"
                         component={ProductPage}
                     />
                     <Route

@@ -1,23 +1,31 @@
 // @flow
 
-import React, { Component, Fragment } from "react";
+import * as React from "react";
 import ProductCounter from "../../../atomic/ProductCounter";
 import "./product-sizes.scss";
 
-export default class ProductSizes extends Component {
+type Props = {
+  productFeatures: Array<Object>,
+  activeColor: string
+};
+
+type State = {
+  productCount: number,
+  chosenSize: string
+};
+
+export default class ProductSizes extends React.Component<Props, State> {
   state = {
     productCount: 0,
-    chosenSize: "",
+    chosenSize: ""
   };
 
-  choseSizes = (maxcount, chosenSize) => {
+  choseSizes = (maxcount: number, chosenSize: string) => {
     if (maxcount && chosenSize) {
       this.setState({
         productCount: maxcount,
         chosenSize: chosenSize
       });
-
-      console.log(this.state);
     }
   };
 
@@ -48,14 +56,14 @@ export default class ProductSizes extends Component {
     });
 
     return (
-      <Fragment>
+      <>
         <p className="product-filter">Size</p>
         <ul className="product-sizes">{sizes}</ul>
         <p className="product-filter">
           Quantity Available: {this.state.productCount}
         </p>
         <ProductCounter maxCount={this.state.productCount} />
-      </Fragment>
+      </>
     );
   }
 }
