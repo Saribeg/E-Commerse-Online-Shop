@@ -2,6 +2,8 @@
 
 import * as React from "react";
 import { NavLink } from "react-router-dom";
+import {connect} from "react-redux";
+import {saveProductDetails} from "../../actions/product";
 
 type Props = {
   productUrl: string,
@@ -10,7 +12,8 @@ type Props = {
   model: string,
   colorName: string,
   currentPrice: number,
-  previousPrice: number
+  previousPrice: number,
+  saveProductDetails: Function
 };
 
 class ProductCard extends React.Component<Props> {
@@ -18,7 +21,7 @@ class ProductCard extends React.Component<Props> {
     let {productUrl, id, imageUrl, model, colorName, currentPrice, previousPrice} = this.props;
 
     return (
-      <NavLink to={productUrl} key={id} className="product-item">
+      <NavLink to={productUrl} key={id} className="product-item" onClick={()=> this.props.saveProductDetails(colorName)}>
         <img src={imageUrl} alt={model} className="product-img" />
         <p className="product-name">{`${model} (${colorName})`}</p>
         <p className="product-price">{`$${currentPrice}`}</p>
@@ -30,4 +33,13 @@ class ProductCard extends React.Component<Props> {
   }
 }
 
-export default ProductCard;
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+    saveProductDetails: (data) => dispatch(saveProductDetails(data)),
+	}
+}
+
+export default connect(null, mapDispatchToProps)( ProductCard);
+
+
