@@ -11,36 +11,54 @@ class FormDeliveryCheckout extends Component {
         return (
             <form onSubmit={handleSubmit}>
 
-                <div className='section-profile-content-label'>
-                    First name
+                <div className='checkout-delivery-content-label'>
+                    Country
                 </div>
-                <Field name="firstName" component={customRequiredInput}
+                <Field name="country" component={customRequiredInput}
                        type="text" placeholder="Your first name..."
-                       className='section-profile-content-input'
+                       className='checkout-delivery-content-input'
                        classError='input-error-message'
                        validate={[requiredInput]}
                 />
-                <div className='section-profile-content-label'>
-                    Last name
+                <div className='checkout-delivery-content-label'>
+                    Zipcode
                 </div>
-                <Field name="secondName" component={customRequiredInput}
+                <Field name="zipcode" component={customRequiredInput}
                        type="text" placeholder="Your second name..."
-                       className='section-profile-content-input'
+                       className='checkout-delivery-content-input'
                        classError='input-error-message'
                        validate={[requiredInput]}
                 />
-                <div className='section-profile-content-label'>
-                    Email address
+                <div className='checkout-delivery-content-label'>
+                    City
                 </div>
-                <Field name="email" component={customCorrectEmail}
+                <Field name="city" component={customRequiredInput}
                        type="text" placeholder="Your e-mail..."
-                       className='section-profile-content-input'
+                       className='checkout-delivery-content-input'
                        classError='input-error-message'
-                       validate={[correctEmail]}
+                       validate={[requiredInput]}
+                />
+                <div className='checkout-delivery-content-label'>
+                    Street
+                </div>
+                <Field name="street" component={customRequiredInput}
+                       type="text" placeholder="Your second name..."
+                       className='checkout-delivery-content-input'
+                       classError='input-error-message'
+                       validate={[requiredInput]}
+                />
+                <div className='checkout-delivery-content-label'>
+                    Phone
+                </div>
+                <Field name="phone" component={customRequiredInput}
+                       type="text" placeholder="Your second name..."
+                       className='checkout-delivery-content-input'
+                       classError='input-error-message'
+                       validate={[requiredInput]}
                 />
 
 
-                <button name='personalSbm' disabled={invalid || pristine || submitting} type="submit" className='section-profile-content-btn' label="submit">Save changes</button>
+                <button name='checkoutDeliverySbm' disabled={invalid || pristine || submitting} type="submit" className='checkout-next-btn' label="submit">Next step</button>
             </form>
         );
     }
@@ -48,15 +66,15 @@ class FormDeliveryCheckout extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        initialValues: {
-            firstName: state.login.loggedData.firstName,
-            secondName: state.login.loggedData.secondName,
-            email: state.login.loggedData.email,
-        }
+        // initialValues: {
+        //     firstName: state.login.loggedData.firstName,
+        //     secondName: state.login.loggedData.secondName,
+        //     email: state.login.loggedData.email,
+        // }
     }
 }
 
-FormPersonalContent = reduxForm({
+FormDeliveryCheckout = reduxForm({
     form: 'formDeliveryCheckout'
 })(FormDeliveryCheckout);
 

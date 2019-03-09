@@ -64,10 +64,27 @@
   &-delivery-method {
     margin-top: 20px;
     margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid #cccccc;
+    border-radius: 3px;
+
+    &-title {
+      color: #ff6008;
+    }
+  }
+
+  &-delivery-details {
+    padding: 10px;
+    border: 2px solid #cccccc;
+    border-radius: 3px;
+
+    &-title {
+      color: #ff6008;
+    }
+
   }
 
 }
-
 
 .delivery-input {
   visibility: hidden;
@@ -78,7 +95,7 @@
   width: 220px;
   background-color: #eee;
   border: 1px solid #ccc;
-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 5px;
 }
 
@@ -91,4 +108,42 @@ box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.checkout-next-btn {
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  display: block;
+  height: 40px;
+  width: 120px;
+  border: 2px solid #655f5f;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 16px;
+  background-color: #655f5f;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+
+  &:disabled {
+    background-color: #cccccc;
+    color: #fff;
+    cursor: auto;
+
+    &:hover {
+      background-color: #cccccc;
+      color: #fff;
+      cursor: auto;
+    }
+
+  }
+
+  &:hover {
+    background-color: #fff;
+    color: #655f5f;
+  }
+
 }

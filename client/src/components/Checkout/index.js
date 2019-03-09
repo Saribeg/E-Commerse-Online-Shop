@@ -10,6 +10,34 @@ import {DELETE_ITEM_TO_CART, CHANGE_DELIVERY_METHOD} from "../../actions/cart";
 
 class Checkout extends Component {
 
+    state = {
+        showDelivery: false,
+        showPayment: false
+    }
+
+    clickShowDelivery = () => {
+        this.setState({
+            showDelivery: true,
+        })
+    }
+
+    handleDeliverySubmit = (values) => {
+
+        let sendObject = {
+            country: values.country,
+            zipcode: values.zipcode,
+            city: values.city,
+            street: values.street,
+            phone: values.phone
+        };
+
+        // this.props.profileChangePersonal(sendObject);
+
+        this.setState({
+            showPayment: true,
+        })
+
+    }
 
 
     render() {
@@ -53,42 +81,47 @@ class Checkout extends Component {
         })
 
 
-        let arrayDelivery = this.props.dataBasket.deliveryMethods.map((elem) => {
+        let arrayDelivery = [];
+        if (this.props.dataBasket.deliveryMethods) {
+            arrayDelivery = this.props.dataBasket.deliveryMethods.map((elem) => {
 
-            return (
-                <li key={elem.name}>
-                    <input
-                        className="delivery-input"
-                        type="radio"
-                        name="deliveryFilter"
-                        value={elem.name}
-                        checked={elem.name === this.props.dataBasket.checkedDelivery}
-                        id={elem.name}
-                        onChange={() => this.props.handleDeliveryRadio(elem.name)}
-                    />
-                    <label
-                        className="delivery-link"
-                        title={elem.name}
-                        htmlFor={elem.name}
-                    >
-                        <div className="delivery-link-block">
-                            <p>
-                                Delivery - {elem.name}
-                            </p>
-                            <p>
-                                Estimated delivery - {elem.duration} days
-                            </p>
-                            <p>
-                                Price - {elem.price}
-                            </p>
-                        </div>
+                return (
+                    <li key={elem.name}>
+                        <input
+                            className="delivery-input"
+                            type="radio"
+                            name="deliveryFilter"
+                            value={elem.name}
+                            checked={elem.name === this.props.dataBasket.checkedDelivery}
+                            id={elem.name}
+                            onChange={() => this.props.handleDeliveryRadio(elem.name)}
+                        />
+                        <label
+                            className="delivery-link"
+                            title={elem.name}
+                            htmlFor={elem.name}
+                        >
+                            <div className="delivery-link-block">
+                                <p>
+                                    Delivery - {elem.name}
+                                </p>
+                                <p>
+                                    Estimated delivery - {elem.duration} days
+                                </p>
+                                <p>
+                                    Price - {elem.price}
+                                </p>
+                            </div>
 
-                    </label>
-                </li>
-            )
+                        </label>
+                    </li>
+                )
 
-        })
+            })
+        }
 
+        let showDeliveryClass = (this.state.showDelivery) ? "checkout-delivery-details" : "d-none";
+        let showPaymentClass = (this.state.showPayment) ? "checkout-payment" : "d-none";
 
         return (
             <section className="basket-page container">
@@ -98,20 +131,27 @@ class Checkout extends Component {
                     </ul>
 
                     <div className="checkout-delivery-method">
-                        Choose one of delivery method
+                        <p className="checkout-delivery-method-title">
+                            Choose one of delivery method
+                        </p>
+
                         <ul className="checkout-delivery-list">
                             {arrayDelivery}
                         </ul>
 
-
+                        <input type="button" value="Next step" onClick={this.clickShowDelivery} className="checkout-next-btn"/>
                     </div>
 
-                    <div className="checkout-delivery-details">
-                        Please enter your address
-                        <FormDeliveryCheckout />
+                    <div className={showDeliveryClass}>
+
+                        <p className="checkout-delivery-details-title">
+                            Please enter your address
+                        </p>
+
+                        <FormDeliveryCheckout onSubmit={this.handleDeliverySubmit}/>
                     </div>
 
-                    <div className="checkout-payment">
+                    <div className={showPaymentClass}>
                         Please enter your payment information
                     </div>
                 </div>
