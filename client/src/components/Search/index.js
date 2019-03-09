@@ -1,25 +1,34 @@
-import React, { Component } from "react";
-import "./Search.scss";
+// @flow
 
-class Search extends Component {
+import * as React from "react";
+import "./search.scss";
+
+type Props = {};
+
+type State = {
+  search: string,
+  focus: boolean
+}
+class Search extends React.Component<Props, State> {
+  
   state = {
     search: "",
     focus: false
   };
 
-  onChangeSearch = event => {
+  onChangeSearch = (event: Object) => {
     this.setState({
       search: event.target.value
     });
   };
 
-  onFocus = event => {
+  onFocus = (event: Object) => {
     this.setState({
       focus: true
     });
   };
 
-  onBlur = event => {
+  onBlur = (event: Object) => {
     this.setState({
       focus: false,
       search: ""
