@@ -4,8 +4,7 @@ import * as React from "react";
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 import {selectFilters} from "../../actions/filterActions";
-
-import "./BreadCrumbs.scss"
+import "./breadcrumbs.scss"
 
  type Props = {
     categoryAway: Object,

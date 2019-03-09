@@ -13,9 +13,10 @@
   }
 
   &-item {
-    width: 68px;
-    height: 68px;
-    margin: 20px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    cursor: pointer;
 
     img {
       @include image;
@@ -47,5 +48,10 @@
 
   .all-photos-item {
     @include image;
+    margin: 0;
+
+    img {
+      object-fit: cover;
+    }
   }
 }

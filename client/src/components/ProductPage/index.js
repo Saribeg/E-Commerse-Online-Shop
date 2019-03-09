@@ -4,6 +4,7 @@ import ProductInfo from "./ProductInfo";
 import {connect} from "react-redux";
 import {getProductDetails} from "../../actions/productDetails";
 import BreadCrumbs from "../BreadCrumbs";
+import './product-page.scss';
 
 class ProductPage extends Component {
     state = {
