@@ -4,6 +4,7 @@ import {Helmet} from "react-helmet";
 import ProductColors from "./ProductColors";
 import ProductSizes from "./ProductSizes";
 import BtnAddToCart from "../../atomic/BtnAddToCart";
+import './product-info.scss';
 
 type Props = {
   currentPrice: number,
