@@ -3,6 +3,7 @@ import {
     SET_ID_LOGGED_USER, SET_ID_CART_FROM_DB, SET_DATA_CART_FROM_DB,
     CLEAR_CART_ON_LOGOUT, CART_FROM_LOCALSTORAGE_TO_DB, DELETE_ITEM_TO_CART,
     CHANGE_ARRAY_AMOUT_OF_ITEM, UPDATE_STORE_AFTER_CHECK_IN_DB, CHANGE_CHECK_AMOUT_OF_ITEM,
+    CHANGE_DELIVERY_METHOD,
     addNewCart, updateCart
 } from '../../actions/cart'
 
@@ -14,6 +15,25 @@ const initialState = {
     idCartInDB: '',
     arrayProduct: [],
     arrayCheckout: [],
+    checkedDelivery: "standart",
+    deliveryMethods: [
+        {
+            name: "economical",
+            duration: 14,
+            price: 0
+        },
+        {
+            name: "standart",
+            duration: 7,
+            price: 5
+        },
+        {
+            name: "express",
+            duration: 3,
+            price: 10
+        },
+
+    ]
 }
 
 function setLocalStorage(arr) {
@@ -268,6 +288,13 @@ function cart(state = initialState, action) {
                 ...state,
                 arrayProduct: changeAfterCheck,
                 amountInBasket: countAmount(changeAfterCheck),
+            }
+
+        case CHANGE_DELIVERY_METHOD:
+
+            return {
+                ...state,
+                checkedDelivery: action.payload.method,
             }
 
         default:
