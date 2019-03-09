@@ -7,14 +7,16 @@ import BtnAddToCart from "../../atomic/BtnAddToCart";
 
 type Props = {
   currentPrice: number,
-  itemNo?: string,
-  activeColor?: string,
-  model?: string
+  itemNo: string,
+  activeColor: string,
+  model: string,
+  productFeatures: Array<Object>,
+  changeColor: Function
 };
 
 class ProductInfo extends React.Component<Props> {
 
-  state = {
+ /*  state = {
     id: '5c62e83e12c9d12dbc9ecf16',
     isAvailable: true,
     reasonNotAvailable: '',
@@ -25,7 +27,8 @@ class ProductInfo extends React.Component<Props> {
     price: 28.88,
     priceFormDB: 28.88,
     urlPhoto: "/img/products/women/accessories/hats/001/ffffff/011.png"
-  }
+  } */
+  
   render() {
     const { itemNo, currentPrice, model, productFeatures, activeColor } = {
       ...this.props
