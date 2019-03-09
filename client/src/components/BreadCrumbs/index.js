@@ -1,15 +1,26 @@
-import React, {Component} from "react";
+// @flow
+
+import * as React from "react";
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 import {selectFilters} from "../../actions/filterActions";
 
 import "./BreadCrumbs.scss"
 
-class BreadCrumbs extends Component {
+ type Props = {
+    categoryAway: Object,
+    navMenuItems: Array<Object>,
+    selectFilters: Object,
+    currentFilters: Object,
+    modelName: string, 
+    activeColor: string
+} 
+
+class BreadCrumbs extends React.Component<Props> {
     changeCategoryFilters = (
-        newCategory,
-        newSubCategory,
-        newFurtherSubCategory
+        newCategory: string,
+        newSubCategory: string,
+        newFurtherSubCategory: string
     ) => {
         let {currentFilters} = this.props;
 
@@ -26,7 +37,7 @@ class BreadCrumbs extends Component {
 
     render() {
         let {category, subCategory, furtherSubCategory} = this.props.categoryAway;
-        let {navMenuItems, selectFilters, currentFilters} = this.props;
+        let {navMenuItems} = this.props;
 
         let mainCategory = navMenuItems.map(cat => {
             if (cat.categoryName === category) {

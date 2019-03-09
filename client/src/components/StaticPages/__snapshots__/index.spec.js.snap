@@ -1,0 +1,913 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutUs component AboutUs component render 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <AboutUs />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <HelmetWrapper
+          defer={true}
+          encodeSpecialCharacters={true}
+        >
+          <title>
+            
+          </title>
+        </HelmetWrapper>,
+        <div
+          className="container"
+        >
+          <h2
+            className="sub-page__title"
+          >
+            
+          </h2>
+          <h3
+            className="sub-page__sub-title"
+          >
+            We have a lot to tell you
+          </h3>
+          <div
+            className="about-us__wrapper"
+          >
+            <div
+              className="about-us__content"
+            />
+            <div
+              className="about-us__content"
+            />
+          </div>
+        </div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <title>
+            
+          </title>,
+          "defer": true,
+          "encodeSpecialCharacters": true,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "title",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h2
+              className="sub-page__title"
+            >
+              
+            </h2>,
+            <h3
+              className="sub-page__sub-title"
+            >
+              We have a lot to tell you
+            </h3>,
+            <div
+              className="about-us__wrapper"
+            >
+              <div
+                className="about-us__content"
+              />
+              <div
+                className="about-us__content"
+              />
+            </div>,
+          ],
+          "className": "container",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+              "className": "sub-page__title",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "h2",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "We have a lot to tell you",
+              "className": "sub-page__sub-title",
+            },
+            "ref": null,
+            "rendered": "We have a lot to tell you",
+            "type": "h3",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div
+                  className="about-us__content"
+                />,
+                <div
+                  className="about-us__content"
+                />,
+              ],
+              "className": "about-us__wrapper",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    undefined,
+                    undefined,
+                  ],
+                  "className": "about-us__content",
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                  undefined,
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    undefined,
+                    undefined,
+                  ],
+                  "className": "about-us__content",
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                  undefined,
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <HelmetWrapper
+            defer={true}
+            encodeSpecialCharacters={true}
+          >
+            <title>
+              
+            </title>
+          </HelmetWrapper>,
+          <div
+            className="container"
+          >
+            <h2
+              className="sub-page__title"
+            >
+              
+            </h2>
+            <h3
+              className="sub-page__sub-title"
+            >
+              We have a lot to tell you
+            </h3>
+            <div
+              className="about-us__wrapper"
+            >
+              <div
+                className="about-us__content"
+              />
+              <div
+                className="about-us__content"
+              />
+            </div>
+          </div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <title>
+              
+            </title>,
+            "defer": true,
+            "encodeSpecialCharacters": true,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "title",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h2
+                className="sub-page__title"
+              >
+                
+              </h2>,
+              <h3
+                className="sub-page__sub-title"
+              >
+                We have a lot to tell you
+              </h3>,
+              <div
+                className="about-us__wrapper"
+              >
+                <div
+                  className="about-us__content"
+                />
+                <div
+                  className="about-us__content"
+                />
+              </div>,
+            ],
+            "className": "container",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+                "className": "sub-page__title",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "h2",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "We have a lot to tell you",
+                "className": "sub-page__sub-title",
+              },
+              "ref": null,
+              "rendered": "We have a lot to tell you",
+              "type": "h3",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <div
+                    className="about-us__content"
+                  />,
+                  <div
+                    className="about-us__content"
+                  />,
+                ],
+                "className": "about-us__wrapper",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      undefined,
+                      undefined,
+                    ],
+                    "className": "about-us__content",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    undefined,
+                    undefined,
+                  ],
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      undefined,
+                      undefined,
+                    ],
+                    "className": "about-us__content",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    undefined,
+                    undefined,
+                  ],
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;
+
+exports[`Careers component Careers component render 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Careers />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <HelmetWrapper
+          defer={true}
+          encodeSpecialCharacters={true}
+        >
+          <title>
+            
+          </title>
+        </HelmetWrapper>,
+        <h2
+          className="sub-page__title"
+        >
+          
+        </h2>,
+        <h3
+          className="sub-page__sub-title"
+        >
+          There are several options to suggest
+        </h3>,
+        Array [],
+        <p
+          className="job-offer__feedback"
+        >
+          If you are interested, please send your resume: matter-style@mail.com
+        </p>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <title>
+            
+          </title>,
+          "defer": true,
+          "encodeSpecialCharacters": true,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "title",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "",
+          "className": "sub-page__title",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "There are several options to suggest",
+          "className": "sub-page__sub-title",
+        },
+        "ref": null,
+        "rendered": "There are several options to suggest",
+        "type": "h3",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "If you are interested, please send your resume: matter-style@mail.com",
+          "className": "job-offer__feedback",
+        },
+        "ref": null,
+        "rendered": "If you are interested, please send your resume: matter-style@mail.com",
+        "type": "p",
+      },
+    ],
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <HelmetWrapper
+            defer={true}
+            encodeSpecialCharacters={true}
+          >
+            <title>
+              
+            </title>
+          </HelmetWrapper>,
+          <h2
+            className="sub-page__title"
+          >
+            
+          </h2>,
+          <h3
+            className="sub-page__sub-title"
+          >
+            There are several options to suggest
+          </h3>,
+          Array [],
+          <p
+            className="job-offer__feedback"
+          >
+            If you are interested, please send your resume: matter-style@mail.com
+          </p>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <title>
+              
+            </title>,
+            "defer": true,
+            "encodeSpecialCharacters": true,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "title",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+            "className": "sub-page__title",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "There are several options to suggest",
+            "className": "sub-page__sub-title",
+          },
+          "ref": null,
+          "rendered": "There are several options to suggest",
+          "type": "h3",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "If you are interested, please send your resume: matter-style@mail.com",
+            "className": "job-offer__feedback",
+          },
+          "ref": null,
+          "rendered": "If you are interested, please send your resume: matter-style@mail.com",
+          "type": "p",
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;
+
+exports[`OurPolicy component OurPolicy component render 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <OurPolicy />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <HelmetWrapper
+          defer={true}
+          encodeSpecialCharacters={true}
+        >
+          <title>
+            
+          </title>
+        </HelmetWrapper>,
+        <h2
+          className="sub-page__title"
+        >
+          
+        </h2>,
+        <h3
+          className="sub-page__sub-title"
+        >
+          We are at the top of the market
+        </h3>,
+        <p
+          className="our-policy__paragraph"
+        >
+          When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.
+        </p>,
+        <ol
+          className="list"
+          type="1"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <title>
+            
+          </title>,
+          "defer": true,
+          "encodeSpecialCharacters": true,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "title",
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "",
+          "className": "sub-page__title",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "We are at the top of the market",
+          "className": "sub-page__sub-title",
+        },
+        "ref": null,
+        "rendered": "We are at the top of the market",
+        "type": "h3",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.",
+          "className": "our-policy__paragraph",
+        },
+        "ref": null,
+        "rendered": "When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.",
+        "type": "p",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [],
+          "className": "list",
+          "type": "1",
+        },
+        "ref": null,
+        "rendered": Array [],
+        "type": "ol",
+      },
+    ],
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <HelmetWrapper
+            defer={true}
+            encodeSpecialCharacters={true}
+          >
+            <title>
+              
+            </title>
+          </HelmetWrapper>,
+          <h2
+            className="sub-page__title"
+          >
+            
+          </h2>,
+          <h3
+            className="sub-page__sub-title"
+          >
+            We are at the top of the market
+          </h3>,
+          <p
+            className="our-policy__paragraph"
+          >
+            When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.
+          </p>,
+          <ol
+            className="list"
+            type="1"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <title>
+              
+            </title>,
+            "defer": true,
+            "encodeSpecialCharacters": true,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "title",
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+            "className": "sub-page__title",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "We are at the top of the market",
+            "className": "sub-page__sub-title",
+          },
+          "ref": null,
+          "rendered": "We are at the top of the market",
+          "type": "h3",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.",
+            "className": "our-policy__paragraph",
+          },
+          "ref": null,
+          "rendered": "When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [],
+            "className": "list",
+            "type": "1",
+          },
+          "ref": null,
+          "rendered": Array [],
+          "type": "ol",
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;
