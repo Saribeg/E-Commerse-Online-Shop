@@ -23,6 +23,8 @@ export const UPDATE_STORE_AFTER_CHECK_IN_DB = 'UPDATE_STORE_AFTER_CHECK_IN_DB';
 
 export const CHANGE_CHECK_AMOUT_OF_ITEM = 'CHANGE_CHECK_AMOUT_OF_ITEM';
 
+export const CHANGE_DELIVERY_METHOD = 'CHANGE_DELIVERY_METHOD';
+
 
 
 export function checkAvailableItem(arrData) {
