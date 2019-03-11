@@ -25,19 +25,19 @@ class Cart extends Component {
 
     handleChange = (event) => {
 
-        // console.log('handleChange')
-
-        let name = event.target.name;
+        let name = Number(event.target.name);
         let value = Number(event.target.value);
 
-        if (!isNaN(value) && value > 0) {
 
+        if (!isNaN(value) && value > 0) {
             let arrayCheckProducts = [];
 
             if (this.props.dataBasket.arrayProduct.length > 0) {
                 this.props.dataBasket.arrayProduct.forEach((elem, i) => {
                     let checkItem = {}
+
                     if (i == name) {
+
                         checkItem = {
                             ...elem,
                             amount: value
@@ -50,12 +50,12 @@ class Cart extends Component {
 
                     arrayCheckProducts.push(checkItem);
                 })
-                // console.log('componentWillUpdate array', arrayCheckProducts)
+
                 this.props.checkArrayAvailableItems(arrayCheckProducts);
             }
 
 
-            // this.setState({[name]: value});
+            this.setState({[name]: value});
         } else {
             this.setState({[name]: ''});
         }
@@ -64,7 +64,7 @@ class Cart extends Component {
 
     falseBlock = () => {
 
-        console.log('call false block')
+        // console.log('call false block')
 
         this.setState({
             isBlock: false,
@@ -72,7 +72,7 @@ class Cart extends Component {
     }
 
     falseRequest = () => {
-        console.log('call request false')
+        // console.log('call request false')
 
         let arrayCheckProducts = [];
 
@@ -86,7 +86,7 @@ class Cart extends Component {
                 arrayCheckProducts.push(checkItem);
             })
 
-
+            // console.log('CALL checkArrayAvailableItems 2');
             this.props.checkArrayAvailableItems(arrayCheckProducts);
         }
         // console.log('componentWillUpdate array', arrayCheckProducts)
@@ -128,6 +128,7 @@ class Cart extends Component {
                     arrayCheckProducts.push(checkItem);
                 })
                 // console.log('componentWillUpdate array', arrayCheckProducts)
+                // console.log('CALL checkArrayAvailableItems 3');
                 this.props.checkArrayAvailableItems(arrayCheckProducts);
             }
 
@@ -188,6 +189,7 @@ class Cart extends Component {
                         arrayCheckProducts.push(checkItem);
                     })
                     // console.log('componentWillUpdate array', arrayCheckProducts)
+                    // console.log('CALL checkArrayAvailableItems 4');
                     this.props.checkArrayAvailableItems(arrayCheckProducts);
                 }
 
@@ -239,11 +241,15 @@ class Cart extends Component {
         // console.log('component will update')
         let isUpdate = 0;
         let block = 0;
-        let obj = {}
+        let obj = {};
         nextProps.dataBasket.arrayProduct.forEach((elem, index) => {
+
             if (!this.state[index]) {
-                obj[index] = elem.amount;
-                isUpdate = 1;
+                if (this.state[index] !== '') {
+                    obj[index] = elem.amount;
+                    isUpdate = 1;
+                }
+
             }
         })
 
@@ -260,7 +266,7 @@ class Cart extends Component {
                     }
                     arrayCheckProducts.push(checkItem);
                 })
-                // console.log('componentWillUpdate array', arrayCheckProducts)
+
                 this.props.checkArrayAvailableItems(arrayCheckProducts);
             }
             this.setState({...obj})

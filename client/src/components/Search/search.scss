@@ -1,5 +1,11 @@
 @import "../../scss/resources/resources";
 
+.search-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .main-search {
   width: 204px;
   height: 26px;
@@ -18,4 +24,10 @@
   @include max-width($landscape-tablet) {
     display: none;
   }
+}
+
+.non-valid-search {
+  color: red;
+  font-size: 11px;
+  margin-top: 10px;
 }
