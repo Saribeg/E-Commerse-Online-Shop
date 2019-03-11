@@ -15,13 +15,13 @@ const colors = require("./routes/filters/colors");
 const sizes = require("./routes/filters/sizes");
 const categoryCarousels = require("./routes/categoryCarousels");
 const cart = require("./routes/cart");
+const search = require("./routes/search");
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const db = require("./config/keys").mongoURI;
-
 
 // const jwtOptions = {
 //     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -47,15 +47,15 @@ const db = require("./config/keys").mongoURI;
 // );
 
 mongoose
-    .connect(db, {useNewUrlParser: true})
-    .then(() => console.log("MongoDB Connected"))
-    .catch(err => console.log(err));
+  .connect(db, { useNewUrlParser: true })
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log(err));
 
 // Passport middleware
 app.use(passport.initialize());
 
 // Passport Config
-require("./config/passport")(passport)
+require("./config/passport")(passport);
 
 app.use("/users", users);
 app.use("/", navigationMenuItems);
@@ -68,6 +68,7 @@ app.use("/", colors);
 app.use("/", sizes);
 app.use("/", cart);
 app.use("/", staticPages);
+app.use("/", search);
 
 app.use("/", categoryCarousels);
 const port = process.env.PORT || 5000;

@@ -4,6 +4,7 @@ import {NavLink} from 'react-router-dom';
 
 import PlaceOrder from "./PlaceOrder"
 import FormDeliveryCheckout from "./FormDeliveryCheckout"
+import FormPaymentCheckout from "./FormPaymentCheckout"
 
 import './Checkout.scss'
 import {DELETE_ITEM_TO_CART, CHANGE_DELIVERY_METHOD} from "../../actions/cart";
@@ -30,12 +31,28 @@ class Checkout extends Component {
             street: values.street,
             phone: values.phone
         };
-
         // this.props.profileChangePersonal(sendObject);
 
         this.setState({
             showPayment: true,
         })
+
+    }
+
+    handlePaymentSubmit = (values) => {
+
+        // let sendObject = {
+        //     country: values.country,
+        //     zipcode: values.zipcode,
+        //     city: values.city,
+        //     street: values.street,
+        //     phone: values.phone
+        // };
+        // this.props.profileChangePersonal(sendObject);
+
+        // this.setState({
+        //     showPayment: true,
+        // })
 
     }
 
@@ -152,7 +169,11 @@ class Checkout extends Component {
                     </div>
 
                     <div className={showPaymentClass}>
-                        Please enter your payment information
+                        <p className="checkout-delivery-details-title">
+                            Please enter your payment information
+                        </p>
+
+                        <FormPaymentCheckout onSubmit={this.handlePaymentSubmit}/>
                     </div>
                 </div>
 
