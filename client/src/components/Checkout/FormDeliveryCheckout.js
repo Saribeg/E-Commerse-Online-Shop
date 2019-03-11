@@ -15,7 +15,7 @@ class FormDeliveryCheckout extends Component {
                     Country
                 </div>
                 <Field name="country" component={customRequiredInput}
-                       type="text" placeholder="Your first name..."
+                       type="text" placeholder="Your country..."
                        className='checkout-delivery-content-input'
                        classError='input-error-message'
                        validate={[requiredInput]}
@@ -24,7 +24,7 @@ class FormDeliveryCheckout extends Component {
                     Zipcode
                 </div>
                 <Field name="zipcode" component={customRequiredInput}
-                       type="text" placeholder="Your second name..."
+                       type="text" placeholder="Your zipcode..."
                        className='checkout-delivery-content-input'
                        classError='input-error-message'
                        validate={[requiredInput]}
@@ -33,7 +33,7 @@ class FormDeliveryCheckout extends Component {
                     City
                 </div>
                 <Field name="city" component={customRequiredInput}
-                       type="text" placeholder="Your e-mail..."
+                       type="text" placeholder="Your city..."
                        className='checkout-delivery-content-input'
                        classError='input-error-message'
                        validate={[requiredInput]}
@@ -42,7 +42,7 @@ class FormDeliveryCheckout extends Component {
                     Street
                 </div>
                 <Field name="street" component={customRequiredInput}
-                       type="text" placeholder="Your second name..."
+                       type="text" placeholder="Your street..."
                        className='checkout-delivery-content-input'
                        classError='input-error-message'
                        validate={[requiredInput]}
@@ -51,7 +51,7 @@ class FormDeliveryCheckout extends Component {
                     Phone
                 </div>
                 <Field name="phone" component={customRequiredInput}
-                       type="text" placeholder="Your second name..."
+                       type="text" placeholder="Your phone number..."
                        className='checkout-delivery-content-input'
                        classError='input-error-message'
                        validate={[requiredInput]}
