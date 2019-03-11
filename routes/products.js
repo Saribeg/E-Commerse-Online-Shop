@@ -17,7 +17,10 @@ router.post("/products/add-products", (req, res) => {
   if (req.body.furtherSubCategory)
     newProduct.furtherSubCategory = req.body.furtherSubCategory;
   // Product description / model name
-  newProduct.model = req.body.model;
+  newProduct.model = req.body.model
+    .toLowerCase()
+    .trim()
+    .replace(/\s\s+/g, " ");
   // The actual price
   newProduct.currentPrice = Number(req.body.currentPrice);
   // Previous price if there is a promotion.This price should be faded and crossed as not actual
