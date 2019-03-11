@@ -89,7 +89,7 @@ class SearchResultItem extends Component {
                     {`$${product.previousPrice}`}
                   </span>
                 ) : (
-                  <span class="no-discounts">No discounts</span>
+                  <span className="no-discounts">No discounts</span>
                 )}
               </div>
             </div>
