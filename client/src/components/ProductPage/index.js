@@ -3,6 +3,8 @@ import PhotoGallery from "./PhotoGallery";
 import ProductInfo from "./ProductInfo";
 import {connect} from "react-redux";
 import {getProductDetails} from "../../actions/productDetails";
+import {SET_COLOR} from "../../actions/addToCart";
+
 import BreadCrumbs from "../BreadCrumbs";
 import './product-page.scss';
 
@@ -23,11 +25,15 @@ class ProductPage extends Component {
     }
 
     changeColor = color => {
+
+        this.props.setColorAddCart(color);
+
         this.setState({activeColor: color,
         thumbs: false});
     };
 
     setInitialColor = array => {
+        this.props.setColorAddCart(array[0].colorName);
         return array[0].colorName;
     };
 
@@ -41,6 +47,8 @@ class ProductPage extends Component {
         if (activeColor === "") {
             activeColor = this.setInitialColor(productFeatures);
         }
+
+
 
         return (
             <>
@@ -79,7 +87,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getProductDetails: data => dispatch(getProductDetails(data))
+        getProductDetails: data => dispatch(getProductDetails(data)),
+        // setInitialAddCart: (data) => {dispatch({type: SET_INITIAL_STATE, payload: {data: data}})}
+        setColorAddCart: (color) => {dispatch({type: SET_COLOR, payload: {color: color}})}
     };
 };
 
