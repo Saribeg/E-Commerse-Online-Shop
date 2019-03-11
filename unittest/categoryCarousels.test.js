@@ -1,36 +1,53 @@
-const request = require('supertest');
-const express = require('express');
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-let should = chai.should();
 const expect = chai.expect;
+let should = chai.should();
 
-let cattest = require('../routes/categoryCarousels');
+let server = require('../server');
+let CategoryCarousels = require('../models/CategoryCarousel');
 
 chai.use(chaiHttp);
 
-describe('/GET ', () => {
-        // it('it should GET all the books', async (done) => {
-        //     await chai.request(cattest)
-        //         .get('/categoryCarousels')
-        //         .end((err, res) => {
-        //             // expect(res).to.have.status(200);
-        //             res.should.have.status(200);
-        //             res.body.should.be.a('array');
-        //             done();
-        //         })
-        // })
+describe('Testing categoryCarousels router', () => {
 
-        it("/GET", async (done) => {
-            await request(cattest)
-                .get("/categoryCarousels")
-                .set('Accept', 'application/json')
-                .expect('Content-Type', /json/)
-                .expect(200)
-                .end((err) => {
-                    if (err) return done(err);
-                    done();
-                });
-        });
-    }
-);
+    describe('/GET route', () => {
+            it("it should GET all the categoryCarousels", (done) => {
+                chai.request(server)
+                    .get('/categoryCarousels')
+                    .end(function (err, res) {
+                        res.should.have.status(200);
+                        done(err);
+                    })
+            });
+
+            it("it should GET array all the categoryCarousels", (done) => {
+                chai.request(server)
+                    .get('/categoryCarousels')
+                    .end(function (err, res) {
+                        res.body.should.be.a('array');
+                        done(err);
+                    })
+            });
+        }
+    );
+
+    describe('/POST route', () => {
+            it("it should POST new category", (done) => {
+                let category = {
+                    categoryName: "Sport",
+                    categoryUrl: "/men/clothing/sport",
+                    categoryImg: "/img/categories/men/clothing/sport.jpg"
+                }
+                chai.request(server)
+                    .post('/categoryCarousels/add-categoryItem')
+                    .send(category)
+                    .end(function (err, res) {
+                        res.should.have.status(200);
+                        res.body.should.be.a('object');
+                        done(err);
+                    })
+            });
+        }
+    );
+
+})

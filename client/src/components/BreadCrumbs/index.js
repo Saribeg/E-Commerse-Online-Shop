@@ -33,6 +33,7 @@ class BreadCrumbs extends React.Component<Props> {
         });
     };
 
+    
 
     render() {
         let {category, subCategory, furtherSubCategory} = this.props.categoryAway;
@@ -43,7 +44,7 @@ class BreadCrumbs extends React.Component<Props> {
                 return (<>
                         {
                             cat.categoryName ?
-                                <li><NavLink
+                                <li key={cat._id}><NavLink
                                     to={cat.categoryUrl}
                                     className="breadcrumbs-link"
                                     onClick={() => this.changeCategoryFilters(cat.categoryName)}
@@ -68,6 +69,8 @@ class BreadCrumbs extends React.Component<Props> {
                                                     <NavLink to={furtherSubCat.furtherSubCategoryUrl}
                                                                  onClick={() =>
                                                                      this.changeCategoryFilters(
+                                                                         cat.categoryName,
+                                                                         subCat.subCategoryName,
                                                                          furtherSubCat.furtherSubCategoryName
                                                                      )
                                                                  }
@@ -86,6 +89,7 @@ class BreadCrumbs extends React.Component<Props> {
                                                 <NavLink to={subCat.subCategoryUrl}
                                                          onClick={() =>
                                                              this.changeCategoryFilters(
+                                                                 cat.categoryName,
                                                                  subCat.subCategoryName
                                                              )
                                                          }
@@ -98,6 +102,7 @@ class BreadCrumbs extends React.Component<Props> {
                     }
                 )
             }
+            return null;
         });
 
 
