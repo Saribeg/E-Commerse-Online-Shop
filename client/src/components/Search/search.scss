@@ -6,6 +6,32 @@
   align-items: center;
 }
 
+.clearable {
+  position: relative;
+  display: inline-block;
+}
+
+.clearable__clear {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 10px;
+  font-style: normal;
+  font-size: 25px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.clearable__clear-hide {
+  display: none;
+}
+
+.clearable input::-ms-clear {
+  /* Remove IE default X */
+  display: none;
+}
+
 .main-search {
   width: 204px;
   height: 26px;

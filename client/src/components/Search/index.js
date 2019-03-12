@@ -7,6 +7,7 @@ import {
   focusSearchInput,
   blurSearchInput,
   validateSearchValue,
+  clearSearchInput,
   search
 } from "../../actions/search";
 
@@ -20,6 +21,7 @@ class Search extends React.Component<Props, State> {
       search,
       searchString,
       focus,
+      clearSearchInput,
       nonValid,
       isSearchFetching,
       products,
@@ -30,18 +32,35 @@ class Search extends React.Component<Props, State> {
     return (
       <div className="search-input-wrapper">
         <div className="search-input">
-          <input
-            type="search"
-            style={focus ? { width: "420px" } : { width: "185px" }}
-            className="main-search"
-            name="search"
-            placeholder="Search"
-            value={searchString}
-            onChange={e => search(e.target.value)}
-            onFocus={focusSearchInput}
-            onBlur={blurSearchInput}
-            onKeyPress={e => validateSearchValue(e)}
-          />
+          <span className="clearable">
+            <input
+              type="text"
+              style={focus ? { width: "420px" } : { width: "185px" }}
+              className="main-search"
+              name="search"
+              placeholder="Search"
+              value={searchString}
+              onChange={e => search(e.target.value)}
+              onFocus={focusSearchInput}
+              onBlur={e => {
+                blurSearchInput(e);
+              }}
+              onKeyPress={e => validateSearchValue(e)}
+            />
+            <i
+              className={
+                searchString.length > 0
+                  ? "clearable__clear"
+                  : "clearable__clear-hide"
+              }
+              onClick={() => {
+                clearSearchInput();
+                search("");
+              }}
+            >
+              &times;
+            </i>
+          </span>
           {isSearchFetching ? (
             <div className="search-preloader" />
           ) : (
@@ -81,6 +100,7 @@ export default connect(
     focusSearchInput,
     blurSearchInput,
     validateSearchValue,
+    clearSearchInput,
     search
   }
 )(Search);
