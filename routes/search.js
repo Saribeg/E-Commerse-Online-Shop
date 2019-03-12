@@ -10,27 +10,19 @@ router.post("/search/search-products", async (req, res) => {
     .trim()
     .replace(/\s\s+/g, " ");
 
-  console.log(query);
-
   // Creating the array of key-words from taken string
   let queryArr = query.split(" ");
 
   // Finding ALL products, that have at least one match
   let matchedProducts = await Product.find({
-    $or: [
-      { category: { $in: queryArr } },
-      { subCategory: { $in: queryArr } },
-      { furtherSubCategory: { $in: queryArr } },
-      { model: { $in: queryArr } },
-      { itemNo: { $in: queryArr } },
-      { "productFeatures.colorName": { $in: queryArr } },
-      { "productFeatures.sizes.size": { $in: queryArr } }
-    ]
+    $text: { $search: query }
   });
 
-  // Function for detecting matches of which the products was finded
+  // res.json(matchedProducts);
+
+  // Function for detecting matches of which the products was finded (in which props we have the values, that query contains)
   findMatchesKeys = (matches = {}, iterationArr, arrOfProducts) => {
-    // Creating arrays to push all word matches
+    // Creating arrays to push all word matches from query
     let categoryArr = [];
     let subCategoryArr = [];
     let furtherSubCategoryArr = [];
@@ -39,7 +31,7 @@ router.post("/search/search-products", async (req, res) => {
     let colorNameArr = [];
     let sizeArr = [];
 
-    //Filling arrays with matches comparing the value, taken from client, with product info
+    //Filling arrays with matches comparing the value, taken from client, with product props
     fillObjectOfMatchesKeys = (arrOfProducts, value) => {
       arrOfProducts.forEach(product => {
         if (!product.withdrawnFromSale && product.active) {
@@ -121,12 +113,21 @@ router.post("/search/search-products", async (req, res) => {
       category,
       subCategory,
       furtherSubCategory,
-      // model,
+      model,
       itemNo,
       "productFeatures.colorName": colorName,
       "productFeatures.sizes.size": size
     };
 
+    //Function for checking if our query object is empty
+    function isEmpty(obj) {
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) return false;
+      }
+      return true;
+    }
+
+    //Function for deleting undefined values from our query object
     function filter(data) {
       let query = {};
 
@@ -136,40 +137,18 @@ router.post("/search/search-products", async (req, res) => {
         }
       }
 
+      // If our query object is empty - send params to db, which will not return products (because empty object in mongoose query will return ALL products)
+      if (isEmpty(query)) {
+        query._id = undefined;
+      }
+
       return query;
     }
 
-    // Product.find(filter(filters))
-    //   .then(products => res.json(products))
-    //   .catch(err => console.log(err));
-
-    let productsWithoutModelName = await Product.find(filter(filters));
-    let productsWithModelName = await Product.find({ model: { $in: model } });
-    let combineArrs = productsWithoutModelName.concat(productsWithModelName);
-
-    function removeDuplicates(arr, prop) {
-      let obj = {};
-      return Object.keys(
-        arr.reduce((prev, next) => {
-          if (!obj[next[prop]]) obj[next[prop]] = next;
-          return obj;
-        }, obj)
-      ).map(i => obj[i]);
-    }
-
-    res.json(removeDuplicates(combineArrs, "_id"));
-
-    // let result = removeDuplicates(combineArrs, "_id").map(product => {
-    //   return {
-    //     category: product.category,
-    //     subCategory: product.subCategory,
-    //     furtherSubCategory: product.furtherSubCategory,
-    //     model: product.model,
-    //     itemNo: product.itemNo
-    //   };
-    // });
-
-    // res.json(result);
+    // Finding all products, that matches our query object
+    Product.find(filter(filters))
+      .then(products => res.json(products))
+      .catch(err => console.log(err));
   };
 
   filterTheProducts();
