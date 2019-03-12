@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 
 import {
   focusSearchInput,
-  blurSearchInput,
   validateSearchValue,
   clearSearchInput,
   search
@@ -26,7 +25,6 @@ class Search extends React.Component<Props, State> {
       isSearchFetching,
       products,
       focusSearchInput,
-      blurSearchInput,
       validateSearchValue
     } = this.props;
     return (
@@ -42,9 +40,6 @@ class Search extends React.Component<Props, State> {
               value={searchString}
               onChange={e => search(e.target.value)}
               onFocus={focusSearchInput}
-              onBlur={e => {
-                blurSearchInput(e);
-              }}
               onKeyPress={e => validateSearchValue(e)}
             />
             <i
@@ -53,8 +48,8 @@ class Search extends React.Component<Props, State> {
                   ? "clearable__clear"
                   : "clearable__clear-hide"
               }
-              onClick={() => {
-                clearSearchInput();
+              onClick={e => {
+                clearSearchInput(e);
                 search("");
               }}
             >
@@ -98,7 +93,6 @@ export default connect(
   mapStateToProps,
   {
     focusSearchInput,
-    blurSearchInput,
     validateSearchValue,
     clearSearchInput,
     search
