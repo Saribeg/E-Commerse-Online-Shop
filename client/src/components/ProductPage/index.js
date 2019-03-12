@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PhotoGallery from "./PhotoGallery";
 import ProductInfo from "./ProductInfo";
 import {connect} from "react-redux";
@@ -6,19 +6,21 @@ import {getProductDetails} from "../../actions/productDetails";
 import {SET_COLOR, SET_IMG} from "../../actions/addToCart";
 
 import BreadCrumbs from "../BreadCrumbs";
-import './product-page.scss';
+import SearchDropDownList from "../SearchDropDownList";
+
+import "./product-page.scss";
 
 class ProductPage extends Component {
-    state = {
-        activeColor: this.props.activeColor,
-        productFeatures: [
-            {
-                color: "",
-                sizes: []
-            }
-        ],
-        thumbs: true
-    };
+  state = {
+    activeColor: this.props.activeColor,
+    productFeatures: [
+      {
+        color: "",
+        sizes: []
+      }
+    ],
+    thumbs: true
+  };
 
     componentDidMount() {
         this.props.getProductDetails(this.props.match.params);
@@ -63,57 +65,57 @@ class ProductPage extends Component {
         thumbs: false});
     };
 
-    setInitialColor = array => {
-        return array[0].colorName;
+  setInitialColor = array => {
+    return array[0].colorName;
+  };
+
+  render() {
+    const { itemNo, currentPrice, model } = {
+      ...this.props.productItem.productOpened
     };
+    const { productFeatures } = { ...this.props };
+    let activeColor = this.state.activeColor;
 
-    render() {
-        const {itemNo, currentPrice, model} = {
-            ...this.props.productItem.productOpened
-        };
-        const {productFeatures} = {...this.props};
-        let activeColor = this.state.activeColor;
-
-        if (activeColor === "") {
-
-            activeColor = this.setInitialColor(productFeatures);
-        }
-
-
-
-        return (
-            <>
-                <BreadCrumbs categoryAway={this.props.match.params} modelName={model} activeColor={activeColor}/>
-
-                <section className="product-main container">
-                    <PhotoGallery
-                        productFeatures={productFeatures}
-                        activeColor={activeColor}
-                        thumbs={this.props.thumbs}
-                        changeColor={this.changeColor}
-                    />
-                    <ProductInfo
-                        productFeatures={productFeatures}
-                        activeColor={activeColor}
-                        itemNo={itemNo}
-                        currentPrice={currentPrice}
-                        model={model}
-                        changeColor={this.changeColor}
-                    />
-                  
-                </section>
-
-            </>
-        );
+    if (activeColor === "") {
+      activeColor = this.setInitialColor(productFeatures);
     }
+
+    return (
+      <>
+        <SearchDropDownList />
+        <BreadCrumbs
+          categoryAway={this.props.match.params}
+          modelName={model}
+          activeColor={activeColor}
+        />
+
+        <section className="product-main container">
+          <PhotoGallery
+            productFeatures={productFeatures}
+            activeColor={activeColor}
+            thumbs={this.props.thumbs}
+            changeColor={this.changeColor}
+          />
+          <ProductInfo
+            productFeatures={productFeatures}
+            activeColor={activeColor}
+            itemNo={itemNo}
+            currentPrice={currentPrice}
+            model={model}
+            changeColor={this.changeColor}
+          />
+        </section>
+      </>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-    return {
-        productItem: state.productDetails,
-        productFeatures: state.productDetails.productOpened.productFeatures,
-        activeColor: state.product.activeColor
-    };
+  return {
+    productItem: state.productDetails,
+    productFeatures: state.productDetails.productOpened.productFeatures,
+    activeColor: state.product.activeColor
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -128,6 +130,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ProductPage);

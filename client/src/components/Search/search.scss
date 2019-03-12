@@ -18,16 +18,49 @@
   color: $black;
   border: none;
   outline: none;
-  margin-right: 25px;
   transition: all 0.5s linear;
+  margin-right: 5px;
 
   @include max-width($landscape-tablet) {
     display: none;
   }
 }
 
+.search-input {
+  display: flex;
+  align-items: center;
+  margin-right: 25px;
+}
+
 .non-valid-search {
   color: red;
   font-size: 11px;
   margin-top: 10px;
+}
+
+.match-words {
+  color: blue;
+  font-weight: 600;
+}
+
+.search-preloader-hide {
+  visibility: hidden;
+}
+
+.search-preloader {
+  height: 20px;
+  width: 20px;
+  border: 3px solid #d8d8d8;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: rotate 0.8s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

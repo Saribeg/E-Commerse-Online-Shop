@@ -80,4 +80,6 @@ const ProductSchema = new Schema({
   }
 });
 
+ProductSchema.index({ "$**": "text" });
+
 module.exports = Product = mongoose.model("products", ProductSchema);
