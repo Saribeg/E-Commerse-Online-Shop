@@ -31,7 +31,7 @@ class Search extends React.Component<Props, State> {
       <div className="search-input-wrapper">
         <div className="search-input">
           <input
-            type="text"
+            type="search"
             style={focus ? { width: "420px" } : { width: "185px" }}
             className="main-search"
             name="search"

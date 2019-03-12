@@ -6,6 +6,7 @@ export const FETCH_SEARCH_FAILED = "FETCH_SEARCH_FAILED";
 export const TYPE_SEARCH_VALUE = "TYPE_SEARCH_VALUE";
 export const FOCUS_SEARCH_INPUT = "FOCUS_SEARCH_INPUT";
 export const BLUR_SEARCH_INPUT = "BLUR_SEARCH_INPUT";
+export const CLOSE_SEARCH_RESULTS = "BLUR_SEARCH_INPUT";
 export const VALIDATE_SEARCH_VALUE = "VALIDATE_SEARCH_VALUE";
 
 // Handling situations when search input is focused (to change input width)
@@ -37,6 +38,12 @@ export const validateSearchValue = e => dispatch => {
       payload: false
     });
   }
+};
+
+export const closeSearchResults = e => dispatch => {
+  dispatch({
+    type: CLOSE_SEARCH_RESULTS
+  });
 };
 
 //Showing preloader while async request is going on
