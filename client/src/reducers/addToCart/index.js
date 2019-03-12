@@ -10,7 +10,7 @@ const initialState = {
     model: "",
     colorName: "",
     size: "",
-    amount: 0,
+    amount: 1,
     availableAmount: 0,
     price: 0,
     priceFormDB: 0,
@@ -33,7 +33,21 @@ function addToCart(state = initialState, action) {
                 ...state,
                 colorName: action.payload.color
             }
-
+        case SET_IMG:
+            return {
+                ...state,
+                urlPhoto: action.payload.url
+            }
+        case SET_SIZE:
+            return {
+                ...state,
+                size: action.payload.size
+            }
+        case SET_AMOUNT:
+            return {
+                ...state,
+                amount: action.payload.amount
+            }
         default:
             return {...state}
     }
