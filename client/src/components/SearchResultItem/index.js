@@ -5,11 +5,21 @@ import { connect } from "react-redux";
 import AutosuggestHighlightMatch from "autosuggest-highlight/match";
 import AutosuggestHighlightParse from "autosuggest-highlight/parse";
 
+import { closeSearchResults } from "../../actions/search";
+import { getProductDetails } from "../../actions/productDetails";
+import { resetColor } from "../../actions/product";
+
 import "./searchResultItem.scss";
 
 class SearchResultItem extends Component {
   render() {
-    const { products, searchString } = this.props;
+    const {
+      products,
+      searchString,
+      closeSearchResults,
+      getProductDetails,
+      resetColor
+    } = this.props;
 
     let searchedProductList = products.map(product => {
       let productColors = product.productFeatures.map(color => {
@@ -129,8 +139,24 @@ class SearchResultItem extends Component {
       });
 
       return (
-        <li className="search-result-item" key={product._id}>
-          <Link to={product.productUrl} className="search-result-link">
+        <li
+          className="search-result-item"
+          key={product._id}
+          onClick={closeSearchResults}
+        >
+          <Link
+            to={product.productUrl}
+            className="search-result-link"
+            onClick={() => {
+              getProductDetails({
+                category: product.category,
+                subCategory: product.subCategory,
+                furtherSubCategory: product.furtherSubCategory,
+                id: product.itemNo
+              });
+              resetColor();
+            }}
+          >
             <div className="search-result-item-content">
               <div className="search-result-item-image-wrapper">
                 <img
@@ -202,8 +228,12 @@ class SearchResultItem extends Component {
 const mapStateToProps = state => {
   return {
     products: state.search.products,
-    searchString: state.search.searchString
+    searchString: state.search.searchString,
+    closeResults: state.search.closeResults
   };
 };
 
-export default connect(mapStateToProps)(SearchResultItem);
+export default connect(
+  mapStateToProps,
+  { closeSearchResults, getProductDetails, resetColor }
+)(SearchResultItem);
