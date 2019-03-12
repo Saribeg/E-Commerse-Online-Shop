@@ -9,6 +9,7 @@ import BreadCrumbs from "../BreadCrumbs";
 import ProductCard from "../ProductCard";
 import Preloader from "../Preloader";
 import EmptyState from "../EmptyState";
+import SearchDropDownList from "../SearchDropDownList";
 
 import "./filteredProductList.scss";
 
@@ -124,6 +125,7 @@ class FilteredProductList extends Component {
 
     return (
       <>
+        <SearchDropDownList />
         <BreadCrumbs categoryAway={this.props.match.params} />
         <section className="category-block">
           <div className="container">
