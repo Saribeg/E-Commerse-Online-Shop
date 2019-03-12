@@ -5,6 +5,7 @@ import {
   TYPE_SEARCH_VALUE,
   FOCUS_SEARCH_INPUT,
   BLUR_SEARCH_INPUT,
+  CLEAR_SEARCH_INPUT,
   VALIDATE_SEARCH_VALUE,
   CLOSE_SEARCH_RESULTS
 } from "../../actions/search";
@@ -56,7 +57,14 @@ function search(state = initialState, action) {
     case CLOSE_SEARCH_RESULTS:
       return {
         ...state,
-        closeResults: true
+        closeResults: true,
+        searchString: "",
+        products: []
+      };
+    case CLEAR_SEARCH_INPUT:
+      return {
+        ...state,
+        searchString: ""
       };
     default:
       return { ...state };

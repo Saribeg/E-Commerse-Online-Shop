@@ -7,9 +7,9 @@ class FormLogin extends Component {
     render(){
         const {handleSubmit} = this.props;
         return (
-            <form onSubmit={handleSubmit} className='login-menu_form'>
+            <form onSubmit={handleSubmit} className='login-menu_form' >
 
-                <div className='login-menu_form-fields'>
+                <div className='field-wrapper' >
                     <p className='login-form-input-title'>First name</p>
                     <Field name="email" component={customRequiredInput}
                            className='login-form-input'

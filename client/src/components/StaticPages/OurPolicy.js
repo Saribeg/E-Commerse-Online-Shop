@@ -44,9 +44,9 @@ export default class OurPolicy extends React.Component<Props, State> {
         <Helmet>
           <title>{this.state.pageTitle}</title>
         </Helmet>
-        <h2 className="sub-page__title">{this.state.pageTitle}</h2>
-        <h3 className="sub-page__sub-title">We are at the top of the market</h3>
-        <p className="our-policy__paragraph">
+        <h2 className="sub-page-title">{this.state.pageTitle}</h2>
+        <h3 className="sub-page-sub-title">We are at the top of the market</h3>
+        <p className="our-policy-paragraph">
           When your business expands quickly, it can be hard to stay on top of
           policy creation and management. Sure, there may be quite a few
           unwritten rules that employees seem to be aware of and your

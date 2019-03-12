@@ -11,7 +11,7 @@ type State = {
   pageTitle: string,
   content: Array<Object>
 };
-export default class AboutUs extends React.Component<Props, State> {
+export default class AboutUs extends React.Component <Props, State> {
   state = {
     pageTitle: "",
     content: []
@@ -30,8 +30,8 @@ export default class AboutUs extends React.Component<Props, State> {
     const content = this.state.content;
     let pageContent = content.map(elem => {
       return (
-        <div className="about-us__paragraph">
-          <h4 className="about-us__title"> &bull; {elem.title} &bull;</h4>
+        <div className="about-us-paragraph">
+          <h4 className="about-us-title"> &bull; {elem.title} &bull;</h4>
           {elem.content}
         </div>
       );
@@ -43,14 +43,14 @@ export default class AboutUs extends React.Component<Props, State> {
           <title>{this.state.pageTitle}</title>
         </Helmet>
         <div className="container">
-          <h2 className="sub-page__title">{this.state.pageTitle}</h2>
-          <h3 className="sub-page__sub-title">We have a lot to tell you</h3>
-          <div className="about-us__wrapper">
-            <div className="about-us__content">
+          <h2 className="sub-page-title">{this.state.pageTitle}</h2>
+          <h3 className="sub-page-sub-title">We have a lot to tell you</h3>
+          <div className="about-us-wrapper">
+            <div className="about-us-content">
               {pageContent[0]}
               {pageContent[1]}
             </div>
-            <div className="about-us__content">
+            <div className="about-us-content">
               {pageContent[2]}
               {pageContent[3]}
             </div>
