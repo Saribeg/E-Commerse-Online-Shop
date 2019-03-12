@@ -4,7 +4,7 @@
   "description": "JS1 final project - creating an e-commerse web shop",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha \"./unittest/categoryCarousels.test.js\" ",
     "server": "nodemon server.js",
     "front": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\"  \"npm run front\""
@@ -35,9 +35,14 @@
     "handlebars": "latest"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^4.2.1",
     "concurrently": "^4.1.0",
     "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
-    "nodemon": "^1.18.9"
+    "mocha": "^6.0.2",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.4.2"
   }
 }

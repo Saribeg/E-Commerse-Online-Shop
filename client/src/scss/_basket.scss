@@ -3,7 +3,7 @@
 .basket-page {
   display: flex;
   align-items: flex-start;
-  height: 100vh;
+  //height: 100vh;
   padding: 40px 0;
 
   @include max-width($landscape-tablet) {

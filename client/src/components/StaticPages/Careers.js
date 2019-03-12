@@ -1,8 +1,15 @@
-import React, { Component } from 'react';
-import {Helmet} from "react-helmet";
-import axios from 'axios';
+// @flow
+import * as React from "react";
+import { Helmet } from "react-helmet";
+import axios from "axios";
 
-export default class Careers extends Component {
+type Props = {};
+
+type State = {
+  pageTitle: string,
+  content:  Array<Object>
+};
+export default class Careers extends React.Component<Props, State> {
   state = {
     pageTitle: "",
     content: []
@@ -16,7 +23,6 @@ export default class Careers extends Component {
         content: res.data.content
       });
     });
-    console.log(this.state);
   }
 
   render() {
@@ -24,25 +30,26 @@ export default class Careers extends Component {
     let pageContent = content.map(elem => {
       return (
         <div className="job-description">
-				<h3 className="job-description__position">{elem.title}</h3>
-         <p className="job-description__text">{elem.content}</p>
+          <h3 className="job-description__position">{elem.title}</h3>
+          <p className="job-description__text">{elem.content}</p>
         </div>
       );
     });
 
-	
-		return (
-			<>
-			<Helmet>
-			<title>{this.state.pageTitle}</title>
-			</Helmet>
-			<h2 className="sub-page__title">{this.state.pageTitle}</h2>
-			<h3 className="sub-page__sub-title">There are several options to suggest</h3>
-			{pageContent}
-			<p className="job-offer__feedback">If you are interested, please send your resume: matter-style@mail.com</p>
-			</>
-		)
-
-}
-
+    return (
+      <>
+        <Helmet>
+          <title>{this.state.pageTitle}</title>
+        </Helmet>
+        <h2 className="sub-page__title">{this.state.pageTitle}</h2>
+        <h3 className="sub-page__sub-title">
+          There are several options to suggest
+        </h3>
+        {pageContent}
+        <p className="job-offer__feedback">
+          If you are interested, please send your resume: matter-style@mail.com
+        </p>
+      </>
+    );
+  }
 }

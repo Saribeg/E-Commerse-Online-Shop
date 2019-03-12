@@ -7,6 +7,7 @@
     "@fortawesome/fontawesome-svg-core": "1.2.14",
     "@fortawesome/free-solid-svg-icons": "5.7.1",
     "@fortawesome/react-fontawesome": "0.1.4",
+    "autosuggest-highlight": "^3.1.1",
     "axios": "0.18.0",
     "classnames": "2.2.6",
     "immutable": "4.0.0-rc.12",
@@ -47,6 +48,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
     "flow-bin": "^0.93.0",
     "node-sass": "^4.11.0",
     "stylelint": "^9.10.1",
