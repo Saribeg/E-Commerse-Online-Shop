@@ -1,19 +1,21 @@
-let chai = require('chai');
-let chaiHttp = require('chai-http');
+let chai = require("chai");
+let chaiHttp = require("chai-http");
 const expect = chai.expect;
 let should = chai.should();
+const uniqueRandom = require("unique-random");
+const rand = uniqueRandom(0, 999999);
 
-let server = require('../server');
-// let Product = require('../models/Product');
+let server = require("../server");
+let Product = require("../models/Product");
 
 chai.use(chaiHttp);
 
-describe('Testing PRODUCTS router', () => {
+describe("Testing PRODUCTS router", () => {
 
-    describe('/GET route /products', () => {
+    describe("/GET route /products", () => {
             it("it should GET all the products", (done) => {
                 chai.request(server)
-                    .get('/products')
+                    .get("/products")
                     .end(function (err, res) {
                         res.should.have.status(200);
                         done(err);
@@ -22,19 +24,19 @@ describe('Testing PRODUCTS router', () => {
 
             it("it should GET array all the products", (done) => {
                 chai.request(server)
-                    .get('/products')
+                    .get("/products")
                     .end(function (err, res) {
-                        res.body.should.be.a('array');
+                        res.body.should.be.a("array");
                         done(err);
                     })
             });
         }
     );
 
-    describe('/GET route /products/women', () => {
+    describe("/GET route /products/women", () => {
             it("it should GET all the products of category", (done) => {
                 chai.request(server)
-                    .get('/products/women')
+                    .get("/products/women")
                     .end(function (err, res) {
                         res.should.have.status(200);
                         done(err);
@@ -43,19 +45,19 @@ describe('Testing PRODUCTS router', () => {
 
             it("it should GET array all the products of category", (done) => {
                 chai.request(server)
-                    .get('/products/women')
+                    .get("/products/women")
                     .end(function (err, res) {
-                        res.body.should.be.a('array');
+                        res.body.should.be.a("array");
                         done(err);
                     })
             });
         }
     );
 
-    describe('/GET route /products/women/clothing', () => {
+    describe("/GET route /products/women/clothing", () => {
             it("it should GET all the products of category", (done) => {
                 chai.request(server)
-                    .get('/products/women/clothing')
+                    .get("/products/women/clothing")
                     .end(function (err, res) {
                         res.should.have.status(200);
                         done(err);
@@ -64,19 +66,19 @@ describe('Testing PRODUCTS router', () => {
 
             it("it should GET array all the products of category", (done) => {
                 chai.request(server)
-                    .get('/products/women/clothing')
+                    .get("/products/women/clothing")
                     .end(function (err, res) {
-                        res.body.should.be.a('array');
+                        res.body.should.be.a("array");
                         done(err);
                     })
             });
         }
     );
 
-    describe('/GET route /products/women/clothing/tops', () => {
+    describe("/GET route /products/women/clothing/tops", () => {
             it("it should GET all the products of tops", (done) => {
                 chai.request(server)
-                    .get('/products/women/clothing/tops')
+                    .get("/products/women/clothing/tops")
                     .end(function (err, res) {
                         res.should.have.status(200);
                         done(err);
@@ -85,9 +87,9 @@ describe('Testing PRODUCTS router', () => {
 
             it("it should GET array all the products of tops", (done) => {
                 chai.request(server)
-                    .get('/products/women/clothing/tops')
+                    .get("/products/women/clothing/tops")
                     .end(function (err, res) {
-                        res.body.should.be.a('array');
+                        res.body.should.be.a("array");
                         done(err);
                     })
             });
@@ -105,16 +107,17 @@ describe('Testing PRODUCTS router', () => {
     //             });
     //             product.save((err, product) =>{
     //                 chai.request(server)
-    //                     .get('/products/women/clothing/tops/96239')
+    //                     .get("/products/women/clothing/tops/96239")
     //                     .send(product)
     //                     .end(function (err, res) {
     //                         res.should.have.status(200);
-    //                         res.body.should.be.a('array');
+    //                         res.body.should.be.a("array");
     //                         res.body.should.have.property('category');
     //                         res.body.should.have.property('subCategory');
     //                         res.body.should.have.property('furtherSubCategory');
     //                         res.body.should.have.property('model');
     //                         res.body.should.have.property('currentPrice');
+    //                         res.body.should.have.property('_id').eql(96239);
     //                         done(err);
     //                     })
     //             })
@@ -124,14 +127,16 @@ describe('Testing PRODUCTS router', () => {
     //     }
     // );
 
-    // describe('/POST route /products/add-products', () => {
+    // describe("/POST route /products/add-products", () => {
     //         it("it should POST new product", (done) => {
-    //             let product = {
+    //             let newProduct = {
+    //                 itemNo: rand,
     //                 category: "women",
     //                 subCategory: "clothing",
     //                 furtherSubCategory: "dresses",
     //                 model: "New Test dresses",
     //                 currentPrice: 500,
+    //                 previousPrice: 400,
     //                 productUrl: "/women/clothing/dresses/",
     //                 productFeatures: [{
     //                     "color": "#000000",
@@ -160,12 +165,12 @@ describe('Testing PRODUCTS router', () => {
     //                     ]
     //                 }]
     //             };
-    //             chai.request(server)
-    //                 .post('/products/add-products')
-    //                 .send(product)
+    //             chai.request("http://localhost:3000")
+    //                 .post("/products/add-products")
+    //                 .send(newProduct)
     //                 .end((err, res) =>{
     //                     res.should.have.status(200);
-    //                     res.body.should.be.a('object');
+    //                     res.body.should.be.a("object");
     //                     done(err);
     //                 })
     //         });
