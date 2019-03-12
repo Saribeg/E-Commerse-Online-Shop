@@ -8,7 +8,6 @@ export const FOCUS_SEARCH_INPUT = "FOCUS_SEARCH_INPUT";
 export const BLUR_SEARCH_INPUT = "BLUR_SEARCH_INPUT";
 export const CLEAR_SEARCH_INPUT = "CLEAR_SEARCH_INPUT";
 export const CLOSE_SEARCH_RESULTS = "CLOSE_SEARCH_RESULTS";
-
 export const VALIDATE_SEARCH_VALUE = "VALIDATE_SEARCH_VALUE";
 
 // Handling situations when search input is focused (to change input width)
@@ -19,10 +18,13 @@ export const focusSearchInput = () => dispatch => {
 };
 
 // Handling situations when search input is blured (to change input width)
+
 export const blurSearchInput = e => dispatch => {
-  if (e.target.nextElementSibling.className === "clearable__clear") {
+  if (e.target.name === "search") {
+    e.preventDefault();
+  } else if (e.target.className === "clearable__clear") {
     dispatch({
-      type: CLOSE_SEARCH_RESULTS
+      type: CLEAR_SEARCH_INPUT
     });
     dispatch({
       type: BLUR_SEARCH_INPUT
