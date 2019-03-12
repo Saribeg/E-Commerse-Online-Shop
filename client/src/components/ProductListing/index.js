@@ -22,7 +22,7 @@ class ProductListing extends Component {
                 if (counterItems <= this.props.children)
                 return (
                    
-                        <NavLink key={item._id} to={productItem.productUrl} className="product-item" onClick={()=> this.props.saveProductDetails(item.colorName)}>
+                        <NavLink key={item._id} to={productItem.productUrl} className="product-item">
                        
                             <img src={item.imageUrls[0]} alt={productItem.model} className="product-img" />
                             <p className="product-name">{productItem.model} ({item.colorName})</p>

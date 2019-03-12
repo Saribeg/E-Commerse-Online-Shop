@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PhotoGallery from "./PhotoGallery";
 import ProductInfo from "./ProductInfo";
-import { connect } from "react-redux";
-import { getProductDetails } from "../../actions/productDetails";
+import {connect} from "react-redux";
+import {getProductDetails} from "../../actions/productDetails";
+import {SET_COLOR, SET_IMG} from "../../actions/addToCart";
+
 import BreadCrumbs from "../BreadCrumbs";
 import SearchDropDownList from "../SearchDropDownList";
 
@@ -20,13 +22,48 @@ class ProductPage extends Component {
     thumbs: true
   };
 
-  componentDidMount() {
-    this.props.getProductDetails(this.props.match.params);
-  }
+    componentDidMount() {
+        this.props.getProductDetails(this.props.match.params);
 
-  changeColor = color => {
-    this.setState({ activeColor: color, thumbs: false });
-  };
+        // console.log('this.state.activeColor', this.state.activeColor)
+
+        if (this.state.activeColor) {
+
+            let urlPhoto = '';
+
+            this.props.productFeatures.forEach((elem => {
+
+                if (this.state.activeColor === elem.colorName) {
+                    urlPhoto = elem.imageUrls[0];
+                }
+
+            }));
+            this.props.setUrlAddCart(urlPhoto);
+            this.props.setColorAddCart(this.state.activeColor);
+        }
+
+    }
+
+
+    changeColor = color => {
+
+        let urlPhoto = '';
+
+        this.props.productFeatures.forEach((elem => {
+
+            if (color === elem.colorName) {
+                urlPhoto = elem.imageUrls[0];
+            }
+
+        }));
+
+        this.props.setUrlAddCart(urlPhoto);
+        this.props.setColorAddCart(color);
+
+
+        this.setState({activeColor: color,
+        thumbs: false});
+    };
 
   setInitialColor = array => {
     return array[0].colorName;
@@ -82,9 +119,14 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    getProductDetails: data => dispatch(getProductDetails(data))
-  };
+    return {
+        getProductDetails: data => dispatch(getProductDetails(data)),
+        // setInitialAddCart: (data) => {dispatch({type: SET_INITIAL_STATE, payload: {data: data}})}
+        setColorAddCart: (color) => {dispatch({type: SET_COLOR, payload: {color: color}})},
+        setUrlAddCart: (url) => {
+            dispatch({type: SET_IMG, payload: {url: url}})
+        }
+    };
 };
 
 export default connect(
