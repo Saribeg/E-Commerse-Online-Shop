@@ -8,10 +8,12 @@ body {
 
 .container {
   flex: 1 0 auto;
+  min-height: 100%;
+  height: 100%;
 }
 
 .about-us {
-  &__wrapper {
+  &-wrapper {
     @include flex-center-between;
 
     padding-bottom: 30px;
@@ -21,20 +23,20 @@ body {
     }
   }
 
-  &__content {
+  &-content {
     color: $black;
     line-height: 135%;
     padding: 15px;
   }
 
-  &__title {
+  &-title {
     text-align: center;
     font-weight: bold;
     font-size: 18px;
     padding-bottom: 5px;
   }
 
-  &__paragraph {
+  &-paragraph {
     padding: 10px;
 
     &:first-child {
@@ -45,14 +47,14 @@ body {
 }
 
 .sub-page {
-  &__title {
+  &-title {
     color: $black;
     font-size: 32px;
     margin: 30px 0 8px 0;
     text-align: center;
   }
 
-  &__sub-title {
+  &-sub-title {
     color: #a7a3a3;
     font-size: 14px;
     text-align: center;
@@ -71,7 +73,7 @@ body {
 
 .job-offer {
 
-  &__feedback {
+  &-feedback {
     font-size: 16px;
     text-align: center;
     max-width: 70%;
@@ -81,7 +83,7 @@ body {
     border-radius: 10px;
     color: #fff;
     background-color: $black;
-    
+
     @include mobile-normal {
       padding-bottom: 10px;
     }
@@ -92,7 +94,7 @@ body {
     }
   }
 
-  &__mail {
+  &-mail {
     color: $grey-light;
   }
 }
@@ -100,8 +102,8 @@ body {
 .job-description {
   padding: 14px 65px;
 
-  &__border {
-    &__mail {
+  &-border {
+    &-mail {
       color: $grey-light;
     }
   }
@@ -109,26 +111,26 @@ body {
   .job-description {
     padding: 14px 65px;
 
-    &__border {
+    &-border {
       border-bottom: 1px solid $grey-light;
       max-width: 70%;
       margin: 0 auto;
       padding: 10px 0;
     }
 
-    &__position {
+    &-position {
       font-size: 22px;
       font-weight: bold;
       color: $black;
     }
 
-    &__location {
+    &-location {
       font-size: 16px;
       color: #78909c;
       padding: 5px 0;
     }
 
-    &__text {
+    &-text {
       font-size: 16px;
       color: $black;
     }
@@ -148,13 +150,13 @@ body {
     }
   }
 
-  &__location {
+  &-location {
     font-size: 16px;
     color: #78909c;
     padding: 5px 0;
   }
 
-  &__text {
+  &-text {
     font-size: 16px;
     color: $black;
   }
@@ -177,7 +179,7 @@ body {
 .our-policy {
   padding-bottom: 45px;
 
-  &__paragraph {
+  &-paragraph {
     color: $black;
     line-height: 135%;
     padding: 15px;
@@ -200,7 +202,7 @@ body {
   }
 
 
-  &__item {
+  &-item {
     padding: 7px 0;
     line-height: 28px;
 
