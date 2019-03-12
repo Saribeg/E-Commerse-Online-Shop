@@ -48,16 +48,32 @@ router.post('/checkAvailableItem', (req, res) => {
     Product.find({_id: {$in: checkArrIndex}})
         .then(info => {
 
+
             if (info.length > 0) {
 
+                let indexInfo = [];
+                info.forEach((elem) => {
+                    indexInfo.push(String(elem._id));
+                })
+
                 let interArray = [];
+
+                // console.log('info.length', info.length);
+
+                // console.log('info', info)
 
                 //if in an array from client and an array from DB different amount of items then have to deal this case
                 //and save array correct indexes in interArray
                 let j = 0;
                 for (let i = 0; i < checkArr.length; i++) {
-                    if (checkArr[i].id == info[j]._id) {
 
+                    // console.log('info[j]._id', info[j]._id);
+                    // console.log(checkArrIndex.indexOf(String(info[j]._id) ))
+
+                    j = indexInfo.indexOf(checkArr[i].id);
+
+                    // if (checkArr[i].id == info[j]._id) {
+                    if (j >= 0) {
                         if (info[j].withdrawnFromSale === true) {
 
                             if (checkArr[i].reasonNotAvailable !== arrMessage[0]) {
@@ -124,7 +140,7 @@ router.post('/checkAvailableItem', (req, res) => {
                         }
 
                         interArray[i] = checkArr[i];
-                        j++;
+                        //j++;
                     } else {
                         if (checkArr[i].reasonNotAvailable === arrMessage[0]) {
                             //If in object was status false with reason "not available"

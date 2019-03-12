@@ -2,6 +2,10 @@
 
 import * as React from "react";
 import ProductCounter from "../../../atomic/ProductCounter";
+
+import {connect} from "react-redux";
+import {SET_SIZE} from "../../../../actions/addToCart";
+
 import "./product-sizes.scss";
 
 type Props = {
@@ -14,7 +18,7 @@ type State = {
   chosenSize: string
 };
 
-export default class ProductSizes extends React.Component<Props, State> {
+class ProductSizes extends React.Component<Props, State> {
   state = {
     productCount: 0,
     chosenSize: ""
@@ -22,6 +26,9 @@ export default class ProductSizes extends React.Component<Props, State> {
 
   choseSizes = (maxcount: number, chosenSize: string) => {
     if (maxcount && chosenSize) {
+
+      this.props.setSizeAddCart(chosenSize);
+
       this.setState({
         productCount: maxcount,
         chosenSize: chosenSize
@@ -67,3 +74,21 @@ export default class ProductSizes extends React.Component<Props, State> {
     );
   }
 }
+
+const mapStateToProps = state => {
+    return {};
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setSizeAddCart: (size) => {
+            dispatch({type: SET_SIZE, payload: {size: size}})
+        },
+
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ProductSizes);
