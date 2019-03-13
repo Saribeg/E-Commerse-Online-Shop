@@ -13,7 +13,8 @@ class Checkout extends Component {
 
     state = {
         showDelivery: false,
-        showPayment: false
+        showPayment: false,
+        finishOrder: false
     }
 
     clickShowDelivery = () => {
@@ -41,19 +42,20 @@ class Checkout extends Component {
 
     handlePaymentSubmit = (values) => {
 
-        // let sendObject = {
-        //     country: values.country,
-        //     zipcode: values.zipcode,
-        //     city: values.city,
-        //     street: values.street,
-        //     phone: values.phone
-        // };
-        // this.props.profileChangePersonal(sendObject);
 
-        // this.setState({
-        //     showPayment: true,
-        // })
 
+        this.setState({
+            finishOrder: true,
+        })
+
+    }
+
+    checkCorrectPayment = (value) => {
+
+        console.log('CALL checkCorrectPayment', value)
+        this.setState({
+            finishOrder: !value,
+        })
     }
 
 
@@ -173,11 +175,11 @@ class Checkout extends Component {
                             Please enter your payment information
                         </p>
 
-                        <FormPaymentCheckout onSubmit={this.handlePaymentSubmit}/>
+                        <FormPaymentCheckout checkCorrectPayment={this.checkCorrectPayment} onSubmit={this.handlePaymentSubmit}/>
                     </div>
                 </div>
 
-                <PlaceOrder/>
+                <PlaceOrder enableBtn={this.state.finishOrder}/>
 
 
             </section>

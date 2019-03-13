@@ -51,9 +51,6 @@ class TopBlockAuth extends Component {
 
     handleLoginForm = (e) => {
 
-        console.log('on click handleLoginForm')
-
-        console.log('e.target', e.target)
 
         if (e.target.dataset.btn !== 'btn-login-up-close') {
             e.stopPropagation();

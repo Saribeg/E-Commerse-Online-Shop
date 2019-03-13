@@ -27,6 +27,7 @@ class Search extends React.Component<Props, State> {
       blurSearchInput,
       validateSearchValue
     } = this.props;
+
     return (
       <div className="search-input-wrapper">
         <div className="search-input">

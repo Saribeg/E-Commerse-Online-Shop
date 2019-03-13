@@ -6,26 +6,6 @@ import {NavLink} from 'react-router-dom';
 class PlaceOrder extends Component {
     render() {
 
-        // let arrayCheckout = [];
-        // let totalPrice = 0;
-        // if (this.props.dataBasket.arrayProduct.length > 0) {
-        //     this.props.dataBasket.arrayProduct.forEach((elem) => {
-        //         if (elem.isAvailable === true) {
-        //             totalPrice += elem.priceFormDB * elem.amount;
-        //             arrayCheckout.push(
-        //                 <li>
-        //                     <span className="title">{`${elem.model} x ${elem.amount}`}</span><span
-        //                     className="price">{`$${elem.priceFormDB * elem.amount}`}</span>
-        //                 </li>)
-        //
-        //
-        //         }
-        //
-        //     });
-        //     totalPrice = totalPrice.toFixed(2);
-        //
-        //
-        // }
 
         return (
             <div className="basket-final-order">
@@ -38,11 +18,8 @@ class PlaceOrder extends Component {
                         <span className="title">Delivery</span><span className="price">Free</span>
                     </li>
                 </ul>
-                <NavLink className="btn-add-to-cart" to="/checkout">
-                    Place your order
-                </NavLink>
-                <NavLink className="btn-add-to-cart" to="/checkout">
-                    Call me
+                <NavLink  to="/checkout">
+                    <input className="btn-add-to-cart" type="button" value="Place your order" disabled={!this.props.enableBtn}/>
                 </NavLink>
 
             </div>

@@ -10,52 +10,71 @@ class FormDeliveryCheckout extends Component {
         const {handleSubmit, pristine, submitting, invalid} = this.props;
         return (
             <form onSubmit={handleSubmit}>
+                <div className='checkout-d-flex-row'>
+                    <div className='checkout-delivery-block'>
+                        <div className='checkout-delivery-content-label'>
+                            Country
+                        </div>
+                        <Field name="country" component={customRequiredInput}
+                               type="text" placeholder="Your country..."
+                               className='checkout-delivery-content-input'
+                               classError='checkout-input-error-message'
+                               validate={[requiredInput]}
+                        />
+                    </div>
+                    <div  className='checkout-delivery-block'>
+                        <div className='checkout-delivery-content-label'>
+                            Zipcode
+                        </div>
+                        <Field name="zipcode" component={customRequiredInput}
+                               type="text" placeholder="Your zipcode..."
+                               className='checkout-delivery-content-input'
+                               classError='checkout-input-error-message'
+                               validate={[requiredInput]}
+                        />
+                    </div>
 
-                <div className='checkout-delivery-content-label'>
-                    Country
+                    <div  className='checkout-delivery-block'>
+                        <div className='checkout-delivery-content-label'>
+                            Phone
+                        </div>
+                        <Field name="phone" component={customRequiredInput}
+                               type="text" placeholder="Your phone number..."
+                               className='checkout-delivery-content-input'
+                               classError='checkout-input-error-message'
+                               validate={[requiredInput]}
+                        />
+                    </div>
+
+
                 </div>
-                <Field name="country" component={customRequiredInput}
-                       type="text" placeholder="Your country..."
-                       className='checkout-delivery-content-input'
-                       classError='input-error-message'
-                       validate={[requiredInput]}
-                />
-                <div className='checkout-delivery-content-label'>
-                    Zipcode
+                <div className='checkout-d-flex-row'>
+                    <div  className='checkout-delivery-block'>
+                        <div className='checkout-delivery-content-label'>
+                            City
+                        </div>
+                        <Field name="city" component={customRequiredInput}
+                               type="text" placeholder="Your city..."
+                               className='checkout-delivery-content-input'
+                               classError='checkout-input-error-message'
+                               validate={[requiredInput]}
+                        />
+                    </div>
+
+                    <div  className='checkout-delivery-block-big'>
+                        <div className='checkout-delivery-content-label'>
+                            Street
+                        </div>
+                        <Field name="street" component={customRequiredInput}
+                               type="text" placeholder="Your street..."
+                               className='checkout-delivery-content-input'
+                               classError='checkout-input-error-message'
+                               validate={[requiredInput]}
+                        />
+                    </div>
                 </div>
-                <Field name="zipcode" component={customRequiredInput}
-                       type="text" placeholder="Your zipcode..."
-                       className='checkout-delivery-content-input'
-                       classError='input-error-message'
-                       validate={[requiredInput]}
-                />
-                <div className='checkout-delivery-content-label'>
-                    City
-                </div>
-                <Field name="city" component={customRequiredInput}
-                       type="text" placeholder="Your city..."
-                       className='checkout-delivery-content-input'
-                       classError='input-error-message'
-                       validate={[requiredInput]}
-                />
-                <div className='checkout-delivery-content-label'>
-                    Street
-                </div>
-                <Field name="street" component={customRequiredInput}
-                       type="text" placeholder="Your street..."
-                       className='checkout-delivery-content-input'
-                       classError='input-error-message'
-                       validate={[requiredInput]}
-                />
-                <div className='checkout-delivery-content-label'>
-                    Phone
-                </div>
-                <Field name="phone" component={customRequiredInput}
-                       type="text" placeholder="Your phone number..."
-                       className='checkout-delivery-content-input'
-                       classError='input-error-message'
-                       validate={[requiredInput]}
-                />
+
+
 
 
                 <button name='checkoutDeliverySbm' disabled={invalid || pristine || submitting} type="submit" className='checkout-next-btn' label="submit">Next step</button>

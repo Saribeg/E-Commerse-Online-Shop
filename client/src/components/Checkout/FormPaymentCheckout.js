@@ -8,8 +8,15 @@ import customCorrectEmail from '../atomic/customCorrectEmail';
 class FormPaymentCheckout extends Component {
     render(){
         const {handleSubmit, pristine, submitting, invalid} = this.props;
+
+        console.log('pristine', pristine);
+        console.log('submitting', submitting);
+        console.log('invalid', invalid);
+
+
+
         return (
-            <form onSubmit={handleSubmit}>
+            <form onChange={this.props.checkCorrectPayment(invalid || pristine || submitting)} onSubmit={handleSubmit}>
 
                 <div className='checkout-payment-content-label'>
                     Card number
