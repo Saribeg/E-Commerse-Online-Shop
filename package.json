@@ -4,7 +4,7 @@
   "description": "JS1 final project - creating an e-commerse web shop",
   "main": "server.js",
   "scripts": {
-    "test": "mocha \"./unittest/products.test.js\" ",
+    "test": "mocha \"./unittest/*.test.js\" ",
     "server": "nodemon server.js",
     "front": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\"  \"npm run front\""

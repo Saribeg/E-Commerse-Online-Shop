@@ -24,7 +24,7 @@ describe("Testing FOOTER-LINKS router", () => {
                     .get("/get-footer")
                     .end(function (err, res) {
                         res.body.should.be.a("array");
-                        res.body.length.should.be.eql(5);
+                        res.body.length.should.be.eql(2);
                         done(err);
                     })
             });
