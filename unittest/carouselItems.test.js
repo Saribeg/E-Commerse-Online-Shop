@@ -34,7 +34,11 @@ describe("Testing CAROUSEL-ITEMS router", () => {
     // describe('/POST route', () => {
     //         it("it should POST new carouselItem", (done) => {
     //             let newCarouselItem = {
-    //                 product: {},
+    //                 product: {
+    //                     model: "test models",
+    //                     currentPrice: 201,
+    //                     productUrl: "women/clothing/tops/1"
+    //                 },
     //                 imageUrl: "/img/carousel/item1.jpg"
     //             }
     //             chai.request(server)

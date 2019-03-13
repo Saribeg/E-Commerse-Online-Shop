@@ -2,8 +2,6 @@ let chai = require("chai");
 let chaiHttp = require("chai-http");
 const expect = chai.expect;
 let should = chai.should();
-const uniqueRandom = require("unique-random");
-const rand = uniqueRandom(0, 999999);
 
 let server = require("../server");
 let Product = require("../models/Product");
@@ -127,55 +125,6 @@ describe("Testing PRODUCTS router", () => {
     //     }
     // );
 
-    // describe("/POST route /products/add-products", () => {
-    //         it("it should POST new product", (done) => {
-    //             let newProduct = {
-    //                 itemNo: rand,
-    //                 category: "women",
-    //                 subCategory: "clothing",
-    //                 furtherSubCategory: "dresses",
-    //                 model: "New Test dresses",
-    //                 currentPrice: 500,
-    //                 previousPrice: 400,
-    //                 productUrl: "/women/clothing/dresses/",
-    //                 productFeatures: [{
-    //                     "color": "#000000",
-    //                     "colorName": "black",
-    //                     "imageUrls": [
-    //                         "/img/products/women/clothing/dresses/008/000000/080.jpg",
-    //                         "/img/products/women/clothing/dresses/008/000000/081.jpg"
-    //                     ],
-    //                     "sizes": [
-    //                         {
-    //                             "size": "s",
-    //                             "quantity": 3
-    //                         },
-    //                         {
-    //                             "size": "xs",
-    //                             "quantity": 5
-    //                         },
-    //                         {
-    //                             "size": "m",
-    //                             "quantity": 10
-    //                         },
-    //                         {
-    //                             "size": "l",
-    //                             "quantity": 1
-    //                         }
-    //                     ]
-    //                 }]
-    //             };
-    //             chai.request("http://localhost:3000")
-    //                 .post("/products/add-products")
-    //                 .send(newProduct)
-    //                 .end((err, res) =>{
-    //                     res.should.have.status(200);
-    //                     res.body.should.be.a("object");
-    //                     done(err);
-    //                 })
-    //         });
-    //     }
-    // );
 
 
 })

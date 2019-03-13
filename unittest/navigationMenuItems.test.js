@@ -29,22 +29,4 @@ describe("Testing NAVIGATION-MENU-ITEMS router", () => {
         }
     );
 
-    // describe('/POST route', () => {
-    //         it("it should GET all the nav-menu", (done) => {
-    //             let newNavMenuItem = {
-    //
-    //             }
-    //             chai.request(server)
-    //                 .post('/navigation-menu/add-list')
-    //                 .send(newNavMenuItem)
-    //                 .end(function (err, res) {
-    //                     res.should.have.status(200);
-    //                     res.body.should.be.a('array');
-    //                     done(err);
-    //                 })
-    //         });
-    //     }
-    // );
-
-
 })
