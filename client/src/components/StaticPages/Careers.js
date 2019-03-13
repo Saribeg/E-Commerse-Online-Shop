@@ -30,8 +30,8 @@ export default class Careers extends React.Component<Props, State> {
     let pageContent = content.map(elem => {
       return (
         <div className="job-description">
-          <h3 className="job-description__position">{elem.title}</h3>
-          <p className="job-description__text">{elem.content}</p>
+          <h3 className="job-description-position">{elem.title}</h3>
+          <p className="job-description-text">{elem.content}</p>
         </div>
       );
     });
@@ -41,12 +41,12 @@ export default class Careers extends React.Component<Props, State> {
         <Helmet>
           <title>{this.state.pageTitle}</title>
         </Helmet>
-        <h2 className="sub-page__title">{this.state.pageTitle}</h2>
-        <h3 className="sub-page__sub-title">
+        <h2 className="sub-page-title">{this.state.pageTitle}</h2>
+        <h3 className="sub-page-sub-title">
           There are several options to suggest
         </h3>
         {pageContent}
-        <p className="job-offer__feedback">
+        <p className="job-offer-feedback">
           If you are interested, please send your resume: matter-style@mail.com
         </p>
       </>

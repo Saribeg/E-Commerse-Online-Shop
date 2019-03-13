@@ -6,6 +6,8 @@ export const FETCH_SEARCH_FAILED = "FETCH_SEARCH_FAILED";
 export const TYPE_SEARCH_VALUE = "TYPE_SEARCH_VALUE";
 export const FOCUS_SEARCH_INPUT = "FOCUS_SEARCH_INPUT";
 export const BLUR_SEARCH_INPUT = "BLUR_SEARCH_INPUT";
+export const CLEAR_SEARCH_INPUT = "CLEAR_SEARCH_INPUT";
+export const CLOSE_SEARCH_RESULTS = "CLOSE_SEARCH_RESULTS";
 export const VALIDATE_SEARCH_VALUE = "VALIDATE_SEARCH_VALUE";
 
 // Handling situations when search input is focused (to change input width)
@@ -16,9 +18,28 @@ export const focusSearchInput = () => dispatch => {
 };
 
 // Handling situations when search input is blured (to change input width)
-export const blurSearchInput = () => dispatch => {
+
+export const blurSearchInput = e => dispatch => {
+  if (e.target.name === "search") {
+    e.preventDefault();
+  } else if (e.target.className === "clearable__clear") {
+    dispatch({
+      type: CLEAR_SEARCH_INPUT
+    });
+    dispatch({
+      type: BLUR_SEARCH_INPUT
+    });
+  } else {
+    dispatch({
+      type: BLUR_SEARCH_INPUT
+    });
+  }
+};
+
+// Handling situations when close button clicked in input (to clear input value)
+export const clearSearchInput = () => dispatch => {
   dispatch({
-    type: BLUR_SEARCH_INPUT
+    type: CLEAR_SEARCH_INPUT
   });
 };
 
@@ -37,6 +58,13 @@ export const validateSearchValue = e => dispatch => {
       payload: false
     });
   }
+};
+
+// Handling situations when item in search results is clicked (to hide results and redirect to product details page)
+export const closeSearchResults = () => dispatch => {
+  dispatch({
+    type: CLOSE_SEARCH_RESULTS
+  });
 };
 
 //Showing preloader while async request is going on

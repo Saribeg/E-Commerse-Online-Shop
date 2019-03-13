@@ -5,13 +5,16 @@ import {
   TYPE_SEARCH_VALUE,
   FOCUS_SEARCH_INPUT,
   BLUR_SEARCH_INPUT,
-  VALIDATE_SEARCH_VALUE
+  CLEAR_SEARCH_INPUT,
+  VALIDATE_SEARCH_VALUE,
+  CLOSE_SEARCH_RESULTS
 } from "../../actions/search";
 
 const initialState = {
   focus: false,
   searchString: "",
   nonValid: false,
+  closeResults: false,
   isSearchFetching: false,
   products: []
 };
@@ -48,7 +51,20 @@ function search(state = initialState, action) {
       return {
         ...state,
         isSearchFetching: false,
+        closeResults: false,
         products: action.payload
+      };
+    case CLOSE_SEARCH_RESULTS:
+      return {
+        ...state,
+        closeResults: true,
+        searchString: "",
+        products: []
+      };
+    case CLEAR_SEARCH_INPUT:
+      return {
+        ...state,
+        searchString: ""
       };
     default:
       return { ...state };

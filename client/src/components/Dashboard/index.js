@@ -22,16 +22,20 @@ import {
   CLOSE_REG_FORM
 } from "../../actions/login";
 
+import { blurSearchInput } from "../../actions/search";
+
 class Dashboard extends Component {
-  handleCloseForms = () => {
+  handleCloseForms = e => {
     if (
       this.props.windowsStatus.formLoginOpen ||
       this.props.windowsStatus.formRegisterOpen ||
-      this.props.windowsStatus.loginDetails
+      this.props.windowsStatus.loginDetails ||
+      this.props.focus
     ) {
       this.props.closeLoginForm();
       this.props.closeRegForm();
       this.props.closeLoginDetails();
+      this.props.blurSearchInput(e);
     }
   };
 
@@ -68,7 +72,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
   return {
-    windowsStatus: state.login.windowsStatus
+    windowsStatus: state.login.windowsStatus,
+    focus: state.search.focus
   };
 };
 
@@ -82,7 +87,8 @@ const mapDispatchToProps = dispatch => {
     },
     closeRegForm: () => {
       dispatch({ type: CLOSE_REG_FORM });
-    }
+    },
+    blurSearchInput: e => dispatch(blurSearchInput(e))
   };
 };
 

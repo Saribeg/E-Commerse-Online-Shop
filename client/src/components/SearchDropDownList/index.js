@@ -7,11 +7,11 @@ import "./searchDropDownList.scss";
 
 class SearchDropDownList extends Component {
   render() {
-    const { products } = this.props;
+    const { products, closeResults } = this.props;
     return (
       <div
         className={
-          products.length > 0
+          products.length > 0 && !closeResults
             ? "search-results-wrapper"
             : "search-results-wrapper-hide"
         }
@@ -26,7 +26,8 @@ class SearchDropDownList extends Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.search.products
+    products: state.search.products,
+    closeResults: state.search.closeResults
   };
 };
 
