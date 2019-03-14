@@ -25,6 +25,7 @@ class Cart extends Component {
 
     handleChange = (event) => {
 
+
         let name = Number(event.target.name);
         let value = Number(event.target.value);
 
@@ -97,11 +98,6 @@ class Cart extends Component {
     }
 
 
-    // this.props.changeArrayAmount({
-    //     ...this.state,
-    // });
-
-
     addAmount = (index) => {
 
         let newAmount = this.state[index];
@@ -127,16 +123,8 @@ class Cart extends Component {
 
                     arrayCheckProducts.push(checkItem);
                 })
-                // console.log('componentWillUpdate array', arrayCheckProducts)
-                // console.log('CALL checkArrayAvailableItems 3');
                 this.props.checkArrayAvailableItems(arrayCheckProducts);
             }
-
-
-            // this.props.changeArrayAmount({
-            //     ...this.state,
-            //     [index]: newAmount
-            // });
 
 
             setTimeout(this.falseBlock, 1500);
@@ -188,15 +176,8 @@ class Cart extends Component {
 
                         arrayCheckProducts.push(checkItem);
                     })
-                    // console.log('componentWillUpdate array', arrayCheckProducts)
-                    // console.log('CALL checkArrayAvailableItems 4');
                     this.props.checkArrayAvailableItems(arrayCheckProducts);
                 }
-
-                // this.props.changeArrayAmount({
-                //     ...this.state,
-                //     [index]: newAmount
-                // });
 
                 setTimeout(this.falseBlock, 1500);
                 this.setState({
@@ -323,12 +304,21 @@ class Cart extends Component {
                         <p className={classIsAvailable}>
                             In Stock
                         </p>
-                        <p className={classIsNotAvailable}>
-                            Out Stock
-                        </p>
-                        <p className={classIsNotAvailable}>
-                            {elem.reasonNotAvailable}
-                        </p>
+                        <div className={classIsNotAvailable}>
+                            <p className='basket-item-notavailable'>
+                                Out Stock
+                            </p>
+                            <p className='basket-item-notavailable'>
+                                {elem.reasonNotAvailable}
+                            </p>
+                            <input type="button" value={`Accept ${elem.availableAmount} items`}
+                                   onClick={() => this.handleChange({
+                                       target: {
+                                           name: keyItem,
+                                           value: elem.availableAmount,
+                                       }
+                                   })}/>
+                        </div>
                     </div>
                     <div className="product-counter">
                         <button className="product-counter-btn" onClick={() => this.minusAmount(keyItem)}>-</button>

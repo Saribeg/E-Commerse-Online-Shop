@@ -25,10 +25,97 @@ export const CHANGE_CHECK_AMOUT_OF_ITEM = 'CHANGE_CHECK_AMOUT_OF_ITEM';
 
 export const CHANGE_DELIVERY_METHOD = 'CHANGE_DELIVERY_METHOD';
 
+export const SET_FINISHED_CART = 'SET_FINISHED_CART';
+export const SET_DEFAULT_FINISHED_CART = 'SET_DEFAULT_FINISHED_CART';
+
+
+
+
+export function sendCheckout() {
+
+    return dispatch => {
+
+        axios.get('/users/checkout')
+            .then(() => {
+                console.log('ISSSS logged');
+                dispatch({type: SET_FINISHED_CART});
+                }
+            )
+            .catch(err => {
+                console.log('ISNTTT logged')
+            })
+
+    }
+}
+
+export function updateCartIsFinished(dataCart) {
+
+    axios.post('/updateCartIsFinished', dataCart)
+        .then(res => res.data)
+        .then(data => {
+            store.dispatch({type: SET_DEFAULT_FINISHED_CART});
+            }
+        )
+        .catch(err => console.log(err))
+
+}
+
+export function sendOrder(dataOrder) {
+
+    let mail = dataOrder.userMail;
+
+    console.log('dataOrder.userMail', dataOrder.userMail)
+    console.log('dataOrder.arrayProduct', dataOrder.arrayProduct)
+    let textOrder = `<ul class="checkout-product-list">`;
+
+    dataOrder.arrayProduct.forEach((elem) => {
+        textOrder += `
+                    <li class="checkout-product-item">
+                        <img src=${elem.urlPhoto} alt="" class="checkout-product-item-img"/>
+                        <div class="checkout-product-item-block">
+                            <div class="checkout-product-item-details">
+                                <div class="checkout-product-item-description">
+                                    <p class="checkout-product-item-model">
+                                        ${elem.model}
+                                    </p>
+                                    <p class="checkout-product-item-color">
+                                        Color - ${elem.colorName}
+                                    </p>
+                                    <p class="checkout-product-item-size">
+                                        Size - ${elem.size}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="checkout-product-item-price">
+                                <p>${elem.priceFormDB} x ${elem.amount}</p>
+                                <p class="checkout-product-item-price-bold">
+                                    $${(elem.amount * elem.priceFormDB).toFixed(2)}
+                                </p>
+                            </div>
+
+                        </div>
+                    </li>
+        `
+    });
+
+    textOrder += `</ul>`
+
+console.log(textOrder);
+
+
+    axios.post('/sendOrder', {mail: mail, textOrder: textOrder})
+        .then(res => res.data)
+        .then(data => {
+                // store.dispatch({type: SET_DEFAULT_FINISHED_CART});
+            }
+        )
+        .catch(err => console.log(err))
+
+}
+
 
 
 export function checkAvailableItem(arrData) {
-    // console.log('action arrItemData', arrItemData)
 
     return dispatch => {
 
@@ -39,17 +126,7 @@ export function checkAvailableItem(arrData) {
             .then(res => res.data)
             .then(data => {
 
-                setTimeout(dispatch({type: CHANGE_CHECK_AMOUT_OF_ITEM, payload: {newArr: data.updatedArray}}), 500)
-
-
-
-                // if (data.wasUpdated) {
-                //     console.log('---------- was updated')
-                //     dispatch({type: UPDATE_STORE_AFTER_CHECK_IN_DB, payload: {newArr: data.updatedArray}})
-                // }
-                // else {
-                //     console.log('---------- wasnt updated')
-                // }
+                    setTimeout(dispatch({type: CHANGE_CHECK_AMOUT_OF_ITEM, payload: {newArr: data.updatedArray}}), 500)
 
                 }
             )
@@ -60,33 +137,13 @@ export function checkAvailableItem(arrData) {
 }
 
 
-// export function checkAvailableItem(itemData, index) {
-//     // console.log('action arrItemData', arrItemData)
-//
-//     return dispatch => {
-//         axios.post('/checkAvailableItem', {itemData: itemData, index: index})
-//             .then(res => res.data)
-//             .then(data => {
-//
-//                     // dispatch({type: CLOSE_LOGIN_DETAILS})
-//                 }
-//             )
-//             .catch(err => {
-//                 // dispatch({type: CLOSE_LOGIN_DETAILS});
-//
-//                 // history.push("/login")
-//                 // window.location.href = "/login";
-//             })
-//
-//     }
-// }
-
 export function getCart(userId) {
+
 
     axios.post('/getCart', userId)
         .then(res => res.data)
         .then(data => {
-            let readyData = JSON.parse(data.infoDB);
+                let readyData = JSON.parse(data.infoDB);
 
                 if (data.success) {
                     store.dispatch({type: SET_DATA_CART_FROM_DB, payload: {infoDB: readyData}})
@@ -99,16 +156,16 @@ export function getCart(userId) {
 
 export function addNewCart(dataCart) {
 
-        axios.post('/addCart', dataCart)
-            .then(res => res.data)
-            .then(data => {
+    axios.post('/addCart', dataCart)
+        .then(res => res.data)
+        .then(data => {
 
                 if (data.success) {
                     store.dispatch({type: SET_ID_CART_FROM_DB, payload: {idCartInDB: data.idCartInDB}})
                 }
-                }
-            )
-            .catch(err => console.log(err))
+            }
+        )
+        .catch(err => console.log(err))
 
 }
 
@@ -118,17 +175,9 @@ export function updateCart(dataCart) {
     axios.post('/updateCart', dataCart)
         .then(res => res.data)
         .then(data => {
-            console.log(data.success)
+                console.log(data.success)
             }
         )
-        // .then(res => res.data)
-        // .then(data => {
-        //
-        //         if (data.success) {
-        //             // store.dispatch({type: SET_ID_CART_FROM_DB, payload: {idCartInDB: data.idCartInDB}})
-        //         }
-        //     }
-        // )
         .catch(err => console.log(err))
 
 }

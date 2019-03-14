@@ -25,18 +25,6 @@ const CartSchema = new Schema({
                 type: String,
                 default: ''
             },
-            category: {
-                type: String,
-                required: true
-            },
-            subCategory: {
-                type: String,
-                required: true
-            },
-            furtherSubCategory: {
-                type: String,
-                required: true
-            },
             model: {
                 type: String,
                 required: true
@@ -47,6 +35,10 @@ const CartSchema = new Schema({
             },
             size: {
                 type: String,
+                required: true
+            },
+            availableAmount: {
+                type: Number,
                 required: true
             },
             amount: {

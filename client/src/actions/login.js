@@ -51,7 +51,7 @@ export function checkLoginCartOnStart () {
         store.dispatch(setLoggedUser(decoded._doc));
         store.dispatch({
             type: SET_ID_LOGGED_USER,
-            payload: { idUser: decoded._doc._id }
+            payload: { idUser: decoded._doc._id, mail: decoded._doc.email }
         });
 
         // store.dispatch(getCart({idUser: decoded._doc._id}));
@@ -207,6 +207,11 @@ export function checkLogin(loginForm) {
                         const decoded = jwt_decode(token);
                         //Set current user
                         dispatch(setLoggedUser(decoded._doc));
+
+                        store.dispatch({
+                            type: SET_ID_LOGGED_USER,
+                            payload: { idUser: decoded._doc._id, mail: decoded._doc.email }
+                        });
 
                         checkSavedCart({idUser: decoded._doc._id});
 

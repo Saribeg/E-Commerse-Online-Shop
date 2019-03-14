@@ -9,12 +9,6 @@ class FormPaymentCheckout extends Component {
     render(){
         const {handleSubmit, pristine, submitting, invalid} = this.props;
 
-        console.log('pristine', pristine);
-        console.log('submitting', submitting);
-        console.log('invalid', invalid);
-
-
-
         return (
             <form onChange={this.props.checkCorrectPayment(invalid || pristine || submitting)} onSubmit={handleSubmit}>
 

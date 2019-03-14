@@ -7,7 +7,7 @@ import FormDeliveryCheckout from "./FormDeliveryCheckout"
 import FormPaymentCheckout from "./FormPaymentCheckout"
 
 import './Checkout.scss'
-import {DELETE_ITEM_TO_CART, CHANGE_DELIVERY_METHOD} from "../../actions/cart";
+import {CHANGE_DELIVERY_METHOD} from "../../actions/cart";
 
 class Checkout extends Component {
 
@@ -52,7 +52,7 @@ class Checkout extends Component {
 
     checkCorrectPayment = (value) => {
 
-        console.log('CALL checkCorrectPayment', value)
+        // console.log('CALL checkCorrectPayment', value)
         this.setState({
             finishOrder: !value,
         })

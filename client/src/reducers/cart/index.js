@@ -3,8 +3,8 @@ import {
     SET_ID_LOGGED_USER, SET_ID_CART_FROM_DB, SET_DATA_CART_FROM_DB,
     CLEAR_CART_ON_LOGOUT, CART_FROM_LOCALSTORAGE_TO_DB, DELETE_ITEM_TO_CART,
     CHANGE_ARRAY_AMOUT_OF_ITEM, UPDATE_STORE_AFTER_CHECK_IN_DB, CHANGE_CHECK_AMOUT_OF_ITEM,
-    CHANGE_DELIVERY_METHOD,
-    addNewCart, updateCart
+    CHANGE_DELIVERY_METHOD, SET_FINISHED_CART, SET_DEFAULT_FINISHED_CART,
+    addNewCart, updateCart, updateCartIsFinished, sendOrder
 } from '../../actions/cart'
 
 
@@ -12,6 +12,7 @@ const initialState = {
 
     amountInBasket: 0,
     idUser: '',
+    userMail: '',
     idCartInDB: '',
     arrayProduct: [],
     arrayCheckout: [],
@@ -41,7 +42,6 @@ function setLocalStorage(arr) {
 }
 
 function countAmount(array) {
-    console.log('call countAmount')
 
     let count = 0;
     if (array) {
@@ -71,9 +71,16 @@ function updateInDB(id, arr) {
         arrayProduct: JSON.stringify(arr)
     };
 
-
     updateCart(sendObj);
+}
 
+
+function updateIsFinished(id) {
+
+
+    updateCartIsFinished({
+        idCartInDB: id
+    });
 }
 
 function cart(state = initialState, action) {
@@ -84,6 +91,7 @@ function cart(state = initialState, action) {
 
             return {
                 ...state,
+                userMail: action.payload.mail,
                 idUser: action.payload.idUser,
             }
 
@@ -91,6 +99,7 @@ function cart(state = initialState, action) {
 
             return {
                 ...state,
+
                 idCartInDB: action.payload.idCartInDB
             }
 
@@ -136,9 +145,11 @@ function cart(state = initialState, action) {
         case CLEAR_CART_ON_LOGOUT:
 
             return {
+                ...state,
                 amountInBasket: 0,
                 idUser: '',
                 idCartInDB: '',
+                userMail: '',
                 arrayProduct: [],
                 arrayCheckout: [],
             }
@@ -175,10 +186,6 @@ function cart(state = initialState, action) {
                 return elem;
             });
 
-
-            // changeArrayAmountProd[action.payload.index].amount = action.payload.value;
-
-
             if (state.idUser) {
                 if (state.idCartInDB) {
                     updateInDB(state.idCartInDB, changeCheckArrayAmountProd);
@@ -193,62 +200,6 @@ function cart(state = initialState, action) {
                 arrayProduct: changeCheckArrayAmountProd,
                 amountInBasket: countAmount(changeCheckArrayAmountProd),
             }
-
-        // case CHANGE_ARRAY_AMOUT_OF_ITEM:
-        //
-        //
-        //     let changeArrayAmountProd = [];
-        //     state.arrayProduct.forEach((elem, index) => {
-        //         changeArrayAmountProd[index] = {...elem}
-        //     });
-        //
-        //     changeArrayAmountProd.forEach((elem, index) => {
-        //         elem.amount = action.payload.obj[index]
-        //     })
-        //
-        //     // changeArrayAmountProd[action.payload.index].amount = action.payload.value;
-        //
-        //
-        //     if (state.idUser) {
-        //         if (state.idCartInDB) {
-        //             updateInDB(state.idCartInDB, changeArrayAmountProd);
-        //         } else {
-        //             saveInDB(state.idUser, changeArrayAmountProd);
-        //         }
-        //     } else {
-        //         setLocalStorage(changeArrayAmountProd);
-        //     }
-        //     return {
-        //         ...state,
-        //         arrayProduct: changeArrayAmountProd,
-        //         amountInBasket: countAmount(changeArrayAmountProd),
-        //     }
-
-
-        // case CHANGE_AMOUT_OF_ITEM:
-        //     let changeAmountProd = [];
-        //     state.arrayProduct.forEach((elem, index) => {
-        //         changeAmountProd[index] = {...elem}
-        //     });
-        //
-        //     changeAmountProd[action.payload.index].amount = action.payload.value;
-        //
-        //     // console.log('changeAmountProd', changeAmountProd)
-        //
-        //     if (state.idUser) {
-        //         if (state.idCartInDB) {
-        //             updateInDB(state.idCartInDB, changeAmountProd);
-        //         } else {
-        //             saveInDB(state.idUser, changeAmountProd);
-        //         }
-        //     } else {
-        //         setLocalStorage(changeAmountProd);
-        //     }
-        //     return {
-        //         ...state,
-        //         arrayProduct: changeAmountProd,
-        //         amountInBasket: countAmount(changeAmountProd),
-        //     }
 
         case SET_CART_FROM_LOCALSTORAGE:
 
@@ -296,6 +247,29 @@ function cart(state = initialState, action) {
                 ...state,
                 checkedDelivery: action.payload.method,
             }
+
+        case SET_FINISHED_CART:
+
+            // console.log('SET_FINISHED_CART');
+
+            // updateIsFinished(state.idCartInDB);
+            sendOrder(state);
+            // console.log('SET_FINISHED_CART 111');
+
+            return {
+                ...state
+            }
+        case SET_DEFAULT_FINISHED_CART:
+
+            return {
+                ...state,
+                amountInBasket: 0,
+                idCartInDB: '',
+                arrayProduct: [],
+            }
+
+
+
 
         default:
             return {...state}
