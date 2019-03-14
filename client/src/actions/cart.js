@@ -29,16 +29,14 @@ export const SET_FINISHED_CART = 'SET_FINISHED_CART';
 export const SET_DEFAULT_FINISHED_CART = 'SET_DEFAULT_FINISHED_CART';
 
 
-
-
 export function sendCheckout() {
 
     return dispatch => {
 
         axios.get('/users/checkout')
             .then(() => {
-                console.log('ISSSS logged');
-                dispatch({type: SET_FINISHED_CART});
+                    console.log('ISSSS logged');
+                    dispatch({type: SET_FINISHED_CART});
                 }
             )
             .catch(err => {
@@ -53,7 +51,7 @@ export function updateCartIsFinished(dataCart) {
     axios.post('/updateCartIsFinished', dataCart)
         .then(res => res.data)
         .then(data => {
-            store.dispatch({type: SET_DEFAULT_FINISHED_CART});
+                store.dispatch({type: SET_DEFAULT_FINISHED_CART});
             }
         )
         .catch(err => console.log(err))
@@ -66,33 +64,66 @@ export function sendOrder(dataOrder) {
 
     console.log('dataOrder.userMail', dataOrder.userMail)
     console.log('dataOrder.arrayProduct', dataOrder.arrayProduct)
-    let textOrder = `<ul class="checkout-product-list">`;
+    // let textOrder = `<ul class="checkout-product-list">`;
+    //
+    // dataOrder.arrayProduct.forEach((elem) => {
+    //     textOrder += `
+    //                 <li class="checkout-product-item">
+    //                     <img src=${elem.urlPhoto} alt="" class="checkout-product-item-img"/>
+    //                     <div class="checkout-product-item-block">
+    //                         <div class="checkout-product-item-details">
+    //                             <div class="checkout-product-item-description">
+    //                                 <p class="checkout-product-item-model">
+    //                                     ${elem.model}
+    //                                 </p>
+    //                                 <p class="checkout-product-item-color">
+    //                                     Color - ${elem.colorName}
+    //                                 </p>
+    //                                 <p class="checkout-product-item-size">
+    //                                     Size - ${elem.size}
+    //                                 </p>
+    //                             </div>
+    //                         </div>
+    //                         <div class="checkout-product-item-price">
+    //                             <p>${elem.priceFormDB} x ${elem.amount}</p>
+    //                             <p class="checkout-product-item-price-bold">
+    //                                 $${(elem.amount * elem.priceFormDB).toFixed(2)}
+    //                             </p>
+    //                         </div>
+    //
+    //                     </div>
+    //                 </li>
+    //     `
+    // });
+    //
+    // textOrder += `</ul>`
+
+    let textOrder = `<ul style="margin: 5px; border: 1px solid #eee;">`;
 
     dataOrder.arrayProduct.forEach((elem) => {
         textOrder += `
-                    <li class="checkout-product-item">
-                        <img src=${elem.urlPhoto} alt="" class="checkout-product-item-img"/>
-                        <div class="checkout-product-item-block">
-                            <div class="checkout-product-item-details">
-                                <div class="checkout-product-item-description">
-                                    <p class="checkout-product-item-model">
+                    <li style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                        <div style="width: calc(100% - 110px);">
+                            <div>
+                                <div>
+                                    <p style="font-weight: 600; font-size: 20px; margin-bottom: 10px; margin-top: 15px;">
                                         ${elem.model}
                                     </p>
-                                    <p class="checkout-product-item-color">
+                                    <p style="text-transform: uppercase; margin-bottom: 10px;">
                                         Color - ${elem.colorName}
                                     </p>
-                                    <p class="checkout-product-item-size">
+                                    <p style="text-transform: uppercase; margin-bottom: 20px;">
                                         Size - ${elem.size}
                                     </p>
                                 </div>
                             </div>
-                            <div class="checkout-product-item-price">
+                            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;
+                            border-top: 1px solid #eee; margin-right: 30px; padding-top: 10px; padding-bottom: 10px;">
                                 <p>${elem.priceFormDB} x ${elem.amount}</p>
-                                <p class="checkout-product-item-price-bold">
+                                <p style="font-weight: 600;">
                                     $${(elem.amount * elem.priceFormDB).toFixed(2)}
                                 </p>
                             </div>
-
                         </div>
                     </li>
         `
@@ -100,7 +131,7 @@ export function sendOrder(dataOrder) {
 
     textOrder += `</ul>`
 
-console.log(textOrder);
+    console.log(textOrder);
 
 
     axios.post('/sendOrder', {mail: mail, textOrder: textOrder})
@@ -112,7 +143,6 @@ console.log(textOrder);
         .catch(err => console.log(err))
 
 }
-
 
 
 export function checkAvailableItem(arrData) {
