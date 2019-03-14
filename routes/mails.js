@@ -56,6 +56,21 @@ router.post('/sendOrder', (req, res) => {
             else
                 console.log(info);
         });
+
+
+        const mailOptionsManager = {
+            from: '2019.matter.store@gmail.com',
+            to: '2019.matter.store@gmail.com',
+            subject: 'ORDER ON SITE',
+            html: htmlToSend
+        };
+        transporter.sendMail(mailOptionsManager, function (err, info) {
+            if (err)
+                console.log(err);
+            else
+                console.log(info);
+        });
+
     });
 });
 

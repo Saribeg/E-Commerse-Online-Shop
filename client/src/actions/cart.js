@@ -28,6 +28,12 @@ export const CHANGE_DELIVERY_METHOD = 'CHANGE_DELIVERY_METHOD';
 export const SET_FINISHED_CART = 'SET_FINISHED_CART';
 export const SET_DEFAULT_FINISHED_CART = 'SET_DEFAULT_FINISHED_CART';
 
+export const OPEN_MODAL_SUCCESS_ORDER = 'OPEN_MODAL_SUCCESS_ORDER';
+export const CLOSE_MODAL_SUCCESS_ORDER = 'CLOSE_MODAL_SUCCESS_ORDER';
+
+
+export const OPEN_MODAL_UNSUCCESS_ORDER = 'OPEN_MODAL_UNSUCCESS_ORDER';
+export const CLOSE_MODAL_UNSUCCESS_ORDER = 'CLOSE_MODAL_UNSUCCESS_ORDER';
 
 export function sendCheckout() {
 
@@ -37,6 +43,9 @@ export function sendCheckout() {
             .then(() => {
                     console.log('ISSSS logged');
                     dispatch({type: SET_FINISHED_CART});
+                    dispatch({type: OPEN_MODAL_SUCCESS_ORDER});
+
+
                 }
             )
             .catch(err => {
@@ -62,8 +71,6 @@ export function sendOrder(dataOrder) {
 
     let mail = dataOrder.userMail;
 
-    console.log('dataOrder.userMail', dataOrder.userMail)
-    console.log('dataOrder.arrayProduct', dataOrder.arrayProduct)
     // let textOrder = `<ul class="checkout-product-list">`;
     //
     // dataOrder.arrayProduct.forEach((elem) => {
@@ -129,9 +136,7 @@ export function sendOrder(dataOrder) {
         `
     });
 
-    textOrder += `</ul>`
-
-    console.log(textOrder);
+    textOrder += `</ul>`;
 
 
     axios.post('/sendOrder', {mail: mail, textOrder: textOrder})

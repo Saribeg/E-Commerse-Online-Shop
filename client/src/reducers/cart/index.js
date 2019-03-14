@@ -4,7 +4,8 @@ import {
     CLEAR_CART_ON_LOGOUT, CART_FROM_LOCALSTORAGE_TO_DB, DELETE_ITEM_TO_CART,
     CHANGE_ARRAY_AMOUT_OF_ITEM, UPDATE_STORE_AFTER_CHECK_IN_DB, CHANGE_CHECK_AMOUT_OF_ITEM,
     CHANGE_DELIVERY_METHOD, SET_FINISHED_CART, SET_DEFAULT_FINISHED_CART,
-    addNewCart, updateCart, updateCartIsFinished, sendOrder
+    addNewCart, updateCart, updateCartIsFinished, sendOrder, CLOSE_MODAL_SUCCESS_ORDER,
+    OPEN_MODAL_SUCCESS_ORDER, CLOSE_MODAL_UNSUCCESS_ORDER, OPEN_MODAL_UNSUCCESS_ORDER
 } from '../../actions/cart'
 
 
@@ -16,6 +17,10 @@ const initialState = {
     idCartInDB: '',
     arrayProduct: [],
     arrayCheckout: [],
+    windows: {
+        successOrder: false,
+        unsuccessOrder: false,
+    },
     checkedDelivery: "standart",
     deliveryMethods: [
         {
@@ -150,6 +155,10 @@ function cart(state = initialState, action) {
                 idUser: '',
                 idCartInDB: '',
                 userMail: '',
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: false,
+                },
                 arrayProduct: [],
                 arrayCheckout: [],
             }
@@ -253,7 +262,8 @@ function cart(state = initialState, action) {
             // console.log('SET_FINISHED_CART');
 
             // updateIsFinished(state.idCartInDB);
-            sendOrder(state);
+            // sendOrder(state);
+
             // console.log('SET_FINISHED_CART 111');
 
             return {
@@ -268,7 +278,43 @@ function cart(state = initialState, action) {
                 arrayProduct: [],
             }
 
+        case OPEN_MODAL_SUCCESS_ORDER:
 
+            return {
+                ...state,
+                windows: {
+                    successOrder: true,
+                    unsuccessOrder: false,
+                }
+            }
+        case CLOSE_MODAL_SUCCESS_ORDER:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: false,
+                }
+            }
+
+        case OPEN_MODAL_UNSUCCESS_ORDER:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: true,
+                }
+            }
+        case CLOSE_MODAL_UNSUCCESS_ORDER:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: false,
+                }
+            }
 
 
         default:

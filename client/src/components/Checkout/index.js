@@ -6,8 +6,15 @@ import PlaceOrder from "./PlaceOrder"
 import FormDeliveryCheckout from "./FormDeliveryCheckout"
 import FormPaymentCheckout from "./FormPaymentCheckout"
 
-import './Checkout.scss'
+import SuccessOrder from "./Modals/SuccessOrder"
+import UnsuccessOrder from "./Modals/UnsuccessOrder"
+
+
 import {CHANGE_DELIVERY_METHOD} from "../../actions/cart";
+
+
+
+import './Checkout.scss'
 
 class Checkout extends Component {
 
@@ -181,6 +188,9 @@ class Checkout extends Component {
 
                 <PlaceOrder enableBtn={this.state.finishOrder}/>
 
+                <SuccessOrder />
+
+                <UnsuccessOrder />
 
             </section>
 
