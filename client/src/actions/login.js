@@ -4,8 +4,11 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
 
 
-import {CLEAR_CART_ON_LOGOUT, SET_DATA_CART_FROM_DB, CART_FROM_LOCALSTORAGE_TO_DB,
-    SET_CART_FROM_LOCALSTORAGE, SET_ID_LOGGED_USER, getCart} from "./cart";
+import {
+    CLEAR_CART_ON_LOGOUT, SET_DATA_CART_FROM_DB, CART_FROM_LOCALSTORAGE_TO_DB,
+    SET_CART_FROM_LOCALSTORAGE, SET_ID_LOGGED_USER, SET_INVALID_LOGIN, CLOSE_MODAL_UNSUCCESS_ORDER,
+    OPEN_MODAL_FINISH_ORDER_AFTER_LOGIN, getCart
+} from "./cart";
 import store from "../store";
 
 
@@ -41,7 +44,7 @@ export const LOGOUT_JWT_CURRENT_USER = 'LOGOUT_JWT_CURRENT_USER';
 export const SAVE_HISTORY_PATH = 'SAVE_HISTORY_PATH';
 
 
-export function checkLoginCartOnStart () {
+export function checkLoginCartOnStart() {
     if (localStorage.jwtToken) {
         //Set the auth token header auth
         setAuthToken(localStorage.jwtToken);
@@ -51,11 +54,11 @@ export function checkLoginCartOnStart () {
         store.dispatch(setLoggedUser(decoded._doc));
         store.dispatch({
             type: SET_ID_LOGGED_USER,
-            payload: { idUser: decoded._doc._id, mail: decoded._doc.email }
+            payload: {idUser: decoded._doc._id, mail: decoded._doc.email}
         });
 
         // store.dispatch(getCart({idUser: decoded._doc._id}));
-        getCart({ idUser: decoded._doc._id });
+        getCart({idUser: decoded._doc._id});
 
         //Check for expired token
         const currentTime = Date.now() / 1000;
@@ -70,7 +73,7 @@ export function checkLoginCartOnStart () {
     } else if (localStorage.savedCart) {
         store.dispatch({
             type: SET_CART_FROM_LOCALSTORAGE,
-            payload: { arrLS: JSON.parse(localStorage.savedCart) }
+            payload: {arrLS: JSON.parse(localStorage.savedCart)}
         });
     }
 
@@ -104,7 +107,7 @@ function checkSavedCart(userId) {
 
                     if (data.success) {
                         let readyData = JSON.parse(data.infoDB);
-                        console.log('readyData', readyData)
+                        // console.log('readyData', readyData)
 
                         store.dispatch({type: SET_DATA_CART_FROM_DB, payload: {infoDB: readyData}})
                     }
@@ -162,6 +165,57 @@ export function goToProfile(history) {
     }
 }
 
+
+export function checkLoginBeforeCheckout(loginForm) {
+    return dispatch => {
+        axios.post('/users/login', loginForm)
+            .then(res => res.data)
+            .then(data => {
+                    if (data.success === false) {
+                        dispatch({type: SET_INVALID_LOGIN})
+                    } else {
+
+                        const {token} = data;
+                        localStorage.setItem("jwtToken", token);
+                        //Set token to Auth header
+                        setAuthToken(token);
+                        //Decode token to get user data
+                        const decoded = jwt_decode(token);
+                        //Set current user
+                        dispatch(setLoggedUser(decoded._doc));
+
+                        store.dispatch({
+                            type: SET_ID_LOGGED_USER,
+                            payload: {idUser: decoded._doc._id, mail: decoded._doc.email}
+                        });
+
+                        checkSavedCart({idUser: decoded._doc._id});
+
+                        store.dispatch({type: CLOSE_MODAL_UNSUCCESS_ORDER});
+
+                        store.dispatch({type: OPEN_MODAL_FINISH_ORDER_AFTER_LOGIN});
+
+
+                        // const {token} = data;
+                        // localStorage.setItem("jwtToken", token);
+                        //Set token to Auth header
+                        // setAuthToken(token);
+                        //Decode token to get user data
+                        // const decoded = jwt_decode(token);
+                        //Set current user
+                        // dispatch(setLoggedUser(decoded._doc));
+
+
+                        // history.push(link);
+                        // if login is succesfull then add and change info to store of redux
+                    }
+                }
+            )
+            .catch(err => console.log(err))
+    }
+}
+
+
 export function checkRedirectLogin(loginForm, history, link) {
     return dispatch => {
         axios.post('/users/login', loginForm)
@@ -210,7 +264,7 @@ export function checkLogin(loginForm) {
 
                         store.dispatch({
                             type: SET_ID_LOGGED_USER,
-                            payload: { idUser: decoded._doc._id, mail: decoded._doc.email }
+                            payload: {idUser: decoded._doc._id, mail: decoded._doc.email}
                         });
 
                         checkSavedCart({idUser: decoded._doc._id});

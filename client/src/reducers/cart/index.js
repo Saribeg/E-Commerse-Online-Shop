@@ -5,7 +5,9 @@ import {
     CHANGE_ARRAY_AMOUT_OF_ITEM, UPDATE_STORE_AFTER_CHECK_IN_DB, CHANGE_CHECK_AMOUT_OF_ITEM,
     CHANGE_DELIVERY_METHOD, SET_FINISHED_CART, SET_DEFAULT_FINISHED_CART,
     addNewCart, updateCart, updateCartIsFinished, sendOrder, CLOSE_MODAL_SUCCESS_ORDER,
-    OPEN_MODAL_SUCCESS_ORDER, CLOSE_MODAL_UNSUCCESS_ORDER, OPEN_MODAL_UNSUCCESS_ORDER
+    OPEN_MODAL_SUCCESS_ORDER, CLOSE_MODAL_UNSUCCESS_ORDER, OPEN_MODAL_UNSUCCESS_ORDER,
+    SET_INVALID_LOGIN, SUCCESSFULL_SEND_ORDER_BY_EMAIL, CLOSE_MODAL_FINISH_ORDER_AFTER_LOGIN,
+    OPEN_MODAL_FINISH_ORDER_AFTER_LOGIN
 } from '../../actions/cart'
 
 
@@ -20,6 +22,8 @@ const initialState = {
     windows: {
         successOrder: false,
         unsuccessOrder: false,
+        invalidLogin: false,
+        finishAfterLogin: false
     },
     checkedDelivery: "standart",
     deliveryMethods: [
@@ -262,7 +266,7 @@ function cart(state = initialState, action) {
             // console.log('SET_FINISHED_CART');
 
             // updateIsFinished(state.idCartInDB);
-            // sendOrder(state);
+            sendOrder(state);
 
             // console.log('SET_FINISHED_CART 111');
 
@@ -285,6 +289,8 @@ function cart(state = initialState, action) {
                 windows: {
                     successOrder: true,
                     unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: false
                 }
             }
         case CLOSE_MODAL_SUCCESS_ORDER:
@@ -294,6 +300,8 @@ function cart(state = initialState, action) {
                 windows: {
                     successOrder: false,
                     unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: false
                 }
             }
 
@@ -304,6 +312,8 @@ function cart(state = initialState, action) {
                 windows: {
                     successOrder: false,
                     unsuccessOrder: true,
+                    invalidLogin: false,
+                    finishAfterLogin: false
                 }
             }
         case CLOSE_MODAL_UNSUCCESS_ORDER:
@@ -313,14 +323,63 @@ function cart(state = initialState, action) {
                 windows: {
                     successOrder: false,
                     unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: false
+                }
+            }
+        case SET_INVALID_LOGIN:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: true,
+                    invalidLogin: true,
+                    finishAfterLogin: false
+                }
+
+            }
+
+        case SUCCESSFULL_SEND_ORDER_BY_EMAIL:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: true,
+                    unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: false
                 }
             }
 
+        case OPEN_MODAL_FINISH_ORDER_AFTER_LOGIN:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: true
+                }
+            }
+
+        case CLOSE_MODAL_FINISH_ORDER_AFTER_LOGIN:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: false
+                }
+            }
 
         default:
             return {...state}
     }
-}
 
+}
 
 export default cart

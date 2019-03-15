@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import {requiredInput} from '../../../validation'
-import customRequiredInput from '../../atomic/customRequiredInput';
+import {requiredInput} from '../../validation'
+import customRequiredInput from './customRequiredInput';
 
 class FormLogin extends Component {
     render(){

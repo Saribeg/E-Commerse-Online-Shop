@@ -35,21 +35,28 @@ export const CLOSE_MODAL_SUCCESS_ORDER = 'CLOSE_MODAL_SUCCESS_ORDER';
 export const OPEN_MODAL_UNSUCCESS_ORDER = 'OPEN_MODAL_UNSUCCESS_ORDER';
 export const CLOSE_MODAL_UNSUCCESS_ORDER = 'CLOSE_MODAL_UNSUCCESS_ORDER';
 
+export const OPEN_MODAL_FINISH_ORDER_AFTER_LOGIN = 'OPEN_MODAL_FINISH_ORDER_AFTER_LOGIN';
+export const CLOSE_MODAL_FINISH_ORDER_AFTER_LOGIN = 'CLOSE_MODAL_FINISH_ORDER_AFTER_LOGIN';
+
+export const SUCCESSFULL_SEND_ORDER_BY_EMAIL = 'SUCCESSFULL_SEND_ORDER_BY_EMAIL';
+
+export const SET_INVALID_LOGIN = 'SET_INVALID_LOGIN';
+
 export function sendCheckout() {
 
     return dispatch => {
 
         axios.get('/users/checkout')
             .then(() => {
-                    console.log('ISSSS logged');
+                    // console.log('ISSSS logged');
                     dispatch({type: SET_FINISHED_CART});
                     dispatch({type: OPEN_MODAL_SUCCESS_ORDER});
-
 
                 }
             )
             .catch(err => {
-                console.log('ISNTTT logged')
+                // console.log('ISNTTT logged')
+                dispatch({type: OPEN_MODAL_UNSUCCESS_ORDER});
             })
 
     }
@@ -67,44 +74,8 @@ export function updateCartIsFinished(dataCart) {
 
 }
 
-export function sendOrder(dataOrder) {
 
-    let mail = dataOrder.userMail;
-
-    // let textOrder = `<ul class="checkout-product-list">`;
-    //
-    // dataOrder.arrayProduct.forEach((elem) => {
-    //     textOrder += `
-    //                 <li class="checkout-product-item">
-    //                     <img src=${elem.urlPhoto} alt="" class="checkout-product-item-img"/>
-    //                     <div class="checkout-product-item-block">
-    //                         <div class="checkout-product-item-details">
-    //                             <div class="checkout-product-item-description">
-    //                                 <p class="checkout-product-item-model">
-    //                                     ${elem.model}
-    //                                 </p>
-    //                                 <p class="checkout-product-item-color">
-    //                                     Color - ${elem.colorName}
-    //                                 </p>
-    //                                 <p class="checkout-product-item-size">
-    //                                     Size - ${elem.size}
-    //                                 </p>
-    //                             </div>
-    //                         </div>
-    //                         <div class="checkout-product-item-price">
-    //                             <p>${elem.priceFormDB} x ${elem.amount}</p>
-    //                             <p class="checkout-product-item-price-bold">
-    //                                 $${(elem.amount * elem.priceFormDB).toFixed(2)}
-    //                             </p>
-    //                         </div>
-    //
-    //                     </div>
-    //                 </li>
-    //     `
-    // });
-    //
-    // textOrder += `</ul>`
-
+function getListProductInHtml (dataOrder) {
     let textOrder = `<ul style="margin: 5px; border: 1px solid #eee;">`;
 
     dataOrder.arrayProduct.forEach((elem) => {
@@ -137,6 +108,40 @@ export function sendOrder(dataOrder) {
     });
 
     textOrder += `</ul>`;
+
+    return textOrder;
+
+
+
+}
+
+export function sendOrderByEmail(dataOrder) {
+
+    return dispatch => {
+        let mail = dataOrder.userMail;
+
+        let textOrder = getListProductInHtml(dataOrder);
+
+
+        axios.post('/sendOrderByEmail', {mail: mail, textOrder: textOrder})
+            .then(res => res.data)
+            .then(data => {
+                console.log('hi from mail');
+
+                    dispatch({type: CLEAR_CART_ON_LOGOUT});
+                    dispatch({type: SUCCESSFULL_SEND_ORDER_BY_EMAIL});
+                }
+            )
+            .catch(err => console.log(err))
+
+    }
+}
+
+export function sendOrder(dataOrder) {
+
+    let mail = dataOrder.userMail;
+
+    let textOrder = getListProductInHtml(dataOrder);
 
 
     axios.post('/sendOrder', {mail: mail, textOrder: textOrder})

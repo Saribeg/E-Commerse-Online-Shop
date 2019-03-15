@@ -8,6 +8,8 @@ import FormPaymentCheckout from "./FormPaymentCheckout"
 
 import SuccessOrder from "./Modals/SuccessOrder"
 import UnsuccessOrder from "./Modals/UnsuccessOrder"
+import FinishAfterLogin from "./Modals/FinishAfterLogin"
+
 
 
 import {CHANGE_DELIVERY_METHOD} from "../../actions/cart";
@@ -63,6 +65,20 @@ class Checkout extends Component {
         this.setState({
             finishOrder: !value,
         })
+    }
+
+    handleLoginUnsuccessForm = (e) => {
+
+
+        if (e.target.dataset.btn !== 'btn-login-checkout-up-close') {
+            e.stopPropagation();
+        }
+        // if (e.target.dataset.btn === 'btn-login-down-close') {
+        //     this.props.closeLoginForm();
+        //     this.closeModal();
+        //     this.clickOnRegistration();
+        // }
+
     }
 
 
@@ -190,7 +206,16 @@ class Checkout extends Component {
 
                 <SuccessOrder />
 
-                <UnsuccessOrder />
+
+                <div onClick={this.handleLoginUnsuccessForm}>
+                    {this.props.dataBasket.windows.unsuccessOrder && (
+                        <UnsuccessOrder />
+                    )}
+                </div>
+
+                <FinishAfterLogin />
+
+
 
             </section>
 
