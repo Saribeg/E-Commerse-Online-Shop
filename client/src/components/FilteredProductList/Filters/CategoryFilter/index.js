@@ -25,8 +25,8 @@ class CategoryFilter extends Component {
   };
 
   render() {
-    let { category, subCategory, furtherSubCategory } = this.props.urlParams;
-    let { navMenuItems, selectFilters, currentFilters } = this.props;
+    let { category } = this.props.urlParams;
+    let { navMenuItems } = this.props;
 
     let subCategories = navMenuItems.map(cat => {
       if (cat.categoryName === category) {

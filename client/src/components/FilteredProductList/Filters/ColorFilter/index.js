@@ -46,8 +46,6 @@ class ColorFilter extends Component {
     const {
       colorFilters,
       isFilterFetching,
-      selectFilters,
-      currentFilters,
       currentColorName
     } = this.props;
 
