@@ -84,12 +84,9 @@ function updateInDB(id, arr) {
 }
 
 
-function updateIsFinished(id) {
+function updateIsFinished(data) {
 
-
-    updateCartIsFinished({
-        idCartInDB: id
-    });
+    updateCartIsFinished(data);
 }
 
 function cart(state = initialState, action) {
@@ -265,8 +262,11 @@ function cart(state = initialState, action) {
 
             // console.log('SET_FINISHED_CART');
 
+
+            updateIsFinished(state);
+
             // updateIsFinished(state.idCartInDB);
-            sendOrder(state);
+            // sendOrder(state);
 
             // console.log('SET_FINISHED_CART 111');
 

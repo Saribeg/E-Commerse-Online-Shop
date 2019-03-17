@@ -11,6 +11,10 @@ const CartSchema = new Schema({
         type: Boolean,
         required: true
     },
+    orderNo: {
+        type: String,
+        default: '',
+    },
     arrayProduct: [
         {
             id: {
@@ -59,6 +63,10 @@ const CartSchema = new Schema({
             },
         }
     ],
+    date: {
+        type: Date,
+        default: Date.now
+    }
 
 });
 

@@ -8,6 +8,9 @@ const Product = require("../models/Product");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 
+const uniqueRandom = require("unique-random");
+const rand = uniqueRandom(1000000, 9999999);
+
 
 router.post('/checkAvailableItem', (req, res) => {
 
@@ -155,7 +158,6 @@ router.post('/checkAvailableItem', (req, res) => {
             }
 
 
-
         })
         .catch(err => {
             console.log(err);
@@ -178,7 +180,7 @@ router.post('/setSavedCart', (req, res) => {
 
     Cart.deleteOne({idUser: req.body.userId, isFinished: false})
         .then(() => {
-            console.log('after delete')
+            // console.log('after delete')
 
             let dbCart = new Cart(newCart);
 
@@ -284,20 +286,41 @@ router.post('/updateCartIsFinished',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
 
-    // console.log('updateCartIsFinished')
+        // console.log('updateCartIsFinished')
+        let date = new Date();
+        let random = rand();
 
-    Cart.update({_id: req.body.idCartInDB}, {
-        $set: {
-            isFinished: true
-        }
-    }).then(() => {
-        res.json({
-            success: true,
+        console.log(req.body.idCartInDB)
+
+        Cart.update({_id: req.body.idCartInDB}, {
+            $set: {
+                orderNo: random,
+                isFinished: true,
+                date: date
+            }
         })
-    })
-        .catch(err => console.log(err));
+            .then((info) => {
+
+                Cart.findOne({_id: req.body.idCartInDB})
+                    .then((info => {
+                        res.json({
+                            success: true,
+                            orderNo: info.orderNo
+                        })
+                    }))
+                    .catch(() => {
+                        res.json({
+                            success: false
+                        })
+                    })
+            })
+            .catch(err =>
+                res.json({
+                    success: false
+                })
+            );
 
 
-});
+    });
 
 module.exports = router;

@@ -39,6 +39,7 @@ router.post('/sendOrder', (req, res) => {
     readHTMLFile(__dirname + '/../templatesMail/order.html', function (err, html) {
         let template = handlebars.compile(html);
         let replacements = {
+            orderNo: req.body.orderNo,
             orderList: String(req.body.textOrder)
         };
         let htmlToSend = template(replacements);

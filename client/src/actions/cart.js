@@ -42,20 +42,18 @@ export const SUCCESSFULL_SEND_ORDER_BY_EMAIL = 'SUCCESSFULL_SEND_ORDER_BY_EMAIL'
 
 export const SET_INVALID_LOGIN = 'SET_INVALID_LOGIN';
 
+
+//Request from FRONT - is logged or not.
+
 export function sendCheckout() {
 
     return dispatch => {
-
         axios.get('/users/checkout')
             .then(() => {
-                    // console.log('ISSSS logged');
                     dispatch({type: SET_FINISHED_CART});
-                    dispatch({type: OPEN_MODAL_SUCCESS_ORDER});
-
                 }
             )
             .catch(err => {
-                // console.log('ISNTTT logged')
                 dispatch({type: OPEN_MODAL_UNSUCCESS_ORDER});
             })
 
@@ -64,9 +62,17 @@ export function sendCheckout() {
 
 export function updateCartIsFinished(dataCart) {
 
-    axios.post('/updateCartIsFinished', dataCart)
+    let obj = {
+        idCartInDB: dataCart.idCartInDB
+    }
+
+    axios.post('/updateCartIsFinished', obj)
         .then(res => res.data)
         .then(data => {
+                console.log('data.orderNo', data.orderNo)
+                console.log('data', data)
+                sendOrder(dataCart, data.orderNo);
+                store.dispatch({type: OPEN_MODAL_SUCCESS_ORDER});
                 store.dispatch({type: SET_DEFAULT_FINISHED_CART});
             }
         )
@@ -75,7 +81,7 @@ export function updateCartIsFinished(dataCart) {
 }
 
 
-function getListProductInHtml (dataOrder) {
+function getListProductInHtml(dataOrder) {
     let textOrder = `<ul style="margin: 5px; border: 1px solid #eee;">`;
 
     dataOrder.arrayProduct.forEach((elem) => {
@@ -112,7 +118,6 @@ function getListProductInHtml (dataOrder) {
     return textOrder;
 
 
-
 }
 
 export function sendOrderByEmail(dataOrder) {
@@ -126,7 +131,7 @@ export function sendOrderByEmail(dataOrder) {
         axios.post('/sendOrderByEmail', {mail: mail, textOrder: textOrder})
             .then(res => res.data)
             .then(data => {
-                console.log('hi from mail');
+                    console.log('hi from mail');
 
                     dispatch({type: CLEAR_CART_ON_LOGOUT});
                     dispatch({type: SUCCESSFULL_SEND_ORDER_BY_EMAIL});
@@ -137,14 +142,14 @@ export function sendOrderByEmail(dataOrder) {
     }
 }
 
-export function sendOrder(dataOrder) {
+function sendOrder(dataOrder, orderNo) {
 
     let mail = dataOrder.userMail;
 
     let textOrder = getListProductInHtml(dataOrder);
 
 
-    axios.post('/sendOrder', {mail: mail, textOrder: textOrder})
+    axios.post('/sendOrder', {mail: mail, textOrder: textOrder, orderNo: orderNo})
         .then(res => res.data)
         .then(data => {
                 // store.dispatch({type: SET_DEFAULT_FINISHED_CART});
