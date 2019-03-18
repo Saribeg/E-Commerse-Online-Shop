@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {Link, NavLink} from "react-router-dom";
-import "./footer.scss";
 import logo from "../../img/matter-white.svg";
 import axios from "axios";
+import "./footer.scss";
 
 class Footer extends Component {
     state = {
@@ -11,7 +11,6 @@ class Footer extends Component {
 
     componentDidMount() {
         axios.get(`/get-footer`).then(res => {
-            console.log("++++++++++++++++++++++++", res.data);
             this.setState({content: res.data});
         });
     }
@@ -20,7 +19,7 @@ class Footer extends Component {
         const footerContent = this.state.content.map(elem => {
             const linksList = elem.links.map(link => {
                 return (
-                    <ul className="footer-column-list">
+                    <ul className="footer-column-list" >
                         <li key={elem._id} className="footer-column-item">
                             <NavLink
                                 to={link.path}
