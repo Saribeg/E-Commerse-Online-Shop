@@ -4,8 +4,157 @@ const Product = require("../models/Product");
 const Cart = require("../models/Cart");
 const uniqueRandom = require("unique-random");
 const rand = uniqueRandom(0, 999999);
+const multer = require("multer"); // multer for parsing multipart form data (files)
+const fse = require("fs-extra");
 
-// Router for adding products into mongodb
+// Configurations for multer
+const storage = multer.diskStorage({
+  // Destination, where files should be stored (image url)
+  destination: function(req, file, cb) {
+    var newDestination = req.headers.path; // We sen image url in header ("path"), when making axios request
+    fse.mkdirsSync(newDestination); // We creating folder in destination, specified in headers "path"
+    cb(null, newDestination); // Saving file
+  },
+
+  filename: function(req, file, cb) {
+    cb(null, file.originalname); // We accept original file-name
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  // Accept file (only jpeg/jpg/png)
+  if (
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg"
+  ) {
+    cb(null, true);
+  } else {
+    // reject file (if not jpeg/jpg/png)
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 3 // Max size 5MB
+  },
+  fileFilter: fileFilter
+});
+
+// Router for adding products into mongodb from admin panel
+router.post("/products/admin-panel/add-products", (req, res) => {
+  let newProduct = {};
+  newProduct.withdrawnFromSale = req.body.withdrawnFromSale;
+  newProduct.active = req.body.active;
+  newProduct.itemNo = req.body.itemNo;
+  newProduct.category = req.body.category;
+  newProduct.subCategory = req.body.subCategory;
+  if (req.body.furtherSubCategory)
+    newProduct.furtherSubCategory = req.body.furtherSubCategory;
+  newProduct.model = req.body.model
+    .toLowerCase()
+    .trim()
+    .replace(/\s\s+/g, " ");
+  newProduct.currentPrice = Number(req.body.currentPrice);
+  if (req.body.previousPrice)
+    newProduct.previousPrice = Number(req.body.previousPrice);
+
+  newProduct.productUrl = `/${newProduct.category}/${newProduct.subCategory}/${
+    newProduct.furtherSubCategory
+      ? newProduct.furtherSubCategory + "/" + newProduct.itemNo
+      : newProduct.itemNo
+  }`;
+
+  let imageUrlStaticPart = `/img/products/${
+    newProduct.furtherSubCategory
+      ? newProduct.category +
+        "/" +
+        newProduct.subCategory +
+        "/" +
+        newProduct.furtherSubCategory
+      : newProduct.subCategory
+      ? newProduct.category + "/" + newProduct.subCategory
+      : newProduct.category
+  }/${newProduct.itemNo}`;
+
+  let incomingProductFeatures = req.body.productFeatures;
+  let productFeatures = incomingProductFeatures.map(color => {
+    let imageUrls = color.previewImages.map(img => {
+      return `${imageUrlStaticPart}/${color.color.slice(1)}/${img.name}`;
+    });
+
+    let sizes = color.sizes.map(size => {
+      return {
+        size: size.size.value,
+        quantity: size.quantity
+      };
+    });
+
+    return {
+      color: color.color,
+      colorName: color.colorName.value,
+      imageUrls: imageUrls,
+      sizes: sizes
+    };
+  });
+
+  newProduct.productFeatures = JSON.parse(JSON.stringify(productFeatures));
+
+  // Add new product to db
+  const dbProduct = new Product(newProduct);
+
+  Product.findOne({
+    $or: [{ itemNo: req.body.itemNo }, { model: newProduct.model }]
+  }).then(product => {
+    if (product) {
+      res.json({
+        newProduct: newProduct,
+        message:
+          "Product with sent itemNo (productId) or model name is already exists! itemNo and model name should be unique",
+        success: false
+      });
+    } else {
+      dbProduct
+        .save()
+        .then(newProduct =>
+          res.json({
+            newProduct: newProduct,
+            message: "Produc is saved in DB successfully",
+            success: true
+          })
+        )
+        .catch(err =>
+          res.json({
+            error: err,
+            message: "Something wrong with saving product in DB. Check DB.",
+            success: false
+          })
+        );
+    }
+  });
+});
+
+// Router for saving images in destination folder, spesified above in multer configurations
+router.post(
+  "/products/admin-panel/upload-product-images",
+  upload.array("photos"),
+  (req, res) => {
+    if (req.files.length > 0) {
+      res.json({
+        message: "Photos are received"
+      });
+    } else {
+      res.json({
+        message:
+          "Something wrong with receiving photos at server. Please, check the path folder"
+      });
+    }
+  }
+);
+
+// Router for adding products into mongodb from postman
 router.post("/products/add-products", (req, res) => {
   // Our object for adding product to mongo
   const newProduct = {};

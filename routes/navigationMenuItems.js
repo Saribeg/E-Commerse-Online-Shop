@@ -39,8 +39,8 @@ router.post("/navigation-menu/add-list", (req, res) => {
   //             subCategoryUrl: "/women/clothing",
   //             furtherSubCategoryList: [
   //               {
-  //                 furtherSubCategoryName: "outfits",
-  //                 furtherSubCategoryUrl: "/women/clothing/outfits"
+  //                 furtherSubCategoryName: "hoodies",
+  //                 furtherSubCategoryUrl: "/women/clothing/hoodies"
   //               },
   //               {
   //                 furtherSubCategoryName: "tops",
