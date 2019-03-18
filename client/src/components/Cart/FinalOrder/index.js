@@ -24,8 +24,10 @@ class FinalOrder extends Component {
             });
             totalPrice = totalPrice.toFixed(2);
 
-
         }
+
+
+
 
         return (
             <div className="basket-final-order">

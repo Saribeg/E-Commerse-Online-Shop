@@ -38,8 +38,8 @@ class TopBlockAuth extends Component {
     }
 
     handleLoginForm = (e) => {
-        console.log('on click handleLoginForm')
-        console.log('e.target', e.target)
+
+
         if (e.target.dataset.btn !== 'btn-login-up-close') {
             e.stopPropagation();
         }
@@ -138,12 +138,6 @@ class TopBlockAuth extends Component {
                             <img src="/img/shopping-cart-solid.svg" alt="icon basket" className="product-cart-ico"/>
 
                             <p className={isCartNotEmpty}>{this.props.amountCart}</p>
-                        </NavLink>
-                    </div>
-
-                    <div>
-                        <NavLink to="/addCart">
-                            додати товар
                         </NavLink>
                     </div>
 

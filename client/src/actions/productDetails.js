@@ -26,6 +26,7 @@ export const getProductDetails = routeDetails => dispatch => {
                 isAvailable: true,
                 reasonNotAvailable: "",
                 model: result.data[0].model,
+                amount: 1,
                 price: result.data[0].currentPrice,
                 priceFormDB: result.data[0].currentPrice,
             }
