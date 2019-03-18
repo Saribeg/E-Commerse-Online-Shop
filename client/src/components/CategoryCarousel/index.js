@@ -13,13 +13,11 @@ class CategoryCarousel extends Component {
     render() {
         let listCategories = this.props.categoriesList.map(item => {
             return (
-                <div key={item._id}>
                     <NavLink key={item._id} to={item.categoryUrl} className="category-item">
                         <img src={item.categoryImg} alt={item.categoryName} className="category-img"/>
                         <div className="category-name">{item.categoryName}</div>
                         <div className="category-link">shop now</div>
                     </NavLink>
-                </div>
             )
         })
         return (

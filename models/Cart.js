@@ -11,6 +11,10 @@ const CartSchema = new Schema({
         type: Boolean,
         required: true
     },
+    orderNo: {
+        type: String,
+        default: '',
+    },
     arrayProduct: [
         {
             id: {
@@ -25,18 +29,6 @@ const CartSchema = new Schema({
                 type: String,
                 default: ''
             },
-            category: {
-                type: String,
-                required: true
-            },
-            subCategory: {
-                type: String,
-                required: true
-            },
-            furtherSubCategory: {
-                type: String,
-                required: true
-            },
             model: {
                 type: String,
                 required: true
@@ -47,6 +39,10 @@ const CartSchema = new Schema({
             },
             size: {
                 type: String,
+                required: true
+            },
+            availableAmount: {
+                type: Number,
                 required: true
             },
             amount: {
@@ -67,6 +63,10 @@ const CartSchema = new Schema({
             },
         }
     ],
+    date: {
+        type: Date,
+        default: Date.now
+    }
 
 });
 

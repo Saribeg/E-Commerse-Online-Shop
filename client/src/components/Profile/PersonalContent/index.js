@@ -11,11 +11,14 @@ class PersonalContent extends Component {
     handleSubmit = (values) => {
 
         let sendObject = {
-            id: this.props.personalInfo.loggedData.id,
+            id: this.props.personalInfo.loggedData._id,
             firstName: values.firstName,
             secondName: values.secondName,
             email: values.email,
         };
+
+        console.log('===============')
+        console.log('sendObject', sendObject)
 
         this.props.profileChangePersonal(sendObject);
 

@@ -3,8 +3,11 @@ import {
     SET_ID_LOGGED_USER, SET_ID_CART_FROM_DB, SET_DATA_CART_FROM_DB,
     CLEAR_CART_ON_LOGOUT, CART_FROM_LOCALSTORAGE_TO_DB, DELETE_ITEM_TO_CART,
     CHANGE_ARRAY_AMOUT_OF_ITEM, UPDATE_STORE_AFTER_CHECK_IN_DB, CHANGE_CHECK_AMOUT_OF_ITEM,
-    CHANGE_DELIVERY_METHOD,
-    addNewCart, updateCart
+    CHANGE_DELIVERY_METHOD, SET_FINISHED_CART, SET_DEFAULT_FINISHED_CART,
+    addNewCart, updateCart, updateCartIsFinished, sendOrder, CLOSE_MODAL_SUCCESS_ORDER,
+    OPEN_MODAL_SUCCESS_ORDER, CLOSE_MODAL_UNSUCCESS_ORDER, OPEN_MODAL_UNSUCCESS_ORDER,
+    SET_INVALID_LOGIN, SUCCESSFULL_SEND_ORDER_BY_EMAIL, CLOSE_MODAL_FINISH_ORDER_AFTER_LOGIN,
+    OPEN_MODAL_FINISH_ORDER_AFTER_LOGIN
 } from '../../actions/cart'
 
 
@@ -12,9 +15,16 @@ const initialState = {
 
     amountInBasket: 0,
     idUser: '',
+    userMail: '',
     idCartInDB: '',
     arrayProduct: [],
     arrayCheckout: [],
+    windows: {
+        successOrder: false,
+        unsuccessOrder: false,
+        invalidLogin: false,
+        finishAfterLogin: false
+    },
     checkedDelivery: "standart",
     deliveryMethods: [
         {
@@ -41,7 +51,6 @@ function setLocalStorage(arr) {
 }
 
 function countAmount(array) {
-    console.log('call countAmount')
 
     let count = 0;
     if (array) {
@@ -71,9 +80,13 @@ function updateInDB(id, arr) {
         arrayProduct: JSON.stringify(arr)
     };
 
-
     updateCart(sendObj);
+}
 
+
+function updateIsFinished(data) {
+
+    updateCartIsFinished(data);
 }
 
 function cart(state = initialState, action) {
@@ -84,6 +97,7 @@ function cart(state = initialState, action) {
 
             return {
                 ...state,
+                userMail: action.payload.mail,
                 idUser: action.payload.idUser,
             }
 
@@ -91,6 +105,7 @@ function cart(state = initialState, action) {
 
             return {
                 ...state,
+
                 idCartInDB: action.payload.idCartInDB
             }
 
@@ -136,9 +151,15 @@ function cart(state = initialState, action) {
         case CLEAR_CART_ON_LOGOUT:
 
             return {
+                ...state,
                 amountInBasket: 0,
                 idUser: '',
                 idCartInDB: '',
+                userMail: '',
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: false,
+                },
                 arrayProduct: [],
                 arrayCheckout: [],
             }
@@ -175,10 +196,6 @@ function cart(state = initialState, action) {
                 return elem;
             });
 
-
-            // changeArrayAmountProd[action.payload.index].amount = action.payload.value;
-
-
             if (state.idUser) {
                 if (state.idCartInDB) {
                     updateInDB(state.idCartInDB, changeCheckArrayAmountProd);
@@ -193,62 +210,6 @@ function cart(state = initialState, action) {
                 arrayProduct: changeCheckArrayAmountProd,
                 amountInBasket: countAmount(changeCheckArrayAmountProd),
             }
-
-        // case CHANGE_ARRAY_AMOUT_OF_ITEM:
-        //
-        //
-        //     let changeArrayAmountProd = [];
-        //     state.arrayProduct.forEach((elem, index) => {
-        //         changeArrayAmountProd[index] = {...elem}
-        //     });
-        //
-        //     changeArrayAmountProd.forEach((elem, index) => {
-        //         elem.amount = action.payload.obj[index]
-        //     })
-        //
-        //     // changeArrayAmountProd[action.payload.index].amount = action.payload.value;
-        //
-        //
-        //     if (state.idUser) {
-        //         if (state.idCartInDB) {
-        //             updateInDB(state.idCartInDB, changeArrayAmountProd);
-        //         } else {
-        //             saveInDB(state.idUser, changeArrayAmountProd);
-        //         }
-        //     } else {
-        //         setLocalStorage(changeArrayAmountProd);
-        //     }
-        //     return {
-        //         ...state,
-        //         arrayProduct: changeArrayAmountProd,
-        //         amountInBasket: countAmount(changeArrayAmountProd),
-        //     }
-
-
-        // case CHANGE_AMOUT_OF_ITEM:
-        //     let changeAmountProd = [];
-        //     state.arrayProduct.forEach((elem, index) => {
-        //         changeAmountProd[index] = {...elem}
-        //     });
-        //
-        //     changeAmountProd[action.payload.index].amount = action.payload.value;
-        //
-        //     // console.log('changeAmountProd', changeAmountProd)
-        //
-        //     if (state.idUser) {
-        //         if (state.idCartInDB) {
-        //             updateInDB(state.idCartInDB, changeAmountProd);
-        //         } else {
-        //             saveInDB(state.idUser, changeAmountProd);
-        //         }
-        //     } else {
-        //         setLocalStorage(changeAmountProd);
-        //     }
-        //     return {
-        //         ...state,
-        //         arrayProduct: changeAmountProd,
-        //         amountInBasket: countAmount(changeAmountProd),
-        //     }
 
         case SET_CART_FROM_LOCALSTORAGE:
 
@@ -297,10 +258,128 @@ function cart(state = initialState, action) {
                 checkedDelivery: action.payload.method,
             }
 
+        case SET_FINISHED_CART:
+
+            // console.log('SET_FINISHED_CART');
+
+
+            updateIsFinished(state);
+
+            // updateIsFinished(state.idCartInDB);
+            // sendOrder(state);
+
+            // console.log('SET_FINISHED_CART 111');
+
+            return {
+                ...state
+            }
+        case SET_DEFAULT_FINISHED_CART:
+
+            return {
+                ...state,
+                amountInBasket: 0,
+                idCartInDB: '',
+                arrayProduct: [],
+            }
+
+        case OPEN_MODAL_SUCCESS_ORDER:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: true,
+                    unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: false
+                }
+            }
+        case CLOSE_MODAL_SUCCESS_ORDER:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: false
+                }
+            }
+
+        case OPEN_MODAL_UNSUCCESS_ORDER:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: true,
+                    invalidLogin: false,
+                    finishAfterLogin: false
+                }
+            }
+        case CLOSE_MODAL_UNSUCCESS_ORDER:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: false
+                }
+            }
+        case SET_INVALID_LOGIN:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: true,
+                    invalidLogin: true,
+                    finishAfterLogin: false
+                }
+
+            }
+
+        case SUCCESSFULL_SEND_ORDER_BY_EMAIL:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: true,
+                    unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: false
+                }
+            }
+
+        case OPEN_MODAL_FINISH_ORDER_AFTER_LOGIN:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: true
+                }
+            }
+
+        case CLOSE_MODAL_FINISH_ORDER_AFTER_LOGIN:
+
+            return {
+                ...state,
+                windows: {
+                    successOrder: false,
+                    unsuccessOrder: false,
+                    invalidLogin: false,
+                    finishAfterLogin: false
+                }
+            }
+
         default:
             return {...state}
     }
-}
 
+}
 
 export default cart
