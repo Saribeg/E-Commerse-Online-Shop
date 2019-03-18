@@ -2,13 +2,27 @@
 
 .category-filter {
   width: 24%;
+  @include max-width($landscape-tablet){
+    width: 100%;
+  }
 
   &-active {
     margin-bottom: 20px;
 
+    @include max-width($landscape-tablet){
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      z-index: 11;
+      padding: 12px 0;
+    }
+
     .filter-active-title {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       font-family: $font-openSans;
       font-size: 12px;
       letter-spacing: 1px;

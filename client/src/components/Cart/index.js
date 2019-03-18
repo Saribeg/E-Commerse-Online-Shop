@@ -298,26 +298,11 @@ class Cart extends Component {
                     />
                     <div className="basket-item-info">
                         <p className="basket-item-title">{elem.model}</p>
-                        <p>{elem.colorName}</p>
-                        <p>{elem.size}</p>
+                        <p><span className="fw-bold">Color:</span> {elem.colorName}</p>
+                        <p><span className="fw-bold">Size:</span> {elem.size}</p>
                         <p className={classIsAvailable}>
                             In Stock
                         </p>
-                        <div className={classIsNotAvailable}>
-                            <p className='basket-item-notavailable'>
-                                Out Stock
-                            </p>
-                            <p className='basket-item-notavailable'>
-                                {elem.reasonNotAvailable}
-                            </p>
-                            <input type="button" value={`Accept ${elem.availableAmount} items`}
-                                   onClick={() => this.handleChange({
-                                       target: {
-                                           name: keyItem,
-                                           value: elem.availableAmount,
-                                       }
-                                   })}/>
-                        </div>
                     </div>
                     <div className="product-counter">
                         <button className="product-counter-btn" onClick={() => this.minusAmount(keyItem)}>-</button>
@@ -325,7 +310,7 @@ class Cart extends Component {
                                onChange={this.handleChange}/>
                         <button className="product-counter-btn" onClick={() => this.addAmount(keyItem)}>+</button>
                     </div>
-                    <p className="basket-item-title">
+                    <p className="basket-item-title price">
                         <div className={classWasChangedPrice}>
                             <div className='basket-item-old-price'>
                                 {elem.price}
@@ -338,9 +323,17 @@ class Cart extends Component {
                         <div className={classWasntChangedPrice}>
                             {elem.price}
                         </div>
-
-
                     </p>
+                    <div className={classIsNotAvailable}>                         
+                    Out of Stock! {elem.reasonNotAvailable}                           
+                            <input type="button" value={`Accept ${elem.availableAmount} items`}
+                                   onClick={() => this.handleChange({
+                                       target: {
+                                           name: keyItem,
+                                           value: elem.availableAmount,
+                                       }
+                                   })}/>
+                        </div>
                 </li>
             )
 

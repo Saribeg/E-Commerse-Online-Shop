@@ -3,6 +3,10 @@
 .products-carousel {
   margin: 0 auto;
   text-align: center;
+
+  @include max-width($landscape-mobile-big) {
+    display: none;
+  }
 }
 
 .slide.selected {

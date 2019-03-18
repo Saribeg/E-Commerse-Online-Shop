@@ -18,7 +18,7 @@ import {SET_CART_FROM_LOCALSTORAGE} from "../../actions/cart";
 import Search from "../Search";
 import {faCogs} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import "./TopBlockAuth.scss";
+import "./authorization.scss";
 
 class TopBlockAuth extends Component {
     componentDidMount() {
@@ -135,8 +135,7 @@ class TopBlockAuth extends Component {
 
                     <div className="product-cart-ico">
                         <NavLink to="/cart">
-                            <img src="/img/shopping-cart-solid.svg" alt="icon basket" className="product-cart-ico"/>
-
+                            <img src="/img/shopping-cart-solid.svg" alt="icon basket"/>
                             <p className={isCartNotEmpty}>{this.props.amountCart}</p>
                         </NavLink>
                     </div>
