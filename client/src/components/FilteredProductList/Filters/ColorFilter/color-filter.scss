@@ -13,9 +13,13 @@
     flex-wrap: wrap;
 
     &-item {
-      // position: relative;
+      position: relative;
       margin-right: 24px;
       margin-bottom: 14px;
+
+      &:nth-child(5n){
+        margin-right: 0;
+      }
     }
 
     &-link {
@@ -49,10 +53,8 @@
 }
 
 .filter-color-panel-input {
+  position: absolute;
   visibility: hidden;
-  height: 0;
-  width: 0;
-  opacity: 0;
 
   &:checked + .filter-color-panel-link {
     border: 2px solid #000;
@@ -71,6 +73,7 @@
 }
 
 .reset-color-filters {
+  position: relative;
   padding: 7px;
   border-radius: 100px;
   background-color: #33333a;
