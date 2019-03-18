@@ -18,7 +18,7 @@ import "./filters.scss";
 class Filters extends Component {
   // Method for reseting all filters
   filterReset = () => {
-    const { currentFilters, selectSize, selectFilters } = this.props;
+    const { currentFilters, selectFilters } = this.props;
 
     this.props.selectSize(null);
     this.props.selectPrice({ min: 5, max: 1000 });

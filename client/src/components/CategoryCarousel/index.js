@@ -2,9 +2,8 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {getCategoryItem} from "../../actions/categoryCarousel";
 import {NavLink} from "react-router-dom";
-import "./CategoryCarousel.scss";
 import Preloader from "../Preloader";
-
+import "./CategoryCarousel.scss";
 
 class CategoryCarousel extends Component {
     componentDidMount() {
@@ -12,21 +11,14 @@ class CategoryCarousel extends Component {
     }
 
     render() {
-        let categoryItems = 0;
-        let listCategories = this.props.categoriesList.map((item) => {
-            categoryItems++;
-            if (categoryItems < this.props.children){
-                return (
-                    <>
-                        <NavLink key={item._id} to={item.categoryUrl} className="category-item">
-                            <img src={item.categoryImg} alt={item.categoryName} className="category-img"/>
-                            <div className="category-name">{item.categoryName}</div>
-                            <div className="category-link">shop now</div>
-                        </NavLink>
-                    </>
-                )
-            }
-
+        let listCategories = this.props.categoriesList.map(item => {
+            return (
+                    <NavLink key={item._id} to={item.categoryUrl} className="category-item">
+                        <img src={item.categoryImg} alt={item.categoryName} className="category-img"/>
+                        <div className="category-name">{item.categoryName}</div>
+                        <div className="category-link">shop now</div>
+                    </NavLink>
+            )
         })
         return (
             <>

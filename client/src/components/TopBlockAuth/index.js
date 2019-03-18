@@ -13,24 +13,16 @@ import {
     LOGOUT_JWT_CURRENT_USER, unsetLoggedUser, checkLogin, goToProfile
 } from "../../actions/login";
 
-import { SET_CART_FROM_LOCALSTORAGE} from "../../actions/cart";
+import {SET_CART_FROM_LOCALSTORAGE} from "../../actions/cart";
 
-
-
-
-import "./TopBlockAuth.scss";
 import Search from "../Search";
-
 import {faCogs} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import "./TopBlockAuth.scss";
 
 class TopBlockAuth extends Component {
-
-
-    componentDidMount () {
-
+    componentDidMount() {
     }
-
     closeModal = () => {
         this.setState({
             modalFormOpen: false,
@@ -38,15 +30,11 @@ class TopBlockAuth extends Component {
     }
 
     clickOnLogin = () => {
-
         this.props.openLoginForm();
-
     }
-
 
     clickOnRegistration = () => {
         this.props.openRegForm();
-
     }
 
     handleLoginForm = (e) => {
@@ -60,7 +48,6 @@ class TopBlockAuth extends Component {
             this.closeModal();
             this.clickOnRegistration();
         }
-
     }
 
     handleRegistrationForm = (e) => {
@@ -72,26 +59,18 @@ class TopBlockAuth extends Component {
             this.closeModal();
             this.clickOnLogin();
         }
-
     }
 
     handleDropDownProfile = (e) => {
-
-
     }
 
-
     render() {
-
-
         let classDetailLogin = this.props.windowsStatus.loginDetails
             ? null
             : "d-none";
 
         let isLogged = this.props.login.isLogged ? null : "d-none";
-
         let notLogged = !this.props.login.isLogged ? null : "d-none";
-
         let isCartNotEmpty = this.props.amountCart ? 'product-cart-ico-amount' : "d-none";
 
         return (
@@ -99,12 +78,11 @@ class TopBlockAuth extends Component {
                 <Search/>
                 <div className="main-date">
                     <div className={notLogged}>
-                            <input
-                                type="button"
-                                className="header-top-login-btn"
-                                value="Log in"
-                                onClick={() => this.clickOnLogin()}/>
-
+                        <input
+                            type="button"
+                            className="header-top-login-btn"
+                            value="Log in"
+                            onClick={() => this.clickOnLogin()}/>
                     </div>
 
                     <div className={isLogged}>
@@ -171,25 +149,19 @@ class TopBlockAuth extends Component {
                     </div>
                 </div>
 
-                <div id="header-modal-form" >
+                <div id="header-modal-form">
                     <div onClick={this.handleLoginForm}>
                         {this.props.windowsStatus.formLoginOpen && (
-                            <LoginForm />
+                            <LoginForm/>
                         )}
                     </div>
 
                     <div onClick={this.handleRegistrationForm}>
                         {this.props.windowsStatus.formRegisterOpen && (
-                            <RegistrationForm />
+                            <RegistrationForm/>
                         )}
                     </div>
-
-
-
                 </div>
-
-
-
             </div>
         );
     }

@@ -221,7 +221,6 @@ class Cart extends Component {
 
         // console.log('component will update')
         let isUpdate = 0;
-        let block = 0;
         let obj = {};
         nextProps.dataBasket.arrayProduct.forEach((elem, index) => {
 

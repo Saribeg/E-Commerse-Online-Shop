@@ -10,7 +10,7 @@ import SearchDropDownList from "../SearchDropDownList";
 class MainPage extends Component {
   render() {
     return (
-      <div>
+      <>
         <SearchDropDownList />
         <ProductsCarousel />
 
@@ -22,9 +22,9 @@ class MainPage extends Component {
             </div>
           </div>
         </section>
-        <CategoryCarousel children={5} />
+        <CategoryCarousel/>
         <Subscribe />
-      </div>
+      </>
     );
   }
 }
