@@ -42,7 +42,7 @@ class Filters extends Component {
           <div className="filter-active-title">
             <h3>filters</h3>
             <input
-              className="filter-reset"
+              className="reset-color-filters"
               type="button"
               value="reset"
               onClick={this.filterReset}

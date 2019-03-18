@@ -90,12 +90,15 @@ class SizeFilter extends Component {
         {isFilterFetching ? (
           <Preloader />
         ) : (
+          <><p className="filter-title">Size</p>
           <Select
             value={currentSizeOption}
             onChange={this.sizeFilterChange}
             options={relevantSizeOptions}
           />
+           </>
         )}
+       
       </>
     );
   }

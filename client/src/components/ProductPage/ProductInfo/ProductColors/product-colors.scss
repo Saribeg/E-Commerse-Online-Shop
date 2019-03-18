@@ -12,6 +12,10 @@
     box-shadow: 0 0 5px 5px #ccc;
     cursor: pointer;
 
+    &:only-child{
+      margin-right: 0;
+    }
+
     &.active {
       border: 2px solid blue;
       box-shadow: 0 0 2px 2px rgb(83, 83, 134);
