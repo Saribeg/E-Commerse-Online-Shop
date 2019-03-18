@@ -163,12 +163,6 @@ class TopBlockAuth extends Component {
                         </NavLink>
                     </div>
 
-                    <div>
-                        <NavLink to="/addCart">
-                            додати товар
-                        </NavLink>
-                    </div>
-
 
                     <div className={`admin-dashboard ${isLogged}`}>
                         <NavLink className="admin-dashboard-link" to="/admin/dashboard">

@@ -54,8 +54,10 @@ router.post('/sendOrder', (req, res) => {
         transporter.sendMail(mailOptions, function (err, info) {
             if (err)
                 console.log(err);
-            else
-                console.log(info);
+            else {
+                // console.log(info);
+            }
+
         });
 
 
@@ -68,8 +70,9 @@ router.post('/sendOrder', (req, res) => {
         transporter.sendMail(mailOptionsManager, function (err, info) {
             if (err)
                 console.log(err);
-            else
-                console.log(info);
+            else {
+                // console.log(info);
+            }
         });
 
     });

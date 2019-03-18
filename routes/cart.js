@@ -234,6 +234,35 @@ router.post('/getCart', (req, res) => {
 
 });
 
+router.post('/getOrders', (req, res) => {
+
+    Cart.find({idUser: req.body.idUser, isFinished: true})
+        .then(info => {
+            if (info) {
+
+                res.json({
+                    success: true,
+                    data: info,
+                });
+            } else {
+                res.json({
+                    success: false,
+                    // infoDB: JSON.stringify({}),
+                });
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+            res.json({
+                success: false,
+                // infoDB: JSON.stringify({}),
+            });
+
+        });
+
+});
+
 router.post('/addCart', (req, res) => {
 
     let newCart = {

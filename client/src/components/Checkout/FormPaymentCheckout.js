@@ -56,7 +56,7 @@ class FormPaymentCheckout extends Component {
                 />
 
 
-                <button name='checkoutPaymentSbm' disabled={invalid || pristine || submitting} type="submit" className='checkout-next-btn' label="submit">Finish checkout</button>
+                {/*<button name='checkoutPaymentSbm' disabled={invalid || pristine || submitting} type="submit" className='checkout-next-btn' label="submit">Finish checkout</button>*/}
             </form>
         );
     }

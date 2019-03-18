@@ -43,6 +43,7 @@ export const SUCCESSFULL_SEND_ORDER_BY_EMAIL = 'SUCCESSFULL_SEND_ORDER_BY_EMAIL'
 export const SET_INVALID_LOGIN = 'SET_INVALID_LOGIN';
 
 
+
 //Request from FRONT - is logged or not.
 
 export function sendCheckout() {
@@ -69,8 +70,8 @@ export function updateCartIsFinished(dataCart) {
     axios.post('/updateCartIsFinished', obj)
         .then(res => res.data)
         .then(data => {
-                console.log('data.orderNo', data.orderNo)
-                console.log('data', data)
+                // console.log('data.orderNo', data.orderNo)
+                // console.log('data', data)
                 sendOrder(dataCart, data.orderNo);
                 store.dispatch({type: OPEN_MODAL_SUCCESS_ORDER});
                 store.dispatch({type: SET_DEFAULT_FINISHED_CART});
