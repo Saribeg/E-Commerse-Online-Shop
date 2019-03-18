@@ -41,6 +41,7 @@ export default class Careers extends React.Component<Props, State> {
         <Helmet>
           <title>{this.state.pageTitle}</title>
         </Helmet>
+        <div className="container">
         <h2 className="sub-page-title">{this.state.pageTitle}</h2>
         <h3 className="sub-page-sub-title">
           There are several options to suggest
@@ -49,6 +50,7 @@ export default class Careers extends React.Component<Props, State> {
         <p className="job-offer-feedback">
           If you are interested, please send your resume: matter-style@mail.com
         </p>
+        </div>
       </>
     );
   }
