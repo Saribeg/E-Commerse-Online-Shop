@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .checkout {
+        width: 60%;
+    }
+
+    .checkout-d-flex-row {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+     }
+
+    .checkout-product-list {
+         margin: 5px;
+         border: 1px solid #eee;
+     }
+
+    .checkout-product-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .checkout-product-item-img {
+         height: 100px;
+         width: 70px;
+         margin: 10px 20px;
+     }
+
+    .checkout-product-item-block {
+         width: calc(100% - 110px);
+
+     }
+
+
+    .checkout-product-item-model {
+         font-weight: 600;
+         font-size: 20px;
+         margin-bottom: 10px;
+         margin-top: 15px;
+     }
+
+    .checkout-product-item-color {
+         text-transform: uppercase;
+         margin-bottom: 10px;
+     }
+
+    .checkout-product-item-size {
+         text-transform: uppercase;
+         margin-bottom: 20px;
+     }
+
+    .checkout-product-item-price {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+         align-items: center;
+         border-top: 1px solid #eee;
+         margin-right: 30px;
+         padding-top: 10px;
+         padding-bottom: 10px;
+
+    .checkout-product-item-bold {
+         font-weight: 600;
+     }
+
+
+
+    .checkout-delivery-method {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 2px solid #cccccc;
+        border-radius: 3px;
+    }
+
+    .checkout-delivery-method-title {
+         color: #ff6008;
+     //margin-bottom: 15px;
+     }
+
+
+</style>
+
+<body>
+your order # {{orderNo}}
+
+{{{orderList}}}
+
+</body>
+</html>

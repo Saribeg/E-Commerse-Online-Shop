@@ -6,14 +6,15 @@ import {connect} from "react-redux";
 import {selectFilters} from "../../actions/filterActions";
 import "./breadcrumbs.scss"
 
- type Props = {
+type
+Props = {
     categoryAway: Object,
-    navMenuItems: Array<Object>,
+    navMenuItems: Array < Object >,
     selectFilters: Object,
     currentFilters: Object,
-    modelName: string, 
+    modelName: string,
     activeColor: string
-} 
+}
 
 class BreadCrumbs extends React.Component<Props> {
     changeCategoryFilters = (
@@ -33,70 +34,56 @@ class BreadCrumbs extends React.Component<Props> {
         });
     };
 
-    
-
     render() {
         let {category, subCategory, furtherSubCategory} = this.props.categoryAway;
         let {navMenuItems} = this.props;
 
-        let mainCategory = navMenuItems.map(cat => {
-            if (cat.categoryName === category) {
-                return (<>
-                        {
-                            cat.categoryName ?
-                                <li key={cat._id}><NavLink
-                                    to={cat.categoryUrl}
-                                    className="breadcrumbs-link"
-                                    onClick={() => this.changeCategoryFilters(cat.categoryName)}
-                                >
-                                    {cat.categoryName}
-                                </NavLink></li> : null}
-                    </>
-                );
-
-            }
-        });
 
         let subCategories = navMenuItems.map(cat => {
             if (cat.categoryName === category) {
                 return cat.subCategoryList.map(subCat => {
                         if (subCat.subCategoryName === subCategory) {
                             let furtherSubCatList = subCat.furtherSubCategoryList.map(furtherSubCat => {
-                                    if (furtherSubCat.furtherSubCategoryName === furtherSubCategory) {
-                                        return (
-                                            <>{
-                                                furtherSubCat.furtherSubCategoryName ?
+                                    if (furtherSubCategory != null || furtherSubCategory != undefined) {
+                                        if (furtherSubCat.furtherSubCategoryName === furtherSubCategory) {
+                                            return (
+                                                <li key={furtherSubCat._id}>
                                                     <NavLink to={furtherSubCat.furtherSubCategoryUrl}
-                                                                 onClick={() =>
-                                                                     this.changeCategoryFilters(
-                                                                         cat.categoryName,
-                                                                         subCat.subCategoryName,
-                                                                         furtherSubCat.furtherSubCategoryName
-                                                                     )
-                                                                 }
-                                                                 className="breadcrumbs-link">{furtherSubCat.furtherSubCategoryName}</NavLink>
-                                                     : null}
-                                            </>
-                                        )
+                                                             onClick={() =>
+                                                                 this.changeCategoryFilters(
+                                                                     cat.categoryName,
+                                                                     subCat.subCategoryName,
+                                                                     furtherSubCat.furtherSubCategoryName
+                                                                 )
+                                                             }
+                                                             className="breadcrumbs-link">{furtherSubCat.furtherSubCategoryName}
+                                                    </NavLink>
+                                                </li>
+                                            )
+                                        } else {
+                                            return null;
+                                        }
+                                    } else {
+                                        return null;
                                     }
                                 }
                             );
-
                             return (<>
-                                    {
-                                        subCat.subCategoryName ?
-                                            <li>
-                                                <NavLink to={subCat.subCategoryUrl}
-                                                         onClick={() =>
-                                                             this.changeCategoryFilters(
-                                                                 cat.categoryName,
-                                                                 subCat.subCategoryName
-                                                             )
-                                                         }
-                                                         className="breadcrumbs-link">{subCat.subCategoryName}</NavLink>
-                                            </li> : null}
-                                    <li>{furtherSubCatList}</li>
+
+                                    <li key={subCat._id}>
+                                        <NavLink to={subCat.subCategoryUrl}
+                                                 onClick={() =>
+                                                     this.changeCategoryFilters(
+                                                         cat.categoryName,
+                                                         subCat.subCategoryName
+                                                     )
+                                                 }
+                                                 className="breadcrumbs-link">{subCat.subCategoryName}
+                                        </NavLink>
+                                    </li>
+                                    {furtherSubCatList}
                                 </>
+
                             )
                         }
                     }
@@ -105,28 +92,37 @@ class BreadCrumbs extends React.Component<Props> {
             return null;
         });
 
+        let mainCategory = navMenuItems.map(cat => {
+            if (cat.categoryName === category) {
+                return (
+                    <li key={cat._id}>
+                        <NavLink
+                            to={cat.categoryUrl}
+                            className="breadcrumbs-link"
+                            onClick={() => this.changeCategoryFilters(cat.categoryName)}>
+                            {cat.categoryName}
+                        </NavLink>
+                    </li>
+                );
+            }
+        });
 
-        return (<>
-                <section className="breadcrumbs-section">
-                    <div className="container">
-                        <ul className="breadcrumbs-list">
-                            <li><NavLink to="/" className="breadcrumbs-link">Home</NavLink></li>
-
-                            {mainCategory}
-                            {subCategories}
-
-                            {this.props.modelName ?
-                                <li><NavLink to="/"
-                                             className="breadcrumbs-link">{this.props.modelName} ({this.props.activeColor})</NavLink>
-                                </li>
-                                : null
-                            }
-                        </ul>
-                    </div>
-
-                </section>
-
-            </>
+        return (
+            <section className="breadcrumbs-section">
+                <div className="container">
+                    <ul className="breadcrumbs-list">
+                        <li><NavLink to="/" className="breadcrumbs-link">Home</NavLink></li>
+                        {mainCategory}
+                        {subCategories}
+                        {this.props.modelName ?
+                            <li key={this.props.itemNo}><NavLink to="/"
+                                                                 className="breadcrumbs-link">{this.props.modelName} ({this.props.activeColor})</NavLink>
+                            </li>
+                            : null
+                        }
+                    </ul>
+                </div>
+            </section>
         )
     }
 }
@@ -137,7 +133,6 @@ const mapStateToProps = state => {
         currentFilters: state.filters.selected
     };
 };
-
 
 export default connect(
     mapStateToProps,
