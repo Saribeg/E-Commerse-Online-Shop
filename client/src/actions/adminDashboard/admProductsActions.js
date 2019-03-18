@@ -20,6 +20,9 @@ export const RESET_MODAL_STATUS = "RESET_MODAL_STATUS";
 export const RESET_PRODUCT_FORM = "RESET_PRODUCT_FORM";
 export const SET_ERROR_MSG = "SET_ERROR_MSG";
 export const GENERATE_NEW_ITEM_NO = "GENERATE_NEW_ITEM_NO";
+export const COLOR_COLLECTION_UPDATE_MESSAGE =
+  "COLOR_COLLECTION_UPDATE_MESSAGE";
+export const SIZE_COLLECTION_UPDATE_MESSAGE = "SIZE_COLLECTION_UPDATE_MESSAGE";
 
 export const FETCH_NEW_PRODUCT_REQUESTED = "FETCH_NEW_PRODUCT_REQUESTED";
 export const FETCH_NEW_PRODUCT_SUCCEEDED = "FETCH_NEW_PRODUCT_SUCCEEDED";
@@ -245,13 +248,26 @@ export const getPreviousPrice = (
 export const getProductFeatures = () => dispatch => {
   axios.all([axios.get("/filters/colors"), axios.get("/filters/sizes")]).then(
     axios.spread((colors, sizes) => {
-      let colorNameOptions = colors.data.map(color => {
+      // Get colors and create options for Select
+      let productColors = colors.data.map(color => {
         return {
           value: color.colorName,
           label: color.colorName
         };
       });
 
+      // Sort color values by alphabet
+      let colorNameOptions = productColors.sort((a, b) => {
+        if (a.value < b.value) {
+          return -1;
+        }
+        if (a.value > b.value) {
+          return 1;
+        }
+        return 0;
+      });
+
+      // Get cssHexCodes for showing colors in interface (not only words)
       let colorStyles = colors.data.map(color => {
         return {
           cssHexCode: color.cssHexCode,
@@ -259,11 +275,21 @@ export const getProductFeatures = () => dispatch => {
         };
       });
 
-      let sizeOptions = sizes.data.map(size => {
+      let productSizes = sizes.data.map(size => {
         return {
           value: size.value,
           label: size.value
         };
+      });
+
+      let sizeOptions = productSizes.sort((a, b) => {
+        if (a.value < b.value) {
+          return 1;
+        }
+        if (a.value > b.value) {
+          return -1;
+        }
+        return 0;
       });
 
       dispatch({
@@ -729,7 +755,9 @@ export const resetForm = state => dispatch => {
     },
     fetchingNewProduct: false,
     productMessage: "",
-    photosMessage: ""
+    photosMessage: "",
+    colorCollectionUpdateMessage: "",
+    sizeCollectionUpdateMessage: ""
   };
 
   let newState = JSON.parse(JSON.stringify(initialState));
@@ -815,7 +843,7 @@ function hasDublicates(arrayOfObjects, propName, subPropName) {
     let arrayOfProperties = arrayOfObjects.map(item => {
       return item[subPropName];
     });
-    console.log(arrayOfProperties);
+
     let isDublicate = arrayOfProperties.some((item, i, arr) => {
       return arr.indexOf(item) !== i;
     });
@@ -1013,6 +1041,62 @@ export const sendNewProductToServer = (
                   type: FETCH_NEW_PRODUCT_PHOTOS_FAILED,
                   payload:
                     "Something wrong with receiving photos at server. Please, check the path folder"
+                });
+              });
+          }
+
+          // Updating information about products in color collection
+          let newProductColors = newProduct.productFeatures.map(color => {
+            return {
+              cssHexCode: color.color,
+              colorName: color.colorName.value
+            };
+          });
+
+          for (let color of newProductColors) {
+            axios
+              .post("/filters/colors/add-color", color)
+              .then(updatedColor => {
+                dispatch({
+                  type: COLOR_COLLECTION_UPDATE_MESSAGE,
+                  payload:
+                    "Collor collection is successfully updated by information about new product"
+                });
+              })
+              .catch(err => {
+                dispatch({
+                  type: COLOR_COLLECTION_UPDATE_MESSAGE,
+                  payload:
+                    "Something wrong with updating collor collection by information about new product"
+                });
+              });
+          }
+
+          // Updating information about products in size collection
+          let nonUniqueSizes = [];
+          newProduct.productFeatures.forEach(color => {
+            color.sizes.forEach(size => {
+              nonUniqueSizes.push(size.size.value);
+            });
+          });
+
+          let newProductUniqueSizes = [...new Set(nonUniqueSizes)];
+
+          for (let size of newProductUniqueSizes) {
+            axios
+              .post("/filters/sizes/add-size", { value: size })
+              .then(updatedSize => {
+                dispatch({
+                  type: SIZE_COLLECTION_UPDATE_MESSAGE,
+                  payload:
+                    "Size collection is successfully updated by information about new product"
+                });
+              })
+              .catch(err => {
+                dispatch({
+                  type: SIZE_COLLECTION_UPDATE_MESSAGE,
+                  payload:
+                    "Something wrong with updating size collection by information about new product"
                 });
               });
           }
