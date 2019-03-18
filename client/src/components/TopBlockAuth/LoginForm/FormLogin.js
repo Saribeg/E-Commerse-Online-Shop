@@ -10,7 +10,7 @@ class FormLogin extends Component {
             <form onSubmit={handleSubmit} className='login-menu_form' >
 
                 <div className='field-wrapper' >
-                    <p className='login-form-input-title'>First name</p>
+                    <p className='login-form-input-title'>E-mail</p>
                     <Field name="email" component={customRequiredInput}
                            className='login-form-input'
                            classError='input-error-message'

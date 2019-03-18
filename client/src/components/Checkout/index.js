@@ -6,14 +6,24 @@ import PlaceOrder from "./PlaceOrder"
 import FormDeliveryCheckout from "./FormDeliveryCheckout"
 import FormPaymentCheckout from "./FormPaymentCheckout"
 
+import SuccessOrder from "./Modals/SuccessOrder"
+import UnsuccessOrder from "./Modals/UnsuccessOrder"
+import FinishAfterLogin from "./Modals/FinishAfterLogin"
+
+
+
+import {CHANGE_DELIVERY_METHOD} from "../../actions/cart";
+
+
+
 import './Checkout.scss'
-import {DELETE_ITEM_TO_CART, CHANGE_DELIVERY_METHOD} from "../../actions/cart";
 
 class Checkout extends Component {
 
     state = {
         showDelivery: false,
-        showPayment: false
+        showPayment: false,
+        finishOrder: false
     }
 
     clickShowDelivery = () => {
@@ -41,18 +51,33 @@ class Checkout extends Component {
 
     handlePaymentSubmit = (values) => {
 
-        // let sendObject = {
-        //     country: values.country,
-        //     zipcode: values.zipcode,
-        //     city: values.city,
-        //     street: values.street,
-        //     phone: values.phone
-        // };
-        // this.props.profileChangePersonal(sendObject);
 
-        // this.setState({
-        //     showPayment: true,
-        // })
+
+        this.setState({
+            finishOrder: true,
+        })
+
+    }
+
+    checkCorrectPayment = (value) => {
+
+        // console.log('CALL checkCorrectPayment', value)
+        this.setState({
+            finishOrder: !value,
+        })
+    }
+
+    handleLoginUnsuccessForm = (e) => {
+
+
+        if (e.target.dataset.btn !== 'btn-login-checkout-up-close') {
+            e.stopPropagation();
+        }
+        // if (e.target.dataset.btn === 'btn-login-down-close') {
+        //     this.props.closeLoginForm();
+        //     this.closeModal();
+        //     this.clickOnRegistration();
+        // }
 
     }
 
@@ -173,11 +198,23 @@ class Checkout extends Component {
                             Please enter your payment information
                         </p>
 
-                        <FormPaymentCheckout onSubmit={this.handlePaymentSubmit}/>
+                        <FormPaymentCheckout checkCorrectPayment={this.checkCorrectPayment} onSubmit={this.handlePaymentSubmit}/>
                     </div>
                 </div>
 
-                <PlaceOrder/>
+                <PlaceOrder enableBtn={this.state.finishOrder}/>
+
+                <SuccessOrder />
+
+
+                <div onClick={this.handleLoginUnsuccessForm}>
+                    {this.props.dataBasket.windows.unsuccessOrder && (
+                        <UnsuccessOrder />
+                    )}
+                </div>
+
+                <FinishAfterLogin />
+
 
 
             </section>

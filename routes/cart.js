@@ -5,6 +5,12 @@ const Cart = require("../models/Cart");
 
 const Product = require("../models/Product");
 
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
+
+const uniqueRandom = require("unique-random");
+const rand = uniqueRandom(1000000, 9999999);
+
 
 router.post('/checkAvailableItem', (req, res) => {
 
@@ -25,8 +31,6 @@ router.post('/checkAvailableItem', (req, res) => {
         checkArr.push(elem);
     });
 
-    // console.log("checkArr", checkArrIndex);
-
 
     let arrMessage = [
         "This product is withdrawn from sale",
@@ -35,16 +39,6 @@ router.post('/checkAvailableItem', (req, res) => {
         "You can order only this amount of items - "
     ]
 
-    // console.log('req.body', req.body);
-
-    // let elem = req.body.itemData;
-
-
-    // readyArr = checkArr.map( (elem, index) => {
-
-    // console.log('check product ', index)
-
-    // Product.findOne({_id: elem.id})
     Product.find({_id: {$in: checkArrIndex}})
         .then(info => {
 
@@ -58,21 +52,15 @@ router.post('/checkAvailableItem', (req, res) => {
 
                 let interArray = [];
 
-                // console.log('info.length', info.length);
-
-                // console.log('info', info)
 
                 //if in an array from client and an array from DB different amount of items then have to deal this case
                 //and save array correct indexes in interArray
                 let j = 0;
                 for (let i = 0; i < checkArr.length; i++) {
 
-                    // console.log('info[j]._id', info[j]._id);
-                    // console.log(checkArrIndex.indexOf(String(info[j]._id) ))
 
                     j = indexInfo.indexOf(checkArr[i].id);
 
-                    // if (checkArr[i].id == info[j]._id) {
                     if (j >= 0) {
                         if (info[j].withdrawnFromSale === true) {
 
@@ -125,7 +113,8 @@ router.post('/checkAvailableItem', (req, res) => {
                                     // console.log('update 5')
                                     isUpdated = 1;
                                     checkArr[i].isAvailable = false;
-                                    checkArr[i].reasonNotAvailable = arrMessage[3] + sizeAvailable
+                                    checkArr[i].reasonNotAvailable = arrMessage[3] + sizeAvailable;
+                                    checkArr[i].availableAmount = sizeAvailable;
                                 }
                             } else {
                                 if (checkArr[i].isAvailable === false) {
@@ -166,12 +155,7 @@ router.post('/checkAvailableItem', (req, res) => {
 
                 // console.log('interArray', interArray);
 
-
-
             }
-
-
-
 
 
         })
@@ -180,10 +164,6 @@ router.post('/checkAvailableItem', (req, res) => {
 
 
         });
-
-
-    // });
-
 
 });
 
@@ -200,7 +180,7 @@ router.post('/setSavedCart', (req, res) => {
 
     Cart.deleteOne({idUser: req.body.userId, isFinished: false})
         .then(() => {
-            console.log('after delete')
+            // console.log('after delete')
 
             let dbCart = new Cart(newCart);
 
@@ -229,9 +209,11 @@ router.post('/setSavedCart', (req, res) => {
 
 router.post('/getCart', (req, res) => {
 
+
     Cart.findOne({idUser: req.body.idUser, isFinished: false})
         .then(info => {
             if (info) {
+
                 res.json({
                     success: true,
                     infoDB: JSON.stringify(info),
@@ -247,6 +229,35 @@ router.post('/getCart', (req, res) => {
         .catch(err => {
             console.log(err);
 
+
+        });
+
+});
+
+router.post('/getOrders', (req, res) => {
+
+    Cart.find({idUser: req.body.idUser, isFinished: true})
+        .then(info => {
+            if (info) {
+
+                res.json({
+                    success: true,
+                    data: info,
+                });
+            } else {
+                res.json({
+                    success: false,
+                    // infoDB: JSON.stringify({}),
+                });
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+            res.json({
+                success: false,
+                // infoDB: JSON.stringify({}),
+            });
 
         });
 
@@ -299,5 +310,46 @@ router.post('/updateCart', (req, res) => {
 
 
 });
+
+router.post('/updateCartIsFinished',
+    passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+
+        // console.log('updateCartIsFinished')
+        let date = new Date();
+        let random = rand();
+
+        console.log(req.body.idCartInDB)
+
+        Cart.update({_id: req.body.idCartInDB}, {
+            $set: {
+                orderNo: random,
+                isFinished: true,
+                date: date
+            }
+        })
+            .then((info) => {
+
+                Cart.findOne({_id: req.body.idCartInDB})
+                    .then((info => {
+                        res.json({
+                            success: true,
+                            orderNo: info.orderNo
+                        })
+                    }))
+                    .catch(() => {
+                        res.json({
+                            success: false
+                        })
+                    })
+            })
+            .catch(err =>
+                res.json({
+                    success: false
+                })
+            );
+
+
+    });
 
 module.exports = router;

@@ -102,11 +102,20 @@ router.get(
     }
 );
 
+router.get(
+    "/checkout",
+    passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+
+        res.send(req.user);
+    }
+);
+
 
 router.post("/update-profile/personal-info", (req, res) => {
 
-    console.log('update BACK')
 
+    console.log('update-profile/personal-info')
     // const {errors, isValid} = validateRegisterInput(req.body);
 
     // Check validation
@@ -119,12 +128,38 @@ router.post("/update-profile/personal-info", (req, res) => {
     // Check if the email already exist
     User.findOne({email: req.body.email}).then(user => {
         if (user) {
+
+            console.log('update-profile/personal-info EXIST')
             // Email can be exist but its owner is current user
             if (req.body.id != user._id) {
                 res.json({status: 'exist-email', data: {}});
+            } else {
+
+                User.update({_id: req.body.id}, {
+                    $set: {
+                        firstName: req.body.firstName,
+                        secondName: req.body.secondName,
+                        email: req.body.email,
+                    }
+                })
+                    .then(() => {
+
+                            //we will send updated user to FRONT after updating
+                            User.findOne({_id: req.body.id})
+                                .then(user => {
+                                    res.json({status: 'success', userinfo: user})
+                                })
+                        }
+                    )
+                    .catch(err => console.log(err));
+
             }
 
         } else {
+
+            console.log('update-profile/personal-info NOT EXIST')
+            console.log('req.body.id', req.body)
+
 
             // updating only three fields in the object in database
             User.update({_id: req.body.id}, {
