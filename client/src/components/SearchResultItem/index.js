@@ -57,7 +57,11 @@ class SearchResultItem extends Component {
 
       let categoryMatched = categoryParts.map((part, index) => {
         const className = part.highlight ? "match" : null;
-        return <span className={className}>{part.text}</span>;
+        return (
+          <span className={className} key={index}>
+            {part.text}
+          </span>
+        );
       });
 
       // Rendering sub-category matches
@@ -72,7 +76,11 @@ class SearchResultItem extends Component {
 
       let subCategoryMatched = subCategoryParts.map((part, index) => {
         const className = part.highlight ? "match" : null;
-        return <span className={className}>{part.text}</span>;
+        return (
+          <span className={className} key={index}>
+            {part.text}
+          </span>
+        );
       });
 
       // Rendering further sub-category matches
@@ -88,7 +96,11 @@ class SearchResultItem extends Component {
       let furtherSubCategoryMatched = furtherSubCategoryParts.map(
         (part, index) => {
           const className = part.highlight ? "match" : "unmatched-text";
-          return <span className={className}>{part.text}</span>;
+          return (
+            <span className={className} key={index}>
+              {part.text}
+            </span>
+          );
         }
       );
 
@@ -105,7 +117,11 @@ class SearchResultItem extends Component {
 
       let modelMatched = modelParts.map((part, index) => {
         const className = part.highlight ? "match" : "unmatched-text";
-        return <span className={className}>{part.text}</span>;
+        return (
+          <span className={className} key={index}>
+            {part.text}
+          </span>
+        );
       });
 
       // Rendering itemNo matches
@@ -120,7 +136,11 @@ class SearchResultItem extends Component {
 
       let itemNoMatched = itemNoParts.map((part, index) => {
         const className = part.highlight ? "match" : "unmatched-text";
-        return <span className={className}>{part.text}</span>;
+        return (
+          <span className={className} key={index}>
+            {part.text}
+          </span>
+        );
       });
 
       // Rendering size matches
@@ -135,7 +155,11 @@ class SearchResultItem extends Component {
 
       let sizeMatched = sizeParts.map((part, index) => {
         const className = part.highlight ? "match" : "unmatched-text";
-        return <span className={className}>{part.text}</span>;
+        return (
+          <span className={className} key={index}>
+            {part.text}
+          </span>
+        );
       });
 
       return (

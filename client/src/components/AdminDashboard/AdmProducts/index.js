@@ -243,7 +243,7 @@ class AdmProducts extends Component {
               onClick={e =>
                 deleteDropzoneImage(e, productFeatures, colorIndex, validation)
               }
-              accept={['image/png"', "image/jpg", "image/jpeg"]}
+              accept={["image/png", "image/jpg", "image/jpeg"]}
               className="image-dropzone"
               activeClassName="image-dropzone-active"
               acceptClassName="image-dropzone-accepted"
