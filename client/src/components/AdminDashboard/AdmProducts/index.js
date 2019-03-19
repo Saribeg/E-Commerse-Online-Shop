@@ -88,7 +88,9 @@ class AdmProducts extends Component {
       fetchingNewProduct,
       productMessage,
       photosMessage,
-      itemNo
+      itemNo,
+      colorCollectionUpdateMessage,
+      sizeCollectionUpdateMessage
     } = this.props;
 
     //Options for category input-select (men / women)
@@ -241,7 +243,7 @@ class AdmProducts extends Component {
               onClick={e =>
                 deleteDropzoneImage(e, productFeatures, colorIndex, validation)
               }
-              accept={['image/png"', "image/jpg", "image/jpeg"]}
+              accept={["image/png", "image/jpg", "image/jpeg"]}
               className="image-dropzone"
               activeClassName="image-dropzone-active"
               acceptClassName="image-dropzone-accepted"
@@ -525,6 +527,18 @@ class AdmProducts extends Component {
           {photosMessage ? (
             <div className="server-message-images"> {photosMessage}</div>
           ) : null}
+          {colorCollectionUpdateMessage ? (
+            <div className="server-message-images">
+              {" "}
+              {colorCollectionUpdateMessage}
+            </div>
+          ) : null}
+          {sizeCollectionUpdateMessage ? (
+            <div className="server-message-images">
+              {" "}
+              {sizeCollectionUpdateMessage}
+            </div>
+          ) : null}
         </div>
       </>
     );
@@ -554,7 +568,10 @@ const mapStateToProps = state => {
     validation: state.admProducts.validation,
     fetchingNewProduct: state.admProducts.fetchingNewProduct,
     productMessage: state.admProducts.productMessage,
-    photosMessage: state.admProducts.photosMessage
+    photosMessage: state.admProducts.photosMessage,
+    colorCollectionUpdateMessage:
+      state.admProducts.colorCollectionUpdateMessage,
+    sizeCollectionUpdateMessage: state.admProducts.sizeCollectionUpdateMessage
   };
 };
 

@@ -32,8 +32,8 @@ export default class OurPolicy extends React.Component<Props, State> {
     const content = this.state.content;
     let pageContent = content.map(elem => {
       return (
-        <li className="list__item">
-          <span class="list__item-bold">{elem.title}</span>
+        <li className="list-item">
+          <span class="list-item-bold">{elem.title}</span>
           {elem.content}
         </li>
       );
