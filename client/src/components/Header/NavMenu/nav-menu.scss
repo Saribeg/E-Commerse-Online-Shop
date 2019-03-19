@@ -1,25 +1,27 @@
 @import "../../../scss/resources/resources.scss";
 
-.main-menu-list {
-  display: flex;
+.main-menu {
 
-  @include max-width(992px) {
+  &-list {
     display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: #ccc;
+    @include max-width($landscape-tablet) { 
+      justify-content: space-between;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: $grey-bg;
+    }
   }
+ 
 
-  .main-menu-item {
+  &-item {
     margin-right: 54px;
     position: relative;
 
     @include max-width(992px) {
       margin-right: 0;
-      width: calc(100% / 3);
+      width: calc(100% / 2);
       text-align: center;
     }
 
@@ -37,25 +39,21 @@
       }
     }
   }
-}
 
-.main-menu-list .main-menu-item .main-menu-link {
-  font-family: "OpenSans", sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  color: #33333a;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-
-  &:hover {
-    color: #ff6008;
-  }
-}
-
-@media (max-width: 992px) {
-  .main-menu-list .main-menu-item .main-menu-link {
-    display: block;
-    padding: 15px 20px;
+  &-link {
+    font-family: "OpenSans", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #33333a;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    @include max-width($landscape-tablet){
+      display: block;
+      padding: 15px 20px;
+    }
+    &:hover {
+      color: #ff6008;
+    }
   }
 }
 
@@ -63,7 +61,6 @@
   width: 16px;
   height: 16px;
 }
-
 
 .sub-menu-wrapper {
   background-color: #fff;

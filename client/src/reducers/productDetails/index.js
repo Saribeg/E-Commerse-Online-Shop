@@ -21,6 +21,10 @@ function productDetails(state = initialState, action) {
         ...state,
         productOpened: action.payload
       };
+    case FETCH_PRODUCT_DETAIL_FAIL:
+      return {
+        ...state
+      };
     default:
       return { ...state };
   }

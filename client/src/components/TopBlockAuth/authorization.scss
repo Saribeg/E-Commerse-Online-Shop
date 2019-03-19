@@ -86,13 +86,13 @@
 .product-cart-ico {
   position: relative;
   display: inline-block;
-  height: 31px;
-  width: 36px;
+  height: 30px;
+  width: 30px;
   margin-left: 10px;
   cursor: pointer;
 
   &-img {
-    @include image;   // already used above on string 78.
+    @include image; 
   }
 
   &-amount {
@@ -101,8 +101,8 @@
     justify-content: center;
     align-items: center;
     padding: 5px;
-    width: 20px;
-    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
     border-radius: 50%;
     background-color: #000;
     top: -10px;
