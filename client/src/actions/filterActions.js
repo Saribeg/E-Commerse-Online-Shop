@@ -8,10 +8,23 @@ export const FETCH_PRODUCT_REQUESTED = "FETCH_PRODUCT_REQUESTED";
 export const FETCH_PRODUCT_SUCCEEDED = "FETCH_PRODUCT_SUCCEEDED";
 export const FETCH_PRODUCT_FAILED = "FETCH_PRODUCT_FAILED";
 
+export const FETCH_ADD_PRODUCT_SUCCEEDED = "FETCH_ADD_PRODUCT_SUCCEEDED";
+
+
 export const SELECT_FILTERS = "SELECT_FILTERS";
 
 export const SELECT_SIZE = "SELECT_SIZE";
 export const SELECT_PRICE = "SELECT_PRICE";
+
+export const SET_DEFAULT_PAGE = "SET_DEFAULT_PAGE";
+export const SET_NUMBER_OF_PAGES = "SET_NUMBER_OF_PAGES";
+export const SET_PAGE = "SET_PAGE";
+
+export const setNewPage = (pageNo) => dispatch => {
+    dispatch({
+        type: SET_PAGE, payload: {pageNo: pageNo}
+    });
+}
 
 export const getFilterElems = () => dispatch => {
   dispatch({
@@ -111,24 +124,46 @@ export const selectFilters = (currentFilters, newFilters) => dispatch => {
     type: FETCH_PRODUCT_REQUESTED
   });
 
-  axios
-    .post("/products/filtered-products", {
-      category: filters.category,
-      subCategory: filters.subCategory,
-      furtherSubCategory: filters.furtherSubCategory,
-      colorName: filters.colorName,
-      size: filters.size,
-      minPrice: filters.price.min,
-      maxPrice: filters.price.max
-    })
-    .then(products => {
-      let newProducts = JSON.parse(JSON.stringify(products.data));
-      dispatch({
-        type: FETCH_PRODUCT_SUCCEEDED,
-        payload: newProducts
-      });
-    })
-    .catch(err => console.log(err));
+  // axios
+  //   .post("/products/filtered-products", {
+  //     category: filters.category,
+  //     subCategory: filters.subCategory,
+  //     furtherSubCategory: filters.furtherSubCategory,
+  //     colorName: filters.colorName,
+  //     size: filters.size,
+  //     minPrice: filters.price.min,
+  //     maxPrice: filters.price.max
+  //   })
+  //   .then(products => {
+  //     let newProducts = JSON.parse(JSON.stringify(products.data));
+  //     dispatch({
+  //       type: FETCH_PRODUCT_SUCCEEDED,
+  //       payload: newProducts
+  //     });
+  //   })
+  //   .catch(err => console.log(err));
+
+    axios
+        .post("/products/filtered-products", {
+            category: filters.category,
+            subCategory: filters.subCategory,
+            furtherSubCategory: filters.furtherSubCategory,
+            colorName: filters.colorName,
+            size: filters.size,
+            minPrice: filters.price.min,
+            maxPrice: filters.price.max,
+            pageNo: filters.pageNo
+        })
+        .then(products => {
+            let newProducts = JSON.parse(JSON.stringify(products.data));
+            dispatch({
+                type: FETCH_ADD_PRODUCT_SUCCEEDED,
+                payload: newProducts
+            });
+        })
+        .catch(err => console.log(err));
+
+
 };
 
 export const selectSize = size => dispatch => {
