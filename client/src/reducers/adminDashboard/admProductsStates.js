@@ -20,7 +20,9 @@ import {
   FETCH_NEW_PRODUCT_SUCCEEDED,
   FETCH_NEW_PRODUCT_FAILED,
   FETCH_NEW_PRODUCT_PHOTOS_SUCCEEDED,
-  FETCH_NEW_PRODUCT_PHOTOS_FAILED
+  FETCH_NEW_PRODUCT_PHOTOS_FAILED,
+  COLOR_COLLECTION_UPDATE_MESSAGE,
+  SIZE_COLLECTION_UPDATE_MESSAGE
 } from "../../actions/adminDashboard/admProductsActions";
 import uniqueRandom from "unique-random";
 const rand = uniqueRandom(0, 999999);
@@ -82,7 +84,9 @@ const initialState = {
   },
   fetchingNewProduct: false,
   productMessage: "",
-  photosMessage: ""
+  photosMessage: "",
+  colorCollectionUpdateMessage: "",
+  sizeCollectionUpdateMessage: ""
 };
 
 function admProducts(state = initialState, action) {
@@ -201,7 +205,16 @@ function admProducts(state = initialState, action) {
         fetchingNewProduct: false,
         photosMessage: action.payload
       };
-
+    case COLOR_COLLECTION_UPDATE_MESSAGE:
+      return {
+        ...state,
+        colorCollectionUpdateMessage: action.payload
+      };
+    case SIZE_COLLECTION_UPDATE_MESSAGE:
+      return {
+        ...state,
+        sizeCollectionUpdateMessage: action.payload
+      };
     default:
       return { ...state };
   }
