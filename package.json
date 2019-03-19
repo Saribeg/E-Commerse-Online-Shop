@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha \"./unittest/*.test.js\" ",
-    "server": "nodemon server.js",
+    "server": "NODE_ENV=dev nodemon server.js",
     "front": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\"  \"npm run front\""
   },

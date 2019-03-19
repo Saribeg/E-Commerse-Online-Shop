@@ -1,9 +1,7 @@
 @import "../../scss/resources/resources";
 
 .search-input-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
 }
 
 .clearable {
@@ -13,7 +11,7 @@
 
 .clearable__clear {
   position: absolute;
-  right: 0;
+  right: 7px;
   top: 50%;
   transform: translateY(-50%);
   padding: 0 10px;
@@ -59,9 +57,11 @@
 }
 
 .non-valid-search {
+  position: absolute;
+  bottom: -16px;
+  left: 16px;
   color: red;
   font-size: 11px;
-  margin-top: 10px;
 }
 
 .match-words {

@@ -43,7 +43,7 @@ class PhotoGallery extends Component {
                 let array = elem.imageUrls;
                 return elem.imageUrls.map(elem => {
                     return (
-                        <div className={`all-photos-item`}>
+                        <div className={`all-photos-item`} key={elem}>
                             <img
 
                                 src={elem}
