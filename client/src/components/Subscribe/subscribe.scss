@@ -1,0 +1,87 @@
+@import '../../scss/resources/resources';
+
+.section-subscribe {
+  padding: 65px 0;
+}
+
+.subscribe {
+  @include flex-center-between;
+
+  @include max-width($landscape-tablet) {
+    flex-direction: column;
+  }
+
+  &-title {
+    font-family: $font-openSans;
+    font-size: 38px;
+    font-weight: 600;
+    color: #31363d;
+    margin-right: 24px;
+
+    @include max-width($landscape-tablet) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  &-description {
+    width: 243px;
+    font-family: $font-openSans;
+    font-size: 14px;
+    line-height: 1.36;
+    color: #31363d;
+
+    @include max-width($landscape-tablet) {
+      width: 100%;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  }
+
+  &-form {
+    display: flex;
+    max-width: 658px;
+    width: 100%;
+
+    @include max-width($landscape-tablet) {
+      flex-direction: column;
+      margin-bottom: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &-email {
+    border: none;
+    outline: none;
+    max-width: 318px;
+    width: 100%;
+    border-radius: 22px;
+    padding: 15px;
+    background-color: $grey-light;
+    margin-right: 39px;
+
+    @include max-width($landscape-tablet) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  &-btn {
+    max-width: 300px;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 100px;
+    background-color: $black;
+    font-family: $font-openSans;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+}

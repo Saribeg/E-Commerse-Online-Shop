@@ -1,0 +1,39 @@
+@import "../../scss/resources/resources";
+
+.empty-state {
+  height: 60vh;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include max-width($landscape-tablet){
+    width: 100vw;
+    padding: 0 16px;
+    height: auto;
+  }
+
+  &-title {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 30px 0;
+    text-align: center;
+  }
+
+  &-icon {
+    color: $black;
+    font-size: 80px;
+    margin: 20px 0;
+  }
+}
+
+.cell {
+  border: 1px solid #eae6e6;
+  padding: 10px;
+}
+
+.filter-option-value {
+  color: #ff6008;
+  font-weight: 600;
+}

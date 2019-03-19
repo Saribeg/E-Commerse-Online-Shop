@@ -1,0 +1,30 @@
+.admin-dashboard-wrapper {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  margin: 60px auto 100px;
+}
+
+.admin-dashboard {
+  width: 20%;
+}
+
+.admin-dashboard-link {
+  display: block;
+  height: 60px;
+  line-height: 60px;
+  width: 100%;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.admin-dashboard-link-active {
+  color: #ff6008;
+}
+
+.admin-dashboard-content {
+  margin-top: 20px;
+  width: 80%;
+}

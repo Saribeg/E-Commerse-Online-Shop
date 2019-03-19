@@ -1,0 +1,53 @@
+@import "../../../scss/resources/resources.scss";
+
+.category-filter {
+  width: 24%;
+  @include max-width($landscape-tablet){
+    width: 100%;
+  }
+
+  &-active {
+    margin-bottom: 20px;
+
+    @include max-width($landscape-tablet){
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      z-index: 11;
+      padding: 12px;
+      margin: 0;
+    }
+
+    .filter-active-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: $font-openSans;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: $black;
+      text-transform: uppercase;
+      padding-bottom: 20px;
+
+      @include max-width($landscape-tablet){
+        padding-bottom: 0;
+      }
+
+      .filter-reset {
+        color: #ff6008;
+      }
+    }
+  }
+}
+
+.filter-title {
+  display: inline-block;
+  font-family: $font-openSans;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}

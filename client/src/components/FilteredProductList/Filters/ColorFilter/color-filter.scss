@@ -1,0 +1,97 @@
+@import "../../../../scss/resources/resources.scss";
+
+.category-filter-color {
+  padding: 32px 0;
+  margin-top: 30px;
+
+  .filter-title {
+    margin-bottom: 0;
+  }
+
+  .filter-color-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &-item {
+      position: relative;
+      margin: 0 12px 14px;
+
+      &:nth-child(5n + 1){
+        margin-left: 0;
+      }
+
+      &:nth-child(5n){
+        margin-right: 0;
+
+        @include max-width($landscape-tablet){
+          margin: 0 12px 14px;
+        }
+      }
+    }
+
+    &-link {
+      position: relative;
+      display: inline-block;
+      border: 2px solid #bfbbbb;
+      width: 32px;
+      height: 32px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 7px;
+        height: 7px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background-color: #fff;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
+
+.filter-color-panel-input {
+  position: absolute;
+  visibility: hidden;
+
+  &:checked + .filter-color-panel-link {
+    border: 2px solid #000;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+.color-filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.reset-color-filters {
+  position: relative;
+  padding: 7px;
+  border-radius: 100px;
+  background-color: #33333a;
+  font-family: "OpenSans", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

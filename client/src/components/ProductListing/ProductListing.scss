@@ -1,0 +1,74 @@
+@import '../../scss/resources/resources';
+
+.section-listing-products {
+  padding-top: 50px;
+  background-color: #fcfcfc;
+}
+
+.listing {
+  &-title {
+    font-family: $font-openSans;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: $black;
+    margin-bottom: 40px;
+  }
+
+  &-products {
+    @include flex-wrap-between;
+    align-items: center;
+
+    @include max-width($landscape-tablet) {
+      justify-content: space-around;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .product-item {
+      display: block;
+      max-width: 263px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+
+      &:hover {
+        box-shadow: 0 0 10px 10px #ccc;
+        background-color: #fff;
+      }
+  
+      @include max-width($landscape-tablet) {
+        width: 48%;
+      }
+    }
+  
+    .product-img {
+      width: 100%;
+      max-width: 263px;
+      height: 100%;
+      max-height: 328px;
+      object-fit: cover;
+      margin-bottom: 5px;
+    }
+  
+    .product-name {
+      font-family: $font-openSans;
+      font-size: 16px;
+      color: $black;
+      padding: 0 20px;
+      height: 36px;
+      line-height: 1.2;
+      margin-bottom: 5px;
+      overflow: hidden;
+    }
+  
+    .product-price {
+      font-family: $font-openSans;
+      font-size: 14px;
+      font-weight: bold;
+      color: $black;
+      padding-bottom: 5px;
+    }
+  }
+}
+

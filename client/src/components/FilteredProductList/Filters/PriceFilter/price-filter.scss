@@ -1,0 +1,8 @@
+@import "../../../../scss/resources/resources.scss";
+
+.input-range {
+	@include max-width($landscape-tablet){
+		width: 90%;
+		margin: 0 auto;
+	}
+}

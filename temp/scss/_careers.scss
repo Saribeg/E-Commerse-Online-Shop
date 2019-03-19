@@ -1,0 +1,95 @@
+
+.sub-page {
+    &__title {
+        color: $black;
+        font-size: 32px;
+        padding: 30px 0 8px 0;
+        text-align: center;
+    }
+
+    &__sub-title {
+        color: #a7a3a3;
+        font-size: 14px;
+        text-align: center;
+        padding-bottom: 40px;
+
+      
+        @include mobile-normal {
+            padding-bottom: 10px;
+        }
+
+        @include mobile-min {
+            padding-bottom: 10px;
+        }
+    }
+}
+
+.job-offer {
+    &__feedback {
+        @include mobile-normal{
+            padding-bottom: 10px;
+        }  
+        @include mobile-min{
+            padding-bottom: 10px;
+        }  
+    }
+    &__feedback{
+        font-size: 16px;
+        text-align: center;
+        max-width: 70%;
+        margin: 0 auto;
+        padding: 5px;
+        margin: 20px auto;
+        border: 1px solid $grey-light;
+        border-radius: 10px;
+        color: #fff;
+        background-color: $black;
+    }
+
+    &__mail {
+        color: $grey-light;
+    }
+
+}
+
+ 
+.job-description{
+    padding: 14px 65px;
+    &__border{
+        border-bottom: 1px solid $grey-light;
+        max-width: 70%;
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+
+    &__position {
+        font-size: 22px;
+        font-weight: bold;
+        color: $black;
+    }
+
+    &__location {
+        font-size: 16px;
+        color: #78909c;
+        padding: 5px 0;
+    }
+
+    &__text {
+        font-size: 16px;
+        color: $black;
+    }
+
+    @include tablet {
+        padding: 10px 30px;
+    }
+
+    @include mobile-normal {
+        padding: 10px;
+    }
+
+    @include mobile-min {
+        padding: 5px;
+    }
+}
+
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .subscribe-wrapper {
+        margin: 0 auto;
+        text-align: center;
+        font-family: "OpenSans", sans-serif;
+        color: #33333a;
+    }
+
+    .subscribe-wrapper .logo {
+        border-bottom: 3px solid #33333a;
+    }
+
+    .subscribe-wrapper .logo .logo-text {
+        letter-spacing: 2.5px;
+        font-weight: 600;
+    }
+
+    .subscribe-wrapper .categories {
+        text-align: center;
+        margin: 20px 0 10px 0;
+    }
+
+    .subscribe-wrapper .categories span {
+        margin: 0 50px;
+    }
+
+    .subscribe-wrapper .content {
+        display: flex;
+    }
+
+    .subscribe-wrapper .content div {
+        width: 50%;
+    }
+
+    .subscribe-wrapper .content div img {
+        width: 100%;
+    }
+
+    .subscribe-wrapper .content p {
+        font-size: 16px;
+        line-height: 26px;
+        margin: 0 20px;
+    }
+
+    .subscribe-wrapper .content a {
+        display: block;
+        margin: 20px auto;
+        width: 200px;
+        height: 40px;
+        border-radius: 100px;
+        border: 1px solid #33333a;
+        background: transparent;
+        letter-spacing: 2px;
+        line-height: 40px;
+        text-decoration: none;
+        color: #33333a;
+    }
+
+    .subscribe-wrapper .unsubscribe {
+        text-align: left;
+    }
+
+    .subscribe-wrapper .unsubscribe a {
+        color: #33333a;
+    }
+</style>
+<body>
+<div class="subscribe-wrapper">
+    <div class="logo">
+        <div class="logo-text">MATTER</div>
+        <div class="categories">
+            <span>Clothing</span>
+            <span>Accessories</span>
+            <span>Shoes</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <div>
+            <h1>OH, HEY!</h1>
+            <h4>Welcome to MATTER! It's great to meet you!</h4>
+            <p>We promise to keep you up-to-date with the sweetest new-season styles, tell you about our awesome sales
+                and throw in the odd surprise and special offer.<br><br> And with around 130 brands to browse, we're
+                sure there's something to suit your style. Come see for yourself...</p>
+            <a href="http://localhost:3000/" target="_blank">EXPLORE MATTER</a>
+        </div>
+        <div>
+            <img src="https://static.dezeen.com/uploads/2013/09/dezeen_Giada-Milan-flagship-store-by-Claudio-Silvestrin_ss9.jpg"
+                 alt="interior of store">
+        </div>
+    </div>
+    <p class="unsubscribe">If you want, you can <a href="http://localhost:3000/unsubscribe/{{mailId}}" target="_blank">unsubscribe</a>
+        from emails.</p>
+
+</div>
+</body>
+</html>

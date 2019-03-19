@@ -1,0 +1,52 @@
+@import '../../scss/resources/resources';
+
+.section-unsubscribe {
+  padding: 65px 0;
+}
+
+.unsubscribe {
+  @include flex-center-between;
+
+  @include max-width($landscape-tablet) {
+    flex-direction: column;
+  }
+
+  &-form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include max-width($landscape-tablet) {
+      flex-direction: column;
+      margin-bottom: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-btn {
+      max-width: 300px;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 100px;
+      background-color: $black;
+      font-family: $font-openSans;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #fff;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    &-text {
+      text-align: center;
+      font-family: $font-openSans;
+      font-size: 24px;
+      letter-spacing: 1.4px;
+      padding: 65px 0;
+    }
+  }
+}

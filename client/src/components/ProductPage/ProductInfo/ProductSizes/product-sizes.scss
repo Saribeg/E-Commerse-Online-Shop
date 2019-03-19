@@ -1,0 +1,25 @@
+@import '../../../../scss/resources/resources';
+
+.product-sizes {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.size-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $grey-bg;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #515356;
+  margin-right: 10px;
+  cursor: pointer;
+
+  &.active {
+    border-color: #dedede;
+    background-color: $grey-bg;
+  }
+}
