@@ -32,7 +32,7 @@ class LoginForm extends Component {
                 <div className='login-menu'>
                     <div data-btn="btn-login-up-close" className="login-cancel-btn"  />
                     <h2 className='login-menu_header'>Log in</h2>
-                    <p className='login-menu_par'>Please enter your account details to log in</p>
+                    <p className='login-menu_par'>Please enter your account details</p>
 
 
                     <div className={classCheckEmail}>

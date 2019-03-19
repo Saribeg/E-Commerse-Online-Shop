@@ -7,10 +7,18 @@
 .category-content {
   display: flex;
   justify-content: space-between;
+
+  @include max-width($landscape-tablet){
+    flex-direction: column;
+  }
 }
 
 .category-product-listing {
   width: 74%;
+  @include max-width($landscape-tablet){
+   width: 100%;
+   margin-top: 20px;
+  }
 
   .btn-loading-products {
     text-align: center;

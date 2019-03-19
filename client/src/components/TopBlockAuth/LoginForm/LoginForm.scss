@@ -8,37 +8,29 @@
   position: absolute;
   top: 20px;
   left: 0;
-  // bottom: 0;
   right: 0;
   z-index: 1;
   width: 500px;
-  //height: 606px;
   font-size: 14px;
   border: 1px solid black;
   background-color: #fff;
   color: #030303;
   border-radius: 4px;
-  @include tablet {
-    width: 400px;
-  }
-  @include mobile-normal {
-    width: 400px;
-  }
-  @include mobile-min {
-    width: 320px
+  @include max-width($landscape-mobile-big) {
+    width: 95%;
   }
 
-  &_form-fields {
-
+  &_header {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.34;
+    margin-bottom: 16px;
   }
-
   &_form {
     width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    //margin-top: 40px;
-
 
     &-fields {
       display: block;
@@ -55,9 +47,8 @@
 .field-wrapper{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  //width: 80%;
+  width: 100%;
 }
 .login-cancel-btn {
   width: 30px;
@@ -72,13 +63,6 @@
   cursor: pointer;
 }
 
-.login-menu_header {
-  //width: 555px;
-  font-size: 32px;
-  font-weight: bold;
-  line-height: 1.34;
-  //text-align: center;
-}
 
 .login-menu_par {
   font-size: 14px;
@@ -93,18 +77,9 @@
 }
 
 .login-form-input-title {
-  width: 323px;
-  height: 22px;
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
-  @include tablet{
-    padding: 0 20px;
-  }
-  @include mobile-min{
-    padding: 0 20px;
-  }
-  @include  mobile-normal{
-    padding: 0 20px;
-  }
 }
 
 .login-form-input {
@@ -114,14 +89,8 @@
   padding-left: 10px;
   border: 1px solid #eaeaea;
   outline: none;
-  @include tablet {
-    width: 90%;
-  }
-  @include mobile-normal {
-    width: 90%;
-  }
-  @include mobile-min {
-    width: 90%;
+  @include max-width($landscape-mobile-big) {
+    width: 95%;
   }
 }
 
