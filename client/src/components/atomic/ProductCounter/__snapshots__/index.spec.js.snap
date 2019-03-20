@@ -3,7 +3,7 @@
 exports[`ProductCounter component ProductCounter component render 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ProductCounter />,
+  Symbol(enzyme.__unrendered__): <Connect(ProductCounter) />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -16,147 +16,59 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "host",
+    "nodeType": "function",
     "props": Object {
-      "children": Array [
-        <button
-          className="product-counter-btn"
-          onClick={[Function]}
-        >
-          -
-        </button>,
-        <input
-          className="product-counter-value"
-          onInput={[Function]}
-          type="tel"
-          value={0}
-        />,
-        <button
-          className="product-counter-btn"
-          onClick={[Function]}
-        >
-          +
-        </button>,
-      ],
-      "className": "product-counter",
+      "children": [Function],
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "-",
-          "className": "product-counter-btn",
-          "onClick": [Function],
+    "rendered": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
         },
-        "ref": null,
-        "rendered": "-",
-        "type": "button",
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": null,
+        "_currentValue2": null,
+        "_threadCount": 0,
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "className": "product-counter-value",
-          "onInput": [Function],
-          "type": "tel",
-          "value": 0,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": "input",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "+",
-          "className": "product-counter-btn",
-          "onClick": [Function],
-        },
-        "ref": null,
-        "rendered": "+",
-        "type": "button",
-      },
-    ],
-    "type": "div",
+    },
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "host",
+      "nodeType": "function",
       "props": Object {
-        "children": Array [
-          <button
-            className="product-counter-btn"
-            onClick={[Function]}
-          >
-            -
-          </button>,
-          <input
-            className="product-counter-value"
-            onInput={[Function]}
-            type="tel"
-            value={0}
-          />,
-          <button
-            className="product-counter-btn"
-            onClick={[Function]}
-          >
-            +
-          </button>,
-        ],
-        "className": "product-counter",
+        "children": [Function],
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "-",
-            "className": "product-counter-btn",
-            "onClick": [Function],
+      "rendered": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.context),
+        "_calculateChangedBits": null,
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": [Circular],
+          "Provider": Object {
+            "$$typeof": Symbol(react.provider),
+            "_context": [Circular],
           },
-          "ref": null,
-          "rendered": "-",
-          "type": "button",
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": null,
+          "_currentValue2": null,
+          "_threadCount": 0,
         },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "className": "product-counter-value",
-            "onInput": [Function],
-            "type": "tel",
-            "value": 0,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "input",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "+",
-            "className": "product-counter-btn",
-            "onClick": [Function],
-          },
-          "ref": null,
-          "rendered": "+",
-          "type": "button",
-        },
-      ],
-      "type": "div",
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {

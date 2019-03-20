@@ -3,7 +3,7 @@
 exports[`ProductSizes component ProductSizes component render 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ProductSizes
+  Symbol(enzyme.__unrendered__): <Connect(ProductSizes)
     productFeatures={
       Array [
         Object {
@@ -51,87 +51,28 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": Array [
-        <p
-          className="product-filter"
-        >
-          Size
-        </p>,
-        <ul
-          className="product-sizes"
-        />,
-        <p
-          className="product-filter"
-        >
-          Quantity Available: 
-          0
-        </p>,
-        <ProductCounter
-          maxCount={0}
-        />,
-      ],
+      "children": [Function],
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Size",
-          "className": "product-filter",
+    "rendered": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
         },
-        "ref": null,
-        "rendered": "Size",
-        "type": "p",
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": null,
+        "_currentValue2": null,
+        "_threadCount": 0,
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            undefined,
-          ],
-          "className": "product-sizes",
-        },
-        "ref": null,
-        "rendered": Array [
-          undefined,
-        ],
-        "type": "ul",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            "Quantity Available: ",
-            0,
-          ],
-          "className": "product-filter",
-        },
-        "ref": null,
-        "rendered": Array [
-          "Quantity Available: ",
-          0,
-        ],
-        "type": "p",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "maxCount": 0,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-    ],
-    "type": Symbol(react.fragment),
+    },
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -139,87 +80,28 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": Array [
-          <p
-            className="product-filter"
-          >
-            Size
-          </p>,
-          <ul
-            className="product-sizes"
-          />,
-          <p
-            className="product-filter"
-          >
-            Quantity Available: 
-            0
-          </p>,
-          <ProductCounter
-            maxCount={0}
-          />,
-        ],
+        "children": [Function],
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Size",
-            "className": "product-filter",
+      "rendered": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.context),
+        "_calculateChangedBits": null,
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": [Circular],
+          "Provider": Object {
+            "$$typeof": Symbol(react.provider),
+            "_context": [Circular],
           },
-          "ref": null,
-          "rendered": "Size",
-          "type": "p",
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": null,
+          "_currentValue2": null,
+          "_threadCount": 0,
         },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              undefined,
-            ],
-            "className": "product-sizes",
-          },
-          "ref": null,
-          "rendered": Array [
-            undefined,
-          ],
-          "type": "ul",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Quantity Available: ",
-              0,
-            ],
-            "className": "product-filter",
-          },
-          "ref": null,
-          "rendered": Array [
-            "Quantity Available: ",
-            0,
-          ],
-          "type": "p",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "maxCount": 0,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": Symbol(react.fragment),
+      },
     },
   ],
   Symbol(enzyme.__options__): Object {
