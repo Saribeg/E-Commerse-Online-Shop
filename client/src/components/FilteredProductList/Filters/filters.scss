@@ -16,7 +16,8 @@
       right: 0;
       background-color: #fff;
       z-index: 11;
-      padding: 12px 0;
+      padding: 12px;
+      margin: 0;
     }
 
     .filter-active-title {
@@ -29,6 +30,10 @@
       color: $black;
       text-transform: uppercase;
       padding-bottom: 20px;
+
+      @include max-width($landscape-tablet){
+        padding-bottom: 0;
+      }
 
       .filter-reset {
         color: #ff6008;

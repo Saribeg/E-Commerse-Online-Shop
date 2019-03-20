@@ -1,5 +1,4 @@
 import axios from "axios";
-import product from "../reducers/product";
 import {SET_INITIAL_STATE_ADD_CART} from "./addToCart";
 
 export const FETCH_PRODUCT_DETAIL_REQUEST = "FETCH_PRODUCT_DETAIL_REQUEST";

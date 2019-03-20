@@ -8,6 +8,12 @@
   justify-content: center;
   align-items: center;
 
+  @include max-width($landscape-tablet){
+    width: 100vw;
+    padding: 0 16px;
+    height: auto;
+  }
+
   &-title {
     font-size: 18px;
     line-height: 1.5;

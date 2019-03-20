@@ -4,6 +4,14 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers/index'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk,logger)));
+
+const store = process.env.NODE_ENV === 'development' ? 
+createStore(rootReducer, composeEnhancers(applyMiddleware(thunk,logger)))
+: createStore(rootReducer, applyMiddleware(thunk));
+
+
+
+
+
 
 export default store;
