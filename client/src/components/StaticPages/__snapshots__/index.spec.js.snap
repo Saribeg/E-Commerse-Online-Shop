@@ -31,23 +31,23 @@ ShallowWrapper {
           className="container"
         >
           <h2
-            className="sub-page__title"
+            className="sub-page-title"
           >
             
           </h2>
           <h3
-            className="sub-page__sub-title"
+            className="sub-page-sub-title"
           >
             We have a lot to tell you
           </h3>
           <div
-            className="about-us__wrapper"
+            className="about-us-wrapper"
           >
             <div
-              className="about-us__content"
+              className="about-us-content"
             />
             <div
-              className="about-us__content"
+              className="about-us-content"
             />
           </div>
         </div>,
@@ -87,23 +87,23 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <h2
-              className="sub-page__title"
+              className="sub-page-title"
             >
               
             </h2>,
             <h3
-              className="sub-page__sub-title"
+              className="sub-page-sub-title"
             >
               We have a lot to tell you
             </h3>,
             <div
-              className="about-us__wrapper"
+              className="about-us-wrapper"
             >
               <div
-                className="about-us__content"
+                className="about-us-content"
               />
               <div
-                className="about-us__content"
+                className="about-us-content"
               />
             </div>,
           ],
@@ -117,7 +117,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "",
-              "className": "sub-page__title",
+              "className": "sub-page-title",
             },
             "ref": null,
             "rendered": "",
@@ -129,7 +129,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "We have a lot to tell you",
-              "className": "sub-page__sub-title",
+              "className": "sub-page-sub-title",
             },
             "ref": null,
             "rendered": "We have a lot to tell you",
@@ -142,13 +142,13 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <div
-                  className="about-us__content"
+                  className="about-us-content"
                 />,
                 <div
-                  className="about-us__content"
+                  className="about-us-content"
                 />,
               ],
-              "className": "about-us__wrapper",
+              "className": "about-us-wrapper",
             },
             "ref": null,
             "rendered": Array [
@@ -161,7 +161,7 @@ ShallowWrapper {
                     undefined,
                     undefined,
                   ],
-                  "className": "about-us__content",
+                  "className": "about-us-content",
                 },
                 "ref": null,
                 "rendered": Array [
@@ -179,7 +179,7 @@ ShallowWrapper {
                     undefined,
                     undefined,
                   ],
-                  "className": "about-us__content",
+                  "className": "about-us-content",
                 },
                 "ref": null,
                 "rendered": Array [
@@ -216,23 +216,23 @@ ShallowWrapper {
             className="container"
           >
             <h2
-              className="sub-page__title"
+              className="sub-page-title"
             >
               
             </h2>
             <h3
-              className="sub-page__sub-title"
+              className="sub-page-sub-title"
             >
               We have a lot to tell you
             </h3>
             <div
-              className="about-us__wrapper"
+              className="about-us-wrapper"
             >
               <div
-                className="about-us__content"
+                className="about-us-content"
               />
               <div
-                className="about-us__content"
+                className="about-us-content"
               />
             </div>
           </div>,
@@ -272,23 +272,23 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <h2
-                className="sub-page__title"
+                className="sub-page-title"
               >
                 
               </h2>,
               <h3
-                className="sub-page__sub-title"
+                className="sub-page-sub-title"
               >
                 We have a lot to tell you
               </h3>,
               <div
-                className="about-us__wrapper"
+                className="about-us-wrapper"
               >
                 <div
-                  className="about-us__content"
+                  className="about-us-content"
                 />
                 <div
-                  className="about-us__content"
+                  className="about-us-content"
                 />
               </div>,
             ],
@@ -302,7 +302,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "",
-                "className": "sub-page__title",
+                "className": "sub-page-title",
               },
               "ref": null,
               "rendered": "",
@@ -314,7 +314,7 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": "We have a lot to tell you",
-                "className": "sub-page__sub-title",
+                "className": "sub-page-sub-title",
               },
               "ref": null,
               "rendered": "We have a lot to tell you",
@@ -327,13 +327,13 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <div
-                    className="about-us__content"
+                    className="about-us-content"
                   />,
                   <div
-                    className="about-us__content"
+                    className="about-us-content"
                   />,
                 ],
-                "className": "about-us__wrapper",
+                "className": "about-us-wrapper",
               },
               "ref": null,
               "rendered": Array [
@@ -346,7 +346,7 @@ ShallowWrapper {
                       undefined,
                       undefined,
                     ],
-                    "className": "about-us__content",
+                    "className": "about-us-content",
                   },
                   "ref": null,
                   "rendered": Array [
@@ -364,7 +364,7 @@ ShallowWrapper {
                       undefined,
                       undefined,
                     ],
-                    "className": "about-us__content",
+                    "className": "about-us-content",
                   },
                   "ref": null,
                   "rendered": Array [
@@ -435,22 +435,25 @@ ShallowWrapper {
             
           </title>
         </HelmetWrapper>,
-        <h2
-          className="sub-page__title"
+        <div
+          className="container"
         >
-          
-        </h2>,
-        <h3
-          className="sub-page__sub-title"
-        >
-          There are several options to suggest
-        </h3>,
-        Array [],
-        <p
-          className="job-offer__feedback"
-        >
-          If you are interested, please send your resume: matter-style@mail.com
-        </p>,
+          <h2
+            className="sub-page-title"
+          >
+            
+          </h2>
+          <h3
+            className="sub-page-sub-title"
+          >
+            There are several options to suggest
+          </h3>
+          <p
+            className="job-offer-feedback"
+          >
+            If you are interested, please send your resume: matter-style@mail.com
+          </p>
+        </div>,
       ],
     },
     "ref": null,
@@ -485,36 +488,66 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "",
-          "className": "sub-page__title",
+          "children": Array [
+            <h2
+              className="sub-page-title"
+            >
+              
+            </h2>,
+            <h3
+              className="sub-page-sub-title"
+            >
+              There are several options to suggest
+            </h3>,
+            Array [],
+            <p
+              className="job-offer-feedback"
+            >
+              If you are interested, please send your resume: matter-style@mail.com
+            </p>,
+          ],
+          "className": "container",
         },
         "ref": null,
-        "rendered": "",
-        "type": "h2",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "There are several options to suggest",
-          "className": "sub-page__sub-title",
-        },
-        "ref": null,
-        "rendered": "There are several options to suggest",
-        "type": "h3",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "If you are interested, please send your resume: matter-style@mail.com",
-          "className": "job-offer__feedback",
-        },
-        "ref": null,
-        "rendered": "If you are interested, please send your resume: matter-style@mail.com",
-        "type": "p",
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "",
+              "className": "sub-page-title",
+            },
+            "ref": null,
+            "rendered": "",
+            "type": "h2",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "There are several options to suggest",
+              "className": "sub-page-sub-title",
+            },
+            "ref": null,
+            "rendered": "There are several options to suggest",
+            "type": "h3",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "If you are interested, please send your resume: matter-style@mail.com",
+              "className": "job-offer-feedback",
+            },
+            "ref": null,
+            "rendered": "If you are interested, please send your resume: matter-style@mail.com",
+            "type": "p",
+          },
+        ],
+        "type": "div",
       },
     ],
     "type": Symbol(react.fragment),
@@ -534,22 +567,25 @@ ShallowWrapper {
               
             </title>
           </HelmetWrapper>,
-          <h2
-            className="sub-page__title"
+          <div
+            className="container"
           >
-            
-          </h2>,
-          <h3
-            className="sub-page__sub-title"
-          >
-            There are several options to suggest
-          </h3>,
-          Array [],
-          <p
-            className="job-offer__feedback"
-          >
-            If you are interested, please send your resume: matter-style@mail.com
-          </p>,
+            <h2
+              className="sub-page-title"
+            >
+              
+            </h2>
+            <h3
+              className="sub-page-sub-title"
+            >
+              There are several options to suggest
+            </h3>
+            <p
+              className="job-offer-feedback"
+            >
+              If you are interested, please send your resume: matter-style@mail.com
+            </p>
+          </div>,
         ],
       },
       "ref": null,
@@ -584,36 +620,66 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "",
-            "className": "sub-page__title",
+            "children": Array [
+              <h2
+                className="sub-page-title"
+              >
+                
+              </h2>,
+              <h3
+                className="sub-page-sub-title"
+              >
+                There are several options to suggest
+              </h3>,
+              Array [],
+              <p
+                className="job-offer-feedback"
+              >
+                If you are interested, please send your resume: matter-style@mail.com
+              </p>,
+            ],
+            "className": "container",
           },
           "ref": null,
-          "rendered": "",
-          "type": "h2",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "There are several options to suggest",
-            "className": "sub-page__sub-title",
-          },
-          "ref": null,
-          "rendered": "There are several options to suggest",
-          "type": "h3",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "If you are interested, please send your resume: matter-style@mail.com",
-            "className": "job-offer__feedback",
-          },
-          "ref": null,
-          "rendered": "If you are interested, please send your resume: matter-style@mail.com",
-          "type": "p",
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "",
+                "className": "sub-page-title",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": "h2",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "There are several options to suggest",
+                "className": "sub-page-sub-title",
+              },
+              "ref": null,
+              "rendered": "There are several options to suggest",
+              "type": "h3",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "If you are interested, please send your resume: matter-style@mail.com",
+                "className": "job-offer-feedback",
+              },
+              "ref": null,
+              "rendered": "If you are interested, please send your resume: matter-style@mail.com",
+              "type": "p",
+            },
+          ],
+          "type": "div",
         },
       ],
       "type": Symbol(react.fragment),
@@ -672,17 +738,17 @@ ShallowWrapper {
           </title>
         </HelmetWrapper>,
         <h2
-          className="sub-page__title"
+          className="sub-page-title"
         >
           
         </h2>,
         <h3
-          className="sub-page__sub-title"
+          className="sub-page-sub-title"
         >
           We are at the top of the market
         </h3>,
         <p
-          className="our-policy__paragraph"
+          className="our-policy-paragraph"
         >
           When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.
         </p>,
@@ -725,7 +791,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "",
-          "className": "sub-page__title",
+          "className": "sub-page-title",
         },
         "ref": null,
         "rendered": "",
@@ -737,7 +803,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "We are at the top of the market",
-          "className": "sub-page__sub-title",
+          "className": "sub-page-sub-title",
         },
         "ref": null,
         "rendered": "We are at the top of the market",
@@ -749,7 +815,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.",
-          "className": "our-policy__paragraph",
+          "className": "our-policy-paragraph",
         },
         "ref": null,
         "rendered": "When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.",
@@ -787,17 +853,17 @@ ShallowWrapper {
             </title>
           </HelmetWrapper>,
           <h2
-            className="sub-page__title"
+            className="sub-page-title"
           >
             
           </h2>,
           <h3
-            className="sub-page__sub-title"
+            className="sub-page-sub-title"
           >
             We are at the top of the market
           </h3>,
           <p
-            className="our-policy__paragraph"
+            className="our-policy-paragraph"
           >
             When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.
           </p>,
@@ -840,7 +906,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "",
-            "className": "sub-page__title",
+            "className": "sub-page-title",
           },
           "ref": null,
           "rendered": "",
@@ -852,7 +918,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "We are at the top of the market",
-            "className": "sub-page__sub-title",
+            "className": "sub-page-sub-title",
           },
           "ref": null,
           "rendered": "We are at the top of the market",
@@ -864,7 +930,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.",
-            "className": "our-policy__paragraph",
+            "className": "our-policy-paragraph",
           },
           "ref": null,
           "rendered": "When your business expands quickly, it can be hard to stay on top of policy creation and management. Sure, there may be quite a few unwritten rules that employees seem to be aware of and your organization just hasn’t gotten around to putting on paper yet, but those rules tend to cause more confusion than not. Just like the telephone game we played as kids, new rules heard “through the grapevine” are easily not shared correctly, misinterpreted and misunderstood.",

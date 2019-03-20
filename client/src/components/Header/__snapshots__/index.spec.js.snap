@@ -24,9 +24,6 @@ ShallowWrapper {
         <div
           className="header-content"
         >
-          <div
-            className="header-burger-menu"
-          />
           <NavLink
             activeClassName="active"
             aria-current="page"
@@ -53,9 +50,6 @@ ShallowWrapper {
         "children": <div
           className="header-content"
         >
-          <div
-            className="header-burger-menu"
-          />
           <NavLink
             activeClassName="active"
             aria-current="page"
@@ -79,9 +73,6 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <div
-              className="header-burger-menu"
-            />,
             <NavLink
               activeClassName="active"
               aria-current="page"
@@ -100,17 +91,6 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "className": "header-burger-menu",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "div",
-          },
           Object {
             "instance": null,
             "key": undefined,
@@ -177,9 +157,6 @@ ShallowWrapper {
           <div
             className="header-content"
           >
-            <div
-              className="header-burger-menu"
-            />
             <NavLink
               activeClassName="active"
               aria-current="page"
@@ -206,9 +183,6 @@ ShallowWrapper {
           "children": <div
             className="header-content"
           >
-            <div
-              className="header-burger-menu"
-            />
             <NavLink
               activeClassName="active"
               aria-current="page"
@@ -232,9 +206,6 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <div
-                className="header-burger-menu"
-              />,
               <NavLink
                 activeClassName="active"
                 aria-current="page"
@@ -253,17 +224,6 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "className": "header-burger-menu",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "div",
-            },
             Object {
               "instance": null,
               "key": undefined,

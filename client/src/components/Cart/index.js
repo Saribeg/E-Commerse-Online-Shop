@@ -292,10 +292,9 @@ class Cart extends Component {
                 <li key={keyItem + "indexCart"} className="basket-item">
                     <span className="basket-item-delete" onClick={() => this.deleteItem(keyItem)}><FontAwesomeIcon
                         icon={faTimes}/></span>
-                    <img
-                        className="basket-item-img"
-                        src={elem.urlPhoto}
-                    />
+                    <div className="basket-item-img">
+                        <img src={elem.urlPhoto}/>
+                    </div>
                     <div className="basket-item-info">
                         <p className="basket-item-title">{elem.model}</p>
                         <p><span className="fw-bold">Color:</span> {elem.colorName}</p>
@@ -313,15 +312,16 @@ class Cart extends Component {
                     <p className="basket-item-title price">
                         <div className={classWasChangedPrice}>
                             <div className='basket-item-old-price'>
-                                {elem.price}
+                            ${elem.price} 
                             </div>
+                            
                             <div className='basket-item-new-price'>
-                                {elem.priceFormDB}
+                            ${elem.priceFormDB}
                             </div>
                         </div>
 
                         <div className={classWasntChangedPrice}>
-                            {elem.price}
+                        ${elem.price}
                         </div>
                     </p>
                     <div className={classIsNotAvailable}>                         
