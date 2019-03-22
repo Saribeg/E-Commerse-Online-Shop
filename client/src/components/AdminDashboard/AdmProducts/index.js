@@ -571,7 +571,8 @@ const mapStateToProps = state => {
     photosMessage: state.admProducts.photosMessage,
     colorCollectionUpdateMessage:
       state.admProducts.colorCollectionUpdateMessage,
-    sizeCollectionUpdateMessage: state.admProducts.sizeCollectionUpdateMessage
+    sizeCollectionUpdateMessage: state.admProducts.sizeCollectionUpdateMessage,
+    existingColors: state.admColors.existingColors
   };
 };
 
