@@ -10,6 +10,7 @@ import ProductCard from "../ProductCard";
 import Preloader from "../Preloader";
 import EmptyState from "../EmptyState";
 import SearchDropDownList from "../SearchDropDownList";
+import ScrollBtn from "../ScrollBtn";
 
 import "./filteredProductList.scss";
 
@@ -125,7 +126,8 @@ class FilteredProductList extends Component {
 
     return (
       <>
-        <SearchDropDownList />
+          <ScrollBtn scrollStepInPx="50" delayInMs="16.66"/>
+          <SearchDropDownList />
         <BreadCrumbs categoryAway={this.props.match.params} />
         <section className="category-block">
           <div className="container">

@@ -1,0 +1,24 @@
+.scroll {
+  display: block;
+  opacity: 0.3;
+  background-color: rgb(88, 88, 88);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border: none;
+  z-index: 999999;
+  outline: none;
+  color: #ffffff;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.hiddenBtn{
+  display: none;
+}
