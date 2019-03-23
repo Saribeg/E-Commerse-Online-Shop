@@ -1,0 +1,160 @@
+.admin-color-wrapper {
+  position: relative;
+}
+
+.admin-color-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.add-color {
+  display: flex;
+  width: 100%;
+  border: 1px dashed #888888;
+  padding: 15px;
+
+  &-picker {
+    margin-right: 50px;
+  }
+
+  &-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 35%;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &-input {
+    padding: 5px;
+  }
+
+  &-save {
+    border: 1px solid #1faa00;
+    background-color: #7ecb20;
+    border-radius: 10px;
+    padding: 15px 0;
+    margin-top: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+
+    &:hover {
+      background-color: #1faa00;
+    }
+
+    &:disabled {
+      background-color: #cccccc;
+      color: #000000;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.color-alert-modal {
+  width: 100%;
+  padding: 20px;
+  line-height: 1.7;
+  background-color: #ffffff;
+  border: 1px solid #888888;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: all 0.7s linear;
+}
+
+.universal-preloader {
+  margin: 130px auto;
+}
+
+.color-alert-params {
+  margin: 20px 30px;
+}
+
+.color-alert-style {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  color: #cccccc;
+  margin-bottom: 20px;
+}
+
+.color-alert-actions {
+  margin: 50px 0 20px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.color-alert-action {
+  border-radius: 10px;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.cancel {
+  border: 1px solid #000000;
+  background-color: #ffffff;
+
+  &:hover {
+    background-color: #cccccc;
+  }
+}
+
+.accept {
+  border: 1px solid #1faa00;
+  background-color: #7ecb20;
+
+  &:hover {
+    background-color: #1faa00;
+  }
+}
+
+.final-message {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px;
+  border: 1px dashed #888888;
+}
+
+.existing-colors {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px;
+  border: 1px dashed #888888;
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-item {
+    margin-bottom: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-style {
+    width: 50%;
+    height: 20px;
+    border: 1px solid #888888;
+  }
+
+  &-text {
+    width: 10%;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
