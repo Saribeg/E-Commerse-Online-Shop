@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import InputRange from "react-input-range";
 import {connect} from "react-redux";
 
-import {selectFilters, selectPrice} from "../../../../actions/filterActions";
+import {selectFilters, selectPrice, clearProductList} from "../../../../actions/filterActions";
 
 import "react-input-range/lib/css/index.css";
 import "./price-filter.scss";
@@ -22,11 +22,15 @@ class PriceFilter extends Component {
             pageNo: 1,
         };
 
+
+
         this.props.selectFilters(currentFilters, newFilters);
     };
 
     onPriceFilter = price => {
         let {currentFilters} = this.props;
+
+        this.props.clearProductList();
 
         let newFilters = {
             category: currentFilters.category,
@@ -66,5 +70,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {selectFilters, selectPrice}
+    {selectFilters, selectPrice, clearProductList}
 )(PriceFilter);
