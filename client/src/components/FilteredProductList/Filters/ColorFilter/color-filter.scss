@@ -11,14 +11,22 @@
   .filter-color-panel {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     &-item {
       position: relative;
-      margin-right: 24px;
-      margin-bottom: 14px;
+      margin: 0 12px 14px;
+
+      &:nth-child(5n + 1){
+        margin-left: 0;
+      }
 
       &:nth-child(5n){
         margin-right: 0;
+
+        @include max-width($landscape-tablet){
+          margin: 0 12px 14px;
+        }
       }
     }
 

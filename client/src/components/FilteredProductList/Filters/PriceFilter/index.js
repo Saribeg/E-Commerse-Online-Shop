@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {selectFilters, selectPrice} from "../../../../actions/filterActions";
 
 import "react-input-range/lib/css/index.css";
-import "./priceFilter.scss";
+import "./price-filter.scss";
 
 class PriceFilter extends Component {
     componentDidMount = () => {

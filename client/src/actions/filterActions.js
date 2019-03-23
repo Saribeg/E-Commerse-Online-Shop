@@ -211,3 +211,13 @@ export const selectPrice = price => dispatch => {
         payload: price
     });
 };
+
+export const countProductsQuantity = (
+  products,
+  propertyName,
+  propertyValue
+) => {
+  return products.filter(product => {
+    return product[propertyName] === propertyValue;
+  }).length;
+};

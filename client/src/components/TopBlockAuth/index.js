@@ -9,7 +9,7 @@ import {
     OPEN_LOGIN_FORM,
     OPEN_LOGIN_DETAILS,
     CLOSE_LOGIN_DETAILS,
-    LOGOUT, CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_REG_FORM,
+    CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_REG_FORM,
     LOGOUT_JWT_CURRENT_USER, unsetLoggedUser, checkLogin, goToProfile
 } from "../../actions/login";
 

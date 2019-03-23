@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 //Components
 import AdmNavMenu from "./AdmNavMenu";
 import AdmProducts from "./AdmProducts";
+import AdmColors from "./AdmColors";
 import AdmCarousel from "./AdmCarousel";
 import AdmUsers from "./AdmUsers";
 import AdmFooter from "./AdmFooter";
@@ -34,6 +35,15 @@ class AdminDashboard extends Component {
                 to="/admin/dashboard/products"
               >
                 Products
+              </NavLink>
+            </li>
+            <li className="admin-dashboard-item">
+              <NavLink
+                className="admin-dashboard-link"
+                activeClassName="admin-dashboard-link-active"
+                to="/admin/dashboard/colors"
+              >
+                Colors
               </NavLink>
             </li>
             <li className="admin-dashboard-item">
@@ -77,6 +87,7 @@ class AdminDashboard extends Component {
             path="/admin/dashboard/products"
             component={AdmProducts}
           />
+          <Route exact path="/admin/dashboard/colors" component={AdmColors} />
           <Route
             exact
             path="/admin/dashboard/carousel"

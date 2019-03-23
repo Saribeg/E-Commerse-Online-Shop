@@ -56,8 +56,6 @@ class ProductCounter extends React.Component<Props, State> {
 
         let inputValue = this.state.value;
 
-        console.log('this.props.maxCount', this.props.maxCount)
-
         if (inputValue > this.props.maxCount && this.props.maxCount > 0) {
             this.setState({
                 value: this.props.maxCount

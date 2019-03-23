@@ -12,7 +12,7 @@ import {selectFilters, selectSize, clearProductList} from "../../../actions/filt
 import Preloader from "../../Preloader";
 
 // import "../../../scss/style.scss";
-import "./navMenu.scss";
+import "./nav-menu.scss";
 
 class NavMenu extends Component {
     // Calling action-creator for getting from server object with Navigation Menu Items

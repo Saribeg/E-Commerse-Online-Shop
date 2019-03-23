@@ -63,6 +63,10 @@
     height: 200px;
     object-fit: cover;
   }
+
+  img {
+    @include image;
+  }
 }
 
 .basket-item-info {

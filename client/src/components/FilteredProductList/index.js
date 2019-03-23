@@ -11,6 +11,7 @@ import ProductCard from "../ProductCard";
 import Preloader from "../Preloader";
 import EmptyState from "../EmptyState";
 import SearchDropDownList from "../SearchDropDownList";
+import ScrollBtn from "../ScrollBtn";
 
 import "./filteredProductList.scss";
 
@@ -160,14 +161,16 @@ class FilteredProductList extends Component {
             />
         );
 
-        return (
-            <>
-                <SearchDropDownList/>
-                <BreadCrumbs categoryAway={this.props.match.params}/>
-                <section className="category-block">
-                    <div className="container">
-                        <div className="category-content">
-                            <Filters urlParams={this.props.match.params}/>
+
+    return (
+      <>
+          <ScrollBtn scrollStepInPx="50" delayInMs="16.66"/>
+          <SearchDropDownList />
+        <BreadCrumbs categoryAway={this.props.match.params} />
+        <section className="category-block">
+          <div className="container">
+            <div className="category-content">
+              <Filters urlParams={this.props.match.params} />
 
                             <div className="category-product-listing">
 
@@ -184,43 +187,10 @@ class FilteredProductList extends Component {
 
                                         {filteredProductList}
 
-
-
-
-                                    {/*<div className="loading-products">*/}
-                                    {/*<input type="button" value="Load more" className="loading-products-btn"/>*/}
-                                    {/*</div>*/}
                                 </InfiniteScroll>
 
 
-                                {/*{*/}
-                                {/*this.props.products.length < 1 ? (*/}
-                                {/*filterEmptyState*/}
-                                {/*) : (*/}
 
-                                {/*<InfiniteScroll*/}
-                                {/*pageStart={0}*/}
-                                {/*loadMore={this.addNumberPage}*/}
-                                {/*hasMore={(this.props.currentFilters.pageNo <= this.props.currentFilters.amountPages)}*/}
-                                {/*useWindow={true}*/}
-                                {/*>*/}
-                                {/*{filteredProductList}*/}
-                                {/*</InfiniteScroll>*/}
-
-
-                                {/*)*/}
-                                {/*}*/}
-                                {/*{*/}
-                                {/*isProductFetching ? (*/}
-                                {/*<Preloader/>*/}
-                                {/*) : null*/}
-                                {/*}*/}
-
-
-                                {/*<div className="loading-products">*/}
-                                {/*<input type="button" value="Load more" className="loading-products-btn"*/}
-                                {/*onClick={this.addNumberPage}/>*/}
-                                {/*</div>*/}
 
                             </div>
                         </div>
