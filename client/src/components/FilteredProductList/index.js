@@ -17,9 +17,6 @@ import "./filteredProductList.scss";
 
 class FilteredProductList extends Component {
 
-    state = {
-        pageNo: 1,
-    }
 
     addNumberPage = () => {
 
@@ -162,15 +159,15 @@ class FilteredProductList extends Component {
         );
 
 
-    return (
-      <>
-          <ScrollBtn scrollStepInPx="50" delayInMs="16.66"/>
-          <SearchDropDownList />
-        <BreadCrumbs categoryAway={this.props.match.params} />
-        <section className="category-block">
-          <div className="container">
-            <div className="category-content">
-              <Filters urlParams={this.props.match.params} />
+        return (
+            <>
+                <ScrollBtn scrollStepInPx="50" delayInMs="16.66"/>
+                <SearchDropDownList/>
+                <BreadCrumbs categoryAway={this.props.match.params}/>
+                <section className="category-block">
+                    <div className="container">
+                        <div className="category-content">
+                            <Filters urlParams={this.props.match.params}/>
 
                             <div className="category-product-listing">
 
@@ -179,17 +176,26 @@ class FilteredProductList extends Component {
                                                 pageStart={0}
                                                 loadMore={this.addNumberPage}
                                                 hasMore={(this.props.currentFilters.pageNo <= this.props.currentFilters.amountPages)}
-                                                // useWindow={false}
+                                    // useWindow={false}
                                                 threshold={100}
 
                                 >
+                                    {
+                                        this.props.products.length < 1 ? (
+                                            filterEmptyState
+                                        ) : (
+                                            filteredProductList
 
-
-                                        {filteredProductList}
+                                        )
+                                    }
 
                                 </InfiniteScroll>
 
-
+                                {
+                                    isProductFetching ? (
+                                        <Preloader/>
+                                    ) : null
+                                }
 
 
                             </div>
