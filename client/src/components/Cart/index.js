@@ -324,26 +324,36 @@ class Cart extends Component {
                             {elem.price}
                         </div>
                     </p>
-                    <div className={classIsNotAvailable}>                         
-                    Out of Stock! {elem.reasonNotAvailable}                           
-                            <input type="button" value={`Accept ${elem.availableAmount} items`}
-                                   onClick={() => this.handleChange({
-                                       target: {
-                                           name: keyItem,
-                                           value: elem.availableAmount,
-                                       }
-                                   })}/>
-                        </div>
+                    <div className={classIsNotAvailable}>
+                        Out of Stock! {elem.reasonNotAvailable}
+                        <input type="button" value={`Accept ${elem.availableAmount} items`}
+                               onClick={() => this.handleChange({
+                                   target: {
+                                       name: keyItem,
+                                       value: elem.availableAmount,
+                                   }
+                               })}/>
+                    </div>
                 </li>
             )
 
-        })
+        });
 
 
         return (
             <section className="basket-page container">
                 <ul className="basket-items-list">
-                    {productList}
+                    {
+                        (productList.length > 0) ?
+                            (
+                                {productList}
+                            ) :
+                            (
+                                <div>You are fucking stupid. Fill the Cart</div>
+                            )
+                    }
+
+
                 </ul>
 
                 <FinalOrder/>

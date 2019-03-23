@@ -4,11 +4,24 @@ const User = require("../models/User");
 
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-// const jwtsecret = "mysecretkey";
 const keys = require("../config/keys");
 
-// const JwtStrategy = require('passport-jwt').Strategy;
-// const ExtractJwt = require('passport-jwt').ExtractJwt;
+const crypto = require('crypto');
+const nodemailer = require("nodemailer");
+const handlebars = require('handlebars');
+const fs = require('fs');
+
+
+const readHTMLFile = function (path, callback) {
+    fs.readFile(path, {encoding: 'utf-8'}, function (err, html) {
+        if (err) {
+            throw err;
+            callback(err);
+        } else {
+            callback(null, html);
+        }
+    });
+};
 
 
 const bcrypt = require('bcryptjs');
@@ -23,6 +36,33 @@ router.get("/test", (req, res) => {
     res.json({msg: "Users Works"});
 });
 
+router.post("/verify", (req, res) => {
+
+    console.log('req.body.id', req.body.id)
+
+    User.findOne({confirmLoginToken: req.body.id})
+        .then(user => {
+
+            console.log('user', user)
+            if (user) {
+
+                User.update({confirmLoginToken: req.body.id}, {
+                    $set: {
+                        activeAccoont: true,
+                    }
+                }).then(() => {
+                    res.json({success: true})
+                }).catch(() => {})
+
+            }
+            else {
+                res.json({success: false})
+            }
+        })
+        .catch(err => console.log(err))
+
+})
+
 // Add user to mongodb after server-side validations
 router.post("/register", (req, res) => {
     // const {errors, isValid} = validateRegisterInput(req.body);
@@ -34,6 +74,15 @@ router.post("/register", (req, res) => {
     //     return res.status(400).json(errors); //If not valid - send information about errors to client-side (React)
     // }
 
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: '2019.matter.store@gmail.com',
+            pass: '2019Matter'
+        }
+    });
+
     // Check if the user already exist
     User.findOne({email: req.body.email}).then(user => {
         if (user) {
@@ -41,17 +90,51 @@ router.post("/register", (req, res) => {
             res.json({result: false});
         } else {
             // If not exist - create user object according to mongoose schema
-            const newUser = new User({
-                firstName: req.body.firstName,
-                secondName: req.body.secondName,
-                email: req.body.email,
-                password: req.body.password
+            crypto.randomBytes(20, function(err, buf) {
+                let token = buf.toString('hex');
+                const newUser = new User({
+                    firstName: req.body.firstName,
+                    secondName: req.body.secondName,
+                    email: req.body.email,
+                    password: req.body.password,
+                    confirmLoginToken: token
+                });
+                newUser
+                    .save()
+                    .then(user => {
+
+                        readHTMLFile(__dirname + '/../templatesMail/confirmRegistration.html', function (err, html) {
+                            let template = handlebars.compile(html);
+                            let replacements = {
+                                link: `http://localhost:3000/verify/${user.confirmLoginToken}`
+                            };
+                            let htmlToSend = template(replacements);
+
+                            //send welcome email
+                            const mailOptions = {
+                                from: '2019.matter.store@gmail.com',
+                                to: user.email,
+                                subject: 'CONFIRM REGISTRATION',
+                                html: htmlToSend
+                            };
+                            transporter.sendMail(mailOptions, function (err, info) {
+                                if (err)
+                                    console.log(err);
+                                else {
+                                    // console.log(info);
+                                }
+
+                            });
+
+                        });
+
+                        res.json(user)
+                    })
+                    .catch(err => console.log(err));
             });
 
-            newUser
-                .save()
-                .then(user => res.json(user))
-                .catch(err => console.log(err));
+
+
         }
     });
 });
@@ -114,8 +197,6 @@ router.get(
 
 router.post("/update-profile/personal-info", (req, res) => {
 
-
-    console.log('update-profile/personal-info')
     // const {errors, isValid} = validateRegisterInput(req.body);
 
     // Check validation
@@ -129,7 +210,6 @@ router.post("/update-profile/personal-info", (req, res) => {
     User.findOne({email: req.body.email}).then(user => {
         if (user) {
 
-            console.log('update-profile/personal-info EXIST')
             // Email can be exist but its owner is current user
             if (req.body.id != user._id) {
                 res.json({status: 'exist-email', data: {}});
@@ -156,9 +236,6 @@ router.post("/update-profile/personal-info", (req, res) => {
             }
 
         } else {
-
-            console.log('update-profile/personal-info NOT EXIST')
-            console.log('req.body.id', req.body)
 
 
             // updating only three fields in the object in database

@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import AdminDashboard from "./components/AdminDashboard";
 import RedirectLogin from "./components/TopBlockAuth/RedirectLogin";
+import VerifyLogin from "./components/VerifyLogin";
 
 import {checkLoginCartOnStart} from "./actions/login";
 
@@ -18,6 +19,7 @@ class App extends Component {
       <>
         <Switch>
             <Route exact path="/login" component={RedirectLogin} />
+            <Route exact path="/verify/:id" component={VerifyLogin}/>
             <Route path="/admin/dashboard" component={AdminDashboard} />
             <Route path="/" component={Dashboard} />
         </Switch>
