@@ -1,5 +1,7 @@
 body {
   font-family: $font-openSans;
+  position: relative;
+  padding-bottom: 226px;
 }
 
 .container {
@@ -17,4 +19,8 @@ body {
 
 .d-none {
   display: none;
+}
+
+.fw-bold{
+  font-weight: 700;
 }

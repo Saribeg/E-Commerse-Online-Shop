@@ -3,6 +3,7 @@ import ProductsCarousel from "../ProductsCarousel";
 import Subscribe from "../Subscribe";
 import ProductListing from "../ProductListing";
 import CategoryCarousel from "../CategoryCarousel";
+import ScrollBtn from "../ScrollBtn";
 import "./MainPage.scss";
 
 import SearchDropDownList from "../SearchDropDownList";
@@ -10,7 +11,8 @@ import SearchDropDownList from "../SearchDropDownList";
 class MainPage extends Component {
   render() {
     return (
-      <div>
+      <>
+          <ScrollBtn scrollStepInPx="50" delayInMs="16.66"/>
         <SearchDropDownList />
         <ProductsCarousel />
 
@@ -22,9 +24,9 @@ class MainPage extends Component {
             </div>
           </div>
         </section>
-        <CategoryCarousel children={5} />
+        <CategoryCarousel/>
         <Subscribe />
-      </div>
+      </>
     );
   }
 }

@@ -13,5 +13,9 @@
     text-align: center;
     color: $black;
     margin-bottom: 40px;
+    @include max-width($landscape-tablet){
+      margin-top: 20px;
+    }
   }
+
 }

@@ -1,23 +1,23 @@
+@import "../../scss/resources/resources";
+
 .basket-page {
   display: flex;
   align-items: flex-start;
-  //height: 100vh;
-  padding: 40px 0;
-}
-
-@media (max-width: 992px) {
-  .basket-page {
-    display: block;
+  margin-top: 36px;
+  @include max-width($landscape-tablet){
+    flex-direction: column;
+    align-items: center;
   }
 }
 
 .basket-items-list {
   width: 60%;
-}
-
-@media (max-width: 992px) {
-  .basket-items-list {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  @include max-width($landscape-tablet){
     width: auto;
+    margin-top: 20px;
   }
 }
 
@@ -25,12 +25,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   border-bottom: 1px solid  #e5e5e5;
   padding: 20px 0;
-}
-
-@media (max-width: 992px) {
-  .basket-item {
+  width: 100%;
+  @include max-width($landscape-tablet){
     flex-direction: column;
     position: relative;
   }
@@ -48,10 +47,7 @@
   font-weight: 700;
   color: #000;
   cursor: pointer;
-}
-
-@media (max-width: 992px) {
-  .basket-item-delete {
+  @include max-width($landscape-tablet){
     position: absolute;
     top: 16px;
     right: 16px;
@@ -61,13 +57,15 @@
 .basket-item-img {
   width: 103px;
   height: 103px;
-}
-
-@media (max-width: 992px) {
-  .basket-item-img {
+  margin-bottom: 16px;
+  @include max-width($landscape-tablet){
     width: 50%;
     height: 200px;
     object-fit: cover;
+  }
+
+  img {
+    @include image;
   }
 }
 
@@ -75,13 +73,12 @@
   color: #333;
   font-size: 13px;
   line-height: 20px;
-}
-
-@media (max-width: 992px) {
-  .basket-item-info {
+  width: 30%;
+  @include max-width($landscape-tablet){
     text-align: center;
     margin-top: 18px;
     line-height: 30px;
+    width: 100%;
   }
 }
 
@@ -90,50 +87,13 @@
   font-size: 16px;
   line-height: 20px;
   font-weight: 700;
-}
 
-.basket-final-order {
-  margin-left: 48px;
-  padding: 18px;
-  background-color: #fff;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  color: #333;
-}
-
-@media (max-width: 992px) {
-  .basket-final-order {
-    margin-left: 0;
+  &.price {
+    width: 100px;
+    @include max-width($landscape-tablet){
+      width: auto;
+    }
   }
-}
-
-.basket-final-order-title {
-  font-size: 14px;
-  line-height: 40px;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding-bottom: 14px;
-  border-bottom: 1px solid #f3f3f3;
-}
-
-.basket-final-order-info {
-  margin: 9px 0 40px;
-}
-
-.basket-final-order-info li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.basket-final-order-info .title {
-  font-size: 14px;
-  line-height: 34px;
-}
-
-.basket-final-order-info .price {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 700;
 }
 
 .product-counter {
@@ -144,33 +104,8 @@
 }
 
 .product-counter-btn {
-  border: 0;
-  border: none;
-  background: none;
-  background-image: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-  background-color: #f3f3f3;
-  cursor: pointer;
-  font-size: 36px;
-  padding: 5px 18px;
-}
-
-.product-counter-btn::-moz-focus-inner {
-  border: 0;
-}
-
-.product-counter-btn::-ms-expand {
-  display: none;
-}
-
-.product-counter-btn:focus {
-  outline: none;
+  @include clear-default-inputs-style;
+  background-color: $grey-light;
 }
 
 .product-counter-value {
@@ -180,9 +115,12 @@
 }
 
 .product-counter-input-value {
-  font-size: 18px;
-  width: 70px;
-  padding: 14px 0 14px 18px;
+  @include clear-default-inputs-style;
+  width: 45px;
+  padding: 5px 18px;
+  background-color: #fff;
+  font-size: 14px;
+  text-align: center;
 }
 
 .basket-item-available {
@@ -193,4 +131,28 @@
 .basket-item-notavailable {
   color: red;
   font-weight: bold;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+
+  input {
+    @include clear-default-inputs-style;
+    padding: 7px 15px;
+    background-color: $black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin-left: 12px;
+  }
+}
+
+.basket-item-old-price {
+  color: red;
+  text-decoration: line-through;
 }

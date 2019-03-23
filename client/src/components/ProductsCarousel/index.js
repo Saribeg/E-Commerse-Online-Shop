@@ -19,7 +19,7 @@ class ProductsCarousel extends Component {
     render() {
         let itemsCarousel = this.state.dbCarousel.map(item => {
             return (
-                <div id={item.desc} key={item.id} className="carousel-item">
+                <div id={item.desc} key={item._id} className="carousel-item">
                     <img src={item.imageUrl} alt="product"/>
                     <div className="price">${item.product.currentPrice}</div>
                     <div className="info">{item.product.model}</div>

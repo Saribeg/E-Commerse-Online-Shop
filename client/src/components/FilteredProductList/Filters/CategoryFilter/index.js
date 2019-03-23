@@ -1,38 +1,51 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
 
-import { selectFilters } from "../../../../actions/filterActions";
+import {
+  selectFilters,
+  countProductsQuantity,
+    clearProductList
+} from "../../../../actions/filterActions";
 
 import "./category-filter.scss";
 
 class CategoryFilter extends Component {
-  changeCategoryFilters = (
-    newCategory,
-    newSubCategory,
-    newFurtherSubCategory
-  ) => {
-    let { currentFilters } = this.props;
+    changeCategoryFilters = (
+        newCategory,
+        newSubCategory,
+        newFurtherSubCategory
+    ) => {
+        let {currentFilters} = this.props;
 
-    this.props.selectFilters(currentFilters, {
-      category: newCategory,
-      subCategory: newSubCategory,
-      furtherSubCategory: newFurtherSubCategory,
-      colorName: currentFilters.colorName,
-      size: currentFilters.size,
-      price: currentFilters.price
-    });
-  };
+        this.props.clearProductList();
+
+        this.props.selectFilters(currentFilters, {
+            category: newCategory,
+            subCategory: newSubCategory,
+            furtherSubCategory: newFurtherSubCategory,
+            colorName: currentFilters.colorName,
+            size: currentFilters.size,
+            price: currentFilters.price,
+            pageNo: 1,
+        });
+    };
 
   render() {
-    let { category, subCategory, furtherSubCategory } = this.props.urlParams;
-    let { navMenuItems, selectFilters, currentFilters } = this.props;
+    let { category } = this.props.urlParams;
+    let { navMenuItems, products } = this.props;
 
     let subCategories = navMenuItems.map(cat => {
       if (cat.categoryName === category) {
         return cat.subCategoryList.map(subCat => {
           let furtherSubCatList = subCat.furtherSubCategoryList.map(
             furtherSubCat => {
+              let furtherSubCatQuantity = countProductsQuantity(
+                products,
+                "furtherSubCategory",
+                furtherSubCat.furtherSubCategoryName
+              );
+
               return (
                 <li
                   className="further-sub-category-item"
@@ -52,26 +65,40 @@ class CategoryFilter extends Component {
                   >
                     {furtherSubCat.furtherSubCategoryName}
                   </NavLink>
+                  <div className="quantity">
+                    {furtherSubCatQuantity ? furtherSubCatQuantity : null}
+                  </div>
                 </li>
               );
             }
           );
 
+          let subCatQuantity = countProductsQuantity(
+            products,
+            "subCategory",
+            subCat.subCategoryName
+          );
+
           return (
             <div className="category-item" key={subCat._id}>
-              <NavLink
-                to={subCat.subCategoryUrl}
-                className="category-item-title"
-                activeClassName="category-item-title-active"
-                onClick={() =>
-                  this.changeCategoryFilters(
-                    cat.categoryName,
-                    subCat.subCategoryName
-                  )
-                }
-              >
-                {subCat.subCategoryName}
-              </NavLink>
+              <div className="subcat-block">
+                <NavLink
+                  to={subCat.subCategoryUrl}
+                  className="category-item-title"
+                  activeClassName="category-item-title-active"
+                  onClick={() =>
+                    this.changeCategoryFilters(
+                      cat.categoryName,
+                      subCat.subCategoryName
+                    )
+                  }
+                >
+                  {subCat.subCategoryName}
+                </NavLink>
+                <div className="quantity subcat">
+                  {subCatQuantity ? subCatQuantity : null}
+                </div>
+              </div>
               <ul className="category-item-sub-menu">{furtherSubCatList}</ul>
             </div>
           );
@@ -82,16 +109,26 @@ class CategoryFilter extends Component {
 
     let categoryFilters = navMenuItems.map(cat => {
       if (cat.categoryName === category) {
+        let catQuantity = countProductsQuantity(
+          products,
+          "category",
+          cat.categoryName
+        );
         return (
           <div className="category-list border-category" key={cat._id}>
-            <NavLink
-              to={cat.categoryUrl}
-              className="filter-title"
-              activeClassName="filter-title-active"
-              onClick={() => this.changeCategoryFilters(cat.categoryName)}
-            >
-              {`Shop ${cat.categoryName}`}
-            </NavLink>
+            <div className="cat-block">
+              <NavLink
+                to={cat.categoryUrl}
+                className="filter-title"
+                activeClassName="filter-title-active"
+                onClick={() => this.changeCategoryFilters(cat.categoryName)}
+              >
+                {`Shop ${cat.categoryName}`}
+              </NavLink>
+              <div className="quantity cat">
+                {catQuantity ? catQuantity : null}
+              </div>
+            </div>
             <div className="category-list-menu">{subCategories}</div>
           </div>
         );
@@ -105,11 +142,12 @@ class CategoryFilter extends Component {
 const mapStateToProps = state => {
   return {
     navMenuItems: state.navMenu.navMenuItems,
-    currentFilters: state.filters.selected
+    currentFilters: state.filters.selected,
+    products: state.filters.products
   };
 };
 
 export default connect(
   mapStateToProps,
-  { selectFilters }
+  { selectFilters, countProductsQuantity }
 )(CategoryFilter);

@@ -57,14 +57,14 @@ class Profile extends Component {
                                  activeClassName='section-profile-navmenu-item-active'>
                             Change Password
                         </NavLink>
-                        <NavLink to='/users/profile/deliveryInfo' className='section-profile-navmenu-item'
-                                 activeClassName='section-profile-navmenu-item-active'>
-                            Delivery Information
-                        </NavLink>
-                        <NavLink to='/users/profile/paymentDetails' className='section-profile-navmenu-item'
-                                 activeClassName='section-profile-navmenu-item-active'>
-                            Payment Information
-                        </NavLink>
+                        {/*<NavLink to='/users/profile/deliveryInfo' className='section-profile-navmenu-item'*/}
+                                 {/*activeClassName='section-profile-navmenu-item-active'>*/}
+                            {/*Delivery Information*/}
+                        {/*</NavLink>*/}
+                        {/*<NavLink to='/users/profile/paymentDetails' className='section-profile-navmenu-item'*/}
+                                 {/*activeClassName='section-profile-navmenu-item-active'>*/}
+                            {/*Payment Information*/}
+                        {/*</NavLink>*/}
                         <NavLink to='/users/profile/ordersHistory' className='section-profile-navmenu-item'
                                  activeClassName='section-profile-navmenu-item-active'>
                             My Orders
@@ -78,8 +78,8 @@ class Profile extends Component {
                     <div className='section-profile-content'>
                         <Route exact path='/users/profile/personalContent' component={PersonalContent}/>
                         <Route exact path='/users/profile/changePassword' component={ChangePassword}/>
-                        <Route exact path='/users/profile/deliveryInfo' component={DeliveryInfo}/>
-                        <Route exact path='/users/profile/paymentDetails' component={PaymentDetails}/>
+                        {/*<Route exact path='/users/profile/deliveryInfo' component={DeliveryInfo}/>*/}
+                        {/*<Route exact path='/users/profile/paymentDetails' component={PaymentDetails}/>*/}
                         <Route exact path='/users/profile/ordersHistory' component={OrdersHistory}/>
                     </div>
                 </div>

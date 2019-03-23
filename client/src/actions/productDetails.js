@@ -1,5 +1,4 @@
 import axios from "axios";
-import product from "../reducers/product";
 import {SET_INITIAL_STATE_ADD_CART} from "./addToCart";
 
 export const FETCH_PRODUCT_DETAIL_REQUEST = "FETCH_PRODUCT_DETAIL_REQUEST";
@@ -26,6 +25,7 @@ export const getProductDetails = routeDetails => dispatch => {
                 isAvailable: true,
                 reasonNotAvailable: "",
                 model: result.data[0].model,
+                amount: 1,
                 price: result.data[0].currentPrice,
                 priceFormDB: result.data[0].currentPrice,
             }

@@ -12,6 +12,7 @@ class ProductListing extends Component {
     }
 
     render() {
+
         let counterItems = 0;
         let listProduct = [];
         if (this.props.productPopularListing) {

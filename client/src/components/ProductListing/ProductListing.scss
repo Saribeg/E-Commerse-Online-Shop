@@ -17,10 +17,7 @@
 
   &-products {
     @include flex-wrap-between;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    align-items: center;
 
     @include max-width($landscape-tablet) {
       justify-content: space-around;
@@ -33,8 +30,8 @@
       max-width: 263px;
       width: 100%;
       text-align: center;
-      margin-bottom: 25px;
-  
+      margin-bottom: 20px;
+
       &:hover {
         box-shadow: 0 0 10px 10px #ccc;
         background-color: #fff;
@@ -48,14 +45,21 @@
     .product-img {
       width: 100%;
       max-width: 263px;
+      height: 100%;
+      max-height: 328px;
+      object-fit: cover;
+      margin-bottom: 5px;
     }
   
     .product-name {
       font-family: $font-openSans;
       font-size: 16px;
       color: $black;
-      padding: 12px 20px 5px;
-      line-height: 1.38;
+      padding: 0 20px;
+      height: 36px;
+      line-height: 1.2;
+      margin-bottom: 5px;
+      overflow: hidden;
     }
   
     .product-price {
@@ -63,7 +67,7 @@
       font-size: 14px;
       font-weight: bold;
       color: $black;
-      padding-bottom: 15px;
+      padding-bottom: 5px;
     }
   }
 }

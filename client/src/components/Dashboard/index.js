@@ -23,6 +23,10 @@ import {
 } from "../../actions/login";
 
 import { blurSearchInput } from "../../actions/search";
+import {
+  CLOSE_MODAL_SUCCESS_ORDER,
+  CLOSE_MODAL_UNSUCCESS_ORDER
+} from "../../actions/cart";
 
 class Dashboard extends Component {
   handleCloseForms = e => {
@@ -30,11 +34,15 @@ class Dashboard extends Component {
       this.props.windowsStatus.formLoginOpen ||
       this.props.windowsStatus.formRegisterOpen ||
       this.props.windowsStatus.loginDetails ||
-      this.props.focus
+      this.props.focus ||
+      this.props.checkoutWindows.successOrder ||
+      this.props.checkoutWindows.unsuccessOrder
     ) {
       this.props.closeLoginForm();
       this.props.closeRegForm();
       this.props.closeLoginDetails();
+      this.props.closeSuccessOrder();
+      this.props.closeUnsuccessOrder();
       this.props.blurSearchInput(e);
     }
   };
@@ -65,7 +73,8 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
   return {
     windowsStatus: state.login.windowsStatus,
-    focus: state.search.focus
+    focus: state.search.focus,
+    checkoutWindows: state.cart.windows
   };
 };
 
@@ -80,7 +89,13 @@ const mapDispatchToProps = dispatch => {
     closeRegForm: () => {
       dispatch({ type: CLOSE_REG_FORM });
     },
-    blurSearchInput: e => dispatch(blurSearchInput(e))
+    blurSearchInput: e => dispatch(blurSearchInput(e)),
+    closeSuccessOrder: () => {
+      dispatch({ type: CLOSE_MODAL_SUCCESS_ORDER });
+    },
+    closeUnsuccessOrder: () => {
+      dispatch({ type: CLOSE_MODAL_UNSUCCESS_ORDER });
+    }
   };
 };
 

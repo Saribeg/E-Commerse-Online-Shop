@@ -77,6 +77,7 @@ class ProductPage extends Component {
           categoryAway={this.props.match.params}
           modelName={model}
           activeColor={activeColor}
+          itemNo={itemNo}
         />
 
         <section className="product-main container">

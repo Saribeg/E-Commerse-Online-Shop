@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
 import {NavLink} from 'react-router-dom';
+import './final-order.scss';
 
 
 class FinalOrder extends Component {
@@ -24,8 +25,10 @@ class FinalOrder extends Component {
             });
             totalPrice = totalPrice.toFixed(2);
 
-
         }
+
+
+
 
         return (
             <div className="basket-final-order">

@@ -14,6 +14,11 @@
   }
 
   .category-list-menu {
+    @include max-width($landscape-tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
     .category-item {
       padding-left: 20px;
 
@@ -45,6 +50,8 @@
 
       &-sub-menu {
         .further-sub-category-item {
+          display: flex;
+          justify-content: space-between;
           margin-bottom: 15px;
 
           .further-sub-category-link {
@@ -67,4 +74,23 @@
       }
     }
   }
+}
+
+.quantity {
+  font-size: 13px;
+  color: #272626;
+}
+
+.cat {
+  font-weight: 900;
+}
+
+.subcat {
+  font-weight: 600;
+}
+
+.subcat-block,
+.cat-block {
+  display: flex;
+  justify-content: space-between;
 }

@@ -11,6 +11,7 @@ const carouselItems = require("./routes/carouselItems");
 const popularItems = require("./routes/popularItems");
 const subscribe = require("./routes/subscribe");
 const unsubscribe = require("./routes/unsubscribe");
+const sendMails = require("./routes/mails");
 const footerLinks = require("./routes/footer-links");
 const colors = require("./routes/filters/colors");
 const sizes = require("./routes/filters/sizes");
@@ -65,6 +66,7 @@ app.use("/", carouselItems);
 app.use("/", popularItems);
 app.use("/", subscribe);
 app.use("/", unsubscribe);
+app.use("/", sendMails);
 app.use("/", footerLinks);
 app.use("/", colors);
 app.use("/", sizes);
@@ -77,5 +79,6 @@ const port = process.env.PORT || 5000;
 
 let server = app.listen(port, () => console.log(`Server running on port ${port}`));
 
+console.log(process.env.NODE_ENV);
 module.exports = server;
 

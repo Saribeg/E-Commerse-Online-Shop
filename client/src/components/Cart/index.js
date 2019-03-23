@@ -25,6 +25,7 @@ class Cart extends Component {
 
     handleChange = (event) => {
 
+
         let name = Number(event.target.name);
         let value = Number(event.target.value);
 
@@ -97,11 +98,6 @@ class Cart extends Component {
     }
 
 
-    // this.props.changeArrayAmount({
-    //     ...this.state,
-    // });
-
-
     addAmount = (index) => {
 
         let newAmount = this.state[index];
@@ -127,16 +123,8 @@ class Cart extends Component {
 
                     arrayCheckProducts.push(checkItem);
                 })
-                // console.log('componentWillUpdate array', arrayCheckProducts)
-                // console.log('CALL checkArrayAvailableItems 3');
                 this.props.checkArrayAvailableItems(arrayCheckProducts);
             }
-
-
-            // this.props.changeArrayAmount({
-            //     ...this.state,
-            //     [index]: newAmount
-            // });
 
 
             setTimeout(this.falseBlock, 1500);
@@ -188,15 +176,8 @@ class Cart extends Component {
 
                         arrayCheckProducts.push(checkItem);
                     })
-                    // console.log('componentWillUpdate array', arrayCheckProducts)
-                    // console.log('CALL checkArrayAvailableItems 4');
                     this.props.checkArrayAvailableItems(arrayCheckProducts);
                 }
-
-                // this.props.changeArrayAmount({
-                //     ...this.state,
-                //     [index]: newAmount
-                // });
 
                 setTimeout(this.falseBlock, 1500);
                 this.setState({
@@ -240,7 +221,6 @@ class Cart extends Component {
 
         // console.log('component will update')
         let isUpdate = 0;
-        let block = 0;
         let obj = {};
         nextProps.dataBasket.arrayProduct.forEach((elem, index) => {
 
@@ -312,22 +292,15 @@ class Cart extends Component {
                 <li key={keyItem + "indexCart"} className="basket-item">
                     <span className="basket-item-delete" onClick={() => this.deleteItem(keyItem)}><FontAwesomeIcon
                         icon={faTimes}/></span>
-                    <img
-                        className="basket-item-img"
-                        src={elem.urlPhoto}
-                    />
+                    <div className="basket-item-img">
+                        <img src={elem.urlPhoto}/>
+                    </div>
                     <div className="basket-item-info">
                         <p className="basket-item-title">{elem.model}</p>
-                        <p>{elem.colorName}</p>
-                        <p>{elem.size}</p>
+                        <p><span className="fw-bold">Color:</span> {elem.colorName}</p>
+                        <p><span className="fw-bold">Size:</span> {elem.size}</p>
                         <p className={classIsAvailable}>
                             In Stock
-                        </p>
-                        <p className={classIsNotAvailable}>
-                            Out Stock
-                        </p>
-                        <p className={classIsNotAvailable}>
-                            {elem.reasonNotAvailable}
                         </p>
                     </div>
                     <div className="product-counter">
@@ -336,32 +309,51 @@ class Cart extends Component {
                                onChange={this.handleChange}/>
                         <button className="product-counter-btn" onClick={() => this.addAmount(keyItem)}>+</button>
                     </div>
-                    <p className="basket-item-title">
+                    <p className="basket-item-title price">
                         <div className={classWasChangedPrice}>
                             <div className='basket-item-old-price'>
-                                {elem.price}
+                            ${elem.price} 
                             </div>
+                            
                             <div className='basket-item-new-price'>
-                                {elem.priceFormDB}
+                            ${elem.priceFormDB}
                             </div>
                         </div>
 
                         <div className={classWasntChangedPrice}>
-                            {elem.price}
+                        ${elem.price}
                         </div>
-
-
                     </p>
+                    <div className={classIsNotAvailable}>
+                        Out of Stock! {elem.reasonNotAvailable}
+                        <input type="button" value={`Accept ${elem.availableAmount} items`}
+                               onClick={() => this.handleChange({
+                                   target: {
+                                       name: keyItem,
+                                       value: elem.availableAmount,
+                                   }
+                               })}/>
+                    </div>
                 </li>
             )
 
-        })
+        });
 
 
         return (
             <section className="basket-page container">
                 <ul className="basket-items-list">
-                    {productList}
+                    {
+                        (productList.length > 0) ?
+                            (
+                                {productList}
+                            ) :
+                            (
+                                <div>You are fucking stupid. Fill the Cart</div>
+                            )
+                    }
+
+
                 </ul>
 
                 <FinalOrder/>
