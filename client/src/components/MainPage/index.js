@@ -3,6 +3,7 @@ import ProductsCarousel from "../ProductsCarousel";
 import Subscribe from "../Subscribe";
 import ProductListing from "../ProductListing";
 import CategoryCarousel from "../CategoryCarousel";
+import ScrollBtn from "../ScrollBtn";
 import "./MainPage.scss";
 
 import SearchDropDownList from "../SearchDropDownList";
@@ -11,6 +12,7 @@ class MainPage extends Component {
   render() {
     return (
       <>
+          <ScrollBtn scrollStepInPx="50" delayInMs="16.66"/>
         <SearchDropDownList />
         <ProductsCarousel />
 

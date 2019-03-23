@@ -34,6 +34,7 @@
     "passport": "0.4.0",
     "passport-jwt": "4.0.0",
     "passport-local": "1.0.0",
+    "react-scroll": "^1.7.11",
     "unique-random": "2.0.0",
     "validator": "10.11.0"
   },
