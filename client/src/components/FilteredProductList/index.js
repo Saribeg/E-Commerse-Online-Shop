@@ -126,7 +126,7 @@ class FilteredProductList extends Component {
 
     return (
       <>
-          <ScrollBtn scrollStepInPx="50" delayInMs="16.66"/>
+          <ScrollBtn scrollStepInPx="100" delayInMs="12"/>
           <SearchDropDownList />
         <BreadCrumbs categoryAway={this.props.match.params} />
         <section className="category-block">

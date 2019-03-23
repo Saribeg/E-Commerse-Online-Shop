@@ -17,7 +17,6 @@
 
   &-products {
     @include flex-wrap-between;
-    align-items: center;
 
     @include max-width($landscape-tablet) {
       justify-content: space-around;

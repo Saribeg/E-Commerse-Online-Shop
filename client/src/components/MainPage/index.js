@@ -12,7 +12,7 @@ class MainPage extends Component {
   render() {
     return (
       <>
-          <ScrollBtn scrollStepInPx="50" delayInMs="16.66"/>
+          <ScrollBtn scrollStepInPx="100" delayInMs="12"/>
         <SearchDropDownList />
         <ProductsCarousel />
 
