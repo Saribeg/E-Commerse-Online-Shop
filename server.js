@@ -8,6 +8,7 @@ const users = require("./routes/users");
 const navigationMenuItems = require("./routes/navigationMenuItems");
 const products = require("./routes/products");
 const carouselItems = require("./routes/carouselItems");
+const popularItems = require("./routes/popularItems");
 const subscribe = require("./routes/subscribe");
 const unsubscribe = require("./routes/unsubscribe");
 const sendMails = require("./routes/mails");
@@ -62,6 +63,7 @@ app.use("/users", users);
 app.use("/", navigationMenuItems);
 app.use("/", products);
 app.use("/", carouselItems);
+app.use("/", popularItems);
 app.use("/", subscribe);
 app.use("/", unsubscribe);
 app.use("/", sendMails);
@@ -71,8 +73,8 @@ app.use("/", sizes);
 app.use("/", cart);
 app.use("/", staticPages);
 app.use("/", search);
-
 app.use("/", categoryCarousels);
+
 const port = process.env.PORT || 5000;
 
 let server = app.listen(port, () => console.log(`Server running on port ${port}`));

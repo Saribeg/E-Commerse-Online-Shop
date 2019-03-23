@@ -20,9 +20,7 @@ module.exports = passport => {
         },
         function (email, password, cb) {
 
-        console.log('local strategy')
-
-            return User.findOne({email: email}, function (err, user) {
+            return User.findOne({email: email, activeAccoont: true}, function (err, user) {
 
                 if (err || !user) {
                     return cb(null, false, {message: 'Incorrect email or password.'});
@@ -40,37 +38,14 @@ module.exports = passport => {
                 }
             });
 
-            // return UserModel.findOne({email, password})
-            //     .then(user => {
-            //         if (!user) {
-            //             return cb(null, false, {message: 'Incorrect email or password.'});
-            //         }
-            //
-            //         return cb(null, user, {
-            //             message: 'Logged In Successfully'
-            //         });
-            //     })
-            //     .catch(err => {
-            //         return cb(err);
-            //     });
         }
     ));
-
-
 
     passport.use(
 
         new JwtStrategy(options, (jwt_payload, done) => {
-
-            // console.log('jwt strategy')
-
-            // console.log(jwt_payload._doc._id)
-
             User.findById(jwt_payload._doc)
                 .then(user => {
-
-                    // console.log(user)
-
                     if (user) {
                         return done(null, user);
                     }
