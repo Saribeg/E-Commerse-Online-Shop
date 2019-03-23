@@ -11,7 +11,8 @@ import {
     SELECT_PRICE,
     SET_DEFAULT_PAGE,
     SET_NUMBER_OF_PAGES,
-    SET_PAGE
+    SET_PAGE,
+    CLEAR_PRODUCTS_LIST
 } from "../../actions/filterActions";
 
 const initialState = {
@@ -109,7 +110,8 @@ function filters(state = initialState, action) {
                 ...state,
                 selected: {
                     ...state.selected,
-                    amountPages: action.payload.amountPages
+                    amountPages: action.payload.amountPages,
+                    pageNo: action.payload.pageNo,
                 }
             }
 
@@ -121,6 +123,19 @@ function filters(state = initialState, action) {
                     pageNo: action.payload.pageNo,
                 }
             }
+
+        case CLEAR_PRODUCTS_LIST:
+
+            return {
+                ...state,
+                products: [],
+                selected: {
+                    ...state.selected,
+                    pageNo: 1,
+                    amountPages: 1,
+                }
+            }
+
 
         default:
             return {...state};

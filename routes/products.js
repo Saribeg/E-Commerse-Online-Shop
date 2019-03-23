@@ -291,13 +291,28 @@ router.post("/products/filtered-products", (req, res) => {
         return query;
     }
 
-    let perPage = 3;
+    let perPage = 5;
 
 
     Product.find(filter(filters))
         .skip((perPage * pageNo) - perPage)
         .limit(perPage)
-        .then(products => res.json(products))
+        .then(products => {
+            Product
+                .find(filter(filters))
+                .count()
+                .then(amount => {
+
+                    // console.log(amount);
+                    res.json({
+                        products: products,
+                        amount: amount / perPage,
+                    })
+                })
+
+
+
+        })
         .catch(err => console.log(err));
 });
 

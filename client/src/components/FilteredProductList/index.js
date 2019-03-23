@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
+import InfiniteScroll from 'react-infinite-scroller';
 
 import {getFilteredProducts, selectFilters, setNewPage} from "../../actions/filterActions";
 
@@ -15,23 +16,35 @@ import "./filteredProductList.scss";
 
 class FilteredProductList extends Component {
 
+    state = {
+        pageNo: 1,
+    }
+
     addNumberPage = () => {
-        let currentValue = this.props.currentFilters.pageNo;
-        currentValue++;
 
-        let { currentFilters } = this.props;
+        if (!this.props.isProductFetching) {
+            let currentValue = this.props.currentFilters.pageNo;
 
-        this.props.selectFilters(currentFilters, {
-            category: currentFilters.category,
-            subCategory: currentFilters.subCategory,
-            furtherSubCategory: currentFilters.furtherSubCategory,
-            colorName: currentFilters.colorName,
-            size: currentFilters.size,
-            price: currentFilters.price,
-            pageNo: currentValue
-        });
+            // let currentValue = page;
+            currentValue++;
 
-        this.props.setNewPage(currentValue);
+            console.log("currentValue", currentValue)
+
+            let {currentFilters} = this.props;
+
+            this.props.selectFilters(currentFilters, {
+                category: currentFilters.category,
+                subCategory: currentFilters.subCategory,
+                furtherSubCategory: currentFilters.furtherSubCategory,
+                colorName: currentFilters.colorName,
+                size: currentFilters.size,
+                price: currentFilters.price,
+                pageNo: currentValue
+            });
+        }
+
+
+        // this.props.setNewPage(currentValue);
     }
 
     componentDidMount = () => {
@@ -157,25 +170,57 @@ class FilteredProductList extends Component {
                             <Filters urlParams={this.props.match.params}/>
 
                             <div className="category-product-listing">
-                                <div className="listing-products">
-                                    {
-                                        this.props.products.length < 1 ? (
-                                            filterEmptyState
-                                        ) : (
-                                            filteredProductList
-                                        )
-                                    }
-                                    {
-                                        isProductFetching ? (
-                                            <Preloader/>
-                                        ) : null
-                                    }
 
-                                </div>
-                                <div className="loading-products">
-                                    <input type="button" value="Load more" className="loading-products-btn"
-                                           onClick={this.addNumberPage}/>
-                                </div>
+
+                                <InfiniteScroll className="listing-products"
+                                                pageStart={0}
+                                                loadMore={this.addNumberPage}
+                                                hasMore={(this.props.currentFilters.pageNo <= this.props.currentFilters.amountPages)}
+                                                // useWindow={false}
+                                                threshold={100}
+
+                                >
+
+
+                                        {filteredProductList}
+
+
+
+
+                                    {/*<div className="loading-products">*/}
+                                    {/*<input type="button" value="Load more" className="loading-products-btn"/>*/}
+                                    {/*</div>*/}
+                                </InfiniteScroll>
+
+
+                                {/*{*/}
+                                {/*this.props.products.length < 1 ? (*/}
+                                {/*filterEmptyState*/}
+                                {/*) : (*/}
+
+                                {/*<InfiniteScroll*/}
+                                {/*pageStart={0}*/}
+                                {/*loadMore={this.addNumberPage}*/}
+                                {/*hasMore={(this.props.currentFilters.pageNo <= this.props.currentFilters.amountPages)}*/}
+                                {/*useWindow={true}*/}
+                                {/*>*/}
+                                {/*{filteredProductList}*/}
+                                {/*</InfiniteScroll>*/}
+
+
+                                {/*)*/}
+                                {/*}*/}
+                                {/*{*/}
+                                {/*isProductFetching ? (*/}
+                                {/*<Preloader/>*/}
+                                {/*) : null*/}
+                                {/*}*/}
+
+
+                                {/*<div className="loading-products">*/}
+                                {/*<input type="button" value="Load more" className="loading-products-btn"*/}
+                                {/*onClick={this.addNumberPage}/>*/}
+                                {/*</div>*/}
 
                             </div>
                         </div>
