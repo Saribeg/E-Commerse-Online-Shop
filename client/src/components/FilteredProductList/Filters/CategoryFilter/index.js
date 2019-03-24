@@ -1,31 +1,35 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
 
 import {
   selectFilters,
-  countProductsQuantity
+  countProductsQuantity,
+    clearProductList
 } from "../../../../actions/filterActions";
 
 import "./category-filter.scss";
 
 class CategoryFilter extends Component {
-  changeCategoryFilters = (
-    newCategory,
-    newSubCategory,
-    newFurtherSubCategory
-  ) => {
-    let { currentFilters } = this.props;
+    changeCategoryFilters = (
+        newCategory,
+        newSubCategory,
+        newFurtherSubCategory
+    ) => {
+        let {currentFilters} = this.props;
 
-    this.props.selectFilters(currentFilters, {
-      category: newCategory,
-      subCategory: newSubCategory,
-      furtherSubCategory: newFurtherSubCategory,
-      colorName: currentFilters.colorName,
-      size: currentFilters.size,
-      price: currentFilters.price
-    });
-  };
+        this.props.clearProductList();
+
+        this.props.selectFilters(currentFilters, {
+            category: newCategory,
+            subCategory: newSubCategory,
+            furtherSubCategory: newFurtherSubCategory,
+            colorName: currentFilters.colorName,
+            size: currentFilters.size,
+            price: currentFilters.price,
+            pageNo: 1,
+        });
+    };
 
   render() {
     let { category } = this.props.urlParams;
