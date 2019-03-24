@@ -56,7 +56,7 @@
     font-weight: bold;
     position: absolute;
     top: 25%;
-    left: 68%;
+    left: 70%;
     width: 30%;
     text-align: left;
 
@@ -72,7 +72,7 @@
   .carousel-btn {
     position: absolute;
     top: 50%;
-    left: 68%;
+    left: 70%;
     width: 200px;
     height: 40px;
     border-radius: 100px;
@@ -92,6 +92,7 @@
     }
 
     @include max-width($landscape-tablet) {
+      top: 60%;
       width: 120px;
       height: 30px;
       font-size: 14px;
