@@ -5,6 +5,8 @@ const Product = require("../../models/Product");
 const getUniqArrItems = require("../../utils/utils");
 
 router.post("/filters/sizes/add-size", async (req, res) => {
+  let sizeId = req.body.sizeId;
+
   const newSize = {};
   newSize.value = req.body.value;
   if (req.body.sizeDesc) newSize.sizeDesc = req.body.sizeDesc;
@@ -77,6 +79,92 @@ router.get("/filters/sizes", (req, res) => {
   Size.find()
     .then(sizes => res.json(sizes))
     .catch(err => console.log(err));
+});
+
+// Route for checking existing sizes in DB (not adding or updating)
+router.post("/filters/sizes/check-size", async (req, res) => {
+  let size = req.body.newSize;
+
+  Size.findOne({ value: size }).then(size => {
+    //if size already exists, then find and update it in db
+    if (size) {
+      res.send({
+        message: true,
+        existingSize: size
+      });
+    } else {
+      res.send({
+        message: false
+      });
+    }
+  });
+});
+
+// Route for checking existing sizes in DB (not adding or updating)
+router.post("/filters/sizes/update-size", async (req, res) => {
+  let sizeValue = req.body.newSize;
+  let sizeId = req.body.sizeId;
+
+  console.log(sizeValue);
+  console.log(sizeId);
+
+  Size.findOne({ $or: [{ value: sizeValue }, { _id: sizeId }] }).then(size => {
+    //if size already exists, then find and update it in db
+    if (size) {
+      Size.findOneAndUpdate(
+        { $or: [{ value: sizeValue }, { _id: sizeId }] },
+        { $set: { value: sizeValue } },
+        { new: true }
+      )
+        .then(updatedSize => res.json(updatedSize))
+        .catch(err => console.log(err));
+    }
+  });
+});
+
+// Route, which checks all products with updating sizes and creates versions of product-objects, which must be in case of updating sizes
+router.post("/sizes/get-pre-updated-products", async (req, res) => {
+  let previousSizeName = req.body.previousSizeName;
+  let newSizeName = req.body.newSizeName;
+
+  Product.find({ "productFeatures.sizes.size": previousSizeName }).then(
+    products => {
+      if (products.length > 0) {
+        let updatedProducts = products.map(product => {
+          product.productFeatures.forEach(color => {
+            color.sizes.forEach(size => {
+              if (size.size === previousSizeName) {
+                size.size = newSizeName;
+              }
+            });
+          });
+
+          return product;
+        });
+
+        res.send(updatedProducts);
+      } else {
+        res.send("No products were found with such size name");
+      }
+    }
+  );
+});
+
+// Router for updating sizes in all products, where they are present
+router.post("/sizes/update-sizes-in-products", async (req, res) => {
+  let product = req.body.product;
+
+  Product.findOneAndUpdate(
+    { _id: product._id },
+    { $set: product },
+    { new: true }
+  )
+    .then(updatedProduct => {
+      res.send(updatedProduct);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
 
 module.exports = router;
