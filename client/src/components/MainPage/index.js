@@ -12,13 +12,13 @@ class MainPage extends Component {
   render() {
     return (
       <>
-          <ScrollBtn scrollStepInPx="50" delayInMs="16.66"/>
+          <ScrollBtn scrollStepInPx="100" delayInMs="12"/>
         <SearchDropDownList />
         <ProductsCarousel />
 
         <section className="section-listing-products">
           <div className="container">
-            <div className="listing">
+            <div className="listing listing-main">
               <h2 className="listing-title">Most popular items</h2>
               <ProductListing children={8} />
             </div>
