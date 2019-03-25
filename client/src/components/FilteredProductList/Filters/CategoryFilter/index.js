@@ -1,51 +1,44 @@
-import React, {Component} from "react";
-import {NavLink} from "react-router-dom";
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
 import {
   selectFilters,
-  countProductsQuantity,
-    clearProductList
+  clearProductList
 } from "../../../../actions/filterActions";
 
 import "./category-filter.scss";
 
 class CategoryFilter extends Component {
-    changeCategoryFilters = (
-        newCategory,
-        newSubCategory,
-        newFurtherSubCategory
-    ) => {
-        let {currentFilters} = this.props;
+  changeCategoryFilters = (
+    newCategory,
+    newSubCategory,
+    newFurtherSubCategory
+  ) => {
+    let { currentFilters } = this.props;
 
-        this.props.clearProductList();
+    this.props.clearProductList();
 
-        this.props.selectFilters(currentFilters, {
-            category: newCategory,
-            subCategory: newSubCategory,
-            furtherSubCategory: newFurtherSubCategory,
-            colorName: currentFilters.colorName,
-            size: currentFilters.size,
-            price: currentFilters.price,
-            pageNo: 1,
-        });
-    };
+    this.props.selectFilters(currentFilters, {
+      category: newCategory,
+      subCategory: newSubCategory,
+      furtherSubCategory: newFurtherSubCategory,
+      colorName: currentFilters.colorName,
+      size: currentFilters.size,
+      price: currentFilters.price,
+      pageNo: 1
+    });
+  };
 
   render() {
     let { category } = this.props.urlParams;
-    let { navMenuItems, products } = this.props;
+    let { navMenuItems } = this.props;
 
     let subCategories = navMenuItems.map(cat => {
       if (cat.categoryName === category) {
         return cat.subCategoryList.map(subCat => {
           let furtherSubCatList = subCat.furtherSubCategoryList.map(
             furtherSubCat => {
-              let furtherSubCatQuantity = countProductsQuantity(
-                products,
-                "furtherSubCategory",
-                furtherSubCat.furtherSubCategoryName
-              );
-
               return (
                 <li
                   className="further-sub-category-item"
@@ -65,18 +58,9 @@ class CategoryFilter extends Component {
                   >
                     {furtherSubCat.furtherSubCategoryName}
                   </NavLink>
-                  <div className="quantity">
-                    {furtherSubCatQuantity ? furtherSubCatQuantity : null}
-                  </div>
                 </li>
               );
             }
-          );
-
-          let subCatQuantity = countProductsQuantity(
-            products,
-            "subCategory",
-            subCat.subCategoryName
           );
 
           return (
@@ -95,9 +79,6 @@ class CategoryFilter extends Component {
                 >
                   {subCat.subCategoryName}
                 </NavLink>
-                <div className="quantity subcat">
-                  {subCatQuantity ? subCatQuantity : null}
-                </div>
               </div>
               <ul className="category-item-sub-menu">{furtherSubCatList}</ul>
             </div>
@@ -109,11 +90,6 @@ class CategoryFilter extends Component {
 
     let categoryFilters = navMenuItems.map(cat => {
       if (cat.categoryName === category) {
-        let catQuantity = countProductsQuantity(
-          products,
-          "category",
-          cat.categoryName
-        );
         return (
           <div className="category-list border-category" key={cat._id}>
             <div className="cat-block">
@@ -125,9 +101,6 @@ class CategoryFilter extends Component {
               >
                 {`Shop ${cat.categoryName}`}
               </NavLink>
-              <div className="quantity cat">
-                {catQuantity ? catQuantity : null}
-              </div>
             </div>
             <div className="category-list-menu">{subCategories}</div>
           </div>
@@ -149,5 +122,8 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { selectFilters, countProductsQuantity }
+  {
+    selectFilters,
+    clearProductList
+  }
 )(CategoryFilter);
