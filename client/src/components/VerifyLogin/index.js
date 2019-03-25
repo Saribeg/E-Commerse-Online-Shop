@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import {NavLink} from "react-router-dom";
 
+import "./VerifyLogin.scss"
+
 class VerifyLogin extends Component {
 
     state = {
@@ -10,8 +12,6 @@ class VerifyLogin extends Component {
     }
 
     componentDidMount() {
-
-        console.log('this.props.match.params.id', this.props.match.params.id)
 
         axios.post("/users/verify", {id: this.props.match.params.id})
             .then(res => res.data)
@@ -32,21 +32,41 @@ class VerifyLogin extends Component {
             <>
                 {
                     (!this.state.success) ?
-                        (<div>
-                            You try to verify incorrect email
-                            <NavLink to="/">
+                        (<div className="verify-block">
+
+                            <p className="verify-title">
+                                Unsuccessfull verifying of email
+                            </p>
+
+                            <p className="verify-text">
+                                You try to verify incorrect email
+                            </p>
+                            <p className="verify-text">
+                                Please open our mail and click on link
+                            </p>
+
+                            <NavLink className="verify-link" to="/">
                                 Go to main page
                             </NavLink>
                         </div>) :
-                        (<div>
-                            You account was successfully verified.
-                            You can go to main page and log in
-                            <NavLink to="/">
+                        (<div className="verify-block">
+
+                            <p className="verify-title">
+                                Successfull verifying of email
+                            </p>
+
+                            <p className="verify-text">
+                                You account was successfully verified.
+                            </p>
+                            <p className="verify-text">
+                                You can go to main page and log in
+                            </p>
+
+                            <NavLink className="verify-link" to="/">
                                 Go to main page
                             </NavLink>
                         </div>)
                 }
-                Lalala
             </>
         )
     }

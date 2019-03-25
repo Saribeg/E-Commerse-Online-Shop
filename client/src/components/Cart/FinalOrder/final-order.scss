@@ -41,3 +41,8 @@
   line-height: 20px;
   font-weight: 700;
 }
+
+.btn-add-to-cart:disabled {
+  background-color: #cccccc;
+  cursor: auto;
+}

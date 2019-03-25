@@ -345,9 +345,9 @@ class Cart extends Component {
                 <ul className="basket-items-list">
                     {
                         (productList.length > 0) ?
-
+                            (
                                 productList
-                             :
+                            ) :
                             (
                                 <div>You are fucking stupid. Fill the Cart</div>
                             )

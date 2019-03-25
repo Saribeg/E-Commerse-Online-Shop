@@ -15,11 +15,17 @@ class SuccessOrder extends Component {
         return (
             <div className={modalSuccessOrder}>
                 <p className="modal-success-order-text">
-                    Your order successfully placed in our store. Please keep calm and wait for our callback
+                    Your order was successfully placed in our store.
+                </p>
+                <p className="modal-success-order-text">
+                    Details of your order was sent to your email
                 </p>
 
+                <p className="modal-success-order-text-number">
+                    ID ORDER: {this.props.dataBasket.orderNo}
+                </p>
                 <NavLink to="/">
-                    <input type="button" onClick={this.props.closeSuccessOrder} value="Okay" className="modal-success-order-btn"/>
+                    <input type="button" onClick={this.props.closeSuccessOrder} value="Close" className="modal-success-order-btn"/>
                 </NavLink>
 
             </div>

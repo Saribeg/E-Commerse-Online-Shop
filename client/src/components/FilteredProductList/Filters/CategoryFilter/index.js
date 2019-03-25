@@ -149,5 +149,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { selectFilters, countProductsQuantity }
+  { selectFilters, countProductsQuantity, clearProductList }
 )(CategoryFilter);
