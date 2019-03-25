@@ -300,6 +300,7 @@ function cart(state = initialState, action) {
             return {
                 ...state,
                 orderNo: '',
+                arrayProduct: [],
                 windows: {
                     successOrder: false,
                     unsuccessOrder: false,
@@ -354,6 +355,7 @@ function cart(state = initialState, action) {
 
             return {
                 ...state,
+                orderNo: action.payload.orderNo,
                 windows: {
                     successOrder: true,
                     unsuccessOrder: false,

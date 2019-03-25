@@ -131,13 +131,18 @@ export function sendOrderByEmail(dataOrder) {
         let textOrder = getListProductInHtml(dataOrder);
 
 
-        axios.post('/sendOrderByEmail', {mail: mail, textOrder: textOrder})
+        axios.post('/sendOrderByEmail', {mail: mail, textOrder: textOrder, dataOrder: dataOrder})
             .then(res => res.data)
             .then(data => {
-                    console.log('hi from mail');
+                    // console.log('hi from mail');
 
-                    dispatch({type: CLEAR_CART_ON_LOGOUT});
-                    dispatch({type: SUCCESSFULL_SEND_ORDER_BY_EMAIL});
+                    if (data.success) {
+                        dispatch({type: CLEAR_CART_ON_LOGOUT});
+                        dispatch({type: SUCCESSFULL_SEND_ORDER_BY_EMAIL, payload: {orderNo: data.orderNo}});
+                        localStorage.removeItem("savedCart");
+                    }
+
+
                 }
             )
             .catch(err => console.log(err))
