@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Helmet} from "react-helmet";
 // import {Route} from 'react-router-dom';
 // import { withRouter } from "react-router-dom";
-import {goToProfile, LOGOUT, SAVE_HISTORY_PATH} from '../../actions/login'
+import {goToProfile, LOGOUT, SAVE_HISTORY_PATH, unsetLoggedUser} from '../../actions/login'
 
 
 import PersonalContent from './PersonalContent';
@@ -69,7 +69,7 @@ class Profile extends Component {
                                  activeClassName='section-profile-navmenu-item-active'>
                             My Orders
                         </NavLink>
-                        <NavLink to='/' className='section-profile-navmenu-logout' onClick={() => this.props.logout()}>
+                        <NavLink to='/' className='section-profile-navmenu-logout' onClick={() => this.props.unsetLoggedUser()}>
                             Logout
                         </NavLink>
 
@@ -101,6 +101,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: SAVE_HISTORY_PATH, payload: {link: value}})
         },
         goToProfile: (history) => dispatch(goToProfile(history)),
+        unsetLoggedUser: () => dispatch(unsetLoggedUser()),
 
     }
 }

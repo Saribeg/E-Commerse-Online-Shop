@@ -60,12 +60,10 @@ class BreadCrumbs extends React.Component<Props> {
                                                     </NavLink>
                                                 </li>
                                             )
-                                        } else {
-                                            return null;
                                         }
-                                    } else {
                                         return null;
                                     }
+                                    return null;
                                 }
                             );
                             return (<>
@@ -86,6 +84,7 @@ class BreadCrumbs extends React.Component<Props> {
 
                             )
                         }
+                        return null;
                     }
                 )
             }
