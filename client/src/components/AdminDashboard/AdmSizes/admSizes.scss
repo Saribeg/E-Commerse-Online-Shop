@@ -1,0 +1,121 @@
+.admin-size {
+  &-new {
+    border: 1px dashed #888888;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  &-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  &-label {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  &-input {
+    padding: 5px;
+    outline: 1px solid #888888;
+    border: none;
+
+    &:focus {
+      outline: 2px solid #888888;
+    }
+  }
+
+  &-save {
+    padding: 5px;
+    background-color: #7ecb20;
+    outline: 1px solid #888888;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+
+    &-new {
+      padding: 5px 30px;
+    }
+
+    &:focus {
+      outline: 2px solid #888888;
+    }
+
+    &:hover {
+      outline: 2px solid #888888;
+      background-color: #1faa00;
+    }
+  }
+
+  &-minipreloader {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border: 3px solid #d8d8d8;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: rotate 0.8s infinite linear;
+  }
+
+  &-result {
+    margin-left: 30px;
+    color: #ff6008;
+  }
+
+  &-table {
+    display: flex;
+  }
+
+  &-row {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #888888;
+  }
+
+  &-heading {
+    // padding: 20px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 1px solid #888888;
+  }
+
+  &-item {
+    padding: 20px;
+
+    &-multi {
+      padding: 15px;
+    }
+
+    .admin-size-minipreloader {
+      margin-left: 10px;
+    }
+  }
+
+  &-cell {
+    display: flex;
+    align-items: center;
+  }
+
+  &-msg {
+    display: block;
+    font-size: 13px;
+    color: #ff6008;
+    margin-top: 5px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-msg {
+  color: red;
+  font-size: 16px;
+  padding: 15px;
+}

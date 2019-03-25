@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {Switch, Route} from "react-router-dom";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 
 import Header from "../Header";
 import Footer from "../Footer";
@@ -23,10 +23,10 @@ import {
     CLOSE_REG_OK_FORM
 } from "../../actions/login";
 
-import {blurSearchInput} from "../../actions/search";
+import { blurSearchInput } from "../../actions/search";
 import {
-    CLOSE_MODAL_SUCCESS_ORDER,
-    CLOSE_MODAL_UNSUCCESS_ORDER
+  CLOSE_MODAL_SUCCESS_ORDER,
+  CLOSE_MODAL_UNSUCCESS_ORDER
 } from "../../actions/cart";
 
 class Dashboard extends Component {
@@ -51,43 +51,35 @@ class Dashboard extends Component {
         }
     };
 
-    render() {
-        return (
-            <div onClick={this.handleCloseForms}>
-                <Header/>
-                <Switch>
-                    <Route exact path="/" component={MainPage}/>
-                    <Route exact path="/about-us" component={AboutUs}/>
-                    <Route exact path="/our-policy" component={OurPolicy}/>
-                    <Route exact path="/careers" component={Careers}/>
-                    <Route path="/users/profile" component={Profile}/>
-                    <Route path="/checkout" component={Checkout}/>
-                    <Route exact path="/cart" component={Cart}/>
-                    <Route exact path="/addCart" component={TestAddToCart}/>
-                    <Route exact path="/unsubscribe/:id" component={Unsubscribe}/>
-                    <Route
-                        exact
-                        path="/:category/:subCategory/:furtherSubCategory?/:id(\d+)"
-                        component={ProductPage}
-                    />
-                    <Route
-                        exact
-                        path="/:category/:subCategory?/:furtherSubCategory?"
-                        component={FilteredProductList}
-                    />
-                </Switch>
-                <Footer/>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div onClick={this.handleCloseForms}>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/about-us" component={AboutUs} />
+          <Route exact path="/our-policy" component={OurPolicy} />
+          <Route exact path="/careers" component={Careers} />
+          <Route path="/users/profile" component={Profile} />
+          <Route path="/checkout" component={Checkout} />
+          <Route exact path="/cart" component={Cart} />
+          <Route exact path="/addCart" component={TestAddToCart} />
+          <Route exact path="/unsubscribe/:id" component={Unsubscribe} />
+          <Route exact path="/:category/:subCategory/:furtherSubCategory?/:id(\d+)" component={ProductPage} />
+          <Route exact path="/:category/:subCategory?/:furtherSubCategory?" component={FilteredProductList} />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-    return {
-        windowsStatus: state.login.windowsStatus,
-        focus: state.search.focus,
-        checkoutWindows: state.cart.windows
-    };
+  return {
+    windowsStatus: state.login.windowsStatus,
+    focus: state.search.focus,
+    checkoutWindows: state.cart.windows
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -116,6 +108,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Dashboard);
