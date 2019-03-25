@@ -5,12 +5,15 @@ import {withRouter} from "react-router-dom";
 
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
+import RegistrationOk from "./RegistrationOk";
+
+
 import {
     OPEN_LOGIN_FORM,
     OPEN_LOGIN_DETAILS,
     CLOSE_LOGIN_DETAILS,
     CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_REG_FORM,
-    LOGOUT_JWT_CURRENT_USER, unsetLoggedUser, checkLogin, goToProfile
+    LOGOUT_JWT_CURRENT_USER, unsetLoggedUser, goToProfile
 } from "../../actions/login";
 
 import {SET_CART_FROM_LOCALSTORAGE} from "../../actions/cart";
@@ -58,6 +61,12 @@ class TopBlockAuth extends Component {
             this.props.closeRegForm();
             this.closeModal();
             this.clickOnLogin();
+        }
+    }
+
+    handleRegistrationOk = (e) => {
+        if (e.target.dataset.btn !== 'btn-reg-ok-down-close') {
+            e.stopPropagation();
         }
     }
 
@@ -160,6 +169,13 @@ class TopBlockAuth extends Component {
                             <RegistrationForm/>
                         )}
                     </div>
+
+                    <div onClick={this.handleRegistrationOk}>
+                        {this.props.windowsStatus.formRegistrationOk && (
+                            <RegistrationOk/>
+                        )}
+                    </div>
+
                 </div>
             </div>
         );

@@ -10,6 +10,7 @@ export default class ScrollBtn extends Component {
             clearInterval(this.state.intervalId);
         }
         window.scroll(0, window.pageYOffset - this.props.scrollStepInPx);
+        // window.scroll(0, 0);
     }
     scrollToTop() {
         let intervalId = setInterval(()=> this.scrollStep(), this.props.delayInMs);
@@ -23,7 +24,7 @@ export default class ScrollBtn extends Component {
             <button title="Back to top" className="scroll"
                     onClick={() => {
                         this.scrollToTop();
-                    }}> to top
+                    }}>&#8593;
             </button>
         )
     }

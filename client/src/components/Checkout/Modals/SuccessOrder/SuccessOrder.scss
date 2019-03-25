@@ -3,10 +3,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 120px;
   width: 300px;
-  background-color: #efefef;
-  border: 2px solid #ccc;
+  background-color: #fff;
+  border: 1px solid black;
   border-radius: 5px;
   padding: 10px;
 
@@ -14,6 +13,11 @@
 
   &-text {
     margin-bottom: 10px;
+
+    &-number {
+      font-size: 18px;
+      font-weight: 600;
+    }
   }
   
   &-btn {

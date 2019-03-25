@@ -10,7 +10,6 @@ export const FETCH_PRODUCT_FAILED = "FETCH_PRODUCT_FAILED";
 
 export const FETCH_ADD_PRODUCT_SUCCEEDED = "FETCH_ADD_PRODUCT_SUCCEEDED";
 
-
 export const SELECT_FILTERS = "SELECT_FILTERS";
 
 export const SELECT_SIZE = "SELECT_SIZE";
@@ -22,202 +21,184 @@ export const SET_PAGE = "SET_PAGE";
 
 export const CLEAR_PRODUCTS_LIST = "CLEAR_PRODUCTS_LIST";
 
-export const setNewPage = (pageNo) => dispatch => {
-    dispatch({
-        type: SET_PAGE, payload: {pageNo: pageNo}
-    });
-}
+export const setNewPage = pageNo => dispatch => {
+  dispatch({
+    type: SET_PAGE,
+    payload: { pageNo: pageNo }
+  });
+};
 
 export const clearProductList = () => dispatch => {
-    dispatch({
-        type: CLEAR_PRODUCTS_LIST
-    });
-}
+  dispatch({
+    type: CLEAR_PRODUCTS_LIST
+  });
+};
 
 export const getFilterElems = () => dispatch => {
-    dispatch({
-        type: FETCH_FILTER_REQUESTED
-    });
+  dispatch({
+    type: FETCH_FILTER_REQUESTED
+  });
 
-    axios.all([axios.get("/filters/colors"), axios.get("/filters/sizes")]).then(
-        axios.spread((colorFilters, sizeFilters) => {
-            let sizes = sizeFilters.data;
-            let sizeOptions = sizes.map(size => {
-                return {
-                    value: size.value,
-                    label: size.value
-                };
-            });
+  axios.all([axios.get("/filters/colors"), axios.get("/filters/sizes")]).then(
+    axios.spread((colorFilters, sizeFilters) => {
+      let sizes = sizeFilters.data;
+      let sizeOptions = sizes.map(size => {
+        return {
+          value: size.value,
+          label: size.value
+        };
+      });
 
-            sizeOptions.unshift({
-                value: "all sizes",
-                label: "All sizes"
-            });
+      sizeOptions.unshift({
+        value: "all sizes",
+        label: "All sizes"
+      });
 
-            dispatch({
-                type: FETCH_FILTER_SUCCEEDED,
-                colors: colorFilters.data,
-                filters: sizeFilters.data,
-                sizeOptions: sizeOptions
-            });
-        })
-    );
+      dispatch({
+        type: FETCH_FILTER_SUCCEEDED,
+        colors: colorFilters.data,
+        filters: sizeFilters.data,
+        sizeOptions: sizeOptions
+      });
+    })
+  );
 };
 
 export const getFilteredProducts = (
-    category,
-    subCategory,
-    furtherSubCategory,
-    colorName,
-    size
+  category,
+  subCategory,
+  furtherSubCategory,
+  colorName,
+  size
 ) => dispatch => {
-    dispatch({
-        type: FETCH_PRODUCT_REQUESTED
-    });
+  dispatch({
+    type: FETCH_PRODUCT_REQUESTED
+  });
 
-    axios
-        .post("/products/filtered-products", {
-            category: category,
-            subCategory: subCategory,
-            furtherSubCategory: furtherSubCategory,
-            colorName: colorName,
-            size: size
-        })
-        .then(info => {
-
-            let products = info.data.products;
-            let newProducts = JSON.parse(JSON.stringify(products));
-            dispatch({
-                type: FETCH_PRODUCT_SUCCEEDED,
-                payload: newProducts
-            });
-        })
-        .catch(err => console.log(err));
+  axios
+    .post("/products/filtered-products", {
+      category: category,
+      subCategory: subCategory,
+      furtherSubCategory: furtherSubCategory,
+      colorName: colorName,
+      size: size
+    })
+    .then(info => {
+      let products = info.data.products;
+      let newProducts = JSON.parse(JSON.stringify(products));
+      dispatch({
+        type: FETCH_PRODUCT_SUCCEEDED,
+        payload: newProducts
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 export const selectFilters = (currentFilters, newFilters) => dispatch => {
-    if (newFilters.subCategory === undefined) {
-        delete currentFilters.subCategory;
-    }
-    if (newFilters.furtherSubCategory === undefined) {
-        delete currentFilters.furtherSubCategory;
-    }
-    if (newFilters.colorName === undefined) {
-        delete currentFilters.colorName;
-    }
-    if (newFilters.size === undefined) {
-        delete currentFilters.size;
-    }
+  if (newFilters.subCategory === undefined) {
+    delete currentFilters.subCategory;
+  }
+  if (newFilters.furtherSubCategory === undefined) {
+    delete currentFilters.furtherSubCategory;
+  }
+  if (newFilters.colorName === undefined) {
+    delete currentFilters.colorName;
+  }
+  if (newFilters.size === undefined) {
+    delete currentFilters.size;
+  }
 
-    // function filterObject(obj) {
-    //   const ret = {};
-    //   Object.keys(obj)
-    //     .filter(key => obj[key] !== undefined)
-    //     .forEach(key => (ret[key] = obj[key]));
-    //   console.log(
-    //     "ret ======================================================================="
-    //   );
-    //   console.log(ret);
-    //   return ret;
-    // }
+  // function filterObject(obj) {
+  //   const ret = {};
+  //   Object.keys(obj)
+  //     .filter(key => obj[key] !== undefined)
+  //     .forEach(key => (ret[key] = obj[key]));
+  //   console.log(
+  //     "ret ======================================================================="
+  //   );
+  //   console.log(ret);
+  //   return ret;
+  // }
 
-    // filterObject(newFilters);
+  // filterObject(newFilters);
 
-    let filters = Object.assign(currentFilters, newFilters);
+  let filters = Object.assign(currentFilters, newFilters);
 
-    dispatch({
-        type: SELECT_FILTERS,
-        payload: filters
-    });
+  dispatch({
+    type: SELECT_FILTERS,
+    payload: filters
+  });
 
-    dispatch({
-        type: FETCH_PRODUCT_REQUESTED
-    });
+  dispatch({
+    type: FETCH_PRODUCT_REQUESTED
+  });
 
-    // axios
-    //   .post("/products/filtered-products", {
-    //     category: filters.category,
-    //     subCategory: filters.subCategory,
-    //     furtherSubCategory: filters.furtherSubCategory,
-    //     colorName: filters.colorName,
-    //     size: filters.size,
-    //     minPrice: filters.price.min,
-    //     maxPrice: filters.price.max
-    //   })
-    //   .then(products => {
-    //     let newProducts = JSON.parse(JSON.stringify(products.data));
-    //     dispatch({
-    //       type: FETCH_PRODUCT_SUCCEEDED,
-    //       payload: newProducts
-    //     });
-    //   })
-    //   .catch(err => console.log(err));
+  // axios
+  //   .post("/products/filtered-products", {
+  //     category: filters.category,
+  //     subCategory: filters.subCategory,
+  //     furtherSubCategory: filters.furtherSubCategory,
+  //     colorName: filters.colorName,
+  //     size: filters.size,
+  //     minPrice: filters.price.min,
+  //     maxPrice: filters.price.max
+  //   })
+  //   .then(products => {
+  //     let newProducts = JSON.parse(JSON.stringify(products.data));
+  //     dispatch({
+  //       type: FETCH_PRODUCT_SUCCEEDED,
+  //       payload: newProducts
+  //     });
+  //   })
+  //   .catch(err => console.log(err));
 
-    axios
-        .post("/products/filtered-products", {
-            category: filters.category,
-            subCategory: filters.subCategory,
-            furtherSubCategory: filters.furtherSubCategory,
-            colorName: filters.colorName,
-            size: filters.size,
-            minPrice: filters.price.min,
-            maxPrice: filters.price.max,
-            pageNo: filters.pageNo
-        })
-        .then(info => {
+  axios
+    .post("/products/filtered-products", {
+      category: filters.category,
+      subCategory: filters.subCategory,
+      furtherSubCategory: filters.furtherSubCategory,
+      colorName: filters.colorName,
+      size: filters.size,
+      minPrice: filters.price.min,
+      maxPrice: filters.price.max,
+      pageNo: filters.pageNo
+    })
+    .then(info => {
+      // console.log('info', info)
 
-            // console.log('info', info)
+      let products = info.data.products;
 
-            let products = info.data.products;
+      let newProducts = JSON.parse(JSON.stringify(products));
 
-            let newProducts = JSON.parse(JSON.stringify(products));
+      // console.log('------------------')
+      // console.log("info.amount", info.data.amount)
 
+      dispatch({
+        type: FETCH_ADD_PRODUCT_SUCCEEDED,
+        payload: newProducts
+      });
 
-            // console.log('------------------')
-            // console.log("info.amount", info.data.amount)
-
-            dispatch({
-                type: FETCH_ADD_PRODUCT_SUCCEEDED,
-                payload: newProducts
-            });
-
-            dispatch({
-                type: SET_NUMBER_OF_PAGES,
-                payload: {
-                    amountPages: info.data.amount,
-                    pageNo: filters.pageNo
-                }
-            });
-
-
-
-
-        })
-        .catch(err => console.log(err));
-
-
+      dispatch({
+        type: SET_NUMBER_OF_PAGES,
+        payload: {
+          amountPages: info.data.amount,
+          pageNo: filters.pageNo
+        }
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 export const selectSize = size => dispatch => {
-    dispatch({
-        type: SELECT_SIZE,
-        payload: size
-    });
+  dispatch({
+    type: SELECT_SIZE,
+    payload: size
+  });
 };
 
 export const selectPrice = price => dispatch => {
-    dispatch({
-        type: SELECT_PRICE,
-        payload: price
-    });
-};
-
-export const countProductsQuantity = (
-  products,
-  propertyName,
-  propertyValue
-) => {
-  return products.filter(product => {
-    return product[propertyName] === propertyValue;
-  }).length;
+  dispatch({
+    type: SELECT_PRICE,
+    payload: price
+  });
 };
