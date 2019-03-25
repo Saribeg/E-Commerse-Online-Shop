@@ -83,7 +83,9 @@
 .login-form-input-title {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   font-size: 14px;
+  margin: 7px 0;
 }
 
 .login-form-input {

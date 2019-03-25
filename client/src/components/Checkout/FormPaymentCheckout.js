@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import { connect } from 'react-redux';
-import {requiredInput, correctEmail} from '../../validation'
+import {requiredInput} from '../../validation'
 import customRequiredInput from '../atomic/customRequiredInput';
-import customCorrectEmail from '../atomic/customCorrectEmail';
+
 
 class FormPaymentCheckout extends Component {
     render(){
