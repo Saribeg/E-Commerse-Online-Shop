@@ -24,7 +24,7 @@ export default class ScrollBtn extends Component {
             <button title="Back to top" className="scroll"
                     onClick={() => {
                         this.scrollToTop();
-                    }}> to top
+                    }}>&#8593;
             </button>
         )
     }

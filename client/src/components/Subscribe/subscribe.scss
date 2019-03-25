@@ -36,6 +36,9 @@
       margin-bottom: 20px;
       text-align: center;
     }
+    @include min-width(1000px) {
+      width: auto;
+    }
   }
 
   &-form {
@@ -59,7 +62,7 @@
     border-radius: 22px;
     padding: 15px;
     background-color: $grey-light;
-    margin-right: 39px;
+    margin-right: 16px;
 
     @include max-width($landscape-tablet) {
       margin-right: 0;

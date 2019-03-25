@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {getProductItem, getProductPopular, saveProductDetails} from "../../actions/product";
-import {NavLink} from "react-router-dom";
+import {getProductPopular} from "../../actions/product";
 import "./ProductListing.scss";
 import ProductCard from "../ProductCard";
 
