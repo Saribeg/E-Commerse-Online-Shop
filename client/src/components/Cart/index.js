@@ -346,7 +346,7 @@ class Cart extends Component {
                     {
                         (productList.length > 0) ?
                             (
-                                {productList}
+                                productList
                             ) :
                             (
                                 <div>You are fucking stupid. Fill the Cart</div>

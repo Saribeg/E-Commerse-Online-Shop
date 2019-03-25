@@ -7,7 +7,7 @@ import {
     addNewCart, updateCart, updateCartIsFinished, sendOrder, CLOSE_MODAL_SUCCESS_ORDER,
     OPEN_MODAL_SUCCESS_ORDER, CLOSE_MODAL_UNSUCCESS_ORDER, OPEN_MODAL_UNSUCCESS_ORDER,
     SET_INVALID_LOGIN, SUCCESSFULL_SEND_ORDER_BY_EMAIL, CLOSE_MODAL_FINISH_ORDER_AFTER_LOGIN,
-    OPEN_MODAL_FINISH_ORDER_AFTER_LOGIN
+    OPEN_MODAL_FINISH_ORDER_AFTER_LOGIN, SET_ORDER_NO
 } from '../../actions/cart'
 
 
@@ -17,6 +17,7 @@ const initialState = {
     idUser: '',
     userMail: '',
     idCartInDB: '',
+    orderNo: '',
     arrayProduct: [],
     arrayCheckout: [],
     windows: {
@@ -156,6 +157,7 @@ function cart(state = initialState, action) {
                 idUser: '',
                 idCartInDB: '',
                 userMail: '',
+                orderNo: '',
                 windows: {
                     successOrder: false,
                     unsuccessOrder: false,
@@ -297,12 +299,20 @@ function cart(state = initialState, action) {
 
             return {
                 ...state,
+                orderNo: '',
                 windows: {
                     successOrder: false,
                     unsuccessOrder: false,
                     invalidLogin: false,
                     finishAfterLogin: false
                 }
+            }
+
+        case SET_ORDER_NO:
+
+            return {
+                ...state,
+                orderNo: action.payload.orderNo,
             }
 
         case OPEN_MODAL_UNSUCCESS_ORDER:

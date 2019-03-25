@@ -27,6 +27,8 @@ export const CHANGE_DELIVERY_METHOD = 'CHANGE_DELIVERY_METHOD';
 
 export const SET_FINISHED_CART = 'SET_FINISHED_CART';
 export const SET_DEFAULT_FINISHED_CART = 'SET_DEFAULT_FINISHED_CART';
+export const SET_ORDER_NO = 'SET_ORDER_NO';
+
 
 export const OPEN_MODAL_SUCCESS_ORDER = 'OPEN_MODAL_SUCCESS_ORDER';
 export const CLOSE_MODAL_SUCCESS_ORDER = 'CLOSE_MODAL_SUCCESS_ORDER';
@@ -41,7 +43,6 @@ export const CLOSE_MODAL_FINISH_ORDER_AFTER_LOGIN = 'CLOSE_MODAL_FINISH_ORDER_AF
 export const SUCCESSFULL_SEND_ORDER_BY_EMAIL = 'SUCCESSFULL_SEND_ORDER_BY_EMAIL';
 
 export const SET_INVALID_LOGIN = 'SET_INVALID_LOGIN';
-
 
 
 //Request from FRONT - is logged or not.
@@ -73,6 +74,7 @@ export function updateCartIsFinished(dataCart) {
                 // console.log('data.orderNo', data.orderNo)
                 // console.log('data', data)
                 sendOrder(dataCart, data.orderNo);
+                store.dispatch({type: SET_ORDER_NO, payload: {orderNo: data.orderNo}});
                 store.dispatch({type: OPEN_MODAL_SUCCESS_ORDER});
                 store.dispatch({type: SET_DEFAULT_FINISHED_CART});
             }
