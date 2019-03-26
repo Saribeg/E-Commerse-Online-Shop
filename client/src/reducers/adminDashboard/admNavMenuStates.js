@@ -5,12 +5,15 @@ import {
   ADD_NEW_CATEGORY,
   ADD_NEW_SUB_CATEGORY,
   ADD_NEW_FURTHER_SUB_CATEGORY,
-  SAVE_UPDATED_NAV_MENU
+  FETCH_NAV_MENU_REQUESTED,
+  FETCH_NAV_MENU_SUCCEEDED,
+  FETCH_NAV_MENU_FAILED
 } from "../../actions/adminDashboard/admNavMenuActions";
 
 const initialState = {
   isMenuFetching: false,
-  navMenuItems: []
+  navMenuItems: [],
+  resultMessage: ""
 };
 
 function admNavMenu(state = initialState, action) {
@@ -18,7 +21,8 @@ function admNavMenu(state = initialState, action) {
     case SEND_NAV_REQUEST:
       return {
         ...state,
-        isMenuFetching: true
+        isMenuFetching: true,
+        resultMessage: ""
       };
     case GET_NAV_MENU:
       return {
@@ -46,10 +50,24 @@ function admNavMenu(state = initialState, action) {
         ...state,
         navMenuItems: action.payload
       };
-    case SAVE_UPDATED_NAV_MENU:
+    case FETCH_NAV_MENU_REQUESTED:
       return {
         ...state,
-        navMenuItems: action.payload
+        isMenuFetching: true,
+        resultMessage: ""
+      };
+
+    case FETCH_NAV_MENU_SUCCEEDED:
+      return {
+        ...state,
+        resultMessage: action.payload,
+        isMenuFetching: false
+      };
+    case FETCH_NAV_MENU_FAILED:
+      return {
+        ...state,
+        resultMessage: action.payload,
+        isMenuFetching: false
       };
 
     default:
