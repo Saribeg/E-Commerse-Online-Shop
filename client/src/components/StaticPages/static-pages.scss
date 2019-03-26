@@ -14,10 +14,9 @@ body {
 
 .about-us {
   &-wrapper {
-    @include flex-center-between;
-
-    padding-bottom: 30px;
-
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     @media (max-width: 600px) {
       flex-direction: column;
     }
@@ -37,11 +36,12 @@ body {
   }
 
   &-paragraph {
-    padding-top: 10px;
+    width: 48%;
+    padding: 10px 0 25px;
+    border-bottom: 1px solid $grey-light;
 
     &:first-child {
-      padding-bottom: 25px;
-      border-bottom: 1px solid $grey-light;
+      padding-bottom: 25px;     
     }
   }
 }

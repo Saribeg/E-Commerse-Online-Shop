@@ -36,7 +36,7 @@ class RegistrationForm extends Component {
         return (
             <div className="modal-backdrop">
             <div className='login-menu'>
-                <div data-btn="btn-reg-up-close" className="login-cancel-btn" />
+                <div data-btn="btn-reg-up-close" className="login-cancel-btn">x</div>
                 <h2 className='login-menu_header'>Registration</h2>
                 <FormRegistration onSubmit={this.handleSubmit}/>
 

@@ -11,8 +11,9 @@ class SuccessOrder extends Component {
     render () {
 
         let modalSuccessOrder = (this.props.dataBasket.windows.successOrder) ? 'modal-success-order' : 'd-none';
-
+        let modalSuccessBackdrop = modalSuccessOrder === 'modal-success-order' ? 'modal-backdrop' : null;
         return (
+            <div className={modalSuccessBackdrop}>
             <div className={modalSuccessOrder}>
                 <p className="modal-success-order-text">
                     Your order was successfully placed in our store.
@@ -22,13 +23,14 @@ class SuccessOrder extends Component {
                 </p>
 
                 <p className="modal-success-order-text-number">
-                    ID ORDER: {this.props.dataBasket.orderNo}
+                   ORDER ID: {this.props.dataBasket.orderNo}
                 </p>
                 <NavLink to="/">
-                    <input type="button" onClick={this.props.closeSuccessOrder} value="Close" className="modal-success-order-btn"/>
+                    <input type="button" onClick={this.props.closeSuccessOrder} value="Ok" className="modal-success-order-btn"/>
                 </NavLink>
 
             </div>
+        </div>
         )
     }
 }
