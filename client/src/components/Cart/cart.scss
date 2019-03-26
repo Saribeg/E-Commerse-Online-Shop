@@ -96,6 +96,15 @@
   }
 }
 
+.basket-empty-state {
+   color: #000; 
+   font-size: 54px;
+   margin: 0 auto;
+   width: 70%;
+   text-align: center;
+   margin-top: 50px;
+}
+
 .product-counter {
   display: flex;
   align-items: center;
