@@ -9,6 +9,7 @@
     @include max-width($landscape-tablet) {
       flex-direction: column;
       margin-bottom: 48px;
+      padding-top: 60px;
     }
   }
 

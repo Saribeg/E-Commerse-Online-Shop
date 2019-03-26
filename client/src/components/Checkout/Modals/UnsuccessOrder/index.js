@@ -46,7 +46,7 @@ class UnsuccessOrder extends Component {
         return (
             <div className="modal-backdrop">
             <div className="modal-unsuccess-order">
-                <div data-btn="btn-login-checkout-up-close" className="login-cancel-btn"  />
+                <div data-btn="btn-login-checkout-up-close" className="login-cancel-btn"></div>
                 <p className="modal-unsuccess-order-title">
                     You are not logged. Please enter your login and password or your e-mail to proceed checkout
                 </p>

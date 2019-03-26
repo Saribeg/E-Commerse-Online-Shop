@@ -70,11 +70,6 @@
     padding: 10px;
     border: 2px solid #cccccc;
     border-radius: 3px;
-
-    &-title {
-      color: #ff6008;
-      //margin-bottom: 15px;
-    }
   }
 
   &-delivery-block {
@@ -92,10 +87,11 @@
     margin-bottom: 20px;
 
     &-title {
-      color: #ff6008;
+      color: #000;
+      font-size: 19px;
+      font-weight: 700;
       margin-bottom: 15px;
     }
-
   }
 
   &-delivery-content {
@@ -151,9 +147,6 @@
 }
 
 .checkout-next-btn {
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
   display: block;
   height: 40px;
   width: 120px;
@@ -177,7 +170,6 @@
       color: #fff;
       cursor: auto;
     }
-
   }
 
   &:hover {
@@ -200,8 +192,6 @@
   &-below-block {
     display: flex;
     flex-direction: row;
-
-
   }
 
   &-expdate-block {
@@ -238,4 +228,9 @@
   position: relative;
   top: 25px;
   left: -150px;
+}
+
+.checkout-delivery-content-input {
+  padding: 10px;
+  width: 90%;
 }

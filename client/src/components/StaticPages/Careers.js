@@ -48,7 +48,7 @@ export default class Careers extends React.Component<Props, State> {
         </h3>
         {pageContent}
         <p className="job-offer-feedback">
-          If you are interested, please send your resume: matter-style@mail.com
+          If you are interested, please send your resume: matter-hr@matter.com
         </p>
         </div>
       </>
