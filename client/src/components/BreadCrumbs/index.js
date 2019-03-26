@@ -3,7 +3,7 @@
 import * as React from "react";
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {selectFilters} from "../../actions/filterActions";
+import {selectFilters, clearProductList} from "../../actions/filterActions";
 import "./breadcrumbs.scss"
 
 type
@@ -23,6 +23,8 @@ class BreadCrumbs extends React.Component<Props> {
         newFurtherSubCategory: string
     ) => {
         let {currentFilters} = this.props;
+
+        this.props.clearProductList();
 
         this.props.selectFilters(currentFilters, {
             category: newCategory,
@@ -135,5 +137,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {selectFilters}
+    {selectFilters, clearProductList}
 )(BreadCrumbs);

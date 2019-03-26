@@ -294,7 +294,7 @@ export function addNewUser(regForm) {
                     } else if (data.firstName) {
                         // if registration is successfull - close window
                         dispatch({type: RESET_WINDOW_STATUS})
-                        dispatch({type: CLOSE_REG_FORM})
+                        dispatch({type: OPEN_REG_OK_FORM})
                     }
                 }
             )

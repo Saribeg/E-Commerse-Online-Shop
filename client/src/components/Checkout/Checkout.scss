@@ -197,6 +197,31 @@
   border: 2px solid #cccccc;
   border-radius: 3px;
 
+  &-below-block {
+    display: flex;
+    flex-direction: row;
+
+
+  }
+
+  &-expdate-block {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  &-exp {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &-exp-input {
+    height: 20px;
+    width: 70px;
+    display: inline;
+    font-size: 16px;
+  }
+
 
 }
 
@@ -205,4 +230,12 @@
   position: relative;
   top: -5px;
   font-size: 12px;
+}
+
+.input-error-message-exp {
+  color: red;
+  font-size: 13px;
+  position: relative;
+  top: 25px;
+  left: -150px;
 }
