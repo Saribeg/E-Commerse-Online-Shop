@@ -10,7 +10,6 @@ import Profile from "../Profile";
 import Unsubscribe from "../Unsubscribe";
 import Cart from "../Cart";
 import Checkout from "../Checkout";
-import TestAddToCart from "../Cart/testAddToCart";
 import FilteredProductList from "../FilteredProductList";
 import AboutUs from "../StaticPages/AboutUs";
 import OurPolicy from "../StaticPages/OurPolicy";
@@ -63,7 +62,6 @@ class Dashboard extends Component {
           <Route path="/users/profile" component={Profile} />
           <Route path="/checkout" component={Checkout} />
           <Route exact path="/cart" component={Cart} />
-          <Route exact path="/addCart" component={TestAddToCart} />
           <Route exact path="/unsubscribe/:id" component={Unsubscribe} />
           <Route exact path="/:category/:subCategory/:furtherSubCategory?/:id(\d+)" component={ProductPage} />
           <Route exact path="/:category/:subCategory?/:furtherSubCategory?" component={FilteredProductList} />

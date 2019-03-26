@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 
 import {connect} from "react-redux";
 import {checkLogin, CLOSE_LOGIN_FORM, CLOSE_REG_FORM, OPEN_LOGIN_FORM, OPEN_REG_FORM} from "../../../actions/login";
@@ -28,7 +28,7 @@ class LoginForm extends Component {
         let classCheckEmail = (this.props.windowsStatus.invalidLogin) ? 'login-menu_error-msg' : 'd-none';
 
         return (
-            <Fragment>
+            <div className="modal-backdrop">
                 <div className='login-menu'>
                     <div data-btn="btn-login-up-close" className="login-cancel-btn"  />
                     <h2 className='login-menu_header'>Log in</h2>
@@ -45,7 +45,7 @@ class LoginForm extends Component {
                         </div>
                     </div>
                 </div>
-            </Fragment>
+            </div>
         );
     };
 };

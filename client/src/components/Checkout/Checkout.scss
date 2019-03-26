@@ -1,3 +1,4 @@
+@import "../../scss/resources/resources";
 .checkout {
   width: 60%;
 
@@ -26,10 +27,6 @@
 
     &-block {
       width: calc(100% - 110px);
-
-    }
-
-    &-details {
 
     }
 
@@ -117,11 +114,7 @@
       outline: none;
 
     }
-
-
-
   }
-
 }
 
 .delivery-input {
@@ -135,6 +128,11 @@
   border: 1px solid #ccc;
   box-sizing: border-box;
   padding: 5px;
+
+
+  @include max-width(1280px){
+    width: 100%;
+  }
 }
 
 .delivery-input:checked + .delivery-link .delivery-link-block {
@@ -144,9 +142,12 @@
 
 .checkout-delivery-list {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   margin-bottom: 15px;
+
+  @include max-width(1280px){
+    flex-direction: column;
+  }
 }
 
 .checkout-next-btn {

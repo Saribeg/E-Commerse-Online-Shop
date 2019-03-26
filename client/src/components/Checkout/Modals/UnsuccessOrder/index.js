@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {NavLink} from 'react-router-dom';
 import FormLogin from "../../../atomic/FormLogin";
 
 import FormCheckoutByEmail from "./FormCheckoutByEmail"
@@ -45,6 +44,7 @@ class UnsuccessOrder extends Component {
         let modalUnsuccessOrderFailLogin = (this.props.dataBasket.windows.invalidLogin) ? null : 'd-none';
 
         return (
+            <div className="modal-backdrop">
             <div className="modal-unsuccess-order">
                 <div data-btn="btn-login-checkout-up-close" className="login-cancel-btn"  />
                 <p className="modal-unsuccess-order-title">
@@ -60,6 +60,7 @@ class UnsuccessOrder extends Component {
                 <FormCheckoutByEmail onSubmit={this.handleSubmitEmail}/>
 
             </div>
+        </div>
         )
     }
 }
