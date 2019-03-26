@@ -94,13 +94,15 @@ export const updateColorsInAllProducts = (
     // Taking product objects as they must be transformed to (pre-update-version)
     .post("/colors/get-pre-updated-products", query)
     .then(preUpdatedProducts => {
-      // Save new product versions to DB (with new colors), requesting to server in loop throwing every product, than must be updated
-      for (let product of preUpdatedProducts.data) {
-        axios
-          .post("/colors/update-colors-in-products", { product })
-          .then(updatedProducts => {
-            console.log(updatedProducts);
-          });
+      if (preUpdatedProducts.data.message) {
+        // Save new product versions to DB (with new colors), requesting to server in loop throwing every product, than must be updated
+        for (let product of preUpdatedProducts.data.updatedProducts) {
+          axios
+            .post("/colors/update-colors-in-products", { product })
+            .then(updatedProducts => {
+              console.log(updatedProducts);
+            });
+        }
       }
     });
 };

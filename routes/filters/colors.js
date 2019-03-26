@@ -149,9 +149,12 @@ router.post("/colors/get-pre-updated-products", async (req, res) => {
         return product;
       });
 
-      res.send(updatedProducts);
+      res.send({
+        updatedProducts: updatedProducts,
+        message: true
+      });
     } else {
-      res.send("No products were found with such colors");
+      res.send({ message: false });
     }
   });
 });
