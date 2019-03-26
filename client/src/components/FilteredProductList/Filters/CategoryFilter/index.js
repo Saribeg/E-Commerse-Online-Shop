@@ -39,50 +39,54 @@ class CategoryFilter extends Component {
         return cat.subCategoryList.map(subCat => {
           let furtherSubCatList = subCat.furtherSubCategoryList.map(
             furtherSubCat => {
-              return (
-                <li
-                  className="further-sub-category-item"
-                  key={furtherSubCat._id}
-                >
-                  <NavLink
-                    to={furtherSubCat.furtherSubCategoryUrl}
-                    className="further-sub-category-link"
-                    activeClassName="further-sub-category-link-active"
-                    onClick={() =>
-                      this.changeCategoryFilters(
-                        cat.categoryName,
-                        subCat.subCategoryName,
-                        furtherSubCat.furtherSubCategoryName
-                      )
-                    }
+              if (furtherSubCat.active) {
+                return (
+                  <li
+                    className="further-sub-category-item"
+                    key={furtherSubCat._id}
                   >
-                    {furtherSubCat.furtherSubCategoryName}
-                  </NavLink>
-                </li>
-              );
+                    <NavLink
+                      to={furtherSubCat.furtherSubCategoryUrl}
+                      className="further-sub-category-link"
+                      activeClassName="further-sub-category-link-active"
+                      onClick={() =>
+                        this.changeCategoryFilters(
+                          cat.categoryName,
+                          subCat.subCategoryName,
+                          furtherSubCat.furtherSubCategoryName
+                        )
+                      }
+                    >
+                      {furtherSubCat.furtherSubCategoryName}
+                    </NavLink>
+                  </li>
+                );
+              }
             }
           );
 
-          return (
-            <div className="category-item" key={subCat._id}>
-              <div className="subcat-block">
-                <NavLink
-                  to={subCat.subCategoryUrl}
-                  className="category-item-title"
-                  activeClassName="category-item-title-active"
-                  onClick={() =>
-                    this.changeCategoryFilters(
-                      cat.categoryName,
-                      subCat.subCategoryName
-                    )
-                  }
-                >
-                  {subCat.subCategoryName}
-                </NavLink>
+          if (subCat.active) {
+            return (
+              <div className="category-item" key={subCat._id}>
+                <div className="subcat-block">
+                  <NavLink
+                    to={subCat.subCategoryUrl}
+                    className="category-item-title"
+                    activeClassName="category-item-title-active"
+                    onClick={() =>
+                      this.changeCategoryFilters(
+                        cat.categoryName,
+                        subCat.subCategoryName
+                      )
+                    }
+                  >
+                    {subCat.subCategoryName}
+                  </NavLink>
+                </div>
+                <ul className="category-item-sub-menu">{furtherSubCatList}</ul>
               </div>
-              <ul className="category-item-sub-menu">{furtherSubCatList}</ul>
-            </div>
-          );
+            );
+          }
         });
       }
       return null;

@@ -35,6 +35,7 @@ class PlaceOrder extends Component {
 
         let totalPrice = price + deliveryPrice;
         price = price.toFixed(2);
+        totalPrice = totalPrice.toFixed(2);
 
         return (
             <div className="basket-final-order">

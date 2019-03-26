@@ -33,4 +33,22 @@
     
   }
 
+  &-after-login {
+    width: 500px;
+
+    &-btn {
+
+      height: 40px;
+      width: 190px;
+      color: #fff;
+      background-color: #33333a;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 18px;
+      text-transform: uppercase;
+
+    }
+
+  }
+
 }

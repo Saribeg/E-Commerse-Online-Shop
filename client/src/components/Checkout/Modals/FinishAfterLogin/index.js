@@ -10,7 +10,7 @@ class FinishAfterLogin extends Component {
 
     render () {
 
-        let modalFinishAfterLogin = (this.props.dataBasket.windows.finishAfterLogin) ? 'modal-success-order' : 'd-none';
+        let modalFinishAfterLogin = (this.props.dataBasket.windows.finishAfterLogin) ? 'modal-success-order modal-success-order-after-login' : 'd-none';
 
         return (
             <div className={modalFinishAfterLogin}>
@@ -19,10 +19,10 @@ class FinishAfterLogin extends Component {
                 </p>
 
                 <NavLink to="/">
-                    <input type="button" onClick={this.props.setFinishedCart} value="Finish checkout" className="modal-success-order-btn"/>
+                    <input type="button" onClick={this.props.setFinishedCart} value="Finish checkout" className="modal-success-order-after-login-btn"/>
                 </NavLink>
 
-                    <input type="button" onClick={this.props.finishAfterLogin} value="Back to payment" className="modal-success-order-btn"/>
+                    <input type="button" onClick={this.props.finishAfterLogin} value="Back to payment" className="modal-success-order-after-login-btn"/>
 
 
             </div>

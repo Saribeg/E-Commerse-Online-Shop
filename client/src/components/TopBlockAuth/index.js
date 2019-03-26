@@ -150,7 +150,7 @@ class TopBlockAuth extends Component {
                     </div>
 
 
-                    <div className={`admin-dashboard ${isLogged}`}>
+                    <div className={`admin-dashboard ${(this.props.login.loggedData.isAdmin) ? null : 'd-none'}`}>
                         <NavLink className="admin-dashboard-link" to="/admin/dashboard">
                             <FontAwesomeIcon icon={faCogs}/>
                         </NavLink>
