@@ -62,6 +62,7 @@ class CategoryFilter extends Component {
                   </li>
                 );
               }
+              return null;
             }
           );
 
@@ -87,6 +88,7 @@ class CategoryFilter extends Component {
               </div>
             );
           }
+          return null;
         });
       }
       return null;
@@ -110,6 +112,7 @@ class CategoryFilter extends Component {
           </div>
         );
       }
+      return null;
     });
 
     return <>{categoryFilters}</>;

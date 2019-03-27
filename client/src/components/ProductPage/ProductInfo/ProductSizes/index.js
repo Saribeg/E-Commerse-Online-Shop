@@ -58,8 +58,10 @@ class ProductSizes extends React.Component<Props, State> {
               </li>
             );
           }
+          return null;
         });
       }
+      return null;
     });
 
     return (

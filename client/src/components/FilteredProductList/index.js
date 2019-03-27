@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroller";
 
 import {
@@ -71,6 +70,7 @@ class FilteredProductList extends Component {
               />
             );
           }
+          return null;
         });
       } else if (currentFilters.size && !currentFilters.colorName) {
         return product.productFeatures.map(color => {
@@ -93,6 +93,7 @@ class FilteredProductList extends Component {
               />
             );
           }
+          return null;
         });
       } else if (currentFilters.colorName && currentFilters.size) {
         return product.productFeatures.map(color => {
@@ -115,6 +116,7 @@ class FilteredProductList extends Component {
               />
             );
           }
+          return null;
         });
       } else {
         return product.productFeatures.map(color => {

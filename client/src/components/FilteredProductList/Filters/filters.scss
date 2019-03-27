@@ -21,9 +21,7 @@
     }
 
     .filter-active-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex-center-between;
       font-family: $font-openSans;
       font-size: 12px;
       letter-spacing: 1px;

@@ -293,7 +293,7 @@ class Cart extends Component {
                     <span className="basket-item-delete" onClick={() => this.deleteItem(keyItem)}><FontAwesomeIcon
                         icon={faTimes}/></span>
                     <div className="basket-item-img">
-                        <img src={elem.urlPhoto}/>
+                        <img src={elem.urlPhoto} alt={elem.model}/>
                     </div>
                     <div className="basket-item-info">
                         <p className="basket-item-title">{elem.model}</p>
