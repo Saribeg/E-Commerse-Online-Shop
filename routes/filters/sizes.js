@@ -142,9 +142,14 @@ router.post("/sizes/get-pre-updated-products", async (req, res) => {
           return product;
         });
 
-        res.send(updatedProducts);
+        res.send({
+          updatedProducts: updatedProducts,
+          message: true
+        });
       } else {
-        res.send("No products were found with such size name");
+        res.send({
+          message: false
+        });
       }
     }
   );

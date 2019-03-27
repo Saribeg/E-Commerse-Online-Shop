@@ -6,7 +6,7 @@
     background-color: $grey-bg;
     padding: 17px 0 15px;
 
-    @include min-width($landscape-desktop) {
+    @include min-width($landscape-tablet) {
       display: block;
     }
   }

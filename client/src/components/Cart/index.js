@@ -349,7 +349,7 @@ class Cart extends Component {
                                 productList
                             ) :
                             (
-                                <div>You are fucking stupid. Fill the Cart</div>
+                                <div className="basket-empty-state">No goods :(</div>
                             )
                     }
 

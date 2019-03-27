@@ -121,7 +121,7 @@ router.post("/products/admin-panel/add-products", (req, res) => {
         .then(newProduct =>
           res.json({
             newProduct: newProduct,
-            message: "Produc is saved in DB successfully",
+            message: "Product is saved in DB successfully",
             success: true
           })
         )

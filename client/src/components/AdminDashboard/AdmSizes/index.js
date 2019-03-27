@@ -126,7 +126,7 @@ class AdmSizes extends Component {
               type="button"
               className="admin-size-save admin-size-save-new"
               value="Save"
-              onClick={() => saveNewSizeInDb(newSizeName)}
+              onClick={() => saveNewSizeInDb(newSizeName, getExistingSizes)}
             />
             <span className="admin-size-result">
               {isNewSizeFetching ? (

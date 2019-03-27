@@ -30,7 +30,7 @@ class LoginForm extends Component {
         return (
             <div className="modal-backdrop">
                 <div className='login-menu'>
-                    <div data-btn="btn-login-up-close" className="login-cancel-btn"  />
+                    <div data-btn="btn-login-up-close" className="login-cancel-btn">x</div>
                     <h2 className='login-menu_header'>Log in</h2>
                     <p className='login-menu_par'>Please enter your account details</p>
 

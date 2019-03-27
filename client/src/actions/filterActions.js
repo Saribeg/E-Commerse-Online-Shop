@@ -41,7 +41,16 @@ export const getFilterElems = () => dispatch => {
 
   axios.all([axios.get("/filters/colors"), axios.get("/filters/sizes")]).then(
     axios.spread((colorFilters, sizeFilters) => {
-      let sizes = sizeFilters.data;
+      let sizes = sizeFilters.data.sort((a, b) => {
+        if (a.value < b.value) {
+          return 1;
+        }
+        if (a.value > b.value) {
+          return -1;
+        }
+        return 0;
+      });
+
       let sizeOptions = sizes.map(size => {
         return {
           value: size.value,
