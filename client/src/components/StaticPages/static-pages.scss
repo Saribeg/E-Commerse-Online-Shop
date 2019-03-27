@@ -14,9 +14,7 @@ body {
 
 .about-us {
   &-wrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    @include flex-wrap-between;
     @media (max-width: 600px) {
       flex-direction: column;
     }

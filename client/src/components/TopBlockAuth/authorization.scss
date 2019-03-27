@@ -54,9 +54,7 @@
 }
 
 .user-info-mini {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flex-center-between;
   padding: 5px;
   border-radius: 6px;
   border: 1px solid #000;

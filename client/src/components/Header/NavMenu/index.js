@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -13,7 +13,6 @@ import {
   clearProductList
 } from "../../../actions/filterActions";
 
-// import "../../../scss/style.scss";
 import "./nav-menu.scss";
 
 class NavMenu extends Component {
@@ -64,6 +63,7 @@ class NavMenu extends Component {
           </li>
         );
       }
+      return null;
     });
 
     // Creating list of subcategories (e.g. clothing) and further subcategories (e.g. shirts, pants)
@@ -96,6 +96,7 @@ class NavMenu extends Component {
                   </li>
                 );
               }
+              return null;
             }
           );
 
@@ -145,13 +146,13 @@ class NavMenu extends Component {
 
     // Rendering the whole component
     return (
-      <Fragment>
+      <>
         <ul className="main-menu-list">
           {this.props.isMenuFetching ? miniPreloader : menuList}
         </ul>
 
         {this.props.navMenuWindowStatus ? subMenuSection : null}
-      </Fragment>
+      </>
     );
   }
 }

@@ -3,9 +3,8 @@
   width: 60%;
 
   &-d-flex-row {
-    display: flex;
+    @include flex-between;
     flex-direction: row;
-    justify-content: space-between;
   }
 
   &-product-list {
@@ -14,10 +13,8 @@
   }
 
   &-product-item {
-    display: flex;
+    @include flex-center-between;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
 
     &-img {
       height: 100px;
@@ -48,10 +45,8 @@
     }
 
     &-price {
-      display: flex;
+      @include flex-center-between;
       flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
       border-top: 1px solid #eee;
       margin-right: 30px;
       padding-top: 10px;
@@ -137,8 +132,7 @@
 }
 
 .checkout-delivery-list {
-  display: flex;
-  justify-content: space-between;
+  @include flex-between;
   margin-bottom: 15px;
 
   @include max-width(1280px){
