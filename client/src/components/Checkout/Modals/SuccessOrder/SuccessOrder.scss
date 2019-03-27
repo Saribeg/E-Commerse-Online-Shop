@@ -3,12 +3,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  min-width: 400px;
   background-color: #fff;
   border: 1px solid black;
   border-radius: 5px;
-  padding: 10px;
-
+  padding: 25px 45px;
   text-align: center;
 
   &-text {
@@ -21,16 +20,39 @@
   }
   
   &-btn {
-
-    height: 40px;
-    width: 100px;
+    min-height: 40px;
+    min-width: 100px;
     color: #fff;
     background-color: #33333a;
     border-radius: 20px;
     cursor: pointer;
     font-size: 18px;
+    margin-top: 10px;
     text-transform: uppercase;
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
     
+  }
+
+  &-after-login {
+    width: 500px;
+
+    &-btn {
+
+      height: 40px;
+      width: 190px;
+      color: #fff;
+      background-color: #33333a;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 18px;
+      text-transform: uppercase;
+
+    }
+
   }
 
 }

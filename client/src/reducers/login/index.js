@@ -160,7 +160,7 @@ function login(state = initialState, action) {
                 windowsStatus: {
                     ...state.windowsStatus,
                     formRegisterOpen: false,
-                    formRegistrationOk: true,
+                    // formRegistrationOk: true,
                 }
             }
 
@@ -169,6 +169,7 @@ function login(state = initialState, action) {
                 ...state,
                 windowsStatus: {
                     ...state.windowsStatus,
+                    formRegisterOpen: false,
                     formRegistrationOk: true,
                 }
             }

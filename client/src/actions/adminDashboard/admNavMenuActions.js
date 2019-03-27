@@ -7,7 +7,10 @@ export const CHANGE_SELECTED_ITEM_ACTIVE_STATUS =
 export const ADD_NEW_CATEGORY = "ADD_NEW_CATEGORY";
 export const ADD_NEW_SUB_CATEGORY = "ADD_NEW_SUB_CATEGORY";
 export const ADD_NEW_FURTHER_SUB_CATEGORY = "ADD_NEW_FURTHER_SUB_CATEGORY";
-export const SAVE_UPDATED_NAV_MENU = "SAVE_UPDATED_NAV_MENU";
+
+export const FETCH_NAV_MENU_REQUESTED = "FETCH_NAV_MENU_REQUESTED";
+export const FETCH_NAV_MENU_SUCCEEDED = "FETCH_NAV_MENU_SUCCEEDED";
+export const FETCH_NAV_MENU_FAILED = "FETCH_NAV_MENU_FAILED";
 
 // Get nav-menu items from mongoDB for initializing store
 export const getAdmNavMenuItems = () => dispatch => {
@@ -151,7 +154,14 @@ export const addNewFurtherSubCategory = (
 };
 
 // Save changes into mongoDB
-export const saveUpdatedNavMenu = state => dispatch => {
+export const saveUpdatedNavMenu = (
+  state,
+  callbackGetAdmNavMenuItems
+) => dispatch => {
+  dispatch({
+    type: FETCH_NAV_MENU_REQUESTED
+  });
+
   state.forEach(category => {
     delete category._id;
     category.subCategoryList.forEach(subCategory => {
@@ -166,6 +176,18 @@ export const saveUpdatedNavMenu = state => dispatch => {
 
   axios
     .post("/navigation-menu/add-list", { navigationMenuItems: updatedMenu })
-    .then(response => console.log(response.data.categoryList))
-    .catch(err => console.log(err));
+    .then(response => {
+      dispatch({
+        type: FETCH_NAV_MENU_SUCCEEDED,
+        payload: "Navigation Menu is successfully updated."
+      });
+
+      callbackGetAdmNavMenuItems();
+    })
+    .catch(err => {
+      dispatch({
+        type: FETCH_NAV_MENU_FAILED,
+        payload: "An error occured. Please, check DB."
+      });
+    });
 };

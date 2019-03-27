@@ -6,7 +6,7 @@ import {withRouter} from "react-router-dom";
 import LoginForm from "./LoginForm";
 import RegistrationForm from "./RegistrationForm";
 import RegistrationOk from "./RegistrationOk";
-
+import userLogo from "./../../img/user-solid.svg";
 
 import {
     OPEN_LOGIN_FORM,
@@ -104,7 +104,7 @@ class TopBlockAuth extends Component {
                                     className="user-avatar-mini-img"
                                     // src="/img/profile_logo.png"
                                     //     src="/img/logo-test.png"
-                                    src="img/user-solid.svg"
+                                    src={userLogo}
                                     alt="icon-account"
                                     onClick={() => this.props.openLoginDetails()}
                                 />
@@ -150,7 +150,7 @@ class TopBlockAuth extends Component {
                     </div>
 
 
-                    <div className={`admin-dashboard ${isLogged}`}>
+                    <div className={`admin-dashboard ${(this.props.login.loggedData.isAdmin) ? null : 'd-none'}`}>
                         <NavLink className="admin-dashboard-link" to="/admin/dashboard">
                             <FontAwesomeIcon icon={faCogs}/>
                         </NavLink>

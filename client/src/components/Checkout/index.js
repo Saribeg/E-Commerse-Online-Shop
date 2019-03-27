@@ -173,7 +173,7 @@ class Checkout extends Component {
                     </ul>
 
                     <div className="checkout-delivery-method">
-                        <p className="checkout-delivery-method-title">
+                        <p className="checkout-delivery-details-title">
                             Choose one of delivery method
                         </p>
 

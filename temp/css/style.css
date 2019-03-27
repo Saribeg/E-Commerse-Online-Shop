@@ -99,9 +99,11 @@ body {
   display: none;
   background-color: #f3f3f3;
   padding: 17px 0 15px; }
-  @media (min-width: 1200px) {
+  @media (min-width: 1000px) {
     .breadcrumbs-section {
-      display: block; } }
+      display: block; 
+    } 
+    }
 
 .breadcrumbs-list {
   display: flex; }

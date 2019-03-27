@@ -47,21 +47,23 @@ class NavMenu extends Component {
   render() {
     // Creating the category list (men, women)
     let menuList = this.props.navMenuItems.map(e => {
-      return (
-        <li
-          className="main-menu-item"
-          key={e._id}
-          onMouseOver={() => this.props.openSubMenu(e.categoryName)}
-          onClick={() => {
-            this.initiateCategoryFilters(e.categoryName);
-            this.props.closeSubMenu();
-          }}
-        >
-          <Link to={e.categoryUrl} className="main-menu-link">
-            {e.categoryName}
-          </Link>
-        </li>
-      );
+      if (e.active) {
+        return (
+          <li
+            className="main-menu-item"
+            key={e._id}
+            onMouseOver={() => this.props.openSubMenu(e.categoryName)}
+            onClick={() => {
+              this.initiateCategoryFilters(e.categoryName);
+              this.props.closeSubMenu();
+            }}
+          >
+            <Link to={e.categoryUrl} className="main-menu-link">
+              {e.categoryName}
+            </Link>
+          </li>
+        );
+      }
     });
 
     // Creating list of subcategories (e.g. clothing) and further subcategories (e.g. shirts, pants)
@@ -71,52 +73,56 @@ class NavMenu extends Component {
           // further subcategories (e.g. shirts, pants)
           let subfurtherSubCategory = subCategory.furtherSubCategoryList.map(
             furtherSubCategory => {
-              return (
-                <li
-                  className="sub-menu-category-item"
-                  key={furtherSubCategory._id}
-                >
-                  <Link
-                    to={furtherSubCategory.furtherSubCategoryUrl}
-                    className="sub-menu-category-link"
-                    onClick={() => {
-                      this.initiateCategoryFilters(
-                        category.categoryName,
-                        subCategory.subCategoryName,
-                        furtherSubCategory.furtherSubCategoryName
-                      );
-                      this.props.closeSubMenu();
-                    }}
+              if (furtherSubCategory.active) {
+                return (
+                  <li
+                    className="sub-menu-category-item"
+                    key={furtherSubCategory._id}
                   >
-                    {furtherSubCategory.furtherSubCategoryName}
-                  </Link>
-                </li>
-              );
+                    <Link
+                      to={furtherSubCategory.furtherSubCategoryUrl}
+                      className="sub-menu-category-link"
+                      onClick={() => {
+                        this.initiateCategoryFilters(
+                          category.categoryName,
+                          subCategory.subCategoryName,
+                          furtherSubCategory.furtherSubCategoryName
+                        );
+                        this.props.closeSubMenu();
+                      }}
+                    >
+                      {furtherSubCategory.furtherSubCategoryName}
+                    </Link>
+                  </li>
+                );
+              }
             }
           );
 
           // subcategories (e.g. clothing)
-          return (
-            <div className="sub-menu-left-list" key={subCategory._id}>
-              <Link
-                to={subCategory.subCategoryUrl}
-                className="sub-menu-left-title"
-                onClick={() => {
-                  this.initiateCategoryFilters(
-                    category.categoryName,
-                    subCategory.subCategoryName
-                  );
-                  this.props.closeSubMenu();
-                }}
-              >
-                {subCategory.subCategoryName.charAt(0).toUpperCase() +
-                  subCategory.subCategoryName.slice(1)}
-              </Link>
-              <ul className="sub-menu-category-list">
-                {subfurtherSubCategory}
-              </ul>
-            </div>
-          );
+          if (subCategory.active) {
+            return (
+              <div className="sub-menu-left-list" key={subCategory._id}>
+                <Link
+                  to={subCategory.subCategoryUrl}
+                  className="sub-menu-left-title"
+                  onClick={() => {
+                    this.initiateCategoryFilters(
+                      category.categoryName,
+                      subCategory.subCategoryName
+                    );
+                    this.props.closeSubMenu();
+                  }}
+                >
+                  {subCategory.subCategoryName.charAt(0).toUpperCase() +
+                    subCategory.subCategoryName.slice(1)}
+                </Link>
+                <ul className="sub-menu-category-list">
+                  {subfurtherSubCategory}
+                </ul>
+              </div>
+            );
+          }
         });
       }
       return null; // to return a value at the end of arrow function as it is expected

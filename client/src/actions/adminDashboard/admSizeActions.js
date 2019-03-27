@@ -25,7 +25,7 @@ export const getNewSizeName = sizeName => dispatch => {
 };
 
 //Save new size to DB
-export const saveNewSizeInDb = sizeName => dispatch => {
+export const saveNewSizeInDb = (sizeName, cbGetExistingSizes) => dispatch => {
   let newSize = sizeName.trim().replace(/\s\s+/g, " ");
   // Preloader
   dispatch({
@@ -54,6 +54,9 @@ export const saveNewSizeInDb = sizeName => dispatch => {
                 size.data.value
               }" is successfully added to DB`
             });
+
+            // Update view of existing sizes after saving new size
+            cbGetExistingSizes();
           })
           .catch(error => {
             dispatch({
@@ -145,17 +148,19 @@ export const updateSizesInAllProducts = (
     // Taking product objects as they must be transformed to (pre-update-version)
     .post("/sizes/get-pre-updated-products", query)
     .then(preUpdatedProducts => {
-      // Save new product versions to DB (with new sizes), requesting to server in loop throwing every product, than must be updated
-      for (let product of preUpdatedProducts.data) {
-        axios
-          .post("/sizes/update-sizes-in-products", { product })
-          .then(updatedProducts => {})
-          .catch(error => {
-            dispatch({
-              type: FETCH_UPDATING_SIZE_FAILED,
-              payload: `An error is occured. Please, check DB.`
+      if (preUpdatedProducts.data.message) {
+        // Save new product versions to DB (with new sizes), requesting to server in loop throwing every product, than must be updated
+        for (let product of preUpdatedProducts.data.updatedProducts) {
+          axios
+            .post("/sizes/update-sizes-in-products", { product })
+            .then(updatedProducts => {})
+            .catch(error => {
+              dispatch({
+                type: FETCH_UPDATING_SIZE_FAILED,
+                payload: `An error is occured. Please, check DB.`
+              });
             });
-          });
+        }
       }
     });
 };
