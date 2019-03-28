@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import {NavLink} from "react-router-dom";
 
-import "./VerifyLogin.scss"
+import "./verify-login.scss"
 
 class VerifyLogin extends Component {
 

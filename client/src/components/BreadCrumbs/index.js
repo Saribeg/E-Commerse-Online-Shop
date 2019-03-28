@@ -6,14 +6,15 @@ import {connect} from "react-redux";
 import {selectFilters, clearProductList} from "../../actions/filterActions";
 import "./breadcrumbs.scss"
 
-type
-Props = {
+type Props = {
     categoryAway: Object,
     navMenuItems: Array < Object >,
     selectFilters: Object,
     currentFilters: Object,
     modelName: string,
-    activeColor: string
+    activeColor: string,
+    clearProductList: Function,
+    itemNo: number
 }
 
 class BreadCrumbs extends React.Component<Props> {
