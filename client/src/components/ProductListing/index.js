@@ -20,7 +20,7 @@ class ProductListing extends Component {
                 return productItem.productFeatures.map(productFeatures => {
                     counterItems++;
 
-                    if (counterItems <= this.props.children)
+                    if (counterItems <= this.props.children){
                         return (
                             <ProductCard
                                 productUrl={productItem.productUrl}
@@ -32,7 +32,8 @@ class ProductListing extends Component {
                                 previousPrice={productItem.previousPrice}
                                 currentFilters={productItem}
                             />
-                        )
+                        )}
+                    return null;
                 })
             })
         }

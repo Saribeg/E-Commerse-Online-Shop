@@ -6,14 +6,15 @@ import {connect} from "react-redux";
 import {selectFilters, clearProductList} from "../../actions/filterActions";
 import "./breadcrumbs.scss"
 
-type
-Props = {
+type Props = {
     categoryAway: Object,
     navMenuItems: Array < Object >,
     selectFilters: Object,
     currentFilters: Object,
     modelName: string,
-    activeColor: string
+    activeColor: string,
+    clearProductList: Function,
+    itemNo: number
 }
 
 class BreadCrumbs extends React.Component<Props> {
@@ -46,7 +47,7 @@ class BreadCrumbs extends React.Component<Props> {
                 return cat.subCategoryList.map(subCat => {
                         if (subCat.subCategoryName === subCategory) {
                             let furtherSubCatList = subCat.furtherSubCategoryList.map(furtherSubCat => {
-                                    if (furtherSubCategory != null || furtherSubCategory != undefined) {
+                                    if (furtherSubCategory != null || furtherSubCategory !== undefined) {
                                         if (furtherSubCat.furtherSubCategoryName === furtherSubCategory) {
                                             return (
                                                 <li key={furtherSubCat._id}>
@@ -106,6 +107,7 @@ class BreadCrumbs extends React.Component<Props> {
                     </li>
                 );
             }
+            return null;
         });
 
         return (

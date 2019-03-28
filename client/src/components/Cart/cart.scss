@@ -22,9 +22,7 @@
 }
 
 .basket-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flex-center-between;
   flex-wrap: wrap;
   border-bottom: 1px solid  #e5e5e5;
   padding: 20px 0;
