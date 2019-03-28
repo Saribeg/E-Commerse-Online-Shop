@@ -50,7 +50,6 @@
   &-item:hover {
     background-color: #eee;
   }
-
 }
 
 .user-info-mini {
@@ -75,7 +74,7 @@
   &-img {
     @include image;
     color: black;
-
+    transition: all 0.4s ease;
   }
 }
 
@@ -89,7 +88,7 @@
   cursor: pointer;
 
   &-img {
-    @include image; 
+    @include image;
   }
 
   &-amount {

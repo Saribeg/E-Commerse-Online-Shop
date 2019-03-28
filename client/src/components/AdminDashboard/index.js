@@ -7,9 +7,9 @@ import AdmNavMenu from "./AdmNavMenu";
 import AdmProducts from "./AdmProducts";
 import AdmColors from "./AdmColors";
 import AdmSizes from "./AdmSizes";
-import AdmCarousel from "./AdmCarousel";
-import AdmUsers from "./AdmUsers";
-import AdmFooter from "./AdmFooter";
+// import AdmCarousel from "./AdmCarousel";
+// import AdmUsers from "./AdmUsers";
+// import AdmFooter from "./AdmFooter";
 import logo from "../../img/matter.svg";
 
 import "../../scss/resources/resources.scss";

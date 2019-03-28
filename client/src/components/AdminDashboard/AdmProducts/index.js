@@ -126,9 +126,6 @@ class AdmProducts extends Component {
         )
       ];
 
-      console.log("dublicates=====================");
-      console.log(dublicates);
-
       //Creating image-preview component for react-dropzone
       let previewImagesContent = color.previewImages.map((image, i, arr) => {
         return (
