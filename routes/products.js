@@ -121,7 +121,7 @@ router.post("/products/admin-panel/add-products", (req, res) => {
         .then(newProduct =>
           res.json({
             newProduct: newProduct,
-            message: "Produc is saved in DB successfully",
+            message: "Product is saved in DB successfully",
             success: true
           })
         )
@@ -182,12 +182,12 @@ router.post("/products/add-products", (req, res) => {
       : newProduct.itemNo
   }`;
   /*
-An array of objects with several levels of nesting containing the following information:
-1. Color code for css-style and color name.
-2. Array of image urls for this color.
-3. Available sizes for this color.
-4. Available quantity for this color and this size.
-*/
+  An array of objects with several levels of nesting containing the following information:
+  1. Color code for css-style and color name.
+  2. Array of image urls for this color.
+  3. Available sizes for this color.
+  4. Available quantity for this color and this size.
+  */
   newProduct.productFeatures = JSON.parse(req.body.productFeatures);
 
   // Add new product to db
@@ -256,6 +256,7 @@ router.post("/products/filtered-products", (req, res) => {
     furtherSubCategory,
     colorName,
     size,
+    pageNo,
     minPrice = 0,
     maxPrice = 1000;
 
@@ -267,6 +268,7 @@ router.post("/products/filtered-products", (req, res) => {
   if (req.body.size) size = req.body.size;
   if (req.body.minPrice) minPrice = req.body.minPrice;
   if (req.body.maxPrice) maxPrice = req.body.maxPrice;
+  if (req.body.pageNo) pageNo = req.body.pageNo;
 
   let filters = {
     category,
@@ -289,8 +291,22 @@ router.post("/products/filtered-products", (req, res) => {
     return query;
   }
 
+  let perPage = 5;
+
   Product.find(filter(filters))
-    .then(products => res.json(products))
+    .skip(perPage * pageNo - perPage)
+    .limit(perPage)
+    .then(products => {
+      Product.find(filter(filters))
+        .count()
+        .then(amount => {
+          // console.log(amount);
+          res.json({
+            products: products,
+            amount: amount / perPage
+          });
+        });
+    })
     .catch(err => console.log(err));
 });
 

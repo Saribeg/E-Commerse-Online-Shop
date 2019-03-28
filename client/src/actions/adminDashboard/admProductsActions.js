@@ -473,7 +473,7 @@ export const deleteDropzoneImage = (
   colorIndex,
   validation
 ) => dispatch => {
-  if (e.target.className === "delete-image") {
+  if (e.target.getAttribute("data-action") === "delete-image") {
     e.preventDefault();
 
     let index = +e.target.previousElementSibling.dataset.index;

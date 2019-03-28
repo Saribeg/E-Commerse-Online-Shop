@@ -13,6 +13,8 @@ import search from "./search";
 //For Admin Dashboard
 import admNavMenu from "./adminDashboard/admNavMenuStates";
 import admProducts from "./adminDashboard/admProductsStates";
+import admColors from "./adminDashboard/admColorStates";
+import admSizes from "./adminDashboard/admSizeStates";
 
 const rootReducer = combineReducers({
   login,
@@ -27,7 +29,9 @@ const rootReducer = combineReducers({
   search,
   //For Admin Dashboard
   admNavMenu,
-  admProducts
+  admProducts,
+  admColors,
+  admSizes
 });
 
 export default rootReducer;

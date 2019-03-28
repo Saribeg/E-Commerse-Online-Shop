@@ -22,6 +22,25 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
+    resetPasswordToken: {
+        type: String,
+        default: ''
+    },
+    resetPasswordExpires: {
+        type: Date
+    },
+    confirmLoginToken: {
+        type: String,
+        default: ''
+    },
+    activeAccoont: {
+        type: Boolean,
+        default: false
+    },
     date: {
         type: Date,
         default: Date.now

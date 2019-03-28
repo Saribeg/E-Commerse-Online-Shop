@@ -3,17 +3,18 @@
 import * as React from "react";
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {selectFilters} from "../../actions/filterActions";
+import {selectFilters, clearProductList} from "../../actions/filterActions";
 import "./breadcrumbs.scss"
 
-type
-Props = {
+type Props = {
     categoryAway: Object,
     navMenuItems: Array < Object >,
     selectFilters: Object,
     currentFilters: Object,
     modelName: string,
-    activeColor: string
+    activeColor: string,
+    clearProductList: Function,
+    itemNo: number
 }
 
 class BreadCrumbs extends React.Component<Props> {
@@ -24,13 +25,16 @@ class BreadCrumbs extends React.Component<Props> {
     ) => {
         let {currentFilters} = this.props;
 
+        this.props.clearProductList();
+
         this.props.selectFilters(currentFilters, {
             category: newCategory,
             subCategory: newSubCategory,
             furtherSubCategory: newFurtherSubCategory,
             colorName: currentFilters.colorName,
             size: currentFilters.size,
-            price: currentFilters.price
+            price: currentFilters.price,
+            pageNo: 1
         });
     };
 
@@ -44,7 +48,7 @@ class BreadCrumbs extends React.Component<Props> {
                 return cat.subCategoryList.map(subCat => {
                         if (subCat.subCategoryName === subCategory) {
                             let furtherSubCatList = subCat.furtherSubCategoryList.map(furtherSubCat => {
-                                    if (furtherSubCategory != null || furtherSubCategory != undefined) {
+                                    if (furtherSubCategory != null || furtherSubCategory !== undefined) {
                                         if (furtherSubCat.furtherSubCategoryName === furtherSubCategory) {
                                             return (
                                                 <li key={furtherSubCat._id}>
@@ -60,12 +64,10 @@ class BreadCrumbs extends React.Component<Props> {
                                                     </NavLink>
                                                 </li>
                                             )
-                                        } else {
-                                            return null;
                                         }
-                                    } else {
                                         return null;
                                     }
+                                    return null;
                                 }
                             );
                             return (<>
@@ -86,6 +88,7 @@ class BreadCrumbs extends React.Component<Props> {
 
                             )
                         }
+                        return null;
                     }
                 )
             }
@@ -105,6 +108,7 @@ class BreadCrumbs extends React.Component<Props> {
                     </li>
                 );
             }
+            return null;
         });
 
         return (
@@ -136,5 +140,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {selectFilters}
+    {selectFilters, clearProductList}
 )(BreadCrumbs);

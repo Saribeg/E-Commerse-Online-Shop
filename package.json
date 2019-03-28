@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha \"./unittest/*.test.js\" ",
-    "server": "NODE_ENV=dev nodemon server.js",
+    "server": "nodemon server.js",
     "front": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\"  \"npm run front\""
   },
@@ -24,6 +24,7 @@
     "axios": "0.18.0",
     "bcryptjs": "2.4.3",
     "body-parser": "1.18.3",
+    "crypto": "^1.0.1",
     "express": "4.16.4",
     "fs-extra": "^7.0.1",
     "handlebars": "latest",
@@ -34,6 +35,7 @@
     "passport": "0.4.0",
     "passport-jwt": "4.0.0",
     "passport-local": "1.0.0",
+    "react-scroll": "^1.7.11",
     "unique-random": "2.0.0",
     "validator": "10.11.0"
   },

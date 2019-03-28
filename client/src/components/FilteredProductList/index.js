@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroller";
 
-import { getFilteredProducts } from "../../actions/filterActions";
+import {
+  getFilteredProducts,
+  selectFilters,
+  setNewPage
+} from "../../actions/filterActions";
 
 import Filters from "./Filters";
 import BreadCrumbs from "../BreadCrumbs";
@@ -10,10 +14,36 @@ import ProductCard from "../ProductCard";
 import Preloader from "../Preloader";
 import EmptyState from "../EmptyState";
 import SearchDropDownList from "../SearchDropDownList";
+import ScrollBtn from "../ScrollBtn";
 
 import "./filteredProductList.scss";
 
 class FilteredProductList extends Component {
+  addNumberPage = () => {
+    if (!this.props.isProductFetching) {
+      let currentValue = this.props.currentFilters.pageNo;
+
+      // let currentValue = page;
+      currentValue++;
+
+      console.log("currentValue", currentValue);
+
+      let { currentFilters } = this.props;
+
+      this.props.selectFilters(currentFilters, {
+        category: currentFilters.category,
+        subCategory: currentFilters.subCategory,
+        furtherSubCategory: currentFilters.furtherSubCategory,
+        colorName: currentFilters.colorName,
+        size: currentFilters.size,
+        price: currentFilters.price,
+        pageNo: currentValue
+      });
+    }
+
+    // this.props.setNewPage(currentValue);
+  };
+
   componentDidMount = () => {
     let { category, subCategory, furtherSubCategory } = this.props.match.params;
     this.props.getFilteredProducts(category, subCategory, furtherSubCategory);
@@ -29,7 +59,8 @@ class FilteredProductList extends Component {
             return (
               <ProductCard
                 productUrl={product.productUrl}
-                key={color._id}
+                key={`${product.productUrl}${color._id}`}
+                // key={color._id}
                 imageUrl={color.imageUrls[0]}
                 model={product.model}
                 colorName={color.colorName}
@@ -39,6 +70,7 @@ class FilteredProductList extends Component {
               />
             );
           }
+          return null;
         });
       } else if (currentFilters.size && !currentFilters.colorName) {
         return product.productFeatures.map(color => {
@@ -50,7 +82,8 @@ class FilteredProductList extends Component {
             return (
               <ProductCard
                 productUrl={product.productUrl}
-                key={color._id}
+                key={`${product.productUrl}${color._id}`}
+                // key={color._id}
                 imageUrl={color.imageUrls[0]}
                 model={product.model}
                 colorName={color.colorName}
@@ -60,6 +93,7 @@ class FilteredProductList extends Component {
               />
             );
           }
+          return null;
         });
       } else if (currentFilters.colorName && currentFilters.size) {
         return product.productFeatures.map(color => {
@@ -71,7 +105,8 @@ class FilteredProductList extends Component {
             return (
               <ProductCard
                 productUrl={product.productUrl}
-                key={color._id}
+                key={`${product.productUrl}${color._id}`}
+                // key={color._id}
                 imageUrl={color.imageUrls[0]}
                 model={product.model}
                 colorName={color.colorName}
@@ -81,13 +116,15 @@ class FilteredProductList extends Component {
               />
             );
           }
+          return null;
         });
       } else {
         return product.productFeatures.map(color => {
           return (
             <ProductCard
               productUrl={product.productUrl}
-              key={color._id}
+              key={`${product.productUrl}${color._id}`}
+              // key={color._id}
               imageUrl={color.imageUrls[0]}
               model={product.model}
               colorName={color.colorName}
@@ -125,6 +162,7 @@ class FilteredProductList extends Component {
 
     return (
       <>
+        <ScrollBtn scrollStepInPx="100" delayInMs="12" />
         <SearchDropDownList />
         <BreadCrumbs categoryAway={this.props.match.params} />
         <section className="category-block">
@@ -133,18 +171,23 @@ class FilteredProductList extends Component {
               <Filters urlParams={this.props.match.params} />
 
               <div className="category-product-listing">
-                <div className="listing-products">
-                  {isProductFetching ? (
-                    <Preloader />
-                  ) : this.props.products.length < 1 ? (
-                    filterEmptyState
-                  ) : (
-                    filteredProductList
-                  )}
-                </div>
-                <div className="btn-loading-products">
-                  <NavLink to="/">loading</NavLink>
-                </div>
+                <InfiniteScroll
+                  className="listing-products"
+                  pageStart={0}
+                  loadMore={this.addNumberPage}
+                  hasMore={
+                    this.props.currentFilters.pageNo <=
+                    this.props.currentFilters.amountPages
+                  }
+                  // useWindow={false}
+                  threshold={100}
+                >
+                  {this.props.products.length < 1 && !isProductFetching
+                    ? filterEmptyState
+                    : filteredProductList}
+                </InfiniteScroll>
+
+                {isProductFetching ? <Preloader /> : null}
               </div>
             </div>
           </div>
@@ -164,5 +207,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getFilteredProducts }
+  { getFilteredProducts, selectFilters, setNewPage }
 )(FilteredProductList);

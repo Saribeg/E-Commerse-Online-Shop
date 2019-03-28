@@ -293,7 +293,7 @@ class Cart extends Component {
                     <span className="basket-item-delete" onClick={() => this.deleteItem(keyItem)}><FontAwesomeIcon
                         icon={faTimes}/></span>
                     <div className="basket-item-img">
-                        <img src={elem.urlPhoto}/>
+                        <img src={elem.urlPhoto} alt={elem.model}/>
                     </div>
                     <div className="basket-item-info">
                         <p className="basket-item-title">{elem.model}</p>
@@ -324,26 +324,36 @@ class Cart extends Component {
                         ${elem.price}
                         </div>
                     </p>
-                    <div className={classIsNotAvailable}>                         
-                    Out of Stock! {elem.reasonNotAvailable}                           
-                            <input type="button" value={`Accept ${elem.availableAmount} items`}
-                                   onClick={() => this.handleChange({
-                                       target: {
-                                           name: keyItem,
-                                           value: elem.availableAmount,
-                                       }
-                                   })}/>
-                        </div>
+                    <div className={classIsNotAvailable}>
+                        Out of Stock! {elem.reasonNotAvailable}
+                        <input type="button" value={`Accept ${elem.availableAmount} items`}
+                               onClick={() => this.handleChange({
+                                   target: {
+                                       name: keyItem,
+                                       value: elem.availableAmount,
+                                   }
+                               })}/>
+                    </div>
                 </li>
             )
 
-        })
+        });
 
 
         return (
             <section className="basket-page container">
                 <ul className="basket-items-list">
-                    {productList}
+                    {
+                        (productList.length > 0) ?
+                            (
+                                productList
+                            ) :
+                            (
+                                <div className="basket-empty-state">No goods :(</div>
+                            )
+                    }
+
+
                 </ul>
 
                 <FinalOrder/>

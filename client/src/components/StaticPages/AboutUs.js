@@ -45,15 +45,11 @@ export default class AboutUs extends React.Component <Props, State> {
         <div className="container">
           <h2 className="sub-page-title">{this.state.pageTitle}</h2>
           <h3 className="sub-page-sub-title">We have a lot to tell you</h3>
-          <div className="about-us-wrapper">
-            <div className="about-us-content">
+          <div className="about-us-wrapper">          
               {pageContent[0]}
               {pageContent[1]}
-            </div>
-            <div className="about-us-content">
               {pageContent[2]}
               {pageContent[3]}
-            </div>
           </div>
         </div>
       </>

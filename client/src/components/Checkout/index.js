@@ -1,22 +1,16 @@
-import React, {Component} from 'react'
+import React, {Component} from "react";
 import {connect} from "react-redux";
-import {NavLink} from 'react-router-dom';
+import PlaceOrder from "./PlaceOrder";
+import FormDeliveryCheckout from "./FormDeliveryCheckout";
+import FormPaymentCheckout from "./FormPaymentCheckout";
 
-import PlaceOrder from "./PlaceOrder"
-import FormDeliveryCheckout from "./FormDeliveryCheckout"
-import FormPaymentCheckout from "./FormPaymentCheckout"
-
-import SuccessOrder from "./Modals/SuccessOrder"
-import UnsuccessOrder from "./Modals/UnsuccessOrder"
-import FinishAfterLogin from "./Modals/FinishAfterLogin"
-
-
+import SuccessOrder from "./Modals/SuccessOrder";
+import UnsuccessOrder from "./Modals/UnsuccessOrder";
+import FinishAfterLogin from "./Modals/FinishAfterLogin";
 
 import {CHANGE_DELIVERY_METHOD} from "../../actions/cart";
 
-
-
-import './Checkout.scss'
+import "./Checkout.scss"
 
 class Checkout extends Component {
 
@@ -50,8 +44,6 @@ class Checkout extends Component {
     }
 
     handlePaymentSubmit = (values) => {
-
-
 
         this.setState({
             finishOrder: true,
@@ -118,6 +110,7 @@ class Checkout extends Component {
                 )
 
             }
+            return null;
 
 
         })
@@ -173,7 +166,7 @@ class Checkout extends Component {
                     </ul>
 
                     <div className="checkout-delivery-method">
-                        <p className="checkout-delivery-method-title">
+                        <p className="checkout-delivery-details-title">
                             Choose one of delivery method
                         </p>
 

@@ -4,7 +4,7 @@ import {
     CORRECT_LOGIN, OPEN_LOGIN_DETAILS, CLOSE_LOGIN_DETAILS, LOGOUT, PROFILE_EXIST_EMAIL,
     PROFILE_CORRECT_PERSONAL_CHANGE, PROFILE_CORRECT_PASSWORD_CHANGE,
     PROFILE_INCORRECT_PASSWORD_CHANGE, SET_JWT_CURRENT_USER, LOGOUT_JWT_CURRENT_USER,
-    SAVE_HISTORY_PATH
+    SAVE_HISTORY_PATH, OPEN_REG_OK_FORM, CLOSE_REG_OK_FORM
 } from '../../actions/login'
 
 const initialState = {
@@ -15,6 +15,7 @@ const initialState = {
         firstName: '',
         secondName: '',
         email: '',
+        isAdmin: false,
         deliveryData: {
             country: '',
             zipcode: '',
@@ -33,6 +34,7 @@ const initialState = {
     windowsStatus: {
         formLoginOpen: false,
         formRegisterOpen: false,
+        formRegistrationOk: false,
         loginDetails: false,
         successRegister: false,
         invalidLogin: false,
@@ -65,6 +67,7 @@ function login(state = initialState, action) {
                 windowsStatus: {
                     formLoginOpen: false,
                     formRegisterOpen: false,
+                    formRegistrationOk: false,
                     loginDetails: false,
                     successRegister: false,
                     invalidLogin: false,
@@ -81,6 +84,7 @@ function login(state = initialState, action) {
                     firstName: '',
                     secondName: '',
                     email: '',
+                    isAdmin: false,
                     deliveryData: {
                         country: '',
                         zipcode: '',
@@ -99,6 +103,7 @@ function login(state = initialState, action) {
                 windowsStatus: {
                     formLoginOpen: false,
                     formRegisterOpen: false,
+                    formRegistrationOk: false,
                     loginDetails: false,
                     successRegister: false,
                     invalidLogin: false,
@@ -155,6 +160,25 @@ function login(state = initialState, action) {
                 windowsStatus: {
                     ...state.windowsStatus,
                     formRegisterOpen: false,
+                    // formRegistrationOk: true,
+                }
+            }
+
+        case OPEN_REG_OK_FORM:
+            return {
+                ...state,
+                windowsStatus: {
+                    ...state.windowsStatus,
+                    formRegisterOpen: false,
+                    formRegistrationOk: true,
+                }
+            }
+        case CLOSE_REG_OK_FORM:
+            return {
+                ...state,
+                windowsStatus: {
+                    ...state.windowsStatus,
+                    formRegistrationOk: false,
                 }
             }
 
@@ -203,6 +227,7 @@ function login(state = initialState, action) {
                     formLoginOpen: false,
                     formRegisterOpen: false,
                     successRegister: false,
+                    formRegistrationOk: false,
                     invalidLogin: false,
                     existEmail: false,
                 },
@@ -212,6 +237,7 @@ function login(state = initialState, action) {
                     firstName: action.payload.userinfo.firstName,
                     secondName: action.payload.userinfo.secondName,
                     email: action.payload.userinfo.email,
+                    isAdmin: action.payload.userinfo.isAdmin,
                     deliveryData: {...action.payload.userinfo.deliveryData},
                     paymentInfo: {...action.payload.userinfo.paymentInfo},
                 },
@@ -238,6 +264,7 @@ function login(state = initialState, action) {
                 windowsStatus: {
                     formLoginOpen: false,
                     formRegisterOpen: false,
+                    formRegistrationOk: false,
                     successRegister: false,
                     invalidLogin: false,
                     existEmail: false,
@@ -248,6 +275,7 @@ function login(state = initialState, action) {
                     firstName: action.payload.userinfo.firstName,
                     secondName: action.payload.userinfo.secondName,
                     email: action.payload.userinfo.email,
+                    isAdmin: action.payload.userinfo.isAdmin,
                     deliveryData: {...action.payload.userinfo.deliveryData},
                     paymentInfo: {...action.payload.userinfo.paymentInfo},
                 },
@@ -265,6 +293,7 @@ function login(state = initialState, action) {
                 windowsStatus: {
                     formLoginOpen: false,
                     formRegisterOpen: false,
+                    formRegistrationOk: false,
                     successRegister: false,
                     invalidLogin: false,
                     existEmail: false,
@@ -274,6 +303,7 @@ function login(state = initialState, action) {
                     id: '',
                     name: '',
                     email: '',
+                    isAdmin: false,
                 },
                 errorStatus: {
                     ...state.errorStatus
@@ -287,6 +317,7 @@ function login(state = initialState, action) {
                 windowsStatus: {
                     formLoginOpen: false,
                     formRegisterOpen: false,
+                    formRegistrationOk: false,
                     successRegister: false,
                     invalidLogin: false,
                     existEmail: false,

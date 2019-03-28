@@ -14,10 +14,7 @@ body {
 
 .about-us {
   &-wrapper {
-    @include flex-center-between;
-
-    padding-bottom: 30px;
-
+    @include flex-wrap-between;
     @media (max-width: 600px) {
       flex-direction: column;
     }
@@ -37,11 +34,12 @@ body {
   }
 
   &-paragraph {
-    padding-top: 10px;
+    width: 48%;
+    padding: 10px 0 25px;
+    border-bottom: 1px solid $grey-light;
 
     &:first-child {
-      padding-bottom: 25px;
-      border-bottom: 1px solid $grey-light;
+      padding-bottom: 25px;     
     }
   }
 }
@@ -148,17 +146,6 @@ body {
     @include mobile-min {
       padding: 5px;
     }
-  }
-
-  &-location {
-    font-size: 16px;
-    color: #78909c;
-    padding: 5px 0;
-  }
-
-  &-text {
-    font-size: 16px;
-    color: $black;
   }
 
   @include tablet {

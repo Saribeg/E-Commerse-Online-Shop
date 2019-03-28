@@ -10,7 +10,8 @@ import "./product-sizes.scss";
 
 type Props = {
   productFeatures: Array<Object>,
-  activeColor: string
+  activeColor: string,
+  setSizeAddCart: Function
 };
 
 type State = {
@@ -58,8 +59,10 @@ class ProductSizes extends React.Component<Props, State> {
               </li>
             );
           }
+          return null;
         });
       }
+      return null;
     });
 
     return (
