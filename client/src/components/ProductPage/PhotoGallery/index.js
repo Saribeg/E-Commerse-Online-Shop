@@ -44,6 +44,7 @@ class PhotoGallery extends Component {
           );
         });
       }
+      return null;
     });
 
     let photoGalleryFiltered = photoGallery.filter(elem => {
