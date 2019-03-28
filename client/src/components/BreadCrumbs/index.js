@@ -33,7 +33,8 @@ class BreadCrumbs extends React.Component<Props> {
             furtherSubCategory: newFurtherSubCategory,
             colorName: currentFilters.colorName,
             size: currentFilters.size,
-            price: currentFilters.price
+            price: currentFilters.price,
+            pageNo: 1
         });
     };
 
