@@ -24,18 +24,19 @@ class BreadCrumbs extends React.Component<Props> {
     newFurtherSubCategory: string
   ) => {
     let { currentFilters } = this.props;
+        this.props.clearProductList();
 
-    this.props.clearProductList();
+        this.props.selectFilters(currentFilters, {
+            category: newCategory,
+            subCategory: newSubCategory,
+            furtherSubCategory: newFurtherSubCategory,
+            colorName: currentFilters.colorName,
+            size: currentFilters.size,
+            price: currentFilters.price,
+            pageNo: 1
+        });
+    };
 
-    this.props.selectFilters(currentFilters, {
-      category: newCategory,
-      subCategory: newSubCategory,
-      furtherSubCategory: newFurtherSubCategory,
-      colorName: currentFilters.colorName,
-      size: currentFilters.size,
-      price: currentFilters.price
-    });
-  };
 
   render() {
     let { category, subCategory, furtherSubCategory } = this.props.categoryAway;
