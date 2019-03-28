@@ -5,8 +5,7 @@
 }
 
 .category-content {
-  display: flex;
-  justify-content: space-between;
+  @include flex-between;
 
   @include max-width($landscape-tablet){
     flex-direction: column;
@@ -33,15 +32,6 @@
       text-transform: uppercase;
     }
 
-    //a {
-    //  font-family: $font-openSans;
-    //  font-size: 12px;
-    //  font-weight: 600;
-    //  letter-spacing: 2px;
-    //  text-align: center;
-    //  color: $black;
-    //  text-transform: uppercase;
-    //}
   }
 }
 
@@ -75,12 +65,5 @@
     transform: translateX(-50%);
   }
 }
-
-//.listing-products div {
-//  display: flex;
-//  flex-wrap: wrap;
-//  justify-content: space-between;
-//  align-items: center;
-//}
 
 

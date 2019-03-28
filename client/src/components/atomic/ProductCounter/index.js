@@ -6,13 +6,12 @@ import {SET_AMOUNT} from "../../../actions/addToCart";
 
 import "./product-counter.scss";
 
-type
-Props = {
+type Props = {
     maxCount: number,
+    setAmountAddCart: Function,
 };
 
-type
-State = {
+type State = {
     value: number,
 };
 
