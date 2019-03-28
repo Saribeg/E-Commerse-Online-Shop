@@ -16,8 +16,6 @@ import {
     LOGOUT_JWT_CURRENT_USER, unsetLoggedUser, goToProfile
 } from "../../actions/login";
 
-import {SET_CART_FROM_LOCALSTORAGE} from "../../actions/cart";
-
 import Search from "../Search";
 import {faCogs} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -74,9 +72,6 @@ class TopBlockAuth extends Component {
     }
 
     render() {
-        let classDetailLogin = this.props.windowsStatus.loginDetails
-            ? null
-            : "d-none";
 
         let isLogged = this.props.login.isLogged ? null : "d-none";
         let notLogged = !this.props.login.isLogged ? null : "d-none";

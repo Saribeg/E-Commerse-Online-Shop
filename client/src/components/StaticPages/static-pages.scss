@@ -148,17 +148,6 @@ body {
     }
   }
 
-  &-location {
-    font-size: 16px;
-    color: #78909c;
-    padding: 5px 0;
-  }
-
-  &-text {
-    font-size: 16px;
-    color: $black;
-  }
-
   @include tablet {
     padding: 10px 30px;
   }

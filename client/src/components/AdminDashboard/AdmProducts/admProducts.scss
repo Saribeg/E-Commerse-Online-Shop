@@ -153,10 +153,20 @@
   }
 }
 
+
+
 //Photos
 
 .admin-products-photos {
   margin-bottom: 20px;
+}
+
+.dropzone-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
 }
 
 .image-dropzone {
@@ -188,14 +198,6 @@
       color: #fb1800;
     }
   }
-}
-
-.dropzone-placeholder {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 60px;
 }
 
 .image-preview {

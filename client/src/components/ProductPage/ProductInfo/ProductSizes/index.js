@@ -10,7 +10,8 @@ import "./product-sizes.scss";
 
 type Props = {
   productFeatures: Array<Object>,
-  activeColor: string
+  activeColor: string,
+  setSizeAddCart: Function
 };
 
 type State = {
