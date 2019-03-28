@@ -22,9 +22,7 @@
 }
 
 .basket-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flex-center-between;
   flex-wrap: wrap;
   border-bottom: 1px solid  #e5e5e5;
   padding: 20px 0;
@@ -89,11 +87,20 @@
   font-weight: 700;
 
   &.price {
-    width: 100px;
+    width: 10%;
     @include max-width($landscape-tablet){
       width: auto;
     }
   }
+}
+
+.basket-empty-state {
+   color: #000; 
+   font-size: 54px;
+   margin: 0 auto;
+   width: 70%;
+   text-align: center;
+   margin-top: 50px;
 }
 
 .product-counter {
@@ -134,6 +141,7 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
+  width: 80%;
 
   input {
     @include clear-default-inputs-style;

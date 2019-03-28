@@ -34,8 +34,9 @@ class RegistrationForm extends Component {
         let classExistEmail = (this.props.windowsStatus.existEmail) ? null : 'd-none';
 
         return (
+            <div className="modal-backdrop">
             <div className='login-menu'>
-                <div data-btn="btn-reg-up-close" className="login-cancel-btn" />
+                <div data-btn="btn-reg-up-close" className="login-cancel-btn">x</div>
                 <h2 className='login-menu_header'>Registration</h2>
                 <FormRegistration onSubmit={this.handleSubmit}/>
 
@@ -43,6 +44,7 @@ class RegistrationForm extends Component {
                 <div className='registration-area'>
                     <div data-btn="btn-reg-down-close" className='login-form_btn register_btn' >Login Here</div>
                 </div>
+            </div>
             </div>
         );
     };

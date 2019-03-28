@@ -22,6 +22,9 @@ export const CLOSE_LOGIN_FORM = 'CLOSE_LOGIN_FORM';
 export const OPEN_REG_FORM = 'OPEN_REG_FORM';
 export const CLOSE_REG_FORM = 'CLOSE_REG_FORM';
 
+export const OPEN_REG_OK_FORM = 'OPEN_REG_OK_FORM';
+export const CLOSE_REG_OK_FORM = 'CLOSE_REG_OK_FORM';
+
 export const OPEN_LOGIN_DETAILS = 'OPEN_LOGIN_DETAILS';
 export const CLOSE_LOGIN_DETAILS = 'CLOSE_LOGIN_DETAILS';
 
@@ -291,7 +294,7 @@ export function addNewUser(regForm) {
                     } else if (data.firstName) {
                         // if registration is successfull - close window
                         dispatch({type: RESET_WINDOW_STATUS})
-                        dispatch({type: CLOSE_REG_FORM})
+                        dispatch({type: OPEN_REG_OK_FORM})
                     }
                 }
             )

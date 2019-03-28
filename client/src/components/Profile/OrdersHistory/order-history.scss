@@ -1,18 +1,23 @@
 .order-history {
 
+  &-list {
+    min-width: 80%;
+  }
+
   &-item {
     border-radius: 5px;
     border: 2px solid #cccccc;
+    padding: 20px 45px;
+    margin-bottom: 16px;
   }
 
   &-title {
     font-size: 18px;
     font-weight: 600;
+    margin-bottom: 12px;
   }
 
-  &-date {
 
-  }
 
 }
 

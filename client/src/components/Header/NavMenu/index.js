@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -7,11 +7,12 @@ import {
   closeSubMenu
 } from "../../../actions/navMenuActions";
 
-import { selectFilters, selectSize } from "../../../actions/filterActions";
+import {
+  selectFilters,
+  selectSize,
+  clearProductList
+} from "../../../actions/filterActions";
 
-import Preloader from "../../Preloader";
-
-// import "../../../scss/style.scss";
 import "./nav-menu.scss";
 
 class NavMenu extends Component {
@@ -27,6 +28,8 @@ class NavMenu extends Component {
   ) => {
     let { currentFilters } = this.props;
 
+    this.props.clearProductList();
+
     this.props.selectSize(null);
 
     this.props.selectFilters(currentFilters, {
@@ -35,28 +38,32 @@ class NavMenu extends Component {
       furtherSubCategory: newFurtherSubCategory,
       colorName: undefined,
       size: undefined,
-      price: { min: 5, max: 1000 }
+      price: { min: 5, max: 1000 },
+      pageNo: 1
     });
   };
 
   render() {
     // Creating the category list (men, women)
     let menuList = this.props.navMenuItems.map(e => {
-      return (
-        <li
-          className="main-menu-item"
-          key={e._id}
-          onMouseOver={() => this.props.openSubMenu(e.categoryName)}
-          onClick={() => {
-            this.initiateCategoryFilters(e.categoryName);
-            this.props.closeSubMenu();
-          }}
-        >
-          <Link to={e.categoryUrl} className="main-menu-link">
-            {e.categoryName}
-          </Link>
-        </li>
-      );
+      if (e.active) {
+        return (
+          <li
+            className="main-menu-item"
+            key={e._id}
+            onMouseOver={() => this.props.openSubMenu(e.categoryName)}
+            onClick={() => {
+              this.initiateCategoryFilters(e.categoryName);
+              this.props.closeSubMenu();
+            }}
+          >
+            <Link to={e.categoryUrl} className="main-menu-link">
+              {e.categoryName}
+            </Link>
+          </li>
+        );
+      }
+      return null;
     });
 
     // Creating list of subcategories (e.g. clothing) and further subcategories (e.g. shirts, pants)
@@ -66,52 +73,57 @@ class NavMenu extends Component {
           // further subcategories (e.g. shirts, pants)
           let subfurtherSubCategory = subCategory.furtherSubCategoryList.map(
             furtherSubCategory => {
-              return (
-                <li
-                  className="sub-menu-category-item"
-                  key={furtherSubCategory._id}
-                >
-                  <Link
-                    to={furtherSubCategory.furtherSubCategoryUrl}
-                    className="sub-menu-category-link"
-                    onClick={() => {
-                      this.initiateCategoryFilters(
-                        category.categoryName,
-                        subCategory.subCategoryName,
-                        furtherSubCategory.furtherSubCategoryName
-                      );
-                      this.props.closeSubMenu();
-                    }}
+              if (furtherSubCategory.active) {
+                return (
+                  <li
+                    className="sub-menu-category-item"
+                    key={furtherSubCategory._id}
                   >
-                    {furtherSubCategory.furtherSubCategoryName}
-                  </Link>
-                </li>
-              );
+                    <Link
+                      to={furtherSubCategory.furtherSubCategoryUrl}
+                      className="sub-menu-category-link"
+                      onClick={() => {
+                        this.initiateCategoryFilters(
+                          category.categoryName,
+                          subCategory.subCategoryName,
+                          furtherSubCategory.furtherSubCategoryName
+                        );
+                        this.props.closeSubMenu();
+                      }}
+                    >
+                      {furtherSubCategory.furtherSubCategoryName}
+                    </Link>
+                  </li>
+                );
+              }
+              return null;
             }
           );
 
           // subcategories (e.g. clothing)
-          return (
-            <div className="sub-menu-left-list" key={subCategory._id}>
-              <Link
-                to={subCategory.subCategoryUrl}
-                className="sub-menu-left-title"
-                onClick={() => {
-                  this.initiateCategoryFilters(
-                    category.categoryName,
-                    subCategory.subCategoryName
-                  );
-                  this.props.closeSubMenu();
-                }}
-              >
-                {subCategory.subCategoryName.charAt(0).toUpperCase() +
-                  subCategory.subCategoryName.slice(1)}
-              </Link>
-              <ul className="sub-menu-category-list">
-                {subfurtherSubCategory}
-              </ul>
-            </div>
-          );
+          if (subCategory.active) {
+            return (
+              <div className="sub-menu-left-list" key={subCategory._id}>
+                <Link
+                  to={subCategory.subCategoryUrl}
+                  className="sub-menu-left-title"
+                  onClick={() => {
+                    this.initiateCategoryFilters(
+                      category.categoryName,
+                      subCategory.subCategoryName
+                    );
+                    this.props.closeSubMenu();
+                  }}
+                >
+                  {subCategory.subCategoryName.charAt(0).toUpperCase() +
+                    subCategory.subCategoryName.slice(1)}
+                </Link>
+                <ul className="sub-menu-category-list">
+                  {subfurtherSubCategory}
+                </ul>
+              </div>
+            );
+          }
         });
       }
       return null; // to return a value at the end of arrow function as it is expected
@@ -130,15 +142,17 @@ class NavMenu extends Component {
       </section>
     );
 
+    let miniPreloader = <div className="minipreloader" />;
+
     // Rendering the whole component
     return (
-      <Fragment>
+      <>
         <ul className="main-menu-list">
-          {this.props.isMenuFetching ? <Preloader /> : menuList}
+          {this.props.isMenuFetching ? miniPreloader : menuList}
         </ul>
 
         {this.props.navMenuWindowStatus ? subMenuSection : null}
-      </Fragment>
+      </>
     );
   }
 }
@@ -155,5 +169,12 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getNavMenuItems, openSubMenu, closeSubMenu, selectFilters, selectSize }
+  {
+    getNavMenuItems,
+    openSubMenu,
+    closeSubMenu,
+    selectFilters,
+    selectSize,
+    clearProductList
+  }
 )(NavMenu);

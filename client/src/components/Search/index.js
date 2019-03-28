@@ -12,9 +12,19 @@ import {
 
 import "./search.scss";
 
-type Props = {};
+type Props = {
+  validateSearchValue: Function,
+  focusSearchInput: Function,
+  products: Array<Object>,
+  isSearchFetching: boolean,
+  nonValid: boolean,
+  clearSearchInput: Function,
+  searchString: Function,
+  search: Function,
+  focus: Function
+};
 
-class Search extends React.Component<Props, State> {
+class Search extends React.Component<Props> {
   render() {
     const {
       search,

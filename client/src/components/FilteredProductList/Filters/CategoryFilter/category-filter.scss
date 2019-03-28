@@ -15,9 +15,7 @@
 
   .category-list-menu {
     @include max-width($landscape-tablet) {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      @include flex-wrap-between;
     }
     .category-item {
       padding-left: 20px;
@@ -50,8 +48,7 @@
 
       &-sub-menu {
         .further-sub-category-item {
-          display: flex;
-          justify-content: space-between;
+          @include flex-between;
           margin-bottom: 15px;
 
           .further-sub-category-link {
@@ -91,6 +88,5 @@
 
 .subcat-block,
 .cat-block {
-  display: flex;
-  justify-content: space-between;
+  @include flex-between;
 }
