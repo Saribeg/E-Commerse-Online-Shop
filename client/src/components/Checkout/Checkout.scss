@@ -97,13 +97,13 @@
     }
 
     &-input {
-      width: 100%;
-      //width: 180px;
       height: 20px;
       font-size: 16px;
       margin-bottom: 10px;
       outline: none;
-
+      margin-top: 10px;
+      padding: 10px;
+      width: 90%;
     }
   }
 }
@@ -154,6 +154,11 @@
   transition: 0.3s;
   outline: none;
 
+  &:hover {
+    background-color: #fff;
+    color: #655f5f;
+  }
+
   &:disabled {
     background-color: #cccccc;
     color: #fff;
@@ -164,11 +169,6 @@
       color: #fff;
       cursor: auto;
     }
-  }
-
-  &:hover {
-    background-color: #fff;
-    color: #655f5f;
   }
 
 }
@@ -202,8 +202,10 @@
   &-exp-input {
     height: 20px;
     width: 70px;
-    display: inline;
     font-size: 16px;
+    margin-bottom: 10px;
+    padding: 10px;
+    margin-top: 10px;
   }
 
 
@@ -222,9 +224,4 @@
   position: relative;
   top: 25px;
   left: -150px;
-}
-
-.checkout-delivery-content-input {
-  padding: 10px;
-  width: 90%;
 }

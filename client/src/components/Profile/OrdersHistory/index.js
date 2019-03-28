@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import axios from "axios";
 
-import "./OrderHistory.scss"
+import "./order-history.scss"
 
 
 class OrdersHistory extends Component {
@@ -62,8 +62,8 @@ class OrdersHistory extends Component {
 
                 return (
                     <li className="order-history-list-item">
-                        <div className="checkout-product-item-block">
-                            <div className="checkout-product-item-details">
+                       
+                            
                                 <div className="checkout-product-item-description">
                                     <p className="checkout-product-item-model">
                                         {item.model}
@@ -74,8 +74,8 @@ class OrdersHistory extends Component {
                                     <p className="checkout-product-item-size">
                                         {`Size - ${item.size}`}
                                     </p>
-                                </div>
-                            </div>
+                              
+                            
                             <div className="checkout-product-item-price">
                                 <p>{`${item.priceFormDB} x ${item.amount}`}</p>
                                 <p className="checkout-product-item-price-bold">

@@ -35,8 +35,17 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 
 Analyze scss-files with stylelint. We use module [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard). It also fixes some problems, and report about problems, that can not fix in console. 
 
+### `npm run flow` 
+
+We use [flow type checker](https://flow.org/Analyze) code for mistakes in types. Run this script to find bugs.
+
 
 ## Available Scripts in Main folder
 
 ### `npm run dev` 
 Creates both environments - client and server, connects to MongoDb and starts create-react-app. We use it for development, when we need running back-end and front-end.
+
+## Documentation about product
+
+Here you can find documantation about functionality of online-shop 
+[functionality of online-shop](https://docs.google.com/document/d/1u6Sq1i__yRu5I65SMGQmzRpAuO7Xb23AcBXIyPzC7QM/edit)

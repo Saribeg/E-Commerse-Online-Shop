@@ -42,14 +42,7 @@ ShallowWrapper {
           </h3>
           <div
             className="about-us-wrapper"
-          >
-            <div
-              className="about-us-content"
-            />
-            <div
-              className="about-us-content"
-            />
-          </div>
+          />
         </div>,
       ],
     },
@@ -98,14 +91,7 @@ ShallowWrapper {
             </h3>,
             <div
               className="about-us-wrapper"
-            >
-              <div
-                className="about-us-content"
-              />
-              <div
-                className="about-us-content"
-              />
-            </div>,
+            />,
           ],
           "className": "container",
         },
@@ -141,53 +127,19 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                <div
-                  className="about-us-content"
-                />,
-                <div
-                  className="about-us-content"
-                />,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
               ],
               "className": "about-us-wrapper",
             },
             "ref": null,
             "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": Array [
-                    undefined,
-                    undefined,
-                  ],
-                  "className": "about-us-content",
-                },
-                "ref": null,
-                "rendered": Array [
-                  undefined,
-                  undefined,
-                ],
-                "type": "div",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": Array [
-                    undefined,
-                    undefined,
-                  ],
-                  "className": "about-us-content",
-                },
-                "ref": null,
-                "rendered": Array [
-                  undefined,
-                  undefined,
-                ],
-                "type": "div",
-              },
+              undefined,
+              undefined,
+              undefined,
+              undefined,
             ],
             "type": "div",
           },
@@ -227,14 +179,7 @@ ShallowWrapper {
             </h3>
             <div
               className="about-us-wrapper"
-            >
-              <div
-                className="about-us-content"
-              />
-              <div
-                className="about-us-content"
-              />
-            </div>
+            />
           </div>,
         ],
       },
@@ -283,14 +228,7 @@ ShallowWrapper {
               </h3>,
               <div
                 className="about-us-wrapper"
-              >
-                <div
-                  className="about-us-content"
-                />
-                <div
-                  className="about-us-content"
-                />
-              </div>,
+              />,
             ],
             "className": "container",
           },
@@ -326,53 +264,19 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  <div
-                    className="about-us-content"
-                  />,
-                  <div
-                    className="about-us-content"
-                  />,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
                 ],
                 "className": "about-us-wrapper",
               },
               "ref": null,
               "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": Array [
-                      undefined,
-                      undefined,
-                    ],
-                    "className": "about-us-content",
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    undefined,
-                    undefined,
-                  ],
-                  "type": "div",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": Array [
-                      undefined,
-                      undefined,
-                    ],
-                    "className": "about-us-content",
-                  },
-                  "ref": null,
-                  "rendered": Array [
-                    undefined,
-                    undefined,
-                  ],
-                  "type": "div",
-                },
+                undefined,
+                undefined,
+                undefined,
+                undefined,
               ],
               "type": "div",
             },
@@ -451,7 +355,7 @@ ShallowWrapper {
           <p
             className="job-offer-feedback"
           >
-            If you are interested, please send your resume: matter-style@mail.com
+            If you are interested, please send your resume: matter-hr@matter.com
           </p>
         </div>,
       ],
@@ -503,7 +407,7 @@ ShallowWrapper {
             <p
               className="job-offer-feedback"
             >
-              If you are interested, please send your resume: matter-style@mail.com
+              If you are interested, please send your resume: matter-hr@matter.com
             </p>,
           ],
           "className": "container",
@@ -539,11 +443,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "If you are interested, please send your resume: matter-style@mail.com",
+              "children": "If you are interested, please send your resume: matter-hr@matter.com",
               "className": "job-offer-feedback",
             },
             "ref": null,
-            "rendered": "If you are interested, please send your resume: matter-style@mail.com",
+            "rendered": "If you are interested, please send your resume: matter-hr@matter.com",
             "type": "p",
           },
         ],
@@ -583,7 +487,7 @@ ShallowWrapper {
             <p
               className="job-offer-feedback"
             >
-              If you are interested, please send your resume: matter-style@mail.com
+              If you are interested, please send your resume: matter-hr@matter.com
             </p>
           </div>,
         ],
@@ -635,7 +539,7 @@ ShallowWrapper {
               <p
                 className="job-offer-feedback"
               >
-                If you are interested, please send your resume: matter-style@mail.com
+                If you are interested, please send your resume: matter-hr@matter.com
               </p>,
             ],
             "className": "container",
@@ -671,11 +575,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": "If you are interested, please send your resume: matter-style@mail.com",
+                "children": "If you are interested, please send your resume: matter-hr@matter.com",
                 "className": "job-offer-feedback",
               },
               "ref": null,
-              "rendered": "If you are interested, please send your resume: matter-style@mail.com",
+              "rendered": "If you are interested, please send your resume: matter-hr@matter.com",
               "type": "p",
             },
           ],
