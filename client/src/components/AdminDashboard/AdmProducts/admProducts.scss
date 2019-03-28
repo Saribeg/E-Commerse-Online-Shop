@@ -218,6 +218,11 @@
 
   &-image {
     height: 140px;
+
+    &-dublicate {
+      border: 1px solid red;
+      box-shadow: 0px 0px 5px 0px rgba(250, 25, 5, 1);
+    }
   }
 }
 
@@ -229,6 +234,11 @@
   border: 1px solid #000000;
   cursor: pointer;
   transition: all 0.4s ease;
+
+  &-dublicate {
+    border: 1px solid red;
+    color: red;
+  }
 
   &:hover,
   &:focus {

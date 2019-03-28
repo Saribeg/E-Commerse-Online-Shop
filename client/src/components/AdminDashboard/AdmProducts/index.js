@@ -113,19 +113,44 @@ class AdmProducts extends Component {
         currentColorCssHexCode = currentColor[0]["cssHexCode"];
       }
 
+      let dublicates = [
+        ...new Set(
+          color.previewImages
+            .map((img, i) => {
+              return img.name;
+            })
+            .sort()
+            .filter((imgName, i, imgNamesArr) => {
+              return imgNamesArr[i + 1] === imgNamesArr[i];
+            })
+        )
+      ];
+
+      console.log("dublicates=====================");
+      console.log(dublicates);
+
       //Creating image-preview component for react-dropzone
-      let previewImagesContent = color.previewImages.map((image, i) => {
+      let previewImagesContent = color.previewImages.map((image, i, arr) => {
         return (
           <li className="image-preview-item" key={image.preview}>
             <img
               src={image.preview}
               alt="Files Preview"
-              className="image-preview-image"
+              className={
+                dublicates.includes(image.name)
+                  ? "image-preview-image image-preview-image-dublicate"
+                  : "image-preview-image"
+              }
               data-index={i}
             />
             <input
               type="button"
-              className="delete-image"
+              className={
+                dublicates.includes(image.name)
+                  ? "delete-image delete-image-dublicate"
+                  : "delete-image"
+              }
+              data-action="delete-image"
               value="Delete image"
             />
           </li>
