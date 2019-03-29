@@ -80,25 +80,10 @@ export const getExistingSizes = () => dispatch => {
     type: FETCH_EXISTING_SIZE_REQUESTED
   });
 
-  axios.get("/filters/sizes").then(sizes => {
-    let existingSizes = sizes.data.sort((a, b) => {
-      if (a.value < b.value) {
-        return 1;
-      }
-      if (a.value > b.value) {
-        return -1;
-      }
-      return 0;
-    });
-
-    let updatingSizes = sizes.data
-      .map(size => {
-        return {
-          _id: size._id,
-          value: size.value
-        };
-      })
-      .sort((a, b) => {
+  axios
+    .get("/filters/sizes")
+    .then(sizes => {
+      let existingSizes = sizes.data.sort((a, b) => {
         if (a.value < b.value) {
           return 1;
         }
@@ -108,12 +93,35 @@ export const getExistingSizes = () => dispatch => {
         return 0;
       });
 
-    dispatch({
-      type: FETCH_EXISTING_SIZE_SUCCEEDED,
-      payload: existingSizes,
-      updatingSizes: updatingSizes
+      let updatingSizes = sizes.data
+        .map(size => {
+          return {
+            _id: size._id,
+            value: size.value
+          };
+        })
+        .sort((a, b) => {
+          if (a.value < b.value) {
+            return 1;
+          }
+          if (a.value > b.value) {
+            return -1;
+          }
+          return 0;
+        });
+
+      dispatch({
+        type: FETCH_EXISTING_SIZE_SUCCEEDED,
+        payload: existingSizes,
+        updatingSizes: updatingSizes
+      });
+    })
+    .catch(error => {
+      dispatch({
+        type: FETCH_EXISTING_SIZE_FAILED,
+        payload: "An error occured. Can not receive size-collection from DB."
+      });
     });
-  });
 };
 
 // Updating size inputs

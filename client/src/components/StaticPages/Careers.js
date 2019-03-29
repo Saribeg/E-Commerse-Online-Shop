@@ -7,7 +7,7 @@ type Props = {};
 
 type State = {
   pageTitle: string,
-  content:  Array<Object>
+  content: Array<Object>
 };
 export default class Careers extends React.Component<Props, State> {
   state = {
@@ -29,7 +29,7 @@ export default class Careers extends React.Component<Props, State> {
     const content = this.state.content;
     let pageContent = content.map(elem => {
       return (
-        <div className="job-description">
+        <div className="job-description" key={elem.title}>
           <h3 className="job-description-position">{elem.title}</h3>
           <p className="job-description-text">{elem.content}</p>
         </div>
@@ -42,14 +42,14 @@ export default class Careers extends React.Component<Props, State> {
           <title>{this.state.pageTitle}</title>
         </Helmet>
         <div className="container">
-        <h2 className="sub-page-title">{this.state.pageTitle}</h2>
-        <h3 className="sub-page-sub-title">
-          There are several options to suggest
-        </h3>
-        {pageContent}
-        <p className="job-offer-feedback">
-          If you are interested, please send your resume: matter-hr@matter.com
-        </p>
+          <h2 className="sub-page-title">{this.state.pageTitle}</h2>
+          <h3 className="sub-page-sub-title">
+            There are several options to suggest
+          </h3>
+          {pageContent}
+          <p className="job-offer-feedback">
+            If you are interested, please send your resume: matter-hr@matter.com
+          </p>
         </div>
       </>
     );
