@@ -1,6 +1,31 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+<<<<<<< HEAD
+const UserSchema = new Schema({
+  fullName: {
+    type: String,
+    required: true
+  },
+  login: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+=======
 const bcrypt = require('bcryptjs');
 const SALT_WORK_FACTOR = 10;
 
@@ -113,4 +138,5 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
     });
 };
 
+>>>>>>> 1ca1d93ddefd774db737ce6c339bc8ddc3af7985
 module.exports = User = mongoose.model("users", UserSchema);
