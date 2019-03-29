@@ -23,6 +23,8 @@ class ProductPage extends Component {
   };
 
   componentDidMount() {
+
+      window.scroll(0, 0);
     this.props.getProductDetails(this.props.match.params);
 
     // console.log('this.state.activeColor', this.state.activeColor)

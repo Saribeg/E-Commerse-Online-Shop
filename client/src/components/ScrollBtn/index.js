@@ -1,7 +1,8 @@
 import React, {Component} from "react";
+import { connect } from "react-redux";
 import "./ScrollBtn.scss"
 
-export default class ScrollBtn extends Component {
+class ScrollBtn extends Component {
     state = {
         intervalId: 0
     };
@@ -21,11 +22,27 @@ export default class ScrollBtn extends Component {
 
     render() {
         return (
-            <button title="Back to top" className="scroll"
-                    onClick={() => {
-                        this.scrollToTop();
-                    }}>&#8593;
-            </button>
+            <>
+                {
+                    (this.props.offsetY > 300) ?
+                        <button title="Back to top" className="scroll"
+                                onClick={() => {
+                                    this.scrollToTop();
+                                }}>&#8593;
+                        </button>
+                        : null
+                }
+
+            </>
+
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        offsetY: state.scroll.position
+    };
+};
+
+export default connect(mapStateToProps)(ScrollBtn)
