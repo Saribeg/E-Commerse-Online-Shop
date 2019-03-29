@@ -19,9 +19,11 @@ const categoryCarousels = require("./routes/categoryCarousels");
 const cart = require("./routes/cart");
 const search = require("./routes/search");
 const app = express();
+const path = require("path");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "client/build")));
 
 const db = require("./config/keys").mongoURI;
 
@@ -77,8 +79,9 @@ app.use("/", categoryCarousels);
 
 const port = process.env.PORT || 5000;
 
-let server = app.listen(port, () => console.log(`Server running on port ${port}`));
+let server = app.listen(port, () =>
+  console.log(`Server running on port ${port}`)
+);
 
 console.log(process.env.NODE_ENV);
 module.exports = server;
-
