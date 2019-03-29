@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import Select from "react-select";
 
 import {
@@ -67,29 +67,13 @@ class SizeFilter extends Component {
       currentCategoriesLength = 1;
     }
 
-        let relevantSizeOptions = sizeFilters
-            .map(size => {
-                let sizeIsPresentInCategories = size.categories.some(cat => {
-                    let splitedCat = cat.split("-");
-                    splitedCat.length = currentCategoriesLength;
-                    let sizeCategories = splitedCat.join("-");
-                    return sizeCategories === currentCategories;
-                });
-
-                if (sizeIsPresentInCategories) {
-                    return {
-                        value: size.value,
-                        label: size.value
-                    };
-                }
-            })
-            .filter(item => {
-                return item !== undefined;
-            });
-
-        relevantSizeOptions.unshift({
-            value: "all sizes",
-            label: "All sizes"
+    let relevantSizeOptions = sizeFilters
+      .map(size => {
+        let sizeIsPresentInCategories = size.categories.some(cat => {
+          let splitedCat = cat.split("-");
+          splitedCat.length = currentCategoriesLength;
+          let sizeCategories = splitedCat.join("-");
+          return sizeCategories === currentCategories;
         });
 
         if (sizeIsPresentInCategories) {
@@ -109,8 +93,6 @@ class SizeFilter extends Component {
       value: "all sizes",
       label: "All sizes"
     });
-
-    console.log(relevantSizeOptions);
 
     return (
       <>
@@ -132,12 +114,12 @@ class SizeFilter extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-        sizeFilters: state.filters.sizeFilters,
-        currentSizeOption: state.filters.currentSizeOption,
-        isFilterFetching: state.filters.isFilterFetching,
-        currentFilters: state.filters.selected
-    };
+  return {
+    sizeFilters: state.filters.sizeFilters,
+    currentSizeOption: state.filters.currentSizeOption,
+    isFilterFetching: state.filters.isFilterFetching,
+    currentFilters: state.filters.selected
+  };
 };
 
 export default connect(
