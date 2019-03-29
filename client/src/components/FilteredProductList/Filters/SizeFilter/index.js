@@ -94,6 +94,8 @@ class SizeFilter extends Component {
       label: "All sizes"
     });
 
+    console.log(relevantSizeOptions);
+
     return (
       <>
         {isFilterFetching ? (
