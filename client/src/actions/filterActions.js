@@ -2,11 +2,11 @@ import axios from "axios";
 
 export const FETCH_FILTER_REQUESTED = "FETCH_FILTER_REQUESTED";
 export const FETCH_FILTER_SUCCEEDED = "FETCH_FILTER_SUCCEEDED";
-export const FETCH_FILTER_FAILED = "FETCH_FILTER_FAILED";
 
 export const FETCH_PRODUCT_REQUESTED = "FETCH_PRODUCT_REQUESTED";
 export const FETCH_PRODUCT_SUCCEEDED = "FETCH_PRODUCT_SUCCEEDED";
-export const FETCH_PRODUCT_FAILED = "FETCH_PRODUCT_FAILED";
+
+export const FETCH_ADD_PRODUCT_SUCCEEDED = "FETCH_ADD_PRODUCT_SUCCEEDED";
 
 export const FETCH_ADD_PRODUCT_SUCCEEDED = "FETCH_ADD_PRODUCT_SUCCEEDED";
 
@@ -117,20 +117,6 @@ export const selectFilters = (currentFilters, newFilters) => dispatch => {
     delete currentFilters.size;
   }
 
-  // function filterObject(obj) {
-  //   const ret = {};
-  //   Object.keys(obj)
-  //     .filter(key => obj[key] !== undefined)
-  //     .forEach(key => (ret[key] = obj[key]));
-  //   console.log(
-  //     "ret ======================================================================="
-  //   );
-  //   console.log(ret);
-  //   return ret;
-  // }
-
-  // filterObject(newFilters);
-
   let filters = Object.assign(currentFilters, newFilters);
 
   dispatch({
@@ -173,14 +159,9 @@ export const selectFilters = (currentFilters, newFilters) => dispatch => {
       pageNo: filters.pageNo
     })
     .then(info => {
-      // console.log('info', info)
-
       let products = info.data.products;
 
       let newProducts = JSON.parse(JSON.stringify(products));
-
-      // console.log('------------------')
-      // console.log("info.amount", info.data.amount)
 
       dispatch({
         type: FETCH_ADD_PRODUCT_SUCCEEDED,
