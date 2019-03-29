@@ -17,6 +17,7 @@ type Props = {
   itemNo: number
 };
 
+
 class BreadCrumbs extends React.Component<Props> {
   changeCategoryFilters = (
     newCategory: string,
@@ -24,6 +25,8 @@ class BreadCrumbs extends React.Component<Props> {
     newFurtherSubCategory: string
   ) => {
     let { currentFilters } = this.props;
+        this.props.clearProductList();
+
         this.props.clearProductList();
 
         this.props.selectFilters(currentFilters, {

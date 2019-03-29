@@ -8,6 +8,8 @@ export const FETCH_PRODUCT_SUCCEEDED = "FETCH_PRODUCT_SUCCEEDED";
 
 export const FETCH_ADD_PRODUCT_SUCCEEDED = "FETCH_ADD_PRODUCT_SUCCEEDED";
 
+export const FETCH_ADD_PRODUCT_SUCCEEDED = "FETCH_ADD_PRODUCT_SUCCEEDED";
+
 export const SELECT_FILTERS = "SELECT_FILTERS";
 
 export const SELECT_SIZE = "SELECT_SIZE";
@@ -125,6 +127,25 @@ export const selectFilters = (currentFilters, newFilters) => dispatch => {
   dispatch({
     type: FETCH_PRODUCT_REQUESTED
   });
+
+  // axios
+  //   .post("/products/filtered-products", {
+  //     category: filters.category,
+  //     subCategory: filters.subCategory,
+  //     furtherSubCategory: filters.furtherSubCategory,
+  //     colorName: filters.colorName,
+  //     size: filters.size,
+  //     minPrice: filters.price.min,
+  //     maxPrice: filters.price.max
+  //   })
+  //   .then(products => {
+  //     let newProducts = JSON.parse(JSON.stringify(products.data));
+  //     dispatch({
+  //       type: FETCH_PRODUCT_SUCCEEDED,
+  //       payload: newProducts
+  //     });
+  //   })
+  //   .catch(err => console.log(err));
 
   axios
     .post("/products/filtered-products", {

@@ -34,6 +34,7 @@ class AdmSizes extends Component {
       updatedSizeValue,
       errorMsg,
       fetchExistingSizesMessage,
+
       // actions
       getNewSizeName,
       saveNewSizeInDb,
@@ -139,6 +140,7 @@ class AdmSizes extends Component {
           </div>
         </div>
         <p className="admin-size-title"> See / Update Existing Sizes</p>
+
         {fetchExistingSizesMessage ? (
           <span className="admin-size-error">{fetchExistingSizesMessage}</span>
         ) : null}
@@ -191,6 +193,7 @@ const mapStateToProps = state => {
     updatedSizeValue: state.admSizes.updatedSizeValue,
     errorMsg: state.admSizes.errorMsg,
     fetchExistingSizesMessage: state.admSizes.fetchExistingSizesMessage
+
   };
 };
 
