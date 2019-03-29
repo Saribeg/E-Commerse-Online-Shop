@@ -1,0 +1,124 @@
+@import "../../scss/resources/resources";
+
+.header-right-block {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  // width: 60%;
+}
+
+.location-person,
+.account-person {
+  margin-right: 21px;
+}
+
+.main-date {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-top-login-btn {
+  font-size: 18px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 3px 15px;
+  cursor: pointer;
+}
+
+.header-dropdown-login-details {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 35px;
+  right: 15px;
+  z-index: 1;
+
+  &-item {
+    display: block;
+    padding: 25px;
+    min-width: 180px;
+    font-size: 17px;
+    color: #000;
+    background-color: #fff;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+  }
+
+  &-item:hover {
+    background-color: #eee;
+  }
+}
+
+.user-info-mini {
+  @include flex-center-between;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #000;
+  margin-right: 15px;
+}
+
+.user-name {
+  font-size: 18px;
+}
+
+.user-avatar-mini {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  margin-left: 15px;
+  cursor: pointer;
+
+  &-img {
+    @include image;
+    color: black;
+    transition: all 0.4s ease;
+  }
+}
+
+.product-cart-ico {
+  position: relative;
+  top: 4px;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+
+  &-img {
+    @include image;
+  }
+
+  &-amount {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12%;
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 50%;
+    background-color: #000;
+    top: -10px;
+    right: -12px;
+    color: $red;
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+.admin-dashboard-link {
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #ff6008;
+  }
+}
+
+.fa-cogs {
+  font-size: 25px;
+}

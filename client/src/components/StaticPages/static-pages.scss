@@ -1,0 +1,199 @@
+@import "../../scss/resources/resources";
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1 0 auto;
+  min-height: 100%;
+  height: 100%;
+}
+
+.about-us {
+  &-wrapper {
+    @include flex-wrap-between;
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+  }
+
+  &-content {
+    color: $black;
+    line-height: 135%;
+    padding: 15px;
+  }
+
+  &-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 5px;
+  }
+
+  &-paragraph {
+    width: 48%;
+    padding: 10px 0 25px;
+    border-bottom: 1px solid $grey-light;
+
+    &:first-child {
+      padding-bottom: 25px;     
+    }
+  }
+}
+
+.sub-page {
+  &-title {
+    color: $black;
+    font-size: 32px;
+    margin: 30px 0 8px 0;
+    text-align: center;
+    @include max-width($landscape-tablet){
+      margin-top: 70px;
+    }
+  }
+
+  &-sub-title {
+    color: #a7a3a3;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 40px;
+
+    @include mobile-normal {
+      margin-bottom: 10px;
+    }
+
+
+    @include mobile-min {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.job-offer {
+
+  &-feedback {
+    font-size: 16px;
+    text-align: center;
+    max-width: 50%;
+    padding: 5px;
+    margin: 20px auto;
+    border: 1px solid $grey-light;
+    border-radius: 10px;
+    color: #fff;
+    background-color: $black;
+
+    @include mobile-normal {
+      padding-bottom: 10px;
+      max-width: 100%;
+    }
+  }
+
+  &-mail {
+    color: $grey-light;
+  }
+}
+
+.job-description {
+  padding: 14px 65px;
+
+  &-border {
+    &-mail {
+      color: $grey-light;
+    }
+  }
+
+  .job-description {
+    padding: 14px 65px;
+
+    &-border {
+      border-bottom: 1px solid $grey-light;
+      max-width: 70%;
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+
+    &-position {
+      font-size: 22px;
+      font-weight: bold;
+      color: $black;
+      margin-bottom: 16px;
+    }
+
+    &-location {
+      font-size: 16px;
+      color: #78909c;
+      padding: 5px 0;
+    }
+
+    &-text {
+      font-size: 16px;
+      color: $black;
+    }
+
+    @include tablet {
+      padding: 10px 30px;
+    }
+
+
+    @include mobile-normal {
+      padding: 10px;
+    }
+
+
+    @include mobile-min {
+      padding: 5px;
+    }
+  }
+
+  @include tablet {
+    padding: 10px 30px;
+  }
+
+
+  @include mobile-normal {
+    padding: 10px;
+  }
+
+
+  @include mobile-min {
+    padding: 5px;
+  }
+}
+
+.our-policy {
+  padding-bottom: 45px;
+
+  &-paragraph {
+    color: $black;
+    padding: 15px; 
+    line-height: 28px; 
+  }
+}
+
+.list {
+  color: $black;
+  list-style-type: decimal;
+  padding: 5px 55px;
+
+  @include mobile-normal {
+    padding: 5px 25px;
+  }
+
+
+  @include mobile-min {
+    padding: 5px 25px;
+  }
+
+
+  &-item {
+    padding: 7px 0;
+    line-height: 28px;
+
+    &-bold {
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+body {
+  font-family: $font-openSans;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 10px;
+  margin: 0 auto;
+  flex: 1 0 auto;
+}
+
+.d-flex {
+  display: flex;
+}

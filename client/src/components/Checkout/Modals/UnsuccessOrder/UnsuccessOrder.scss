@@ -1,0 +1,52 @@
+.modal-unsuccess-order {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  //height: 120px;
+  width: 500px;
+  background-color: #efefef;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 34px 20px;
+  text-align: center;
+
+  &-text {
+    margin-bottom: 10px;
+  }
+
+  &-btn {
+
+    height: 40px;
+    width: 100px;
+    color: #fff;
+    background-color: #33333a;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  &-title{
+    margin: 15px 0;
+    line-height: 1.5;
+  }
+
+  .login-cancel-btn{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    margin: 0;
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 1;
+}

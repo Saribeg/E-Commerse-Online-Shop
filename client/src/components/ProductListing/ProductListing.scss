@@ -1,0 +1,128 @@
+@import '../../scss/resources/resources';
+
+.section-listing-products {
+  padding-top: 50px;
+  background-color: #fcfcfc;
+}
+
+.listing {
+  &-title {
+    font-family: $font-openSans;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: $black;
+    margin-bottom: 40px;
+  }
+
+  &-products {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include max-width($landscape-tablet) {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    @media screen and (max-width:640px) {
+      justify-content: space-between;
+    }
+
+    .product-item {
+      display: block;
+      max-width: 263px;
+      max-height: 440px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 30px;
+      margin-right: 34px;
+
+      &:nth-child(3n){
+        margin-right: 0;
+      }
+
+      &:hover {
+        box-shadow: 0 0 10px 10px #ccc;
+        background-color: #fff;
+      }
+
+      @include max-width($landscape-tablet) {
+        width: 48%;
+        margin-right: 4%;
+      }
+
+      @include max-width($landscape-desktop) {
+        width: 30%;
+      }
+
+      @media screen and (max-width:640px) {
+        width: 48%;
+        margin-right: 0;
+      }
+
+    }
+  
+    .product-img {
+      width: 100%;
+      max-width: 263px;
+      height: 70%;
+      max-height: 328px;
+      object-fit: cover;
+      margin-bottom: 5px;
+    }
+  
+    .product-name {
+      font-family: $font-openSans;
+      font-size: 16px;
+      color: $black;
+      padding: 0 20px;
+      height: 36px;
+      line-height: 1.2;
+      margin-bottom: 5px;
+      overflow: hidden;
+
+      @include max-width($landscape-tablet) {
+        font-size: 14px;
+      }
+    }
+  
+    .product-price {
+      font-family: $font-openSans;
+      font-size: 14px;
+      font-weight: bold;
+      color: $black;
+      padding-bottom: 15px;
+    }
+  }
+}
+
+.listing.listing-main{
+  .listing-products{
+    display: flex;
+    flex-wrap: wrap;
+
+    .product-item{
+      margin-right: 36px;
+
+      &:nth-child(4n){
+        margin-right: 0;
+      }
+
+      @include max-width($landscape-desktop) {
+        width: 23%;
+        margin-right: 2%;
+
+        &:nth-child(4n){
+          margin-right: 0;
+        }
+      }
+
+      @media screen and (max-width:640px) {
+        width: 48%;
+        margin-right: 0;
+      }
+
+    }
+  }
+}
+

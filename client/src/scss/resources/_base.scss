@@ -1,0 +1,26 @@
+body {
+  font-family: $font-openSans;
+  position: relative;
+  padding-bottom: 226px;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-none {
+  display: none;
+}
+
+.fw-bold{
+  font-weight: 700;
+}
