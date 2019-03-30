@@ -70,11 +70,11 @@ class Dashboard extends Component {
     };
 
     render() {
+
+
+
         return (
-            <div onClick={this.handleCloseForms} onScroll={() => {
-                console.log('========scroll', window.pageYOffset)
-                this.props.setOffsetY(window.pageYOffset)
-            }}>
+            <div onClick={this.handleCloseForms}>
                 <Header/>
                 <Switch>
                     <Route exact path="/" component={MainPage}/>
