@@ -60,7 +60,7 @@ class ProductPage extends Component {
   };
 
   render() {
-    const { itemNo, currentPrice, model } = {
+    const { itemNo, currentPrice, previousPrice, model } = {
       ...this.props.productItem.productOpened
     };
     const { productFeatures } = { ...this.props };
@@ -92,6 +92,7 @@ class ProductPage extends Component {
             activeColor={activeColor}
             itemNo={itemNo}
             currentPrice={currentPrice}
+            previousPrice={previousPrice}
             model={model}
             changeColor={this.changeColor}
           />

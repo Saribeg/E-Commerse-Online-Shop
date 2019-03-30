@@ -44,7 +44,12 @@
     "extends": "stylelint-config-recommended-scss"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "globals": {
+      "shallow": true,
+      "render": true,
+      "mount": true
+    }
   },
   "browserslist": [
     ">0.2%",
