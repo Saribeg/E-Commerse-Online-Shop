@@ -4,6 +4,10 @@
   margin: 0 auto;
   text-align: center;
 
+  @include max-width($landscape-tablet) {
+    margin-top: 49px;
+  }
+
   @include max-width($landscape-mobile-big) {
     display: none;
   }

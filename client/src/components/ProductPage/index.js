@@ -7,6 +7,7 @@ import { SET_COLOR, SET_IMG } from "../../actions/addToCart";
 
 import BreadCrumbs from "../BreadCrumbs";
 import SearchDropDownList from "../SearchDropDownList";
+import ScrollBtn from "../ScrollBtn";
 
 import "./product-page.scss";
 
@@ -72,6 +73,8 @@ class ProductPage extends Component {
 
     return (
       <>
+        <ScrollBtn scrollStepInPx="100" delayInMs="12"/>
+
         <SearchDropDownList />
         <BreadCrumbs
           categoryAway={this.props.match.params}
@@ -80,13 +83,15 @@ class ProductPage extends Component {
           itemNo={itemNo}
         />
 
-        <section className="product-main container">
+        <section className="product-detail container">
+          {/*<div className="product-main">*/}
           <PhotoGallery
             productFeatures={productFeatures}
             activeColor={activeColor}
             thumbs={this.props.thumbs}
             changeColor={this.changeColor}
           />
+          {/*</div>*/}
           <ProductInfo
             productFeatures={productFeatures}
             activeColor={activeColor}
