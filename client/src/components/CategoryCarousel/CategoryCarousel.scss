@@ -36,12 +36,18 @@
     color: #fff;
     text-transform: uppercase;
     background-color: #31363d;
-    padding: 11px 50px;
+    padding: 11px 0px;
+    max-width: 170px;
+    width: 70%;
     border-radius: 25px;
     position: absolute;
     top: 50%;
-    left: 38px;
+    left: 16%;
     display: none;
+
+    @media (max-width: $landscape-tablet){
+      top:35%;
+    }
   }
 
   .category-item {
