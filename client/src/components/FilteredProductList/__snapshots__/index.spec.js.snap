@@ -1,0 +1,568 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilteredProductList component FilteredProductList component render 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(FilteredProductList)
+    currentFilters={
+      Object {
+        "category": "women",
+        "pageNo": 1,
+        "price": Object {
+          "max": 1000,
+          "min": 5,
+        },
+      }
+    }
+    isProductFetching={false}
+    products={
+      Array [
+        Object {
+          "__v": 0,
+          "_id": "5c62e142a4b7e11ba0cc9936",
+          "active": true,
+          "category": "women",
+          "currentPrice": 159.95,
+          "date": "2019-02-12T15:07:46.059Z",
+          "furtherSubCategory": "dresses",
+          "itemNo": "407510",
+          "model": "Bennie Scuba Dress",
+          "productFeatures": Array [
+            Object {
+              "_id": "5c62e142a4b7e11ba0cc9946",
+              "color": "#000000",
+              "colorName": "black",
+              "imageUrls": Array [
+                "/img/products/women/clothing/dresses/006/000000/040.jpg",
+                "/img/products/women/clothing/dresses/006/000000/041.jpg",
+                "/img/products/women/clothing/dresses/006/000000/042.jpg",
+                "/img/products/women/clothing/dresses/006/000000/043.jpg",
+              ],
+              "sizes": Array [
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc994a",
+                  "quantity": 3,
+                  "size": "s",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc9949",
+                  "quantity": 5,
+                  "size": "xs",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc9948",
+                  "quantity": 10,
+                  "size": "m",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc9947",
+                  "quantity": 1,
+                  "size": "l",
+                },
+              ],
+            },
+            Object {
+              "_id": "5c62e142a4b7e11ba0cc9941",
+              "color": "#53a5e4",
+              "colorName": "blue",
+              "imageUrls": Array [
+                "/img/products/women/clothing/dresses/006/53a5e4/010.jpg",
+                "/img/products/women/clothing/dresses/006/53a5e4/011.jpg",
+                "/img/products/women/clothing/dresses/006/53a5e4/012.jpg",
+                "/img/products/women/clothing/dresses/006/53a5e4/013.jpg",
+              ],
+              "sizes": Array [
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc9945",
+                  "quantity": 3,
+                  "size": "s",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc9944",
+                  "quantity": 5,
+                  "size": "xs",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc9943",
+                  "quantity": 10,
+                  "size": "m",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc9942",
+                  "quantity": 1,
+                  "size": "l",
+                },
+              ],
+            },
+            Object {
+              "_id": "5c62e142a4b7e11ba0cc993c",
+              "color": "#f18ccb",
+              "colorName": "rose",
+              "imageUrls": Array [
+                "/img/products/women/clothing/dresses/006/fa84bc/020.jpg",
+                "/img/products/women/clothing/dresses/006/fa84bc/021.jpg",
+                "/img/products/women/clothing/dresses/006/fa84bc/022.jpg",
+                "/img/products/women/clothing/dresses/006/fa84bc/023.jpg",
+              ],
+              "sizes": Array [
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc9940",
+                  "quantity": 1,
+                  "size": "s",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc993f",
+                  "quantity": 3,
+                  "size": "xs",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc993e",
+                  "quantity": 0,
+                  "size": "m",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc993d",
+                  "quantity": 7,
+                  "size": "l",
+                },
+              ],
+            },
+            Object {
+              "_id": "5c62e142a4b7e11ba0cc9937",
+              "color": "#faeb48",
+              "colorName": "yellow",
+              "imageUrls": Array [
+                "/img/products/women/clothing/dresses/006/faeb48/030.jpg",
+                "/img/products/women/clothing/dresses/006/faeb48/031.jpg",
+                "/img/products/women/clothing/dresses/006/faeb48/032.jpg",
+                "/img/products/women/clothing/dresses/006/faeb48/033.jpg",
+              ],
+              "sizes": Array [
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc993b",
+                  "quantity": 0,
+                  "size": "s",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc993a",
+                  "quantity": 15,
+                  "size": "xs",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc9939",
+                  "quantity": 20,
+                  "size": "m",
+                },
+                Object {
+                  "_id": "5c62e142a4b7e11ba0cc9938",
+                  "quantity": 0,
+                  "size": "l",
+                },
+              ],
+            },
+          ],
+          "productUrl": "/women/clothing/dresses/407510",
+          "subCategory": "clothing",
+          "withdrawnFromSale": false,
+        },
+        Object {
+          "__v": 0,
+          "_id": "5c7e96fa5eed97116815581e",
+          "active": true,
+          "category": "women",
+          "currentPrice": 229.95,
+          "date": "2019-03-05T15:34:18.832Z",
+          "furtherSubCategory": "dresses",
+          "itemNo": "588698",
+          "model": "Cynthia Dress",
+          "previousPrice": 285.6,
+          "productFeatures": Array [
+            Object {
+              "_id": "5c7e96fa5eed971168155826",
+              "color": "#000000",
+              "colorName": "black",
+              "imageUrls": Array [
+                "/img/products/women/clothing/dresses/004/000000/010.jpg",
+                "/img/products/women/clothing/dresses/004/000000/011.jpg",
+                "/img/products/women/clothing/dresses/004/000000/012.jpg",
+                "/img/products/women/clothing/dresses/004/000000/013.jpg",
+              ],
+              "sizes": Array [
+                Object {
+                  "_id": "5c7e96fa5eed97116815582c",
+                  "quantity": 10,
+                  "size": "xs",
+                },
+                Object {
+                  "_id": "5c7e96fa5eed97116815582b",
+                  "quantity": 38,
+                  "size": "s",
+                },
+                Object {
+                  "_id": "5c7e96fa5eed97116815582a",
+                  "quantity": 5,
+                  "size": "m",
+                },
+                Object {
+                  "_id": "5c7e96fa5eed971168155829",
+                  "quantity": 3,
+                  "size": "l",
+                },
+                Object {
+                  "_id": "5c7e96fa5eed971168155828",
+                  "quantity": 0,
+                  "size": "xl",
+                },
+                Object {
+                  "_id": "5c7e96fa5eed971168155827",
+                  "quantity": 1,
+                  "size": "xxl",
+                },
+              ],
+            },
+            Object {
+              "_id": "5c7e96fa5eed97116815581f",
+              "color": "#e73e81",
+              "colorName": "wine",
+              "imageUrls": Array [
+                "/img/products/women/clothing/dresses/004/e73e81/020.jpg",
+                "/img/products/women/clothing/dresses/004/e73e81/021.jpg",
+                "/img/products/women/clothing/dresses/004/e73e81/022.jpg",
+                "/img/products/women/clothing/dresses/004/e73e81/023.jpg",
+              ],
+              "sizes": Array [
+                Object {
+                  "_id": "5c7e96fa5eed971168155825",
+                  "quantity": 3,
+                  "size": "xs",
+                },
+                Object {
+                  "_id": "5c7e96fa5eed971168155824",
+                  "quantity": 13,
+                  "size": "s",
+                },
+                Object {
+                  "_id": "5c7e96fa5eed971168155823",
+                  "quantity": 0,
+                  "size": "m",
+                },
+                Object {
+                  "_id": "5c7e96fa5eed971168155822",
+                  "quantity": 5,
+                  "size": "l",
+                },
+                Object {
+                  "_id": "5c7e96fa5eed971168155821",
+                  "quantity": 0,
+                  "size": "xl",
+                },
+                Object {
+                  "_id": "5c7e96fa5eed971168155820",
+                  "quantity": 0,
+                  "size": "xxl",
+                },
+              ],
+            },
+          ],
+          "productUrl": "/women/clothing/dresses/588698",
+          "subCategory": "clothing",
+          "withdrawnFromSale": false,
+        },
+        Object {
+          "__v": 0,
+          "_id": "5c7e988f5eed97116815582d",
+          "active": true,
+          "category": "women",
+          "currentPrice": 269,
+          "date": "2019-03-05T15:41:03.103Z",
+          "furtherSubCategory": "dresses",
+          "itemNo": "77396",
+          "model": "Mrs Carter Midi Dress",
+          "productFeatures": Array [
+            Object {
+              "_id": "5c7e988f5eed97116815583c",
+              "color": "#000000",
+              "colorName": "black",
+              "imageUrls": Array [
+                "/img/products/women/clothing/dresses/005/000000/010.jpg",
+                "/img/products/women/clothing/dresses/005/000000/011.jpg",
+                "/img/products/women/clothing/dresses/005/000000/012.jpg",
+                "/img/products/women/clothing/dresses/005/000000/013.jpg",
+              ],
+              "sizes": Array [
+                Object {
+                  "_id": "5c7e988f5eed971168155842",
+                  "quantity": 0,
+                  "size": "xs",
+                },
+                Object {
+                  "_id": "5c7e988f5eed971168155841",
+                  "quantity": 33,
+                  "size": "s",
+                },
+                Object {
+                  "_id": "5c7e988f5eed971168155840",
+                  "quantity": 0,
+                  "size": "m",
+                },
+                Object {
+                  "_id": "5c7e988f5eed97116815583f",
+                  "quantity": 20,
+                  "size": "l",
+                },
+                Object {
+                  "_id": "5c7e988f5eed97116815583e",
+                  "quantity": 3,
+                  "size": "xl",
+                },
+                Object {
+                  "_id": "5c7e988f5eed97116815583d",
+                  "quantity": 0,
+                  "size": "xxl",
+                },
+              ],
+            },
+            Object {
+              "_id": "5c7e988f5eed971168155835",
+              "color": "#121454",
+              "colorName": "navy blue",
+              "imageUrls": Array [
+                "/img/products/women/clothing/dresses/005/121454/020.jpg",
+                "/img/products/women/clothing/dresses/005/121454/021.jpg",
+                "/img/products/women/clothing/dresses/005/121454/022.jpg",
+                "/img/products/women/clothing/dresses/005/121454/023.jpg",
+              ],
+              "sizes": Array [
+                Object {
+                  "_id": "5c7e988f5eed97116815583b",
+                  "quantity": 5,
+                  "size": "xs",
+                },
+                Object {
+                  "_id": "5c7e988f5eed97116815583a",
+                  "quantity": 13,
+                  "size": "s",
+                },
+                Object {
+                  "_id": "5c7e988f5eed971168155839",
+                  "quantity": 60,
+                  "size": "m",
+                },
+                Object {
+                  "_id": "5c7e988f5eed971168155838",
+                  "quantity": 0,
+                  "size": "l",
+                },
+                Object {
+                  "_id": "5c7e988f5eed971168155837",
+                  "quantity": 0,
+                  "size": "xl",
+                },
+                Object {
+                  "_id": "5c7e988f5eed971168155836",
+                  "quantity": 0,
+                  "size": "xxl",
+                },
+              ],
+            },
+            Object {
+              "_id": "5c7e988f5eed97116815582e",
+              "color": "#ffffff",
+              "colorName": "white",
+              "imageUrls": Array [
+                "/img/products/women/clothing/dresses/005/ffffff/030.jpg",
+                "/img/products/women/clothing/dresses/005/ffffff/031.jpg",
+                "/img/products/women/clothing/dresses/005/ffffff/032.jpg",
+                "/img/products/women/clothing/dresses/005/ffffff/033.jpg",
+              ],
+              "sizes": Array [
+                Object {
+                  "_id": "5c7e988f5eed971168155834",
+                  "quantity": 20,
+                  "size": "xs",
+                },
+                Object {
+                  "_id": "5c7e988f5eed971168155833",
+                  "quantity": 17,
+                  "size": "s",
+                },
+                Object {
+                  "_id": "5c7e988f5eed971168155832",
+                  "quantity": 9,
+                  "size": "m",
+                },
+                Object {
+                  "_id": "5c7e988f5eed971168155831",
+                  "quantity": 0,
+                  "size": "l",
+                },
+                Object {
+                  "_id": "5c7e988f5eed971168155830",
+                  "quantity": 1,
+                  "size": "xl",
+                },
+                Object {
+                  "_id": "5c7e988f5eed97116815582f",
+                  "quantity": 0,
+                  "size": "xxl",
+                },
+              ],
+            },
+          ],
+          "productUrl": "/women/clothing/dresses/77396",
+          "subCategory": "clothing",
+          "withdrawnFromSale": false,
+        },
+        Object {
+          "__v": 0,
+          "_id": "5c7e996d5eed971168155843",
+          "active": true,
+          "category": "women",
+          "currentPrice": 119.95,
+          "date": "2019-03-05T15:44:45.281Z",
+          "furtherSubCategory": "dresses",
+          "itemNo": "105092",
+          "model": "Sallie Cowl Neck Dress",
+          "productFeatures": Array [
+            Object {
+              "_id": "5c7e996d5eed971168155844",
+              "color": "#ffffff",
+              "colorName": "white",
+              "imageUrls": Array [
+                "/img/products/women/clothing/dresses/007/ffffff/010.jpg",
+                "/img/products/women/clothing/dresses/007/ffffff/011.jpg",
+                "/img/products/women/clothing/dresses/007/ffffff/012.jpg",
+                "/img/products/women/clothing/dresses/007/ffffff/013.jpg",
+              ],
+              "sizes": Array [
+                Object {
+                  "_id": "5c7e996d5eed97116815584a",
+                  "quantity": 8,
+                  "size": "xs",
+                },
+                Object {
+                  "_id": "5c7e996d5eed971168155849",
+                  "quantity": 8,
+                  "size": "s",
+                },
+                Object {
+                  "_id": "5c7e996d5eed971168155848",
+                  "quantity": 0,
+                  "size": "m",
+                },
+                Object {
+                  "_id": "5c7e996d5eed971168155847",
+                  "quantity": 20,
+                  "size": "l",
+                },
+                Object {
+                  "_id": "5c7e996d5eed971168155846",
+                  "quantity": 0,
+                  "size": "xl",
+                },
+                Object {
+                  "_id": "5c7e996d5eed971168155845",
+                  "quantity": 0,
+                  "size": "xxl",
+                },
+              ],
+            },
+          ],
+          "productUrl": "/women/clothing/dresses/105092",
+          "subCategory": "clothing",
+          "withdrawnFromSale": false,
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": [Function],
+    },
+    "ref": null,
+    "rendered": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": null,
+        "_currentValue2": null,
+        "_threadCount": 0,
+      },
+    },
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": [Function],
+      },
+      "ref": null,
+      "rendered": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.context),
+        "_calculateChangedBits": null,
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": [Circular],
+          "Provider": Object {
+            "$$typeof": Symbol(react.provider),
+            "_context": [Circular],
+          },
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": null,
+          "_currentValue2": null,
+          "_threadCount": 0,
+        },
+      },
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;
