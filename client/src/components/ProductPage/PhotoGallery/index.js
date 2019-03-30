@@ -58,6 +58,7 @@ class PhotoGallery extends Component {
 
     return (
       <>
+        <div className="product-main">
         <div className="all-photos">{photoGallery}</div>
         <div className="photo-main">
           <ReactImageMagnify
@@ -74,6 +75,7 @@ class PhotoGallery extends Component {
               }
             }}
           />
+        </div>
         </div>
       </>
     );

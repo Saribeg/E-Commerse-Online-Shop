@@ -1,20 +1,22 @@
-@import '../../../scss/resources/resources';
+@import "../../../scss/resources/resources";
 
 .all-photos {
   display: flex;
   flex-direction: column;
+  margin-right: 30px;
 
-  @include max-width($landscape-tablet) {
+  @media (max-width:680px) {
     flex-direction: row;
     justify-content: space-between;
     overflow-x: auto;
     margin-top: 24px;
+    margin-right: 0;
     order: 2;
   }
 
   &-item {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin-bottom: 20px;
     cursor: pointer;
 
@@ -22,11 +24,9 @@
       @include image;
     }
 
-
-    @include max-width($landscape-tablet) {
+    @media (max-width:680px) {
       margin-right: 12px;
     }
-
 
     &.active {
       border: 2px solid $red;
@@ -35,13 +35,16 @@
 }
 
 .photo-main {
-  width: 450px;
-  height: 680px;
-  margin: 0 30px;
+  max-width: 450px;
+  max-height: 680px;
+  //margin: 0 30px;
 
-  @include max-width($landscape-tablet) {
+  @media (max-width:680px) {
     width: 100%;
-    height: 70vh;
+    //max-width: 450px;
+    //height: 100vh;
+    max-height: 680px;
+    //opacity: 0.2;
     margin: 0 auto;
     order: 1;
   }
