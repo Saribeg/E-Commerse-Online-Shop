@@ -26,16 +26,14 @@
 
   .price {
     position: absolute;
-    left: 30px;
-    top: 30px;
+    left: 50px;
+    top: 72px;
     color: $black;
-    font-size: 24px;
-    border: 1px solid $black;
-    border-radius: 100px;
-    padding: 20px;
+    font-size: 20px;
+    text-decoration: line-through;
 
     @include max-width($landscape-tablet) {
-      left: 20px;
+      left: 30px;
       top: 20px;
       font-size: 18px;
       padding: 10px;
@@ -43,8 +41,34 @@
 
     @include max-width($landscape-mobile-big) {
       left: 20px;
-      top: 15px;
+      top: 20px;
       font-size: 14px;
+      padding: 5px;
+    }
+  }
+
+  .stock-price {
+    position: absolute;
+    left: 130px;
+    top: 50px;
+    color: $black;
+    font-size: 24px;
+    border: 2px solid $black;
+    border-radius: 100px;
+    padding: 20px;
+    font-weight: 600;
+
+    @include max-width($landscape-tablet) {
+      left: 30px;
+      top: 50px;
+      font-size: 20px;
+      padding: 10px;
+    }
+
+    @include max-width($landscape-mobile-big) {
+      left: 40px;
+      top: 15px;
+      font-size: 16px;
       padding: 5px;
     }
   }
@@ -52,7 +76,7 @@
 
 .carousel .slide {
   background: #fff;
-  
+
   .info {
     letter-spacing: 2px;
     color: $black;
