@@ -17,46 +17,55 @@ const readHTMLFile = function (path, callback) {
 };
 
 router.post('/subscribe', (req, res) => {
-
-    //add mail to db collection
     const newSubscribeMail = {};
     newSubscribeMail.mail = req.body.subMail.mail;
-    let dbMailObj = new Subscribe(newSubscribeMail);
-    dbMailObj.save()
-        .then(newSubscribeMail => res.json(newSubscribeMail))
-        .catch(err => console.log(err));
 
-    //authorization for sending welcome email
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: '2019.matter.store@gmail.com',
-            pass: '2019Matter'
-        }
-    });
+    Subscribe.findOne({mail: req.body.subMail.mail})
+        .then(mailUser => {
+            // if mail already exist then deny request from front
+            if (mailUser) {
+                res.json({result: false});
+            }
+            // If not exist - create mail object according to mongoose schema
+            else {
+                const dbMailObj = new Subscribe(newSubscribeMail);
+                dbMailObj.save()
+                    .then(newSubscribeMail => res.json(newSubscribeMail))
+                    .catch(err => console.log(err));
 
-    //add ObjectId from db to html link (for unsubscribe) in welcome mail
-    readHTMLFile(__dirname + '/../subscribeMail/subscribeMail.html', function (err, html) {
-        let template = handlebars.compile(html);
-        let replacements = {
-            mailId: dbMailObj._id
-        };
-        let htmlToSend = template(replacements);
+                //authorization for sending welcome email
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: '2019.matter.store@gmail.com',
+                        pass: '2019Matter'
+                    }
+                });
 
-        //send welcome email
-        const mailOptions = {
-            from: '2019.matter.store@gmail.com',
-            to: req.body.subMail.mail,
-            subject: 'SUBSCRIBE',
-            html: htmlToSend
-        };
-        transporter.sendMail(mailOptions, function (err, info) {
-            if (err)
-                console.log(err);
-            else
-                console.log(info);
+                //add ObjectId from db to html link (for unsubscribe) in welcome mail
+                readHTMLFile(__dirname + '/../subscribeMail/subscribeMail.html', function (err, html) {
+                    let template = handlebars.compile(html);
+                    let replacements = {
+                        mailId: dbMailObj._id
+                    };
+                    let htmlToSend = template(replacements);
+
+                    //send welcome email
+                    const mailOptions = {
+                        from: '2019.matter.store@gmail.com',
+                        to: req.body.subMail.mail,
+                        subject: 'SUBSCRIBE',
+                        html: htmlToSend
+                    };
+                    transporter.sendMail(mailOptions, function (err, info) {
+                        if (err)
+                            console.log(err);
+                        else
+                            console.log(info);
+                    });
+                });
+            }
         });
-    });
 });
 
 module.exports = router;

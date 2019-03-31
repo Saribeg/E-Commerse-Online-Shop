@@ -26,7 +26,7 @@ class Unsubscribe extends React.Component<Props, State> {
         <>
           <div className="container">
             <p className="unsubscribe-text">
-              You have been unsubscribed from our mailing!
+              You have been unsubscribed from our mailing :(
             </p>
           </div>
         </>
