@@ -38,7 +38,7 @@ class PlaceOrder extends Component {
         totalPrice = totalPrice.toFixed(2);
 
         return (
-            <div className="basket-final-order">
+            <div className="checkout-final-order">
                 <h3 className="basket-final-order-title">My order</h3>
                 <ul className="basket-final-order-info">
                     <li>

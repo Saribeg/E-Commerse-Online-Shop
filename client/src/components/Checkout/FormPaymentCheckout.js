@@ -20,7 +20,7 @@ class FormPaymentCheckout extends Component {
           name="cardNumber"
           component={customRequiredInput}
           type="text"
-          placeholder="Full name on card..."
+          placeholder="Card number..."
           className="checkout-delivery-content-input"
           classError="input-error-message"
           validate={[cardNumber]}
@@ -30,7 +30,7 @@ class FormPaymentCheckout extends Component {
           name="nameOnCard"
           component={customRequiredInput}
           type="text"
-          placeholder="Card number..."
+          placeholder="Full name on card..."
           className="checkout-delivery-content-input"
           classError="input-error-message"
           validate={[requiredInput]}
@@ -50,7 +50,7 @@ class FormPaymentCheckout extends Component {
                 // classError='input-error-message'
                 // validate={[dateExp]}
               />
-              <span>/</span>
+              <span>&nbsp;/&nbsp;</span>
               <Field
                 name="expiryYear"
                 component={customRequiredInput}
@@ -69,7 +69,7 @@ class FormPaymentCheckout extends Component {
               component={customRequiredInput}
               type="text"
               placeholder="CVC"
-              className="checkout-delivery-content-input"
+              className="checkout-payment-exp-input"
               classError="input-error-message"
               validate={[cvc]}
             />
