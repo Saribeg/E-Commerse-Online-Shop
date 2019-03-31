@@ -1,0 +1,21 @@
+.section-error-success {
+  width: 700px;
+  border: 2px solid #504e4e;
+  border-radius: 5px;
+  margin: 30px auto;
+text-align: center;
+
+  &-title {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+
+  &-link {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    color: #ff6008;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
