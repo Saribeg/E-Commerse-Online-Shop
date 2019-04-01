@@ -24,6 +24,8 @@ class ProductPage extends Component {
   };
 
   componentDidMount() {
+
+      window.scroll(0, 0);
     this.props.getProductDetails(this.props.match.params);
 
     // console.log('this.state.activeColor', this.state.activeColor)
@@ -61,7 +63,7 @@ class ProductPage extends Component {
   };
 
   render() {
-    const { itemNo, currentPrice, model } = {
+    const { itemNo, currentPrice, previousPrice, model } = {
       ...this.props.productItem.productOpened
     };
     const { productFeatures } = { ...this.props };
@@ -97,6 +99,7 @@ class ProductPage extends Component {
             activeColor={activeColor}
             itemNo={itemNo}
             currentPrice={currentPrice}
+            previousPrice={previousPrice}
             model={model}
             changeColor={this.changeColor}
           />

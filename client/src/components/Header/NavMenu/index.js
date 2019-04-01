@@ -124,6 +124,7 @@ class NavMenu extends Component {
               </div>
             );
           }
+          return null;
         });
       }
       return null; // to return a value at the end of arrow function as it is expected

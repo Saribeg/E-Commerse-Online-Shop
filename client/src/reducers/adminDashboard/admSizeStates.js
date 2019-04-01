@@ -23,7 +23,8 @@ const initialState = {
   isSizeUpdating: false,
   preUpdateValue: "",
   updatedSizeValue: "",
-  errorMsg: ""
+  errorMsg: "",
+  fetchExistingSizesMessage: ""
 };
 
 function admSizes(state = initialState, action) {
@@ -61,7 +62,14 @@ function admSizes(state = initialState, action) {
         ...state,
         isExistingSizesFetching: false,
         existingSizes: action.payload,
-        updatingSizes: action.updatingSizes
+        updatingSizes: action.updatingSizes,
+        fetchExistingSizesMessage: ""
+      };
+    case FETCH_EXISTING_SIZE_FAILED:
+      return {
+        ...state,
+        isExistingSizesFetching: false,
+        fetchExistingSizesMessage: action.payload
       };
     case GET_NUPDATED_SIZE_NAME:
       return {

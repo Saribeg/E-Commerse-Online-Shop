@@ -115,6 +115,7 @@ export const getSubCategory = (
                 };
               });
             }
+            return undefined;
           })
           .filter(item => {
             return item !== null && item !== undefined;

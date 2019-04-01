@@ -1,21 +1,41 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
+import axios from "axios";
 
 //Components
 import AdmNavMenu from "./AdmNavMenu";
 import AdmProducts from "./AdmProducts";
 import AdmColors from "./AdmColors";
 import AdmSizes from "./AdmSizes";
-import AdmCarousel from "./AdmCarousel";
-import AdmUsers from "./AdmUsers";
-import AdmFooter from "./AdmFooter";
+
+// import AdmCarousel from "./AdmCarousel";
+// import AdmUsers from "./AdmUsers";
+// import AdmFooter from "./AdmFooter";
+
 import logo from "../../img/matter.svg";
 
 import "../../scss/resources/resources.scss";
 import "./adminDashboard.scss";
 
 class AdminDashboard extends Component {
+
+  componentDidMount () {
+    axios.get("/users/admin")
+        .then(res => res.data)
+        .then(data => {
+          if (data.success) {
+              this.props.history.push("/admin/dashboard")
+          } else {
+              this.props.history.push("/error-access")
+          }
+        })
+        .catch(() => {
+            this.props.history.push("/error-access")
+        })
+
+  }
+
   render() {
     return (
       <>
@@ -124,4 +144,4 @@ class AdminDashboard extends Component {
   }
 }
 
-export default AdminDashboard;
+export default withRouter(AdminDashboard);
