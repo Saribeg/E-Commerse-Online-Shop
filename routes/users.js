@@ -168,6 +168,19 @@ router.get(
 );
 
 router.get(
+    "/admin",
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        if (req.user.isAdmin) {
+            res.json({success: true})
+        } else {
+            res.json({success: false})
+        }
+    }
+);
+
+
+router.get(
   "/checkout",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {

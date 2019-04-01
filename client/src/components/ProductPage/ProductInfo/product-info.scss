@@ -1,4 +1,4 @@
-@import '../../../scss/resources/resources';
+@import "../../../scss/resources/resources";
 .product {
   &-title {
     font-size: 32px;
@@ -21,6 +21,13 @@
     color: $red;
     font-weight: 700;
     margin-bottom: 18px;
+
+    &-previous {
+      font-size: 16px;
+      margin-bottom: 18px;
+      color: #888888;
+      text-decoration: line-through;
+    }
   }
 
   &-filter {

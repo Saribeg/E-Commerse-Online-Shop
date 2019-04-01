@@ -1,4 +1,16 @@
 @import "../../scss/resources/resources";
+
+
+.checkout-page {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 36px;
+  @include max-width($landscape-tablet){
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .checkout {
   width: 60%;
 
@@ -186,6 +198,7 @@
   &-below-block {
     display: flex;
     flex-direction: row;
+    width: 90%;
   }
 
   &-expdate-block {
@@ -197,6 +210,7 @@
   &-exp {
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 
   &-exp-input {
@@ -222,6 +236,26 @@
   color: red;
   font-size: 13px;
   position: relative;
-  top: 25px;
-  left: -150px;
+  top: 55px;
+  left: -180px;
+}
+
+
+.checkout-final-order {
+  position: fixed;
+  right: 80px;
+  top: 130px;
+
+  margin-left: 48px;
+  padding: 18px;
+  background-color: #fff;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  color: #333;
+}
+
+@media (max-width: 992px) {
+  .checkout-final-order {
+    position: static;
+    margin: 26px 0;
+  }
 }

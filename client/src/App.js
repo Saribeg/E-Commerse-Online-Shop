@@ -1,28 +1,30 @@
-import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React, {Component} from "react";
+import {Switch, Route} from "react-router-dom";
 
 import Dashboard from "./components/Dashboard";
 import AdminDashboard from "./components/AdminDashboard";
 import RedirectLogin from "./components/TopBlockAuth/RedirectLogin";
 import VerifyLogin from "./components/VerifyLogin";
+import ErrorAccess from "./components/ErrorAccess";
 
-import { checkLoginCartOnStart } from "./actions/login";
+import {checkLoginCartOnStart} from "./actions/login";
 
 import "./scss/style.scss";
 
 class App extends Component {
-  render() {
-    checkLoginCartOnStart();
+    render() {
+        checkLoginCartOnStart();
 
-    return (
-      <Switch>
-        <Route exact path="/login" component={RedirectLogin} />
-        <Route exact path="/verify/:id" component={VerifyLogin} />
-        <Route path="/admin/dashboard" component={AdminDashboard} />
-        <Route path="/" component={Dashboard} />
-      </Switch>
-    );
-  }
+        return (
+            <Switch>
+                <Route exact path="/login" component={RedirectLogin}/>
+                <Route exact path="/error-access" component={ErrorAccess}/>
+                <Route exact path="/verify/:id" component={VerifyLogin}/>
+                <Route path="/admin/dashboard" component={AdminDashboard}/>
+                <Route path="/" component={Dashboard}/>
+            </Switch>
+        );
+    }
 }
 
 export default App;

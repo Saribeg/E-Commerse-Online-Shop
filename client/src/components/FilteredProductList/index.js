@@ -45,6 +45,8 @@ class FilteredProductList extends Component {
   };
 
   componentDidMount = () => {
+
+    window.scroll(0, 0);
     let { category, subCategory, furtherSubCategory } = this.props.match.params;
     this.props.getFilteredProducts(category, subCategory, furtherSubCategory);
   };

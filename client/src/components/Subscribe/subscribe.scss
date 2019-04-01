@@ -2,6 +2,7 @@
 
 .section-subscribe {
   padding: 65px 0;
+  position: relative;
 }
 
 .subscribe {
@@ -87,4 +88,20 @@
     outline: none;
     cursor: pointer;
   }
+}
+
+.hintMessage {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  //transform: translate(-50%);
+  color: red;
+}
+
+.sendMail {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  //transform: translate(-50%);
+  color: green;
 }

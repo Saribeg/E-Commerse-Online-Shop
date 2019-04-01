@@ -12,6 +12,9 @@ class SuccessOrder extends Component {
 
         let modalSuccessOrder = (this.props.dataBasket.windows.successOrder) ? 'modal-success-order' : 'd-none';
         let modalSuccessBackdrop = modalSuccessOrder === 'modal-success-order' ? 'modal-backdrop' : null;
+        if (modalSuccessBackdrop){
+            document.body.style.overflow = "hidden"
+        }
         return (
             <div className={modalSuccessBackdrop}>
             <div className={modalSuccessOrder}>
@@ -45,6 +48,7 @@ const mapDispatchToProps = dispatch => {
     return {
 
         closeSuccessOrder: () => {
+            document.body.style.overflow = "auto";
             dispatch({type: CLOSE_MODAL_SUCCESS_ORDER})
         },
     };

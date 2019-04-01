@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenu component NavMenu component render 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(NavMenu)
+    isMenuFetching={false}
+    navMenuItems={
+      Array [
+        Object {
+          "_id": "5c9a74aaf90e1e13d8523cf7",
+          "active": true,
+          "categoryName": "women",
+          "categoryUrl": "/women",
+          "subCategoryList": Array [
+            Object {
+              "_id": "5c9a74aaf90e1e13d8523cfd",
+              "active": true,
+              "furtherSubCategoryList": Array [
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523d02",
+                  "active": true,
+                  "furtherSubCategoryName": "hoodies",
+                  "furtherSubCategoryUrl": "/women/clothing/hoodies",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523d01",
+                  "active": true,
+                  "furtherSubCategoryName": "tops",
+                  "furtherSubCategoryUrl": "/women/clothing/tops",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523d00",
+                  "active": true,
+                  "furtherSubCategoryName": "dresses",
+                  "furtherSubCategoryUrl": "/women/clothing/dresses",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cff",
+                  "active": true,
+                  "furtherSubCategoryName": "pants",
+                  "furtherSubCategoryUrl": "/women/clothing/pants",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cfe",
+                  "active": true,
+                  "furtherSubCategoryName": "jackets",
+                  "furtherSubCategoryUrl": "/women/clothing/jackets",
+                },
+              ],
+              "subCategoryName": "clothing",
+              "subCategoryUrl": "/women/clothing",
+            },
+            Object {
+              "_id": "5c9a74aaf90e1e13d8523cf9",
+              "active": true,
+              "furtherSubCategoryList": Array [
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cfc",
+                  "active": true,
+                  "furtherSubCategoryName": "hats",
+                  "furtherSubCategoryUrl": "/women/accessories/hats",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cfb",
+                  "active": true,
+                  "furtherSubCategoryName": "wallets",
+                  "furtherSubCategoryUrl": "/women/accessories/wallets",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cfa",
+                  "active": true,
+                  "furtherSubCategoryName": "belts",
+                  "furtherSubCategoryUrl": "/women/accessories/belts",
+                },
+              ],
+              "subCategoryName": "accessories",
+              "subCategoryUrl": "/women/accessories",
+            },
+            Object {
+              "_id": "5c9a74aaf90e1e13d8523cf8",
+              "active": true,
+              "furtherSubCategoryList": Array [],
+              "subCategoryName": "shoes",
+              "subCategoryUrl": "/women/shoes",
+            },
+          ],
+        },
+        Object {
+          "_id": "5c9a74aaf90e1e13d8523cec",
+          "active": true,
+          "categoryName": "men",
+          "categoryUrl": "/men",
+          "subCategoryList": Array [
+            Object {
+              "_id": "5c9a74aaf90e1e13d8523cf2",
+              "active": true,
+              "furtherSubCategoryList": Array [
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cf6",
+                  "active": true,
+                  "furtherSubCategoryName": "shirts",
+                  "furtherSubCategoryUrl": "/men/clothing/shirts",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cf5",
+                  "active": true,
+                  "furtherSubCategoryName": "pants",
+                  "furtherSubCategoryUrl": "/men/clothing/pants",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cf4",
+                  "active": true,
+                  "furtherSubCategoryName": "suits",
+                  "furtherSubCategoryUrl": "/men/clothing/suits",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cf3",
+                  "active": true,
+                  "furtherSubCategoryName": "sport",
+                  "furtherSubCategoryUrl": "/men/clothing/sport",
+                },
+              ],
+              "subCategoryName": "clothing",
+              "subCategoryUrl": "/men/clothing",
+            },
+            Object {
+              "_id": "5c9a74aaf90e1e13d8523cee",
+              "active": true,
+              "furtherSubCategoryList": Array [
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cf1",
+                  "active": true,
+                  "furtherSubCategoryName": "clocks",
+                  "furtherSubCategoryUrl": "/men/accessories/clocks",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cf0",
+                  "active": true,
+                  "furtherSubCategoryName": "wallets",
+                  "furtherSubCategoryUrl": "/men/accessories/wallets",
+                },
+                Object {
+                  "_id": "5c9a74aaf90e1e13d8523cef",
+                  "active": true,
+                  "furtherSubCategoryName": "belts",
+                  "furtherSubCategoryUrl": "/men/accessories/belts",
+                },
+              ],
+              "subCategoryName": "accessories",
+              "subCategoryUrl": "/men/accessories",
+            },
+            Object {
+              "_id": "5c9a74aaf90e1e13d8523ced",
+              "active": true,
+              "furtherSubCategoryList": Array [],
+              "subCategoryName": "shoes",
+              "subCategoryUrl": "/men/shoes",
+            },
+          ],
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": [Function],
+    },
+    "ref": null,
+    "rendered": [Function],
+    "type": Object {
+      "$$typeof": Symbol(react.context),
+      "_calculateChangedBits": null,
+      "_context": Object {
+        "$$typeof": Symbol(react.context),
+        "Consumer": [Circular],
+        "Provider": Object {
+          "$$typeof": Symbol(react.provider),
+          "_context": [Circular],
+        },
+        "_calculateChangedBits": null,
+        "_currentRenderer": null,
+        "_currentRenderer2": null,
+        "_currentValue": null,
+        "_currentValue2": null,
+        "_threadCount": 0,
+      },
+    },
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": [Function],
+      },
+      "ref": null,
+      "rendered": [Function],
+      "type": Object {
+        "$$typeof": Symbol(react.context),
+        "_calculateChangedBits": null,
+        "_context": Object {
+          "$$typeof": Symbol(react.context),
+          "Consumer": [Circular],
+          "Provider": Object {
+            "$$typeof": Symbol(react.provider),
+            "_context": [Circular],
+          },
+          "_calculateChangedBits": null,
+          "_currentRenderer": null,
+          "_currentRenderer2": null,
+          "_currentValue": null,
+          "_currentValue2": null,
+          "_threadCount": 0,
+        },
+      },
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;
