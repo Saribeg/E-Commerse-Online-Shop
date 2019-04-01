@@ -32,5 +32,10 @@
     line-height: 40px;
     color: $black;
     text-transform: uppercase;
+
+    &:active,
+    &:hover {
+      color: #ff6008;
+    }
   }
 }

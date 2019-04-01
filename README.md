@@ -31,7 +31,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
 
-### `npm run scss` 
+### `npm run stylelinter` 
 
 Analyze scss-files with stylelint. We use module [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard). It also fixes some problems, and report about problems, that can not fix in console. 
 
