@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 class FormRegistration extends Component {
     render() {
         const {handleSubmit} = this.props;
-        let classExistEmail = (this.props.windowsStatus.existEmail) ? null : 'd-none';
+        let classExistEmail = (this.props.windowsStatus.existEmail) ? 'input-error-message' : 'd-none';
         return (
             <form onSubmit={handleSubmit} className='login-menu_form'>
 

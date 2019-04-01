@@ -44,7 +44,6 @@ class PhotoGallery extends Component {
           );
         });
       }
-      return null;
     });
 
     let photoGalleryFiltered = photoGallery.filter(elem => {
@@ -54,6 +53,7 @@ class PhotoGallery extends Component {
     let mainPhotoObj = photoGalleryFiltered
       ? photoGalleryFiltered[this.state.index]
       : null;
+
     let mainPhotoSrc = mainPhotoObj ? mainPhotoObj.key : null;
 
     return (
