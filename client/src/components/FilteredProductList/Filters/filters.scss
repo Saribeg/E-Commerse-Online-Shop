@@ -23,7 +23,7 @@
     .filter-active-title {
       @include flex-center-between;
       font-family: $font-openSans;
-      font-size: 12px;
+      font-size: 16px;
       letter-spacing: 1px;
       color: $black;
       text-transform: uppercase;
@@ -43,7 +43,7 @@
 .filter-title {
   display: inline-block;
   font-family: $font-openSans;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   color: #333;
   text-transform: uppercase;

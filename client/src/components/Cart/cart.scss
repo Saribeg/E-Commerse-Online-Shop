@@ -24,8 +24,9 @@
 .basket-item {
   @include flex-center-between;
   flex-wrap: wrap;
+  padding: 15px;
+  margin-bottom: 15px;
   border-bottom: 1px solid  #e5e5e5;
-  padding: 20px 0;
   width: 100%;
   @include max-width($landscape-tablet){
     flex-direction: column;
@@ -141,7 +142,6 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  width: 80%;
 
   input {
     @include clear-default-inputs-style;
