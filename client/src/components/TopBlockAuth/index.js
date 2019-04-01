@@ -32,6 +32,7 @@ class TopBlockAuth extends Component {
 
     clickOnLogin = () => {
         this.props.openLoginForm();
+        document.body.style.overflow = "hidden";
     }
 
     clickOnRegistration = () => {

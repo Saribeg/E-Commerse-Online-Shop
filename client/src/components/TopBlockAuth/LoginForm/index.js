@@ -65,7 +65,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({ type: OPEN_LOGIN_FORM });
         },
         closeLoginForm: () => {
-            console.log('close login')
             dispatch({type: CLOSE_LOGIN_FORM})
         },
 
