@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegistrationOk component RegistrationOk component render 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RegistrationOk />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="login-menu login-menu-block"
+      >
+        <h2
+          className="login-menu_header"
+        >
+          Successfull registration
+        </h2>
+        <p
+          className="login-menu_par"
+        >
+          You were successfully registered on our site. We sent you e-mail with link to verify your account. Please read email and click to link for finish registration.
+        </p>
+        <p
+          className="login-menu_par"
+        >
+          Thank you!
+        </p>
+        <div
+          className="login-form_btn register_btn"
+          data-btn="btn-reg-ok-down-close"
+          onClick={[Function]}
+        >
+          Ok
+        </div>
+      </div>,
+      "className": "modal-backdrop",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h2
+            className="login-menu_header"
+          >
+            Successfull registration
+          </h2>,
+          <p
+            className="login-menu_par"
+          >
+            You were successfully registered on our site. We sent you e-mail with link to verify your account. Please read email and click to link for finish registration.
+          </p>,
+          <p
+            className="login-menu_par"
+          >
+            Thank you!
+          </p>,
+          <div
+            className="login-form_btn register_btn"
+            data-btn="btn-reg-ok-down-close"
+            onClick={[Function]}
+          >
+            Ok
+          </div>,
+        ],
+        "className": "login-menu login-menu-block",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Successfull registration",
+            "className": "login-menu_header",
+          },
+          "ref": null,
+          "rendered": "Successfull registration",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "You were successfully registered on our site. We sent you e-mail with link to verify your account. Please read email and click to link for finish registration.",
+            "className": "login-menu_par",
+          },
+          "ref": null,
+          "rendered": "You were successfully registered on our site. We sent you e-mail with link to verify your account. Please read email and click to link for finish registration.",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Thank you!",
+            "className": "login-menu_par",
+          },
+          "ref": null,
+          "rendered": "Thank you!",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Ok",
+            "className": "login-form_btn register_btn",
+            "data-btn": "btn-reg-ok-down-close",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "Ok",
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="login-menu login-menu-block"
+        >
+          <h2
+            className="login-menu_header"
+          >
+            Successfull registration
+          </h2>
+          <p
+            className="login-menu_par"
+          >
+            You were successfully registered on our site. We sent you e-mail with link to verify your account. Please read email and click to link for finish registration.
+          </p>
+          <p
+            className="login-menu_par"
+          >
+            Thank you!
+          </p>
+          <div
+            className="login-form_btn register_btn"
+            data-btn="btn-reg-ok-down-close"
+            onClick={[Function]}
+          >
+            Ok
+          </div>
+        </div>,
+        "className": "modal-backdrop",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h2
+              className="login-menu_header"
+            >
+              Successfull registration
+            </h2>,
+            <p
+              className="login-menu_par"
+            >
+              You were successfully registered on our site. We sent you e-mail with link to verify your account. Please read email and click to link for finish registration.
+            </p>,
+            <p
+              className="login-menu_par"
+            >
+              Thank you!
+            </p>,
+            <div
+              className="login-form_btn register_btn"
+              data-btn="btn-reg-ok-down-close"
+              onClick={[Function]}
+            >
+              Ok
+            </div>,
+          ],
+          "className": "login-menu login-menu-block",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Successfull registration",
+              "className": "login-menu_header",
+            },
+            "ref": null,
+            "rendered": "Successfull registration",
+            "type": "h2",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "You were successfully registered on our site. We sent you e-mail with link to verify your account. Please read email and click to link for finish registration.",
+              "className": "login-menu_par",
+            },
+            "ref": null,
+            "rendered": "You were successfully registered on our site. We sent you e-mail with link to verify your account. Please read email and click to link for finish registration.",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Thank you!",
+              "className": "login-menu_par",
+            },
+            "ref": null,
+            "rendered": "Thank you!",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Ok",
+              "className": "login-form_btn register_btn",
+              "data-btn": "btn-reg-ok-down-close",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "Ok",
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;

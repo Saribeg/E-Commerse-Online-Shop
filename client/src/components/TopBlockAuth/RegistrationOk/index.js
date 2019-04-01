@@ -6,9 +6,8 @@ class RegistrationOk extends Component {
     render() {
 
         return (
-            <>
+            <div className="modal-backdrop">
                 <div className="login-menu login-menu-block">
-
                     <h2 className="login-menu_header">Successfull registration</h2>
                     <p className="login-menu_par">
                         You were successfully registered on our site. We sent you e-mail with link to verify your account.
@@ -18,11 +17,10 @@ class RegistrationOk extends Component {
                         Thank you!
                     </p>
 
-                    <div data-btn="btn-reg-ok-down-close" className='login-form_btn register_btn'>Ok
+                    <div data-btn="btn-reg-ok-down-close" onClick={()=> document.body.style.overflow="auto"} className='login-form_btn register_btn'>Ok
                     </div>
                 </div>
-
-            </>
+            </div>
         )
     }
 }

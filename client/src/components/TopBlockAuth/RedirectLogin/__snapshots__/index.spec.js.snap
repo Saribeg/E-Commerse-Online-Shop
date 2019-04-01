@@ -1,16 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductCard component ProductCard component render 1`] = `
+exports[`RedirectLogin component RedirectLogin component render 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(ProductCard)
-    colorName="beige"
-    currentPrice={132}
-    imageUrl="/img/products/women/clothing/dresses/946099/fffcf2/001.jpg"
-    model="natural woman mini dress"
-    previousPrice={220}
-    productUrl="/women/clothing/dresses/946099"
-  />,
+  Symbol(enzyme.__unrendered__): <Connect(withRouter(RedirectLogin)) />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
