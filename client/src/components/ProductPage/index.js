@@ -86,14 +86,12 @@ class ProductPage extends Component {
         />
 
         <section className="product-detail container">
-          {/*<div className="product-main">*/}
           <PhotoGallery
             productFeatures={productFeatures}
             activeColor={activeColor}
             thumbs={this.props.thumbs}
             changeColor={this.changeColor}
           />
-          {/*</div>*/}
           <ProductInfo
             productFeatures={productFeatures}
             activeColor={activeColor}
