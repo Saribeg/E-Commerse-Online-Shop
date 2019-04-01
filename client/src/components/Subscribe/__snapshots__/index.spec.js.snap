@@ -57,6 +57,9 @@ ShallowWrapper {
               />
             </form>
           </div>
+          <p
+            className="hintMessage"
+          />
         </div>
       </section>,
     },
@@ -102,6 +105,9 @@ ShallowWrapper {
               />
             </form>
           </div>
+          <p
+            className="hintMessage"
+          />
         </div>,
         "className": "section-subscribe",
       },
@@ -111,274 +117,8 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <div
-            className="subscribe"
-          >
-            <h2
-              className="subscribe-title"
-            >
-              Subscribe
-            </h2>
+          "children": Array [
             <div
-              className="subscribe-description"
-            >
-              Get the day’s top news stories delivered to your inbox
-            </div>
-            <form
-              className="subscribe-form"
-              onSubmit={[Function]}
-            >
-              <input
-                className="subscribe-email"
-                id="subscribe-mail"
-                onChange={[Function]}
-                placeholder="Enter your email here..."
-                type="text"
-                value=""
-              />
-              <input
-                className="subscribe-btn"
-                id="subscribe-btn"
-                type="submit"
-                value="SUBSCRIBE"
-              />
-            </form>
-          </div>,
-          "className": "container",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <h2
-                className="subscribe-title"
-              >
-                Subscribe
-              </h2>,
-              <div
-                className="subscribe-description"
-              >
-                Get the day’s top news stories delivered to your inbox
-              </div>,
-              <form
-                className="subscribe-form"
-                onSubmit={[Function]}
-              >
-                <input
-                  className="subscribe-email"
-                  id="subscribe-mail"
-                  onChange={[Function]}
-                  placeholder="Enter your email here..."
-                  type="text"
-                  value=""
-                />
-                <input
-                  className="subscribe-btn"
-                  id="subscribe-btn"
-                  type="submit"
-                  value="SUBSCRIBE"
-                />
-              </form>,
-            ],
-            "className": "subscribe",
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Subscribe",
-                "className": "subscribe-title",
-              },
-              "ref": null,
-              "rendered": "Subscribe",
-              "type": "h2",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Get the day’s top news stories delivered to your inbox",
-                "className": "subscribe-description",
-              },
-              "ref": null,
-              "rendered": "Get the day’s top news stories delivered to your inbox",
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  <input
-                    className="subscribe-email"
-                    id="subscribe-mail"
-                    onChange={[Function]}
-                    placeholder="Enter your email here..."
-                    type="text"
-                    value=""
-                  />,
-                  <input
-                    className="subscribe-btn"
-                    id="subscribe-btn"
-                    type="submit"
-                    value="SUBSCRIBE"
-                  />,
-                ],
-                "className": "subscribe-form",
-                "onSubmit": [Function],
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "className": "subscribe-email",
-                    "id": "subscribe-mail",
-                    "onChange": [Function],
-                    "placeholder": "Enter your email here...",
-                    "type": "text",
-                    "value": "",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "input",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "className": "subscribe-btn",
-                    "id": "subscribe-btn",
-                    "type": "submit",
-                    "value": "SUBSCRIBE",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "input",
-                },
-              ],
-              "type": "form",
-            },
-          ],
-          "type": "div",
-        },
-        "type": "div",
-      },
-      "type": "section",
-    },
-    "type": Symbol(react.fragment),
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <section
-          className="section-subscribe"
-        >
-          <div
-            className="container"
-          >
-            <div
-              className="subscribe"
-            >
-              <h2
-                className="subscribe-title"
-              >
-                Subscribe
-              </h2>
-              <div
-                className="subscribe-description"
-              >
-                Get the day’s top news stories delivered to your inbox
-              </div>
-              <form
-                className="subscribe-form"
-                onSubmit={[Function]}
-              >
-                <input
-                  className="subscribe-email"
-                  id="subscribe-mail"
-                  onChange={[Function]}
-                  placeholder="Enter your email here..."
-                  type="text"
-                  value=""
-                />
-                <input
-                  className="subscribe-btn"
-                  id="subscribe-btn"
-                  type="submit"
-                  value="SUBSCRIBE"
-                />
-              </form>
-            </div>
-          </div>
-        </section>,
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <div
-            className="container"
-          >
-            <div
-              className="subscribe"
-            >
-              <h2
-                className="subscribe-title"
-              >
-                Subscribe
-              </h2>
-              <div
-                className="subscribe-description"
-              >
-                Get the day’s top news stories delivered to your inbox
-              </div>
-              <form
-                className="subscribe-form"
-                onSubmit={[Function]}
-              >
-                <input
-                  className="subscribe-email"
-                  id="subscribe-mail"
-                  onChange={[Function]}
-                  placeholder="Enter your email here..."
-                  type="text"
-                  value=""
-                />
-                <input
-                  className="subscribe-btn"
-                  id="subscribe-btn"
-                  type="submit"
-                  value="SUBSCRIBE"
-                />
-              </form>
-            </div>
-          </div>,
-          "className": "section-subscribe",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <div
               className="subscribe"
             >
               <h2
@@ -411,10 +151,15 @@ ShallowWrapper {
                 />
               </form>
             </div>,
-            "className": "container",
-          },
-          "ref": null,
-          "rendered": Object {
+            <p
+              className="hintMessage"
+            />,
+          ],
+          "className": "container",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
             "instance": null,
             "key": undefined,
             "nodeType": "host",
@@ -540,6 +285,311 @@ ShallowWrapper {
             ],
             "type": "div",
           },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": undefined,
+              "className": "hintMessage",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "section",
+    },
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <section
+          className="section-subscribe"
+        >
+          <div
+            className="container"
+          >
+            <div
+              className="subscribe"
+            >
+              <h2
+                className="subscribe-title"
+              >
+                Subscribe
+              </h2>
+              <div
+                className="subscribe-description"
+              >
+                Get the day’s top news stories delivered to your inbox
+              </div>
+              <form
+                className="subscribe-form"
+                onSubmit={[Function]}
+              >
+                <input
+                  className="subscribe-email"
+                  id="subscribe-mail"
+                  onChange={[Function]}
+                  placeholder="Enter your email here..."
+                  type="text"
+                  value=""
+                />
+                <input
+                  className="subscribe-btn"
+                  id="subscribe-btn"
+                  type="submit"
+                  value="SUBSCRIBE"
+                />
+              </form>
+            </div>
+            <p
+              className="hintMessage"
+            />
+          </div>
+        </section>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="container"
+          >
+            <div
+              className="subscribe"
+            >
+              <h2
+                className="subscribe-title"
+              >
+                Subscribe
+              </h2>
+              <div
+                className="subscribe-description"
+              >
+                Get the day’s top news stories delivered to your inbox
+              </div>
+              <form
+                className="subscribe-form"
+                onSubmit={[Function]}
+              >
+                <input
+                  className="subscribe-email"
+                  id="subscribe-mail"
+                  onChange={[Function]}
+                  placeholder="Enter your email here..."
+                  type="text"
+                  value=""
+                />
+                <input
+                  className="subscribe-btn"
+                  id="subscribe-btn"
+                  type="submit"
+                  value="SUBSCRIBE"
+                />
+              </form>
+            </div>
+            <p
+              className="hintMessage"
+            />
+          </div>,
+          "className": "section-subscribe",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="subscribe"
+              >
+                <h2
+                  className="subscribe-title"
+                >
+                  Subscribe
+                </h2>
+                <div
+                  className="subscribe-description"
+                >
+                  Get the day’s top news stories delivered to your inbox
+                </div>
+                <form
+                  className="subscribe-form"
+                  onSubmit={[Function]}
+                >
+                  <input
+                    className="subscribe-email"
+                    id="subscribe-mail"
+                    onChange={[Function]}
+                    placeholder="Enter your email here..."
+                    type="text"
+                    value=""
+                  />
+                  <input
+                    className="subscribe-btn"
+                    id="subscribe-btn"
+                    type="submit"
+                    value="SUBSCRIBE"
+                  />
+                </form>
+              </div>,
+              <p
+                className="hintMessage"
+              />,
+            ],
+            "className": "container",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <h2
+                    className="subscribe-title"
+                  >
+                    Subscribe
+                  </h2>,
+                  <div
+                    className="subscribe-description"
+                  >
+                    Get the day’s top news stories delivered to your inbox
+                  </div>,
+                  <form
+                    className="subscribe-form"
+                    onSubmit={[Function]}
+                  >
+                    <input
+                      className="subscribe-email"
+                      id="subscribe-mail"
+                      onChange={[Function]}
+                      placeholder="Enter your email here..."
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      className="subscribe-btn"
+                      id="subscribe-btn"
+                      type="submit"
+                      value="SUBSCRIBE"
+                    />
+                  </form>,
+                ],
+                "className": "subscribe",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Subscribe",
+                    "className": "subscribe-title",
+                  },
+                  "ref": null,
+                  "rendered": "Subscribe",
+                  "type": "h2",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Get the day’s top news stories delivered to your inbox",
+                    "className": "subscribe-description",
+                  },
+                  "ref": null,
+                  "rendered": "Get the day’s top news stories delivered to your inbox",
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <input
+                        className="subscribe-email"
+                        id="subscribe-mail"
+                        onChange={[Function]}
+                        placeholder="Enter your email here..."
+                        type="text"
+                        value=""
+                      />,
+                      <input
+                        className="subscribe-btn"
+                        id="subscribe-btn"
+                        type="submit"
+                        value="SUBSCRIBE"
+                      />,
+                    ],
+                    "className": "subscribe-form",
+                    "onSubmit": [Function],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "className": "subscribe-email",
+                        "id": "subscribe-mail",
+                        "onChange": [Function],
+                        "placeholder": "Enter your email here...",
+                        "type": "text",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "input",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "className": "subscribe-btn",
+                        "id": "subscribe-btn",
+                        "type": "submit",
+                        "value": "SUBSCRIBE",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "input",
+                    },
+                  ],
+                  "type": "form",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": undefined,
+                "className": "hintMessage",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+          ],
           "type": "div",
         },
         "type": "section",

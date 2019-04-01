@@ -22,17 +22,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import "./authorization.scss";
 
 class TopBlockAuth extends Component {
-    componentDidMount() {
-    }
-    closeModal = () => {
-        this.setState({
-            modalFormOpen: false,
-        })
-    }
 
     clickOnLogin = () => {
-        this.props.openLoginForm();
         document.body.style.overflow = "hidden";
+        this.props.openLoginForm();
     }
 
     clickOnRegistration = () => {
@@ -40,14 +33,11 @@ class TopBlockAuth extends Component {
     }
 
     handleLoginForm = (e) => {
-
-
         if (e.target.dataset.btn !== 'btn-login-up-close') {
             e.stopPropagation();
         }
         if (e.target.dataset.btn === 'btn-login-down-close') {
-            this.props.closeLoginForm();
-            this.closeModal();
+            this.props.closeLoginForm();    
             this.clickOnRegistration();
         }
     }
@@ -58,7 +48,6 @@ class TopBlockAuth extends Component {
         }
         if (e.target.dataset.btn === 'btn-reg-down-close') {
             this.props.closeRegForm();
-            this.closeModal();
             this.clickOnLogin();
         }
     }
@@ -67,9 +56,6 @@ class TopBlockAuth extends Component {
         if (e.target.dataset.btn !== 'btn-reg-ok-down-close') {
             e.stopPropagation();
         }
-    }
-
-    handleDropDownProfile = (e) => {
     }
 
     render() {
@@ -156,13 +142,13 @@ class TopBlockAuth extends Component {
                 <div id="header-modal-form">
                     <div onClick={this.handleLoginForm}>
                         {this.props.windowsStatus.formLoginOpen && (
-                            <LoginForm/>
+                            <LoginForm />
                         )}
                     </div>
 
                     <div onClick={this.handleRegistrationForm}>
                         {this.props.windowsStatus.formRegisterOpen && (
-                            <RegistrationForm/>
+                            <RegistrationForm />
                         )}
                     </div>
 
