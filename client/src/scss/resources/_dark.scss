@@ -4,7 +4,19 @@
   }
 }
 
+.listing-products {
+  .product-item {
+    box-shadow: 0 0 5px 5px #ababab;
+
+    &:hover {
+      box-shadow: 0 0 5px 2px #ff6008;
+      background-color: #fff;
+    }
+  }
+}
+
 .breadcrumbs-section{
+  background-color: #cfcfcf;
   box-shadow: 0 2px 2px 1px #ababab;
 }
 
@@ -16,9 +28,12 @@
 .checkout-delivery-method,
 .checkout-delivery-details,
 .checkout-product-item,
-.checkout-payment-exp-input,
-.size-item {
+.checkout-payment-exp-input{
   border: 1px solid #000;
+}
+
+.size-item {
+  border: 2px solid #000;
 }
 
 .header-dropdown-login-details{

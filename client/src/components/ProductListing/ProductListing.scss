@@ -42,8 +42,8 @@
       }
 
       &:hover {
-        box-shadow: 0 0 10px 10px #ccc;
-        background-color: #fff;
+        //box-shadow: 0 0 10px 10px #ccc;
+        //background-color: #fff;
       }
 
       @include max-width($landscape-tablet) {
@@ -91,7 +91,8 @@
       font-size: 14px;
       font-weight: bold;
       color: $black;
-      padding-bottom: 15px;
+      padding-bottom: 5px;
+      margin-bottom: 0;
     }
   }
 }
