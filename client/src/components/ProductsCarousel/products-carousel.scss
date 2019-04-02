@@ -26,10 +26,10 @@
 
   .price {
     position: absolute;
-    left: 50px;
+    left: 40px;
     top: 72px;
     color: $black;
-    font-size: 20px;
+    font-size: 24px;
 
     &:before {
       border-bottom: 2px solid $black;
@@ -45,6 +45,11 @@
       top: 20px;
       font-size: 18px;
       padding: 10px;
+
+      &:before {
+        width: 80%;
+        height: 20%;
+      }
     }
 
     @include max-width($landscape-mobile-big) {
