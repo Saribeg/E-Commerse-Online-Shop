@@ -59,7 +59,7 @@ class Subscribe extends React.Component<Props, State> {
         } else if (this.state.hintMessage === 'emptyMail') {
             hintMessage = 'Fill in the input field please!';
         } else if (this.state.hintMessage === 'alreadyUsed') {
-            hintMessage = 'This email is already used for subscribe!';
+            hintMessage = 'You are already subscribed :)';
         } else if (this.state.hintMessage === 'sendMail') {
             hintMessage = 'Email has been sent!';
         }
