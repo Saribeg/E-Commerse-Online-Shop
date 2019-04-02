@@ -7,6 +7,10 @@
   padding: 34px 20px;
   text-align: center;
 
+  @media screen and (max-width: 500px){
+    width: 95%;
+  }
+
   &-text {
     margin-bottom: 10px;
   }

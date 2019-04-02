@@ -74,7 +74,7 @@ class Checkout extends Component {
                 </div>
               </div>
               <div className="checkout-product-item-price">
-                <p>{`${elem.priceFormDB} x ${elem.amount}`}</p>
+                <p>{`$${elem.priceFormDB} x ${elem.amount}`}</p>
                 <p className="checkout-product-item-price-bold">
                   {`$${(elem.amount * elem.priceFormDB).toFixed(2)}`}
                 </p>
@@ -108,7 +108,7 @@ class Checkout extends Component {
               <div className="delivery-link-block">
                 <p>Delivery - {elem.name}</p>
                 <p>Estimated delivery - {elem.duration} days</p>
-                <p>Price - {elem.price}</p>
+                <p>Price -  ${elem.price}</p>
               </div>
             </label>
           </li>
