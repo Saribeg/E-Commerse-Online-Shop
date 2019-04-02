@@ -6,7 +6,7 @@
     @include max-width($landscape-tablet) {
       justify-content: space-between;
       position: absolute;
-      top: 64px;
+      top: 52px;
       left: 0;
       right: 0;
       background: $grey-bg;
@@ -17,7 +17,7 @@
     margin-right: 54px;
     position: relative;
 
-    @include max-width(992px) {
+    @include max-width($landscape-tablet) {
       margin-right: 0;
       width: calc(100% / 2);
       text-align: center;
@@ -32,7 +32,7 @@
       position: absolute;
       right: -20px;
 
-      @include max-width(992px) {
+      @include max-width($landscape-tablet) {
         display: none;
       }
     }
@@ -71,23 +71,22 @@
 
   @include max-width($landscape-tablet) {
     background-color: #eee;
+    top: 100px;
   }
 }
 
 .sub-menu-wrapper-inner {
   @include flex-between;
-
   padding: 24px 0;
 
   @include max-width($landscape-tablet) {
-    margin-top: 30px;
     background-color: #eee;
+    padding: 15px 0;
   }
 }
 
 .sub-menu-left {
   @include flex-between;
-
   width: 47%;
 
   @include max-width($landscape-tablet) {
@@ -98,7 +97,6 @@
 
 .sub-menu-right {
   @include flex-between;
-
   width: 47%;
 
   @include max-width($landscape-tablet) {

@@ -1,15 +1,29 @@
 @import "../../scss/resources/resources";
 
 .product {
-  &-main {
+  &-detail{
     display: flex;
-		padding-top: 25px;
-		margin-bottom: 25px;
+    padding-top: 25px;
+    margin-bottom: 25px;
 
     @include max-width($landscape-tablet) {
       flex-direction: column;
       margin-bottom: 48px;
       padding-top: 60px;
+    }
+  }
+  &-main {
+    display: flex;
+    margin-right: 25px;
+
+    @media (min-width:681px) and (max-width: 992px){
+      justify-content: center;
+      margin-right: 0;
+    }
+
+    @media (max-width:680px) {
+      flex-direction: column;
+      margin-right: 0;
     }
   }
 

@@ -21,7 +21,8 @@ class ProductsCarousel extends Component {
       return (
         <div id={item.desc} key={item._id} className="carousel-item">
           <img src={item.imageUrl} alt="product" />
-          <div className="price">${item.product.currentPrice}</div>
+          <div className="price">${item.product.previousPrice}</div>
+          <div className="stock-price">${item.product.currentPrice}</div>
           <div className="info">{item.product.model}</div>
           <NavLink
             key={item.product._id}
