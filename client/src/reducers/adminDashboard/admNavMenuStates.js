@@ -21,8 +21,7 @@ function admNavMenu(state = initialState, action) {
     case SEND_NAV_REQUEST:
       return {
         ...state,
-        isMenuFetching: true,
-        resultMessage: ""
+        isMenuFetching: true
       };
     case GET_NAV_MENU:
       return {

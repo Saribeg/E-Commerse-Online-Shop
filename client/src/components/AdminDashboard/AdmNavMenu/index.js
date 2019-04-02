@@ -366,10 +366,12 @@ class AdmNavMenu extends Component {
                 type="button"
                 className="admin-nav-menu-button admin-nav-menu-submit"
                 value="Save Changes"
-                onClick={() =>
+                onClick={event =>
                   this.props.saveUpdatedNavMenu(
+                    event,
                     this.props.navMenuItems,
-                    this.props.getAdmNavMenuItems
+                    this.props.getAdmNavMenuItems,
+                    this.state.errorMsg
                   )
                 }
               />
