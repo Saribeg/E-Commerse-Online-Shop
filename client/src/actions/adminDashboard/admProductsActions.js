@@ -997,6 +997,7 @@ export const sendNewProductToServer = (
         // If our product object are successfully saved in DB, we receive response.data.success = true and can save photos to DB
         if (response.data.success) {
           // Creating statis part of image urls (this part are the same for every image that belong to product)
+
           let imageUrlStaticPart = `./client/build/img/products/${
             state.furtherSubCategory.value
               ? state.category.value +
