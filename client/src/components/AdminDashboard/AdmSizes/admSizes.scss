@@ -45,6 +45,12 @@
       outline: 2px solid #888888;
       background-color: #1faa00;
     }
+
+    &:disabled {
+      background-color: #cccccc;
+      color: #000000;
+      cursor: not-allowed;
+    }
   }
 
   &-minipreloader {

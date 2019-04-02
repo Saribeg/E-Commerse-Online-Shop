@@ -18,6 +18,7 @@ const sizes = require("./routes/filters/sizes");
 const categoryCarousels = require("./routes/categoryCarousels");
 const cart = require("./routes/cart");
 const search = require("./routes/search");
+const mainRoute = require("./routes/index");
 const app = express();
 const path = require("path");
 
@@ -61,6 +62,10 @@ app.use(passport.initialize());
 // Passport Config
 require("./config/passport")(passport);
 
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "client/build/index.html"));
+// });
+
 app.use("/users", users);
 app.use("/", navigationMenuItems);
 app.use("/", products);
@@ -76,6 +81,7 @@ app.use("/", cart);
 app.use("/", staticPages);
 app.use("/", search);
 app.use("/", categoryCarousels);
+app.use("/", mainRoute);
 
 const port = process.env.PORT || 5000;
 

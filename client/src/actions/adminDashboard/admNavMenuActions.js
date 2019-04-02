@@ -155,39 +155,50 @@ export const addNewFurtherSubCategory = (
 
 // Save changes into mongoDB
 export const saveUpdatedNavMenu = (
+  event,
   state,
-  callbackGetAdmNavMenuItems
+  callbackGetAdmNavMenuItems,
+  errors
 ) => dispatch => {
-  dispatch({
-    type: FETCH_NAV_MENU_REQUESTED
-  });
+  if (Object.keys(errors).length > 0) {
+    event.preventDefault();
 
-  state.forEach(category => {
-    delete category._id;
-    category.subCategoryList.forEach(subCategory => {
-      delete subCategory._id;
-      subCategory.furtherSubCategoryList.forEach(furtherSubCategory => {
-        delete furtherSubCategory._id;
+    dispatch({
+      type: FETCH_NAV_MENU_FAILED,
+      payload: "You have to handle all mistakes to submit changes"
+    });
+  } else {
+    dispatch({
+      type: FETCH_NAV_MENU_REQUESTED
+    });
+
+    state.forEach(category => {
+      delete category._id;
+      category.subCategoryList.forEach(subCategory => {
+        delete subCategory._id;
+        subCategory.furtherSubCategoryList.forEach(furtherSubCategory => {
+          delete furtherSubCategory._id;
+        });
       });
     });
-  });
 
-  let updatedMenu = JSON.parse(JSON.stringify(state));
+    let updatedMenu = JSON.parse(JSON.stringify(state));
 
-  axios
-    .post("/navigation-menu/add-list", { navigationMenuItems: updatedMenu })
-    .then(response => {
-      dispatch({
-        type: FETCH_NAV_MENU_SUCCEEDED,
-        payload: "Navigation Menu is successfully updated."
+    axios
+      .post("/navigation-menu/add-list", { navigationMenuItems: updatedMenu })
+      .then(response => {
+        dispatch({
+          type: FETCH_NAV_MENU_SUCCEEDED,
+          payload: "Navigation Menu is successfully updated."
+        });
+
+        callbackGetAdmNavMenuItems();
+      })
+      .catch(err => {
+        dispatch({
+          type: FETCH_NAV_MENU_FAILED,
+          payload: "An error occured. Please, check DB."
+        });
       });
-
-      callbackGetAdmNavMenuItems();
-    })
-    .catch(err => {
-      dispatch({
-        type: FETCH_NAV_MENU_FAILED,
-        payload: "An error occured. Please, check DB."
-      });
-    });
+  }
 };
