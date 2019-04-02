@@ -7,8 +7,9 @@ import "./btn-add-to-cart.scss";
 
 class BtnAddToCart extends Component {
 
-
-
+    state = {
+        clickStatus: false
+    };
 
     sendToCart = () => {
 
@@ -27,14 +28,25 @@ class BtnAddToCart extends Component {
             this.props.addProductToCart(this.props.infoCart);
         }
 
-
+        this.setState({clickStatus: true});
+        setTimeout(() => {
+            this.setState({clickStatus: false})
+        }, 2000)
     }
 
 
     render() {
+        let clickStatusText;
+        if (this.state.clickStatus === true) {
+            clickStatusText = 'Product has been added'
+        } else {
+            clickStatusText = ''
+        }
+
         return (
             <Fragment>
                 <input type="button" value="Add to cart" className="btn-add-to-cart" onClick={() => this.sendToCart()} />
+                <p className="click-status-text">{clickStatusText}</p>
             </Fragment>
         );
     }
