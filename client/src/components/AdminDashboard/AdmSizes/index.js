@@ -68,6 +68,7 @@ class AdmSizes extends Component {
               type="button"
               className="admin-size-save"
               value="Save changes"
+              disabled={size.value ? false : true}
               onClick={() =>
                 updateSizeInDb(
                   size._id,
@@ -128,6 +129,7 @@ class AdmSizes extends Component {
               type="button"
               className="admin-size-save admin-size-save-new"
               value="Save"
+              disabled={newSizeName ? false : true}
               onClick={() => saveNewSizeInDb(newSizeName, getExistingSizes)}
             />
             <span className="admin-size-result">
@@ -193,7 +195,6 @@ const mapStateToProps = state => {
     updatedSizeValue: state.admSizes.updatedSizeValue,
     errorMsg: state.admSizes.errorMsg,
     fetchExistingSizesMessage: state.admSizes.fetchExistingSizesMessage
-
   };
 };
 
