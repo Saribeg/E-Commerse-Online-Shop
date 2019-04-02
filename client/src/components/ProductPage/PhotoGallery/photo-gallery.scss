@@ -12,6 +12,7 @@
     margin-top: 24px;
     margin-right: 0;
     order: 2;
+    box-shadow: 0 0 5px 5px #ababab;
   }
 
   &-item {
@@ -21,7 +22,7 @@
     cursor: pointer;
 
     img {
-      @include image;
+      @include image;    
     }
 
     @media (max-width:680px) {
@@ -37,6 +38,7 @@
 .photo-main {
   max-width: 450px;
   max-height: 680px;
+  box-shadow: 0 0 5px 5px #ababab;
 
   @media (max-width:680px) {
     width: 100%;
