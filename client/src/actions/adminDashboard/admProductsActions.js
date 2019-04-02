@@ -1010,18 +1010,6 @@ export const sendNewProductToServer = (
               : state.category.value
           }/${state.itemNo}`;
 
-          let imageUrlStaticPart_Public = `./client/public/img/products/${
-            state.furtherSubCategory.value
-              ? state.category.value +
-                "/" +
-                state.subCategory.value +
-                "/" +
-                state.furtherSubCategory.value
-              : state.subCategory.value
-              ? state.category.value + "/" + state.subCategory.value
-              : state.category.value
-          }/${state.itemNo}`;
-
           // Iterating or productFeatures in "for of" loop to use conveniently async - await functions, because in for / forEach loop it is hard to handle async - await
           for (let color of state.productFeatures) {
             const formData = new FormData();
@@ -1058,17 +1046,6 @@ export const sendNewProductToServer = (
                 });
               });
 
-            axios.post(
-              "/products/admin-panel/upload-product-images",
-              formData,
-              {
-                // With files we are sending to server the path, where the files have to be saved (using multer)
-                headers: {
-                  path: `${imageUrlStaticPart_Public}/${color.color.slice(1)}/`, // Static part of image url + colorCssHexCode without "#"
-                  "content-type": "multipart/form-data"
-                }
-              }
-            );
           }
 
           // Updating information about products in color collection
