@@ -26,7 +26,7 @@ class OrdersHistory extends Component {
     //     }
     // }
 
-    componentDidUpdate () {
+    componentDidUpdate() {
 
         if (this.props.idUser) {
             axios.post("/getOrders", {idUser: this.props.idUser})
@@ -44,7 +44,7 @@ class OrdersHistory extends Component {
     render() {
 
         let arrMonths = ['January', "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"]
+            "July", "August", "September", "October", "November", "December"]
 
         let arrOrders = this.state.arrOrders.map((elem) => {
 
@@ -62,20 +62,18 @@ class OrdersHistory extends Component {
 
                 return (
                     <li className="order-history-list-item">
-                       
-                            
-                                <div className="checkout-product-item-description">
-                                    <p className="checkout-product-item-model">
-                                        {item.model}
-                                    </p>
-                                    <p className="checkout-product-item-color">
-                                        {`Color - ${item.colorName}`}
-                                    </p>
-                                    <p className="checkout-product-item-size">
-                                        {`Size - ${item.size}`}
-                                    </p>
-                              
-                            
+                        <div className="checkout-product-item-description">
+                            <p className="checkout-product-item-model">
+                                {item.model}
+                            </p>
+                            <p className="checkout-product-item-color">
+                                {`Color - ${item.colorName}`}
+                            </p>
+                            <p className="checkout-product-item-size">
+                                {`Size - ${item.size}`}
+                            </p>
+
+
                             <div className="checkout-product-item-price">
                                 <p>{`${item.priceFormDB} x ${item.amount}`}</p>
                                 <p className="checkout-product-item-price-bold">
@@ -89,7 +87,7 @@ class OrdersHistory extends Component {
             })
 
             return (
-                <li className="order-history-item">
+                <li className="order-history-item order-history-item-dark">
                     <p className="order-history-title">
                         Your order - {elem.orderNo}
                     </p>
@@ -119,9 +117,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
+    return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrdersHistory)
