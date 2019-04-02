@@ -37,7 +37,7 @@ class TopBlockAuth extends Component {
             e.stopPropagation();
         }
         if (e.target.dataset.btn === 'btn-login-down-close') {
-            this.props.closeLoginForm();    
+            this.props.closeLoginForm();
             this.clickOnRegistration();
         }
     }
@@ -140,23 +140,36 @@ class TopBlockAuth extends Component {
                 </div>
 
                 <div id="header-modal-form">
-                    <div onClick={this.handleLoginForm}>
-                        {this.props.windowsStatus.formLoginOpen && (
-                            <LoginForm />
-                        )}
-                    </div>
 
-                    <div onClick={this.handleRegistrationForm}>
-                        {this.props.windowsStatus.formRegisterOpen && (
-                            <RegistrationForm />
-                        )}
-                    </div>
+                    {this.props.windowsStatus.formLoginOpen && (
+                        <div  className="modal-backdrop">
+                            <div onClick={this.handleLoginForm}>
+                                <LoginForm/>
+                            </div>
+                        </div>
 
-                    <div onClick={this.handleRegistrationOk}>
-                        {this.props.windowsStatus.formRegistrationOk && (
-                            <RegistrationOk/>
-                        )}
-                    </div>
+                    )}
+
+
+                    {this.props.windowsStatus.formRegisterOpen && (
+                        <div  className="modal-backdrop">
+                            <div onClick={this.handleRegistrationForm}>
+                                <RegistrationForm/>
+                            </div>
+                        </div>
+
+                    )}
+
+
+                    {this.props.windowsStatus.formRegistrationOk && (
+                        <div  className="modal-backdrop">
+                            <div onClick={this.handleRegistrationOk}>
+                                <RegistrationOk/>
+                            </div>
+                        </div>
+
+                    )}
+
 
                 </div>
             </div>

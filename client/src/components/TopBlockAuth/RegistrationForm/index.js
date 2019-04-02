@@ -26,7 +26,7 @@ class RegistrationForm extends Component {
 
   render() {
     return (
-      <div className="modal-backdrop">
+
         <div className="login-menu">
           <div data-btn="btn-reg-up-close" className="login-cancel-btn" onClick={()=> document.body.style.overflow="auto"}>
             x
@@ -43,7 +43,7 @@ class RegistrationForm extends Component {
             </div>
           </div>
         </div>
-      </div>
+
     );
   }
 }

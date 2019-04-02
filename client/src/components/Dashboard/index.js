@@ -49,24 +49,35 @@ class Dashboard extends Component {
 
 
     handleCloseForms = e => {
-        if (
-            this.props.windowsStatus.formLoginOpen ||
-            this.props.windowsStatus.formRegisterOpen ||
-            this.props.windowsStatus.loginDetails ||
-            this.props.windowsStatus.formRegistrationOk ||
-            this.props.focus ||
-            this.props.checkoutWindows.successOrder ||
-            this.props.checkoutWindows.unsuccessOrder
-
-        ) {
+        if (this.props.windowsStatus.formLoginOpen) {
             this.props.closeLoginForm();
-            this.props.closeRegForm();
-            this.props.closeLoginDetails();
-            this.props.closeRegistrationOk();
-            this.props.closeSuccessOrder();
-            this.props.closeUnsuccessOrder();
-            this.props.blurSearchInput(e);
+            document.body.style.overflow="auto";
         }
+        if (this.props.windowsStatus.formRegisterOpen) {
+            this.props.closeRegForm();
+            document.body.style.overflow="auto";
+        }
+        if (this.props.windowsStatus.loginDetails) {
+            this.props.closeLoginDetails();
+            document.body.style.overflow="auto";
+        }
+        if (this.props.windowsStatus.formRegistrationOk) {
+            this.props.closeRegistrationOk();
+            document.body.style.overflow="auto";
+        }
+        if (this.props.focus) {
+            this.props.blurSearchInput(e);
+            document.body.style.overflow="auto";
+        }
+        if (this.props.checkoutWindows.successOrder) {
+            this.props.closeSuccessOrder();
+            document.body.style.overflow="auto";
+        }
+        if (this.props.checkoutWindows.unsuccessOrder) {
+            this.props.closeUnsuccessOrder();
+            document.body.style.overflow="auto";
+        }
+
     };
 
     render() {
