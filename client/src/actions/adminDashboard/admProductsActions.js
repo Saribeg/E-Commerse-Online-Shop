@@ -997,7 +997,19 @@ export const sendNewProductToServer = (
         // If our product object are successfully saved in DB, we receive response.data.success = true and can save photos to DB
         if (response.data.success) {
           // Creating statis part of image urls (this part are the same for every image that belong to product)
-          let imageUrlStaticPart = `./client/public/img/products/${
+          let imageUrlStaticPart = `./client/build/img/products/${
+            state.furtherSubCategory.value
+              ? state.category.value +
+                "/" +
+                state.subCategory.value +
+                "/" +
+                state.furtherSubCategory.value
+              : state.subCategory.value
+              ? state.category.value + "/" + state.subCategory.value
+              : state.category.value
+          }/${state.itemNo}`;
+
+          let imageUrlStaticPart_Public = `./client/public/img/products/${
             state.furtherSubCategory.value
               ? state.category.value +
                 "/" +
@@ -1044,6 +1056,18 @@ export const sendNewProductToServer = (
                     "Something wrong with receiving photos at server. Please, check the path folder"
                 });
               });
+
+            axios.post(
+              "/products/admin-panel/upload-product-images",
+              formData,
+              {
+                // With files we are sending to server the path, where the files have to be saved (using multer)
+                headers: {
+                  path: `${imageUrlStaticPart_Public}/${color.color.slice(1)}/`, // Static part of image url + colorCssHexCode without "#"
+                  "content-type": "multipart/form-data"
+                }
+              }
+            );
           }
 
           // Updating information about products in color collection
