@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {Switch, Route} from "react-router-dom";
 
 import Header from "../Header";
 import Footer from "../Footer";
@@ -22,62 +22,95 @@ import {
     CLOSE_REG_OK_FORM
 } from "../../actions/login";
 
-import { blurSearchInput } from "../../actions/search";
 import {
-  CLOSE_MODAL_SUCCESS_ORDER,
-  CLOSE_MODAL_UNSUCCESS_ORDER
+    SET_OFFSET_Y
+} from "../../actions/scroll";
+
+import {blurSearchInput} from "../../actions/search";
+import {
+    CLOSE_MODAL_SUCCESS_ORDER,
+    CLOSE_MODAL_UNSUCCESS_ORDER
 } from "../../actions/cart";
 
 class Dashboard extends Component {
-    handleCloseForms = e => {
-        if (
-            this.props.windowsStatus.formLoginOpen ||
-            this.props.windowsStatus.formRegisterOpen ||
-            this.props.windowsStatus.loginDetails ||
-            this.props.windowsStatus.formRegistrationOk ||
-            this.props.focus ||
-            this.props.checkoutWindows.successOrder ||
-            this.props.checkoutWindows.unsuccessOrder
 
-        ) {
+    componentDidMount () {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    componentWillUnmount () {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = () => {
+        console.log('========scroll', window.pageYOffset)
+        this.props.setOffsetY(window.pageYOffset)
+    }
+
+
+    handleCloseForms = e => {
+        if (this.props.windowsStatus.formLoginOpen) {
             this.props.closeLoginForm();
-            this.props.closeRegForm();
-            this.props.closeLoginDetails();
-            this.props.closeRegistrationOk();
-            this.props.closeSuccessOrder();
-            this.props.closeUnsuccessOrder();
-            this.props.blurSearchInput(e);
+            document.body.style.overflow="auto";
         }
+        if (this.props.windowsStatus.formRegisterOpen) {
+            this.props.closeRegForm();
+            document.body.style.overflow="auto";
+        }
+        if (this.props.windowsStatus.loginDetails) {
+            this.props.closeLoginDetails();
+            document.body.style.overflow="auto";
+        }
+        if (this.props.windowsStatus.formRegistrationOk) {
+            this.props.closeRegistrationOk();
+            document.body.style.overflow="auto";
+        }
+        if (this.props.focus) {
+            this.props.blurSearchInput(e);
+            document.body.style.overflow="auto";
+        }
+        if (this.props.checkoutWindows.successOrder) {
+            this.props.closeSuccessOrder();
+            document.body.style.overflow="auto";
+        }
+        if (this.props.checkoutWindows.unsuccessOrder) {
+            this.props.closeUnsuccessOrder();
+            document.body.style.overflow="auto";
+        }
+
     };
 
-  render() {
-    return (
-      <div onClick={this.handleCloseForms}>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route exact path="/about-us" component={AboutUs} />
-          <Route exact path="/our-policy" component={OurPolicy} />
-          <Route exact path="/careers" component={Careers} />
-          <Route path="/users/profile" component={Profile} />
-          <Route path="/checkout" component={Checkout} />
-          <Route exact path="/cart" component={Cart} />
-          <Route exact path="/unsubscribe/:id" component={Unsubscribe} />
-          <Route exact path="/:category/:subCategory/:furtherSubCategory?/:id(\d+)" component={ProductPage} />
-          <Route exact path="/:category/:subCategory?/:furtherSubCategory?" component={FilteredProductList} />
-        </Switch>
-        <Footer />
-      </div>
-    );
-  }
+    render() {
+
+
+
+        return (
+            <div onClick={this.handleCloseForms}>
+                <Header/>
+                <Switch>
+                    <Route exact path="/" component={MainPage}/>
+                    <Route exact path="/about-us" component={AboutUs}/>
+                    <Route exact path="/our-policy" component={OurPolicy}/>
+                    <Route exact path="/careers" component={Careers}/>
+                    <Route path="/users/profile" component={Profile}/>
+                    <Route path="/checkout" component={Checkout}/>
+                    <Route exact path="/cart" component={Cart}/>
+                    <Route exact path="/unsubscribe/:id" component={Unsubscribe}/>
+                    <Route exact path="/:category/:subCategory/:furtherSubCategory?/:id(\d+)" component={ProductPage}/>
+                    <Route exact path="/:category/:subCategory?/:furtherSubCategory?" component={FilteredProductList}/>
+                </Switch>
+                <Footer/>
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = state => {
-  return {
-    windowsStatus: state.login.windowsStatus,
-    focus: state.search.focus,
-    checkoutWindows: state.cart.windows
-  };
+    return {
+        windowsStatus: state.login.windowsStatus,
+        focus: state.search.focus,
+        checkoutWindows: state.cart.windows
+    };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -101,11 +134,14 @@ const mapDispatchToProps = dispatch => {
         },
         closeUnsuccessOrder: () => {
             dispatch({type: CLOSE_MODAL_UNSUCCESS_ORDER});
+        },
+        setOffsetY: (value) => {
+            dispatch({type: SET_OFFSET_Y, payload: {value: value}})
         }
     };
 };
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Dashboard);

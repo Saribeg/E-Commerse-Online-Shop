@@ -269,7 +269,7 @@ export function checkLogin(loginForm) {
                             type: SET_ID_LOGGED_USER,
                             payload: {idUser: decoded._doc._id, mail: decoded._doc.email}
                         });
-
+                        document.body.style.overflow="auto";
                         checkSavedCart({idUser: decoded._doc._id});
 
                         // if login is succesfull then add and change info to store of redux

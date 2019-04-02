@@ -124,7 +124,7 @@ class Checkout extends Component {
       : "d-none";
 
     return (
-      <section className="basket-page container">
+      <section className="checkout-page container">
         <div className="checkout">
           <ul className="checkout-product-list">{arrayProducts}</ul>
 

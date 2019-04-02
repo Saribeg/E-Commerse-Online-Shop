@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerifyLogin component VerifyLogin component render 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <VerifyLogin
+    match={
+      Object {
+        "params": Object {
+          "id": 1,
+        },
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": <div
+        className="verify-block"
+      >
+        <p
+          className="verify-title"
+        >
+          Unsuccessfull verifying of email
+        </p>
+        <p
+          className="verify-text"
+        >
+          You try to verify incorrect email
+        </p>
+        <p
+          className="verify-text"
+        >
+          Please open our mail and click on link
+        </p>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          className="verify-link"
+          to="/"
+        >
+          Go to main page
+        </NavLink>
+      </div>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <p
+            className="verify-title"
+          >
+            Unsuccessfull verifying of email
+          </p>,
+          <p
+            className="verify-text"
+          >
+            You try to verify incorrect email
+          </p>,
+          <p
+            className="verify-text"
+          >
+            Please open our mail and click on link
+          </p>,
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="verify-link"
+            to="/"
+          >
+            Go to main page
+          </NavLink>,
+        ],
+        "className": "verify-block",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Unsuccessfull verifying of email",
+            "className": "verify-title",
+          },
+          "ref": null,
+          "rendered": "Unsuccessfull verifying of email",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "You try to verify incorrect email",
+            "className": "verify-text",
+          },
+          "ref": null,
+          "rendered": "You try to verify incorrect email",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Please open our mail and click on link",
+            "className": "verify-text",
+          },
+          "ref": null,
+          "rendered": "Please open our mail and click on link",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "activeClassName": "active",
+            "aria-current": "page",
+            "children": "Go to main page",
+            "className": "verify-link",
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": "Go to main page",
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": <div
+          className="verify-block"
+        >
+          <p
+            className="verify-title"
+          >
+            Unsuccessfull verifying of email
+          </p>
+          <p
+            className="verify-text"
+          >
+            You try to verify incorrect email
+          </p>
+          <p
+            className="verify-text"
+          >
+            Please open our mail and click on link
+          </p>
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="verify-link"
+            to="/"
+          >
+            Go to main page
+          </NavLink>
+        </div>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <p
+              className="verify-title"
+            >
+              Unsuccessfull verifying of email
+            </p>,
+            <p
+              className="verify-text"
+            >
+              You try to verify incorrect email
+            </p>,
+            <p
+              className="verify-text"
+            >
+              Please open our mail and click on link
+            </p>,
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              className="verify-link"
+              to="/"
+            >
+              Go to main page
+            </NavLink>,
+          ],
+          "className": "verify-block",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Unsuccessfull verifying of email",
+              "className": "verify-title",
+            },
+            "ref": null,
+            "rendered": "Unsuccessfull verifying of email",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "You try to verify incorrect email",
+              "className": "verify-text",
+            },
+            "ref": null,
+            "rendered": "You try to verify incorrect email",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Please open our mail and click on link",
+              "className": "verify-text",
+            },
+            "ref": null,
+            "rendered": "Please open our mail and click on link",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "activeClassName": "active",
+              "aria-current": "page",
+              "children": "Go to main page",
+              "className": "verify-link",
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": "Go to main page",
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      "type": Symbol(react.fragment),
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__childContext__): null,
+}
+`;

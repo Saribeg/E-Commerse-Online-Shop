@@ -147,6 +147,11 @@
   border-radius: 5px;
   background-color: #7ecb20;
   outline: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  &:hover {
+    background-color: #1faa00;
+  }
 }
 
 .error-message {
@@ -173,6 +178,14 @@
 .admin-nav-menu-reset {
   border: 1px solid #655f5f;
   background-color: #fff;
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background-color: #655f5f;
+    color: #ffffff;
+    border-color: #000000;
+  }
 }
 
 .admin-nav-menu-reset:focus {
@@ -182,6 +195,11 @@
 .admin-nav-menu-submit {
   border: 1px solid #1faa00;
   background-color: #7ecb20;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  &:hover {
+    background-color: #1faa00;
+  }
 }
 
 .admin-nav-menu-submit:focus {

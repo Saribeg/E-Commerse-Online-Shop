@@ -22,15 +22,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import "./authorization.scss";
 
 class TopBlockAuth extends Component {
-    componentDidMount() {
-    }
-    closeModal = () => {
-        this.setState({
-            modalFormOpen: false,
-        })
-    }
 
     clickOnLogin = () => {
+        document.body.style.overflow = "hidden";
         this.props.openLoginForm();
     }
 
@@ -39,14 +33,11 @@ class TopBlockAuth extends Component {
     }
 
     handleLoginForm = (e) => {
-
-
         if (e.target.dataset.btn !== 'btn-login-up-close') {
             e.stopPropagation();
         }
         if (e.target.dataset.btn === 'btn-login-down-close') {
             this.props.closeLoginForm();
-            this.closeModal();
             this.clickOnRegistration();
         }
     }
@@ -57,7 +48,6 @@ class TopBlockAuth extends Component {
         }
         if (e.target.dataset.btn === 'btn-reg-down-close') {
             this.props.closeRegForm();
-            this.closeModal();
             this.clickOnLogin();
         }
     }
@@ -66,9 +56,6 @@ class TopBlockAuth extends Component {
         if (e.target.dataset.btn !== 'btn-reg-ok-down-close') {
             e.stopPropagation();
         }
-    }
-
-    handleDropDownProfile = (e) => {
     }
 
     render() {
@@ -153,23 +140,36 @@ class TopBlockAuth extends Component {
                 </div>
 
                 <div id="header-modal-form">
-                    <div onClick={this.handleLoginForm}>
-                        {this.props.windowsStatus.formLoginOpen && (
-                            <LoginForm/>
-                        )}
-                    </div>
 
-                    <div onClick={this.handleRegistrationForm}>
-                        {this.props.windowsStatus.formRegisterOpen && (
-                            <RegistrationForm/>
-                        )}
-                    </div>
+                    {this.props.windowsStatus.formLoginOpen && (
+                        <div  className="modal-backdrop">
+                            <div onClick={this.handleLoginForm}>
+                                <LoginForm/>
+                            </div>
+                        </div>
 
-                    <div onClick={this.handleRegistrationOk}>
-                        {this.props.windowsStatus.formRegistrationOk && (
-                            <RegistrationOk/>
-                        )}
-                    </div>
+                    )}
+
+
+                    {this.props.windowsStatus.formRegisterOpen && (
+                        <div  className="modal-backdrop">
+                            <div onClick={this.handleRegistrationForm}>
+                                <RegistrationForm/>
+                            </div>
+                        </div>
+
+                    )}
+
+
+                    {this.props.windowsStatus.formRegistrationOk && (
+                        <div  className="modal-backdrop">
+                            <div onClick={this.handleRegistrationOk}>
+                                <RegistrationOk/>
+                            </div>
+                        </div>
+
+                    )}
+
 
                 </div>
             </div>
