@@ -28,7 +28,7 @@
       margin-right: 12px;
     }
 
-    &.active {
+    .active {
       border: 2px solid $red;
     }
   }
@@ -37,14 +37,10 @@
 .photo-main {
   max-width: 450px;
   max-height: 680px;
-  //margin: 0 30px;
 
   @media (max-width:680px) {
     width: 100%;
-    //max-width: 450px;
-    //height: 100vh;
     max-height: 680px;
-    //opacity: 0.2;
     margin: 0 auto;
     order: 1;
   }
