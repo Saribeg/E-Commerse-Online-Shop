@@ -31,12 +31,12 @@
 
   &-product-list {
     margin: 5px;
-    border: 1px solid #eee;
   }
 
   &-product-item {
     @include flex-center-between;
     flex-direction: row;
+    margin-bottom: 15px;
 
     &-img {
       height: 100px;
