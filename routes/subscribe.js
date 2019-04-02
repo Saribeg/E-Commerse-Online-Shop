@@ -38,7 +38,7 @@ router.post('/subscribe', (req, res) => {
                     service: 'gmail',
                     auth: {
                         user: '2019.matter.store@gmail.com',
-                        pass: '2019Matter'
+                        pass: '2019MatterStore'
                     }
                 });
 
