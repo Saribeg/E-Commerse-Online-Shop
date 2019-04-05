@@ -1044,6 +1044,7 @@ export const sendNewProductToServer = (
                     "Something wrong with receiving photos at server. Please, check the path folder"
                 });
               });
+
           }
 
           // Updating information about products in color collection
