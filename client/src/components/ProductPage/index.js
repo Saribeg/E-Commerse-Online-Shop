@@ -63,8 +63,9 @@ class ProductPage extends Component {
   };
 
   render() {
+      console.log('render product')
     const { itemNo, currentPrice, previousPrice, model } = {
-      ...this.props.productItem.productOpened
+      ...this.props.productItem
     };
     const { productFeatures } = { ...this.props };
     let activeColor = this.state.activeColor;
@@ -109,7 +110,7 @@ class ProductPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    productItem: state.productDetails,
+    productItem: state.productDetails.productOpened,
     productFeatures: state.productDetails.productOpened.productFeatures,
     activeColor: state.product.activeColor
   };
